@@ -592,61 +592,51 @@
     box-shadow: none !important;
     padding: 0;
 }
-
-/* O BOTÃO MINIMALISTA - Sempre visível */
+/* --- Itens do Menu Principal (AJUSTADO) --- */
 .nav-item-tech {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    padding: 6px 10px;
     text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 12px; /* Bordas arredondadas estilo Apple */
-    
-    /* Cor de fundo padrão (Cinza bem clarinho quase transparente) */
-    background: rgba(0, 0, 0, 0.04) !important; 
-    
-    color: #1d1d1f; /* Cor do texto */
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(0, 0, 0, 0.02) !important; /* Borda quase invisível */
+    background: rgba(0, 0, 0, 0.04) !important; /* Fundo cinza suave */
+    border: 1px solid rgba(0, 0, 0, 0.02) !important;
+    border-radius: 0 !important; /* Quadrado como pedido */
+    transition: all 0.3s ease;
 }
 
-/* HOVER - Quando passa o mouse (Cinza mais escuro) */
-.nav-item-tech:hover {
-    background: rgba(0, 0, 0, 0.1) !important; /* Cinza mais visível */
-    transform: translateY(-1px);
-    color: #000;
+/* Cor das Letras (Default) */
+.nav-item-tech span {
+    color: #888888 !important; /* Força o cinza escuro nas letras */
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-/* Estado Ativo (Clique) */
-.nav-item-tech:active {
-    transform: scale(0.97);
-    background: rgba(0, 0, 0, 0.15) !important;
-}
-
-/* ICON-BOX - Totalmente transparente para não brigar com o botão */
-.icon-box {
-    width: auto;
-    height: auto;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Ícone Interno */
-.icon-box i {
+/* Cor dos Ícones (Default) */
+.nav-item-tech .icon-box i {
+    stroke: #888888 !important; /* Em Lucide usamos STROKE para mudar a cor */
+    color: #888888 !important;
     width: 16px;
     height: 16px;
-    stroke-width: 2px;
-    color: currentColor; /* Segue a cor do texto do botão */
+    transition: all 0.3s ease;
 }
 
-.nav-item-tech span {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: -0.2px;
+/* --- ESTADO HOVER (AO PASSAR O MOUSE) --- */
+
+.nav-item-tech:hover {
+    background: rgba(0, 0, 0, 0.1) !important; /* Fundo escurece um pouco */
+}
+
+/* Letras ficam brancas no hover */
+.nav-item-tech:hover span {
+    color: #ffffff !important;
+}
+
+/* Ícones ficam brancos no hover */
+.nav-item-tech:hover .icon-box i {
+    stroke: #ffffff !important;
+    color: #ffffff !important;
 }
 /* BOTÃO INICIAR PROJETO (CHROME/SILVER) */
 .cta-silver {
@@ -677,7 +667,162 @@
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     animation: shimmer 3s infinite;
 }
+/* FORÇAR COR DOS ÍCONES NO MENU PRINCIPAL */
+.nav-item-tech .icon-box i, 
+.nav-item-tech .icon-box svg {
+    stroke: #888888 !important; /* Cor cinza escura */
+    color: #888888 !important;
+    fill: none; /* Garante que o ícone não fique "pintado" por dentro */
+    transition: all 0.3s ease;
+}
 
+/* FORÇAR COR DO TEXTO NO MENU PRINCIPAL */
+.nav-item-tech span {
+    color: #888888 !important;
+    transition: all 0.3s ease;
+}
+
+/* --- EFEITO AO PASSAR O MOUSE (HOVER) --- */
+
+/* Ícones ficam brancos no hover */
+.nav-item-tech:hover .icon-box i, 
+.nav-item-tech:hover .icon-box svg {
+    stroke: #ffffff !important;
+    color: #ffffff !important;
+}
+
+/* Texto fica branco no hover */
+.nav-item-tech:hover span {
+    color: #ffffff !important;
+}
+
+/* --- AJUSTE DA ABA (DROPDOWN) --- */
+
+/* Garantir que os ícones dentro da aba também sigam a regra */
+.dropdown-link {
+    color: #888888 !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-link svg, 
+.dropdown-link i {
+    stroke: #888888 !important;
+}
+
+.dropdown-link:hover {
+    color: #ffffff !important;
+}
+
+.dropdown-link:hover svg {
+    stroke: #ffffff !important;
+}
+.nav-item-tech:hover {
+    background: rgba(0, 0, 0, 0.08) !important; /* Um fundo cinza bem leve para destacar o preto */
+}
+
+/* Letras ficam pretas no hover */
+.nav-item-tech:hover span {
+    color: #000000 !important;
+}
+
+/* Ícones ficam pretos no hover */
+.nav-item-tech:hover .icon-box i,
+.nav-item-tech:hover .icon-box svg {
+    stroke: #000000 !important;
+    color: #000000 !important;
+}
+
+/* --- HOVER DA ABA SOLUÇÕES (LETRA E ÍCONE PRETOS) --- */
+
+.dropdown-link:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important; /* Fundo sutil na aba */
+    color: #000000 !important; /* Texto preto */
+}
+
+.dropdown-link:hover svg,
+.dropdown-link:hover i {
+    stroke: #000000 !important; /* Ícone preto */
+}
+/* --- A ABA (Dropdown Menu) - Design Cinza Claro e Transparente --- */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    
+    /* Fundo Cinza Bem Claro e Transparente */
+    background: rgba(245, 245, 247, 0.8) !important; 
+    backdrop-filter: blur(15px); /* Efeito de vidro embaçado */
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Quadrado e com borda sutil */
+    border-radius: 0 !important;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    
+    display: none;
+    z-index: 10000;
+    padding: 5px 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Links dentro da Aba (Soluções) */
+.dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    text-decoration: none;
+    background: transparent !important; /* Sem fundo por padrão */
+    
+    /* Letras Cinza Escuro */
+    color: #555555 !important; 
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* Ícones dentro da aba (Cinza Escuro) */
+.dropdown-link i, 
+.dropdown-link svg {
+    stroke: #555555 !important;
+    width: 16px;
+    height: 16px;
+    transition: all 0.2s ease;
+}
+
+/* --- HOVER NA ABA (AO PASSAR O MOUSE) --- */
+
+.dropdown-link:hover {
+    /* Fundo sutil para o item focado */
+    background: rgba(0, 0, 0, 0.03) !important;
+    
+    /* Letras ficando Pretas */
+    color: #000000 !important; 
+}
+
+/* Ícones ficando Pretos no hover */
+.dropdown-link:hover i, 
+.dropdown-link:hover svg {
+    stroke: #000000 !important;
+}
+
+/* --- MANTER A ABA ABERTA --- */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Ponte invisível para o mouse não perder a aba */
+.dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+}
 @keyframes shimmer {
     0% { left: -100%; }
     30% { left: 150%; }
@@ -726,3 +871,100 @@
 .stat-icon i { stroke: #5b89c9; }
 
 @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; } }
+/* --- Itens do Menu Principal (Mais Estreitos) --- */
+.nav-item-tech {
+    display: flex;
+    align-items: center;
+    gap: 6px; /* Espaço reduzido entre ícone e texto */
+    padding: 6px 10px; /* Reduzido para ficar mais estreito */
+    text-decoration: none;
+    color: #fff;
+    font-size: 13px;
+    border-radius: 0 !important; /* Totalmente quadrado */
+    transition: background 0.3s;
+}
+
+/* --- Dropdown Container --- */
+.dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* --- A ABA (Dropdown Menu) --- */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Inicia logo abaixo do botão */
+    left: 0;
+    min-width: 200px;
+    background: rgba(30, 30, 30, 0.9); /* Cinza Transparente */
+    backdrop-filter: blur(10px); /* Efeito blur */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 !important; /* Totalmente quadrada */
+    display: none; /* Escondido por padrão */
+    z-index: 1000;
+    padding: 0;
+}
+
+/* Zona de segurança para o mouse não "perder" a aba ao descer */
+.dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: transparent;
+}
+
+/* Exibir ao passar o mouse */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Links dentro da Aba */
+.dropdown-link {
+    display: block;
+    padding: 12px 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo cinza bem transparente */
+    margin: 2px 0; /* Cria um pequeno espaço entre os botões da aba */
+    color: #888888; /* Aplica o mesmo cinza escuro nas letras da aba */
+}
+
+.dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.15); /* Fica um pouco mais claro ao passar o mouse */
+    color: #ffffff; /* Letra fica branca no hover */
+}
+
+/* Estilo do Ícone Chevron */
+.chevron-icon {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.3s;
+}
+
+.dropdown:hover .chevron-icon {
+    transform: rotate(180deg);
+}
+
+/* Remover arredondamento do botão Iniciar Projeto também se necessário */
+.cta-silver {
+    border-radius: 0 !important;
+}
+
+/* Ajuste do container para não cortar o menu */
+#navbar {
+    overflow: visible !important;
+}

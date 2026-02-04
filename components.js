@@ -5,31 +5,37 @@ const navbarHTML = `
     </a>
     
     <div class="nav-menu">
-        <!-- Início -->
         <a href="/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="home"></i></div>
             <span>Início</span>
         </a>
 
-        <!-- Soluções -->
-        <a href="/solucoes/" class="nav-item-tech">
-            <div class="icon-box"><i data-lucide="cpu"></i></div>
-            <span>Soluções</span>
-        </a>
+        <!-- Soluções com Dropdown via Hover -->
+        <div class="nav-item-tech dropdown">
+            <div class="dropdown-trigger">
+                <div class="icon-box"><i data-lucide="cpu"></i></div>
+                <span>Soluções</span>
+                <i data-lucide="chevron-down" class="chevron-icon"></i>
+            </div>
+            
+            <div class="dropdown-menu">
+                <a href="/solucoes/" class="dropdown-link">Web Design</a>
+                <a href="/solucoes/seo" class="dropdown-link">SEO & Performance</a>
+                <a href="/solucoes/landing-pages" class="dropdown-link">Landing Pages</a>
+                <a href="/solucoes/e-commerce" class="dropdown-link">E-Commerce</a>
+            </div>
+        </div>
 
-        <!-- Portfólio -->
         <a href="/portifolio/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="layers"></i></div>
             <span>Portfólio</span>
         </a>
 
-        <!-- Sobre -->
         <a href="/sobre/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="user"></i></div>
             <span>Sobre</span>
         </a>
 
-        <!-- Contato -->
         <a href="/#contato" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="send"></i></div>
             <span>Contato</span>
@@ -42,6 +48,7 @@ const navbarHTML = `
     </a>
 </div>
 `;
+
 const footerHTML = `
 <div class="container">
     <div class="footer-top">
@@ -62,6 +69,8 @@ Precisão que gera autoridade. <br>
                 <a href="/solucoes/">Soluções</a>
                 <a href="/portifolio/">Portifólio</a>
                 <a href="/solucoes/">Sobre</a>
+                <a href="/iniciarprojeto/">Iniciar Projeto</a>
+
             </div>
 
             <div class="footer-column">
@@ -77,6 +86,7 @@ Precisão que gera autoridade. <br>
                 <a href="https://www.facebook.com/profile.php?id=61579022016363 target="_blank">Facebook</a>
                 <a href="#" target="_blank">LinkedIn</a>
             </div>
+
         </div>
     </div>
 
@@ -94,12 +104,13 @@ Precisão que gera autoridade. <br>
     </div>
 </div>
 `;
+
 document.addEventListener("DOMContentLoaded", function() {
     const navElement = document.getElementById('navbar');
     const footerElement = document.getElementById('main-footer');
 
     if (navElement) navElement.innerHTML = navbarHTML;
-    if (footerElement) footerElement.innerHTML = footerHTML;
+    if (footerElement) footerElement.innerHTML = footerHTML; // Use sua constante footerHTML aqui
     
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
