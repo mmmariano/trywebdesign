@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Página Inicial -->
   <url>
-    <loc>https://www.trywebdesign.com.br/</loc>
-    <lastmod>2026-01-25</lastmod>
-    <priority>1.0</priority>
+    <loc>https://trywebdesign.com.br/</loc>
+    <lastmod>2025-05-20</lastmod>
+    <priority>1.00</priority>
   </url>
+
+  <!-- Soluções -->
+  <url>
+    <loc>https://trywebdesign.com.br/solucoes/</loc>
+    <lastmod>2025-05-20</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Portfólio -->
+  <url>
+    <loc>https://trywebdesign.com.br/portifolio/</loc>
+    <lastmod>2025-05-20</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Sobre -->
+  <url>
+    <loc>https://trywebdesign.com.br/sobre/</loc>
+    <lastmod>2025-05-20</lastmod>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Iniciar Projeto -->
+  <url>
+    <loc>https://trywebdesign.com.br/iniciarprojeto/</loc>
+    <lastmod>2025-05-20</lastmod>
+    <priority>0.60</priority>
+  </url>
+
 </urlset>

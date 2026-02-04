@@ -243,9 +243,14 @@
     }
 
     .quote-icon {
-        color: var(--apple-blue);
+        color: #86868b; /* O cinza Apple que você escolheu */
         margin-bottom: 15px;
         opacity: 0.5;
+    }
+
+    .quote-icon i {
+        color: #86868b; /* O cinza Apple que você escolheu */
+        opacity: 0.5;    /* Deixa levemente transparente para ficar elegante */
     }
 
     .testimonial-text {
