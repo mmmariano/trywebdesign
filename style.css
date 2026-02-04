@@ -948,11 +948,25 @@
     color: #ffffff; /* Letra fica branca no hover */
 }
 
-/* Estilo do Ícone Chevron */
+/* COR PADRÃO DA SETA (CINZA ESCURO) */
 .chevron-icon {
-    width: 12px;
-    height: 12px;
-    transition: transform 0.3s;
+    stroke: #888888 !important; /* Cor igual aos outros ícones e textos */
+    width: 14px;
+    height: 14px;
+    margin-left: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* QUANDO PASSAR O MOUSE NO BOTÃO SOLUÇÕES */
+.nav-item-tech.dropdown:hover .chevron-icon {
+    stroke: #000000 !important; /* Muda para preto no hover */
+    transform: rotate(180deg); /* Faz a setinha girar para cima */
+}
+
+/* GARANTIA PARA O ÍCONE DENTRO DO ICON-BOX */
+.nav-item-tech.dropdown:hover .icon-box i {
+    stroke: #000000 !important;
 }
 
 .dropdown:hover .chevron-icon {
