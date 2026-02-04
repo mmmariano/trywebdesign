@@ -12,19 +12,19 @@ const navbarHTML = `
         </a>
 
         <!-- Soluções -->
-        <a href="/solucoes/index.html" class="nav-item-tech">
+        <a href="/solucoes/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="cpu"></i></div>
             <span>Soluções</span>
         </a>
 
         <!-- Portfólio -->
-        <a href="/portifolio/index.html" class="nav-item-tech">
+        <a href="/portifolio/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="layers"></i></div>
             <span>Portfólio</span>
         </a>
 
         <!-- Sobre -->
-        <a href="/sobre/index.html" class="nav-item-tech">
+        <a href="/sobre/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="user"></i></div>
             <span>Sobre</span>
         </a>
@@ -36,7 +36,7 @@ const navbarHTML = `
         </a>
     </div>
 
-    <a href="/iniciarprojeto/index.html" class="cta-silver">
+    <a href="/iniciarprojeto/" class="cta-silver">
         <span>Iniciar Projeto</span>
         <div class="shimmer"></div>
     </a>
@@ -59,16 +59,16 @@ Precisão que gera autoridade. <br>
             <div class="footer-column">
                 <h4>Explorar</h4>
                 <a href="/">Início</a>
-                <a href="/solucoes/index.html">Soluções</a>
-                <a href="/portifolio/index.html">Portifólio</a>
-                <a href="/solucoes/index.html">Sobre</a>
+                <a href="/solucoes/">Soluções</a>
+                <a href="/portifolio/">Portifólio</a>
+                <a href="/solucoes/">Sobre</a>
             </div>
 
             <div class="footer-column">
                 <h4>Contato</h4>
                 <a href="https://wa.me/5544999761842">WhatsApp</a>
                 <a href="mailto:atendimentotrywebdesign@gmail.com">E-mail</a>
-                <a href="/index.html#contato">Consultoria</a>
+                <a href="/#contato">Consultoria</a>
             </div>
 
             <div class="footer-column">
