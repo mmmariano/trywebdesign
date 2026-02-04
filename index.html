@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TryWebDesign | Agência especializada em Criação de Sites e Otimização SEO</title>
+    
+    <!-- Tipografia Apple -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bibliotecas -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="components.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <nav class="navbar" id="navbar"></nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>
+                Design que Converte.<br>
+                Autoridade que Domina.
+            </h1>
+            <p>Transformamos tráfego em faturamento.<br> Criamos a presença digital que sua empresa merece com um design limpo, rápido e focado em trazer resultados para você.</p>
+            <div class="reveal">
+                <a href="/solucoes/" class="btn-primary">
+                    Explorar Soluções <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+   <section class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="zap"></i></div>
+                <div class="stat-value" data-target="99">0</div>
+                <div class="stat-desc">PageSpeed Insights</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="layout"></i></div>
+                <div class="stat-value" data-target="50">0</div>
+                <div class="stat-desc">Projetos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="code-2"></i></div>
+                <div class="stat-value" data-target="10">0</div>
+                <div class="stat-desc">Anos de Código</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="search"></i></div>
+                <div class="stat-value" data-target="100">0</div>
+                <div class="stat-desc">SEO Otimizado para Google</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="shield-check"></i></div>
+                <div class="stat-value" data-target="100">0</div>
+                <div class="stat-desc">Segurança (SSL)</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- SEÇÃO DE DEPOIMENTOS - APPLE DESIGN SYSTEM -->
+<section id="testimonials" class="section-padding bg-grey">
+    <div class="container">
+       <div class="section-header reveal">
+    <h2>O sucesso de quem <br><span style="color: #86868b">confiou em nosso trabalho.</span></h2>
+</div>
+
+        <div class="testimonials-grid">
+            
+      <!-- Depoimento: Lovisetto Contabilidade -->
+<div class="testimonial-card reveal-card">
+    <div class="site-preview">
+        <!-- Mockup de Janela do macOS -->
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <img src="lovisettoportifolio.webp" alt="Site Lovisetto Contabilidade">
+    </div>
+    <div class="testimonial-content">
+        <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+        <p class="testimonial-text">
+            "A nova interface transmite a segurança e a precisão que nossos clientes corporativos exigem. O resultado superou todas as expectativas em termos de autoridade e performance."
+        </p>
+        <div class="testimonial-footer">
+            <span class="client-name">Patricia</span>
+            <span class="client-info">Gestão Contábil & Tributária</span>
+        </div>
+    </div>
+</div>
+             <!-- 01: Miguel - I.M.A -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="imaportifolio.webp" alt="Site I.M.A Soluções">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "O site trouxe o nível de autoridade que a I.M.A precisava para escalar no digital. O design é impecável e muito rápido."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Miguel</span>
+                        <span class="client-info">I.M.A Soluções</span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <!-- 03: Karina Guimarães -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="karinaportifolio.webp" alt="Site Karina Guimarães">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "A TryWebDesign traduziu perfeitamente minha essência em um site funcional e extremamente sofisticado. Estou muito satisfeita."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Karina G. Medronho</span>
+                        <span class="client-info">Psicóloga & Des. Humano</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 04: Flavia Cavalcante -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="flaviaportifolio.webp" alt="Site Flavia Cavalcante">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "A TryWebDesign conseguiu traduzir minha visão em código. Hoje, minha vitrine digital condiz com o valor que entrego."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Flavia Cavalcante</span>
+                        <span class="client-info">Artist & Tattooist</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 05: Kleber - Vrinda Bhumi -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="vrindaportifolio.webp" alt="Site Vrinda Bhumi">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "Conseguiram captar a paz do nosso retiro e transformar em uma experiência digital fluida. Excelente integração de sistema."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Kleber</span>
+                        <span class="client-info">Vrinda Bhumi</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 06: Edmilson Roncari - Solar SP -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="solarportifolio.webp" alt="Site Solar São Paulo">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "O impacto visual e a performance mudaram a forma como investidores nos enxergam. É a vitrine de alto nível que exigimos."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Edmilson Roncari</span>
+                        <span class="client-info">Solar São Paulo</span>
+                    </div>
+                </div>
+            </div>
+ <!-- 02: Paola Barbosa -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="paolaportifolio.webp" alt="Site Paola Barbosa">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "Meus pacientes agora chegam com uma percepção de valor muito maior sobre o meu trabalho. A vitrine do meu consultório ficou elegante."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Paola Barbosa</span>
+                        <span class="client-info">Psicóloga Clínica</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="contato" class="section-padding-refined bg-grey">
+    
+    <!-- Glow de Fundo Posicionado Estrategicamente para fechar o layout -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: rgba(0, 113, 227, 0.03); filter: blur(120px); border-radius: 50%; pointer-events: none;"></div>
+
+    <div class="container">
+        <div class="contact-flex-refined">
+            
+            <!-- LADO ESQUERDO: CONTEÚDO CONDENSADO -->
+            <div class="reveal">
+                <div class="status-pill-pro">
+                    <span class="pulse-dot"></span>
+                </div>
+                
+                <h2 class="title-contact-pro">Vamos tirar a sua ideia do <span class="blue-text">papel?</span></span></h2>
+
+                <p class="description-contact-pro">Design de elite e engenharia de software para marcas que não aceitam o comum.</p>
+                
+                <div class="specialist-box-refined">
+                    <img src="foto_perfil_mateus.webp" alt="Mateus Mariano">
+                    <div class="spec-text">
+                        <strong>Mateus M. Mariano</strong>
+                        <span>Especialista em Desenvolvimento Web</span>
+                    </div>
+                </div>
+
+                <div class="contact-widgets-grid">
+                    <a href="https://wa.me/5544999761842" class="widget-mini">
+                        <div class="w-icon wa"><i data-lucide="message-circle" size="18"></i></div>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="mailto:atendimentotrywebdesign@gmail.com" class="widget-mini">
+                        <div class="w-icon mail"><i data-lucide="mail" size="18"></i></div>
+                        <span>E-mail</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- LADO DIREITO: PORTAL DE CONSULTORIA (PROPORCIONAL) -->
+            <div class="reveal">
+              
+            <div class="consultancy-portal-refined">
+    <div class="portal-header">
+        <div class="window-controls"><span></span><span></span><span></span></div>
+        <h3>Iniciar Projeto</h3>
+        <p>Análise técnica em até 24h.</p>
+    </div>
+    
+    <!-- 1. Dei um ID para o form e tirei o 'required' dos campos -->
+    <form id="meuFormulario" class="form-refined">
+        <input type="hidden" name="access_key" value="0b16ed46-9c5c-4f5b-b192-89c76fce3640">
+        
+        <div class="field-refined">
+            <input type="text" name="name" placeholder="Nome ou Empresa">
+        </div>
+        <div class="field-refined">
+            <input type="text" name="contact" placeholder="E-mail ou WhatsApp">
+        </div>
+        <div class="field-refined">
+            <textarea name="message" rows="3" placeholder="Qual o seu objetivo?"></textarea>
+        </div>
+
+        <button type="submit" class="btn-portal-refined">
+            <span>ENVIAR SOLICITAÇÃO</span>
+            <i data-lucide="arrow-right" size="16"></i>
+        </button>
+    </form>
+
+    <!-- 2. Mensagem de Sucesso que começa escondida (display: none) -->
+    <div id="agradecimento" style="display: none; text-align: center; padding: 40px 20px;">
+        <i data-lucide="party-popper" size="48" style="color: #0071e3; margin-bottom: 20px;"></i>
+        <h3 style="font-size: 24px;">Recebemos seu contato!</h3>
+        <p style="color: #86868b; margin-top: 10px;">Mateus Mariano analisará sua ideia em breve.</p>
+    </div>
+</div>
+
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+   <footer id="main-footer"></footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Seguir mouse com brilho
+        const glow = document.getElementById('mouseGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        window.addEventListener('load', () => {
+            // Animação Entrada Navbar
+            gsap.to("#navbar", { y: 0, duration: 1.2, ease: "power4.out", delay: 0.2 });
+
+            // Animação Título Hero (Efeito de Escrita/Fade)
+            gsap.from("#heroTitle", { opacity: 0, y: 40, duration: 1.5, ease: "power4.out" });
+
+            // Revelação Geral ao Scroll
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+
+            // Parallax Suave no Portifólio
+            gsap.utils.toArray(".portfolio-img").forEach(img => {
+                gsap.to(img, {
+                    scrollTrigger: {
+                        trigger: img,
+                        scrub: 1.5,
+                        start: "top bottom",
+                    },
+                    y: -40
+                });
+            });
+        });
+    </script>
+ <script>
+    // 1. Inicialização de Ícones
+    lucide.createIcons();
+
+    // 2. Registro do GSAP
+    if (typeof gsap !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+    }
+
+    // 3. Função de Contagem dos Números (Intersection Observer)
+    function iniciarContadores() {
+        const todosOsNumeros = document.querySelectorAll(".stat-value");
+        
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    const elemento = entrada.target;
+                    const valorFinal = parseInt(elemento.getAttribute("data-target"));
+                    let valorAtual = 0;
+                    const duracao = 2000; 
+                    const incremento = valorFinal / (duracao / 16);
+
+                    function atualizar() {
+                        valorAtual += incremento;
+                        if (valorAtual < valorFinal) {
+                            elemento.innerText = Math.floor(valorAtual);
+                            requestAnimationFrame(atualizar);
+                        } else {
+                            elemento.innerText = valorFinal;
+                        }
+                    }
+                    atualizar();
+                    observador.unobserve(elemento);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        todosOsNumeros.forEach(num => observador.observe(num));
+    }
+
+    // 4. Animações de Entrada (GSAP)
+    function iniciarAnimacoesGSAP() {
+        if (typeof gsap !== "undefined") {
+            const titulo = document.querySelector("#heroTitle");
+            if (title) {
+                gsap.from(titulo, { opacity: 0, y: 30, duration: 1, ease: "power3.out" });
+            }
+
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: "top 90%" },
+                    opacity: 1, y: 0, duration: 1
+                });
+            });
+        }
+    }
+
+    // 5. Brilho do Mouse (Renomeado para evitar o erro "vermelho")
+    function iniciarBrilhoMouse() {
+        const elementoGlow = document.getElementById('mouseGlow');
+        if (elementoGlow) {
+            document.addEventListener('mousemove', (evento) => {
+                elementoGlow.style.left = evento.clientX + 'px';
+                elementoGlow.style.top = evento.clientY + 'px';
+            });
+        }
+    }
+
+    // Execução após carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+        iniciarContadores();
+        iniciarAnimacoesGSAP();
+        iniciarBrilhoMouse();
+    });
+    // Espera o formulário ser enviado
+document.getElementById('meuFormulario').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede de sair da página
+
+    const form = this;
+    const btn = form.querySelector('button');
+    btn.innerText = "ENVIANDO...";
+
+    // Envia os dados para o Web3Forms em segundo plano
+    const formData = new FormData(form);
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    }).then(response => {
+        
+        // ANIMAÇÃO: Some com o form e aparece o agradecimento
+        gsap.to(form, { opacity: 0, y: -20, duration: 0.5, onComplete: () => {
+            form.style.display = "none";
+            const msg = document.getElementById('agradecimento');
+            msg.style.display = "block";
+            
+            // Faz a mensagem aparecer "pulando" na tela
+            gsap.from(msg, { opacity: 0, scale: 0.5, duration: 0.8, ease: "back.out(1.7)" });
+
+            // SOLTA OS CONFETES (O toque interativo legal!)
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#0071e3', '#ffffff']
+            });
+        }});
+    });
+});
+</script>
+            
+</body>
+</html>

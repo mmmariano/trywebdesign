@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossas Soluções Técnicas | TryWebDesign</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Pega o JS na pasta anterior -->
+    <script src="../components.js" defer></script>
+<link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --white: #ffffff; --bg-apple: #f5f5f7; --text-dark: #1d1d1f;
+            --text-muted: #86868b; --apple-blue: #0071e3; --apple-blue-hover: #0077ed;
+            --border: rgba(0,0,0,0.08); --card-radius: 28px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAVBAR - Garante que o menu injetado funcione */
+        .navbar { 
+            position: fixed; top: 15px; width: 95%; max-width: 1100px; left: 50%; transform: translateX(-50%); 
+            z-index: 1000; background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: saturate(180%) blur(20px); border: 1px solid var(--border); 
+            height: 64px; display: flex; align-items: center; border-radius: 20px;
+            padding: 0 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+        .nav-inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 20px; color: var(--text-dark); text-decoration: none; }
+        .logo span { color: var(--apple-blue); }
+        .nav-links { display: flex; gap: 8px; align-items: center; }
+        .nav-item { text-decoration: none; color: var(--text-dark); font-size: 13px; font-weight: 600; padding: 10px 18px; border-radius: 12px; transition: 0.3s; }
+        .nav-item:hover { background: rgba(0,0,0,0.04); }
+        .btn-cta-nav { background: var(--apple-blue); color: #fff !important; box-shadow: 0 4px 15px rgba(0, 113, 227, 0.2); }
+
+        /* HERO SIMÉTRICO */
+        .solucoes-hero { padding: 180px 0 80px; text-align: center; }
+        .solucoes-hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(40px, 7vw, 68px); font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 24px; }
+        .blue-text-gradient { background: linear-gradient(135deg, #0071e3 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* ROWS DE SOLUÇÃO */
+        .solution-row { display: flex; align-items: center; justify-content: space-between; gap: 60px; padding: 80px 0; border-bottom: 1px solid var(--border); }
+        .solution-row.reverse { flex-direction: row-reverse; }
+        .solution-content { flex: 1; max-width: 500px; }
+        .solution-image { flex: 1; display: flex; justify-content: center; }
+
+        .solution-content h2 { font-size: 38px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        .solution-content p { font-size: 18px; color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; }
+        
+        .mockup-wrapper { background: var(--bg-apple); border-radius: 24px; padding: 15px; border: 1px solid var(--border); transition: 0.5s; width: 100%; }
+        .mockup-wrapper img { width: 100%; border-radius: 16px; display: block; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        /* FOOTER */
+        footer { background: var(--bg-apple); padding: 80px 0 40px; border-top: 1px solid var(--border); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; text-align: left; }
+        .footer-logo { font-size: 22px; font-weight: 800; margin-bottom: 20px; }
+
+        .reveal { opacity: 0; transform: translateY(30px); }
+
+        @media (max-width: 850px) {
+            .solution-row, .solution-row.reverse { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar"></nav>
+   <main>
+    <section class="container detail-section">
+        <!-- SOLUÇÃO 01: SITES (FOCO EM CONFIANÇA E VELOCIDADE) -->
+        <div class="solution-row reveal">
+            <div class="solution-content">
+                <div class="status-pill-pro">
+                    <span class="pulse-dot"></span>
+                    Design Exclusivo
+                </div>
+                <h2>Um site que trabalha <br>pela sua <span class="blue-text-gradient">Marca.</span></h2>
+                <p>Criamos sites que não são apenas "bonitos", mas verdadeiras vitrines de luxo. Passamos a imagem de profissionalismo que seu negócio precisa para cobrar mais caro e atrair os melhores clientes.</p>
+                
+                <ul class="features-list">
+                    <li>
+                        <i data-lucide="zap"></i>
+                        <span><strong>Sem espera:</strong> Seu site abre instantaneamente, sem deixar o cliente esperando.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="smartphone"></i>
+                        <span><strong>Perfeito no Celular:</strong> Visual impecável e fácil de navegar em qualquer tela.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="shield-check"></i>
+                        <span><strong>Confiança Total:</strong> Design que separa sua empresa dos amadores.</span>
+                    </li>
+                </ul>
+                <a href="/index.html#contato" class="btn-primary">Criar meu site profissional</a>
+            </div>
+            
+            <div class="solution-image">
+                <div class="art-container">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="code-lines">
+                            <div class="line" style="width: 80%; background: #0071e3; opacity: 0.6;"></div>
+                            <div class="line" style="width: 60%;"></div>
+                            <div class="line" style="width: 90%; background: #0071e3;"></div>
+                            <div class="line" style="width: 40%;"></div>
+                            <div class="line" style="width: 70%; opacity: 0.4;"></div>
+                        </div>
+                        <div class="performance-badge">
+                            <svg viewBox="0 0 36 36" class="circular-chart blue">
+                                <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="circle" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <text x="18" y="20.35" class="percentage">100</text>
+                            </svg>
+                            <span>NOTA MÁXIMA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOLUÇÃO 02: SEO (FOCO EM APARECER NO GOOGLE) -->
+        <div class="solution-row reverse reveal">
+            <div class="solution-content">
+                <div class="status-pill-pro">
+                    <span class="pulse-dot" style="background:#0071e3"></span>
+                    Estratégia de Busca
+                </div>
+                <h2>Seja encontrado por quem <br><span class="blue-text-gradient">quer comprar.</span></h2>
+                <p>Não adianta ter um site se ninguém vê. Configuramos sua estrutura para que o Google priorize sua empresa, colocando você na frente da concorrência quando o cliente procurar pelo seu serviço.</p>
+                
+                <ul class="features-list">
+                    <li>
+                        <i data-lucide="trending-up"></i>
+                        <span><strong>Primeiros Resultados:</strong> Apareça na frente de quem oferece o mesmo que você.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="target"></i>
+                        <span><strong>Clientes Qualificados:</strong> Atraia pessoas que já estão prontas para fechar negócio.</span>
+                    </li>
+                    <li>
+                        <i data-lucide="users"></i>
+                        <span><strong>Mais Vendas:</strong> Mais visibilidade se traduz em mais contatos e orçamentos.</span>
+                    </li>
+                </ul>
+                <a href="/index.html#contato" class="btn-primary">Aparecer no Google</a>
+            </div>
+            
+            <div class="solution-image">
+                <div class="art-container">
+                    <div class="seo-dashboard">
+                        <div class="search-bar-art">
+                            <div class="dot-search"></div>
+                            <div class="text-search">Onde está sua empresa?</div>
+                        </div>
+                        <div class="result-card">
+                            <div class="result-title"></div>
+                            <div class="result-link"></div>
+                            <div class="result-desc"></div>
+                        </div>
+                        <div class="growth-chart">
+                            <div class="bar" style="height: 30%;"></div>
+                            <div class="bar" style="height: 50%;"></div>
+                            <div class="bar" style="height: 45%;"></div>
+                            <div class="bar" style="height: 80%; background: #0071e3;"></div>
+                            <div class="bar" style="height: 100%; background: #0071e3;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<style>
+    /* 1. RESET E SIMETRIA */
+    .detail-section { padding-top: 40px; }
+    .solution-row { 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        gap: 60px; 
+        padding: 80px 0;
+        border-bottom: 1px solid var(--border);
+    }
+    .solution-row.reverse { flex-direction: row-reverse; }
+    .solution-content { flex: 1; max-width: 480px; }
+    .solution-image { flex: 1.2; display: flex; justify-content: center; }
+
+    /* 2. ARTES EM CSS (SUBSTITUTOS DE IMAGEM) */
+    .art-container {
+        width: 100%;
+        max-width: 500px;
+        height: 320px;
+        background: var(--bg-apple);
+        border-radius: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: inset 0 0 40px rgba(0,0,0,0.02);
+    }
+
+    /* Janela de Código */
+    .code-window {
+        width: 80%;
+        height: 200px;
+        background: #1d1d1f;
+        border-radius: 12px;
+        padding: 20px;
+        position: relative;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    }
+    .window-header { display: flex; gap: 6px; margin-bottom: 20px; }
+    .window-header span { width: 8px; height: 8px; border-radius: 50%; background: #ff5f57; }
+    .window-header span:nth-child(2) { background: #febc2e; }
+    .window-header span:nth-child(3) { background: #28c840; }
+    
+    .code-lines .line { height: 6px; background: #3a3a3c; border-radius: 10px; margin-bottom: 12px; }
+
+    /* Circular Performance Badge */
+    .performance-badge {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: #fff;
+        padding: 15px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        text-align: center;
+        transform: rotate(5deg);
+    }
+    .performance-badge span { font-size: 9px; font-weight: 800; color: #1d1d1f; display: block; margin-top: 5px; }
+    .circular-chart { display: block; margin: 0 auto; max-width: 45px; }
+    .circle-bg { fill: none; stroke: #eee; stroke-width: 3.8; }
+    .circle { fill: none; stroke: #28c840; stroke-width: 3.8; stroke-linecap: round; }
+    .percentage { fill: #1d1d1f; font-size: 10px; font-weight: 800; text-anchor: middle; }
+
+    /* SEO Dashboard Art */
+    .seo-dashboard {
+        width: 85%;
+        height: 220px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .search-bar-art {
+        height: 32px;
+        border: 1px solid #eee;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        gap: 10px;
+    }
+    .dot-search { width: 10px; height: 10px; border: 2px solid var(--apple-blue); border-radius: 50%; }
+    .text-search { font-size: 10px; color: #d2d2d7; font-weight: 600; }
+    
+    .result-card { padding: 12px; border-radius: 8px; background: #fbfbfd; border: 1px solid #f5f5f7; }
+    .result-title { height: 8px; width: 60%; background: var(--apple-blue); border-radius: 4px; margin-bottom: 8px; }
+    .result-link { height: 5px; width: 30%; background: #28c840; border-radius: 4px; margin-bottom: 8px; }
+    .result-desc { height: 5px; width: 90%; background: #d2d2d7; border-radius: 4px; }
+
+    .growth-chart {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        height: 60px;
+        margin-top: auto;
+    }
+    .growth-chart .bar { flex: 1; background: #eee; border-radius: 4px 4px 0 0; transition: 0.5s; }
+
+    /* 3. TIPOGRAFIA E FEATURE LIST */
+    .solution-content h2 { font-size: clamp(32px, 5vw, 42px); font-weight: 800; margin-bottom: 20px; letter-spacing: -0.04em; }
+    .features-list { list-style: none; margin: 30px 0; }
+    .features-list li { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; color: var(--text-muted); font-size: 15px; }
+    .features-list li i { color: var(--apple-blue); flex-shrink: 0; margin-top: 2px; }
+    .features-list strong { color: var(--text-dark); display: block; font-size: 16px; margin-bottom: 2px; }
+
+    /* Animações nas Artes ao Hover */
+    .art-container:hover .code-window { transform: translateY(-5px); }
+    .art-container:hover .bar { transform: scaleY(1.1); }
+
+    @media (max-width: 900px) {
+        .solution-row, .solution-row.reverse { flex-direction: column; text-align: center; gap: 40px; }
+        .features-list li { text-align: left; }
+    }
+</style>
+
+<footer id="main-footer"></footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+        window.addEventListener('load', () => {
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: "top 90%" },
+                    opacity: 1, y: 0, duration: 1.2, ease: "power3.out"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

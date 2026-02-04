@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre | TryWebDesign</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- Importar Componentes Compartilhados -->
+    <script src="../components.js" defer></script>
+<link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --white: #ffffff;
+            --bg-apple: #f5f5f7;
+            --text-dark: #1d1d1f;
+            --text-muted: #86868b;
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --border: rgba(0,0,0,0.08);
+            --card-radius: 28px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--white); 
+            color: var(--text-dark); 
+            overflow-x: hidden; 
+        }
+
+        .mouse-glow {
+            position: fixed; top: 0; left: 0; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0, 113, 227, 0.04) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%; pointer-events: none; z-index: 1; transform: translate(-50%, -50%);
+            transition: opacity 1s;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+        /* NAVBAR (Placeholder para o JS) */
+        .navbar { 
+            position: fixed; top: 15px; width: 95%; max-width: 1100px; left: 50%; transform: translateX(-50%); 
+            z-index: 1000; background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: saturate(180%) blur(20px); border: 1px solid var(--border); 
+            height: 64px; display: flex; align-items: center; border-radius: 20px;
+            padding: 0 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        /* HERO QUEM SOMOS */
+        .about-hero { padding: 200px 0 80px; text-align: center; }
+        .about-hero h1 { 
+            font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(38px, 7vw, 68px); 
+            font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 20px;
+        }
+        .blue-text-gradient { background: linear-gradient(135deg, #0071e3 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* SEÇÃO BIOGRAFIA (SIMETRIA) */
+        .bio-section { padding: 80px 0; }
+        .bio-grid {
+            display: flex; align-items: center; justify-content: space-between; gap: 80px;
+        }
+        .bio-image { flex: 1; position: relative; }
+        .bio-content { flex: 1.2; }
+
+        .image-frame {
+            background: var(--bg-apple); border-radius: 40px; padding: 20px;
+            border: 1px solid var(--border); position: relative;
+        }
+        .image-frame img { 
+            width: 100%; border-radius: 28px; display: block; 
+            filter: grayscale(20%); transition: 0.5s;
+        }
+        .image-frame:hover img { filter: grayscale(0%); transform: scale(1.02); }
+
+        .experience-badge {
+            position: absolute; bottom: -20px; right: -20px; background: var(--apple-blue);
+            color: white; padding: 20px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0, 113, 227, 0.3);
+            text-align: center;
+        }
+        .experience-badge strong { display: block; font-size: 24px; line-height: 1; }
+        .experience-badge span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+        .bio-content h2 { font-size: 42px; font-weight: 800; margin-bottom: 25px; letter-spacing: -1px; }
+        .bio-content p { font-size: 18px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; }
+
+        /* BENTO GRID DE VALORES */
+        .values-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px;
+        }
+        .value-card {
+            background: var(--bg-apple); padding: 40px; border-radius: var(--card-radius);
+            border: 1px solid var(--border); transition: 0.4s;
+        }
+        .value-card:hover { background: white; transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .value-card i { color: var(--apple-blue); margin-bottom: 20px; }
+        .value-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .value-card p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+        /* FOOTER (Placeholder) */
+        footer { background: var(--bg-apple); padding: 80px 0 40px; border-top: 1px solid var(--border); }
+
+        .reveal { opacity: 0; transform: translateY(40px); }
+
+        @media (max-width: 900px) {
+            .bio-grid { flex-direction: column; text-align: center; gap: 60px; }
+            .values-grid { grid-template-columns: 1fr; }
+            .bio-content h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mouse-glow" id="mouseGlow"></div>
+
+    <nav class="navbar" id="navbar"></nav>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <h1 class="reveal">Código que comunica. <br><span class="blue-text-gradient">Design que domina.</span></h1>
+                <p class="reveal" style="font-size: 22px; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
+                    A TryWebDesign nasceu para preencher o abismo entre a tecnologia bruta e a estética de alto padrão.
+                </p>
+            </div>
+        </section>
+
+        <section class="container bio-section">
+            <div class="bio-grid">
+                <div class="bio-image reveal">
+                    <div class="image-frame">
+                        <!-- Caminho para sua foto na pasta anterior -->
+                        <img src="../foto_perfil_mateus.jpeg" alt="Mateus Mariano - Especialista TryWebDesign">
+                        <div class="experience-badge">
+                            <strong>+10</strong>
+                            <span>Anos de Código</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bio-content reveal">
+                    <h2>A união da <span class="blue-text-gradient">Análise com a Arte.</span></h2>
+                    <p>Meu nome é <strong>Mateus M. Mariano</strong>. Sou Analista de Sistemas por formação e Web Designer por paixão. Essa combinação me permite criar projetos que não são apenas visualmente impactantes, mas tecnicamente impecáveis.</p>
+                    <p>Iniciei minha jornada no desenvolvimento aos 12 anos de idade. Hoje, utilizo essa bagagem de décadas para construir a soberania digital de empresas que buscam se posicionar no topo do mercado.</p>
+                    <p>Na TryWebDesign, não acreditamos em soluções genéricas. Acreditamos em engenharia de precisão aplicada a cada pixel.</p>
+                </div>
+            </div>
+
+            <!-- VALORES BENTO -->
+            <div class="values-grid">
+                <div class="value-card reveal">
+                    <i data-lucide="cpu" size="32"></i>
+                    <h3>Base Técnica</h3>
+                    <p>Como analista de sistemas, garanto que cada site tenha uma arquitetura sólida, segura e ultra-veloz.</p>
+                </div>
+                <div class="value-card reveal">
+                    <i data-lucide="award" size="32"></i>
+                    <h3>Estética de Alto Nivel</h3>
+                    <p>Um design elegante que comunica profissionalismo, confiança e autoridade à primeira vista.</p>
+                </div>
+                <div class="value-card reveal">
+                    <i data-lucide="trending-up" size="32"></i>
+                    <h3>Foco em ROI</h3>
+                    <p>Nossa missão é transformar seu site em um ativo financeiro que gera orçamentos e vendas reais.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="container reveal" style="padding: 100px 0; text-align: center;">
+            <h2 style="font-size: 38px; font-weight: 800; margin-bottom: 30px;">Vamos criar sua nova <span class="blue-text-gradient">assinatura digital?</span></h2>
+            <a href="/index.html#contato" class="btn-primary" style="padding: 22px 60px; font-size: 18px;">Iniciar Consultoria com Mateus</a>
+        </section>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Mouse Glow
+        const glow = document.getElementById('mouseGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        window.addEventListener('load', () => {
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: "top 90%" },
+                    opacity: 1, y: 0, duration: 1.2, ease: "power3.out"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

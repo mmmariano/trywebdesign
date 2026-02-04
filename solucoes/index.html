@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossas Soluções Técnicas | TryWebDesign</title>
+    
+    <!-- Tipografia Apple -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bibliotecas -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Importação conforme sua regra de pasta anterior -->
+    <script src="../components.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+        :root {
+            --white: #ffffff; --bg-apple: #f5f5f7; --text-dark: #1d1d1f;
+            --text-muted: #86868b; --apple-blue: #0071e3; --apple-blue-hover: #0077ed;
+            --border: rgba(0,0,0,0.08); --card-radius: 28px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAVBAR - Mantendo simetria com a Home */
+        .navbar { 
+            position: fixed; top: 15px; width: 95%; max-width: 1100px; left: 50%; transform: translateX(-50%); 
+            z-index: 1000; background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: saturate(180%) blur(20px); border: 1px solid var(--border); 
+            height: 64px; display: flex; align-items: center; border-radius: 20px;
+            padding: 0 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        /* HERO */
+        .solucoes-hero { padding: 180px 0 60px; text-align: center; }
+        .solucoes-hero h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(38px, 7vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; }
+        .blue-text-gradient { background: linear-gradient(135deg, #0071e3 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* GRID DE SOLUÇÕES - SIMETRIA TOTAL */
+        .detail-section { padding-bottom: 100px; }
+        
+        .solution-row {
+            display: flex;
+            align-items: center; /* ALINHAMENTO VERTICAL CENTRAL */
+            justify-content: space-between;
+            gap: 60px;
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .solution-row.reverse { flex-direction: row-reverse; }
+
+        .solution-content { flex: 1; } /* Peso igual ao da imagem */
+        .solution-image { flex: 1; display: flex; justify-content: center; align-items: center; }
+
+        .status-pill-pro {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--bg-apple);
+            padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 700;
+            color: var(--apple-blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+        }
+        .pulse-dot { width: 8px; height: 8px; background: #34c759; border-radius: 50%; }
+
+        .solution-content h2 { font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; }
+        .solution-content p { font-size: 17px; line-height: 1.5; color: var(--text-muted); margin-bottom: 30px; }
+
+        .features-list { list-style: none; margin-bottom: 35px; }
+        .features-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; font-weight: 600; font-size: 15px; }
+        .features-list i { color: var(--apple-blue); flex-shrink: 0; }
+
+        .btn-primary { 
+            display: inline-flex; align-items: center; gap: 10px; background: var(--text-dark); 
+            color: white; padding: 18px 35px; border-radius: 16px; 
+            text-decoration: none; font-weight: 600; transition: 0.3s;
+        }
+
+        /* ARTES CSS - PADRONIZADAS EM TAMANHO */
+        .art-container {
+            width: 100%;
+            aspect-ratio: 1 / 0.8; /* Garante que as duas artes tenham o mesmo tamanho */
+            background: var(--bg-apple);
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-window {
+            width: 80%; height: 60%; background: #1d1d1f; border-radius: 12px;
+            padding: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        .window-header { display: flex; gap: 6px; margin-bottom: 15px; }
+        .window-header span { width: 8px; height: 8px; border-radius: 50%; background: #ff5f57; }
+        .window-header span:nth-child(2) { background: #febc2e; }
+        .window-header span:nth-child(3) { background: #28c840; }
+        .line { height: 6px; background: #3a3a3c; border-radius: 10px; margin-bottom: 10px; }
+
+        .performance-badge {
+            position: absolute; bottom: 15%; right: 5%; background: #fff;
+            padding: 12px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center; transform: rotate(5deg);
+        }
+        .performance-badge span { font-size: 8px; font-weight: 800; color: #1d1d1f; display: block; margin-top: 4px; }
+
+        .seo-dashboard {
+            width: 80%; height: 60%; background: white; border-radius: 12px;
+            padding: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            display: flex; flex-direction: column; gap: 12px;
+        }
+        .search-bar-art { height: 24px; border: 1px solid #eee; border-radius: 50px; }
+        .result-card { padding: 10px; border-radius: 6px; background: #fbfbfd; border: 1px solid #f5f5f7; }
+        .result-title { height: 6px; width: 60%; background: var(--apple-blue); border-radius: 4px; }
+        .growth-chart { display: flex; align-items: flex-end; gap: 6px; height: 50px; margin-top: auto; }
+        .bar { flex: 1; background: #eee; border-radius: 3px; }
+
+        footer { background: var(--bg-apple); padding: 80px 0 40px; border-top: 1px solid var(--border); }
+        .reveal { opacity: 0; transform: translateY(30px); }
+
+        @media (max-width: 900px) {
+            .solution-row, .solution-row.reverse { flex-direction: column; text-align: center; gap: 40px; }
+            .features-list li { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar"></nav>
+
+    <main>
+        <section class="solucoes-hero">
+            <div class="container">
+                <h1 class="reveal">Expertise Técnica. <br><span class="blue-text-gradient">Design Superior.</span></h1>
+            </div>
+        </section>
+
+        <section class="container detail-section">
+            <!-- SITES -->
+            <div class="solution-row reveal">
+                <div class="solution-content">
+                    <div class="status-pill-pro"><span class="pulse-dot"></span> Design Exclusivo</div>
+                    <h2>Um site que trabalha <br>pela sua <span class="blue-text-gradient">Marca.</span></h2>
+                    <p>Criamos vitrines digitais que passam a imagem de profissionalismo necessária para você atrair os melhores clientes.</p>
+                    <ul class="features-list">
+                        <li><i data-lucide="zap"></i> Sem espera: Abertura instantânea.</li>
+                        <li><i data-lucide="smartphone"></i> Mobile: Perfeito em qualquer celular.</li>
+                        <li><i data-lucide="shield-check"></i> Confiança: Separe-se dos amadores.</li>
+                    </ul>
+                    <a href="/index.html#contato" class="btn-primary">Criar meu site profissional</a>
+                </div>
+                <div class="solution-image">
+                    <div class="art-container">
+                        <div class="code-window">
+                            <div class="window-header"><span></span><span></span><span></span></div>
+                            <div class="line" style="width: 90%; background: #0071e3; opacity: 0.5;"></div>
+                            <div class="line" style="width: 60%;"></div>
+                            <div class="line" style="width: 80%; background: #0071e3;"></div>
+                            <div class="line" style="width: 40%;"></div>
+                        </div>
+                        <div class="performance-badge">
+                            <i data-lucide="zap" size="16" style="color:#28c840; margin:0 auto; display:block;"></i>
+                            <span>NOTA 100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO -->
+            <div class="solution-row reverse reveal">
+                <div class="solution-content">
+                    <div class="status-pill-pro" style="color:var(--text-dark)"><span class="pulse-dot" style="background:var(--apple-blue)"></span> Estratégia de Busca</div>
+                    <h2>Seja encontrado por quem <br><span class="blue-text-gradient">quer comprar.</span></h2>
+                    <p>Configuramos sua estrutura para que o Google priorize sua empresa e coloque você na frente da concorrência.</p>
+                    <ul class="features-list">
+                        <li><i data-lucide="trending-up"></i> Topo do Google: Mais visibilidade real.</li>
+                        <li><i data-lucide="target"></i> Público Certo: Atraia clientes prontos.</li>
+                        <li><i data-lucide="users"></i> Conversão: Transforme buscas em lucro.</li>
+                    </ul>
+                    <a href="/index.html#contato" class="btn-primary" style="background: var(--apple-blue)">Aparecer no Google</a>
+                </div>
+                <div class="solution-image">
+                    <div class="art-container">
+                        <div class="seo-dashboard">
+                            <div class="search-bar-art"></div>
+                            <div class="result-card"><div class="result-title"></div></div>
+                            <div class="growth-chart">
+                                <div class="bar" style="height: 30%;"></div>
+                                <div class="bar" style="height: 50%;"></div>
+                                <div class="bar" style="height: 80%; background: #0071e3;"></div>
+                                <div class="bar" style="height: 100%; background: #0071e3;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+    <script>
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+        window.addEventListener('load', () => {
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: "top 85%" },
+                    opacity: 1, y: 0, duration: 1.2, ease: "power3.out"
+                });
+            });
+        });
+    </script>
+</body>
+</html>
