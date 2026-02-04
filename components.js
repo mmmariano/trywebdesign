@@ -30,7 +30,7 @@ const navbarHTML = `
         </a>
 
         <!-- Contato -->
-        <a href="/index.html#contato" class="nav-item-tech">
+        <a href="/#contato" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="send"></i></div>
             <span>Contato</span>
         </a>
