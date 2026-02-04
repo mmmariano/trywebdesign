@@ -74,8 +74,8 @@ Precisão que gera autoridade. <br>
             <div class="footer-column">
                 <h4>Social</h4>
                 <a href="https://www.instagram.com/try.web.design/" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=61579022016363 target="_blank">Facebook</a>
                 <a href="#" target="_blank">LinkedIn</a>
-                <a href="#" target="_blank">Behance</a>
             </div>
         </div>
     </div>
