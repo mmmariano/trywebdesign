@@ -1,12 +1,12 @@
 const navbarHTML = `
 <div class="nav-container">
-    <a href="www.trywebdesign.com.br" class="logo-tech">
+    <a href="/" class="logo-tech">
         TRY<span class="silver-text">WEBDESIGN</span>
     </a>
     
     <div class="nav-menu">
         <!-- Início -->
-        <a href="www.trywebdesign.com.br" class="nav-item-tech">
+        <a href="/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="home"></i></div>
             <span>Início</span>
         </a>
@@ -58,7 +58,7 @@ Precisão que gera autoridade. <br>
         <div class="footer-nav-group">
             <div class="footer-column">
                 <h4>Explorar</h4>
-                <a href="www.trywebdesign.com.br">Início</a>
+                <a href="/">Início</a>
                 <a href="/solucoes/index.html">Soluções</a>
                 <a href="/portifolio/index.html">Portifólio</a>
                 <a href="/solucoes/index.html">Sobre</a>
