@@ -272,7 +272,7 @@
     .client-info {
         display: block;
         font-size: 13px;
-        color: var(--apple-blue);
+     color: #86868b;
         font-weight: 600;
     }
 
