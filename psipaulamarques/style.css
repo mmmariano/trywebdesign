@@ -7,18 +7,116 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Montserrat', sans-serif; background: #000; color: var(--white); overflow-x: hidden; }
+/* --- RESET E ESTRUTURA DO NAVBAR --- */
+#navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px; /* Altura fixa para evitar pulos no scroll */
+    display: flex !important;
+    align-items: center !important; /* Alinha verticalmente ao centro */
+    justify-content: center !important; /* Centraliza o grupo de links */
+    background-color: transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999999 !important;
+}
 
-/* NAVBAR CENTRALIZADA E CLEAN */
-header {
-    position: fixed; top: 0; width: 100%; z-index: 2000;
-    display: flex; justify-content: center;
-    padding: 40px 0; transition: 0.5s ease;
+/* NAVBAR NO SCROLL (STICKY) */
+#navbar.sticky {
+    background-color: #FFFFFF !important;
+    height: 70px; /* Diminui um pouco ao descer, estilo luxo */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
 }
-header.sticky {
-    padding: 20px 0; background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid #eee;
+
+/* --- CONTAINER DOS LINKS --- */
+.nav-links {
+    display: flex !important;
+    align-items: center !important; /* Garante que texto e botão fiquem na mesma linha */
+    gap: 35px; /* Espaço rigorosamente igual entre os itens */
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-header.sticky .nav-links a { color: var(--dark-taupe); text-shadow: none; }
+
+/* --- ESTILO DOS LINKS (TEXTO) --- */
+.nav-links a {
+    text-decoration: none !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important; /* Cor inicial branca */
+    transition: all 0.3s ease !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    line-height: 1; /* Força o alinhamento central */
+    display: inline-block;
+}
+
+/* LINKS QUANDO O MENU ESTÁ BRANCO */
+#navbar.sticky .nav-links a {
+    color: #2D2926 !important;
+    text-shadow: none !important;
+}
+
+/* --- HOVER GLOBAL (CORRIGIDO) --- */
+.nav-links a:hover {
+    color: var(--nude) !important;
+    transform: translateY(-2px); /* Efeito sutil de subida */
+}
+
+/* --- BOTÃO AGENDAR (ESTADO INICIAL - TOPO) --- */
+.menu-cta {
+    background-color: var(--nude) !important;
+    color: #2D2926 !important; /* Letra escura para ler no bege */
+    padding: 12px 28px !important;
+    border-radius: 50px !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    text-shadow: none !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease !important;
+    border: 1px solid var(--nude) !important; /* Borda da mesma cor */
+}
+
+/* --- BOTÃO AGENDAR (CORRIGIDO: QUANDO O MENU FICA BRANCO) --- */
+#navbar.sticky .menu-cta {
+    background-color: var(--nude) !important; /* Mantém o Bege */
+    color: #2D2926 !important; /* Mantém a letra escura */
+    border: 1px solid var(--nude) !important;
+}
+
+/* --- HOVER DO BOTÃO (QUANDO PASSA O MOUSE) --- */
+/* No topo ou no scroll, ele vai ter esse efeito luxuoso de inverter */
+.menu-cta:hover, 
+#navbar.sticky .menu-cta:hover {
+    background-color: transparent !important; /* Fica transparente */
+    color: #2D2926 !important; /* Letra continua escura */
+    border: 1px solid #2D2926 !important; /* Ganha borda escura */
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+/* Ajuste caso o menu no topo precise que o hover tenha letra branca */
+#navbar:not(.sticky) .menu-cta:hover {
+    color: #FFFFFF !important;
+    border: 1px solid #FFFFFF !important;
+}
+
+/* HOVER DO BOTÃO */
+.menu-cta:hover {
+    background-color: #FFFFFF !important;
+    color: #2D2926 !important;
+    border-color: #2D2926 !important;
+    transform: translateY(-2px) scale(1.02) !important;
+}
+
+#navbar.sticky .menu-cta:hover {
+    background-color: var(--nude) !important;
+    color: #2D2926 !important;
+    border-color: var(--nude) !important;
+}
 
 .nav-links { display: flex; gap: 40px; }
 .nav-links a {
@@ -151,14 +249,13 @@ header.sticky .nav-links a { color: var(--dark-taupe); text-shadow: none; }
     height: auto;
    
 }
-
-/* Ajuste Mobile */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .fixed-logo-badge {
-        width: 100px;
-        height: 100px;
-        top: 20px;
-        right: 20px;
+        width: 70px !important;
+        height: 70px !important;
+        padding: 10px !important;
+        top: 10px !important;
+        right: 10px !important;
     }
 }
 /* FOOTER LUXURY STYLE */
@@ -731,11 +828,13 @@ header.sticky .nav-links a { color: var(--dark-taupe); text-shadow: none; }
     padding: 0 5%;
 }
 
-/* --- HEADER ANCORADO --- */
 .monolith-header {
+    position: relative !important;
+    /* Z-index maior que o dos fios (que é 1 ou 0) */
+    z-index: 100 !important; 
     text-align: center;
-    margin-bottom: 100px;
-    position: relative;
+    /* Ajuste esse valor se quiser mais ou menos perto dos fios */
+    margin-top: 20px !important; 
 }
 
 .monolith-main-title {
@@ -1228,13 +1327,17 @@ header.sticky .nav-links a { color: var(--dark-taupe); text-shadow: none; }
     filter: drop-shadow(0 15px 25px rgba(217, 197, 178, 0.4));
 }
 
-/* ANTI-BUG: Garante que a seção seguinte não suba nos fios */
-.monolith-elite-section, #sobre {
-    position: relative;
-    z-index: 1 !important; /* Mantém a seção de baixo em uma camada inferior */
-    margin-top: -100px !important; /* Faz o início da seção bege ficar por trás dos fios */
+.monolith-elite-section {
+    position: relative !important;
+    /* Reduzimos o padding para o título subir */
+    padding-top: 40px !important; 
+    /* Puxamos a seção para cima para encostar nos fios */
+    margin-top: -120px !important; 
     background-color: #FDFBFA !important;
+    /* Garante que o fundo bege fique atrás dos fios */
+    z-index: 5 !important; 
 }
+
 /* ============================================================
    BOX DE INVESTIMENTO - SEDA & SILÊNCIO
    ============================================================ */
@@ -2242,7 +2345,7 @@ header.sticky .nav-links a { color: var(--dark-taupe); text-shadow: none; }
    ============================================================ */
 /* --- TRAVA DE SEGURANÇA MÁXIMA --- */
 .emdr-block-final {
-    display: table !important; /* Força o navegador a renderizar como um bloco isolado */
+     display: block !important;
     width: 100% !important;
     clear: both !important; /* Mata a flutuação dos elementos de cima */
     position: relative !important;
@@ -2639,5 +2742,239 @@ html.lenis {
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+}
+/* Classe para esconder texto apenas de usuários videntes, mantendo para o Google */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+/* 1. Restaura a Seção com a cor original */
+.monolith-elite-section {
+    position: relative !important;
+    background-color: #FDFBFA !important; /* Sua cor bege */
+    padding-top: 100px !important; /* Espaço para o conteúdo começar */
+    margin-top: -50px !important; /* Emenda sutil com o divisor */
+    z-index: 5 !important;
+    overflow: visible !important; /* Essencial para o título sair da caixa */
+}
+
+/* 2. O TÍTULO (O "Truque" para sobrepor sem estragar o fundo) */
+.monolith-header {
+    position: absolute !important; /* Ele sai do fluxo e flutua */
+    top: 0 !important;
+    left: 50% !important;
+    transform: translate(-50%, -100%) !important; /* Joga ele exatamente para CIMA da borda da seção */
+    width: 100% !important;
+    z-index: 999999 !important; /* Fica acima de fios e de tudo */
+    text-align: center !important;
+    margin: 0 !important;
+    pointer-events: none; /* Deixa cliques passarem para o que estiver atrás */
+}
+
+/* 3. Melhora a leitura do título sobre os fios */
+.monolith-main-title {
+    display: inline-block;
+    /* Essa sombra cria uma proteção (aura) da mesma cor do fundo para os fios não "atravessarem" as letras */
+    text-shadow: 
+        0 0 20px #FDFBFA, 
+        0 0 10px #FDFBFA, 
+        0 0 5px #FDFBFA;
+    padding: 10px;
+}
+
+/* 4. Garante que o Divisor (fios) não tente ficar na frente */
+.thread-divider-container {
+    z-index: 1 !important;
+    position: relative !important;
+}
+/* 1. O DIVISOR (A ONDA) */
+.bottom-organic-divider {
+    position: relative !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+    /* Forçamos o fundo do container a ser PRETO, o mesmo do footer */
+    /* Isso mata a linha bege porque, se houver falha, o que aparece atrás é preto */
+    background-color: #0a0a0a !important; 
+    margin-top: -2px !important; /* Sobe um pouco para garantir encaixe */
+}
+
+.bottom-organic-divider svg {
+    display: block !important;
+    width: calc(100% + 1.3px) !important; /* Alarga um pouquinho para não sobrar borda lateral */
+    height: 100px !important;
+    /* Inverte a lógica: a curva vai ser a cor da seção anterior (BRANCO ou BEGE) 
+       e o fundo do SVG será o preto do footer */
+    transform: rotate(0deg) !important; 
+}
+
+/* 2. COR DA ONDA - IMPORTANTE */
+.bottom-organic-divider .shape-fill {
+    /* Mude para #FDFBFA se sua última seção for o bege, 
+       ou #ffffff se for branca */
+    fill: #ffffff !important; 
+}
+
+/* 3. O FOOTER */
+.main-footer {
+    position: relative !important;
+    z-index: 10 !important;
+    background-color: #0a0a0a !important;
+    /* Puxamos o footer 2 pixels para cima para "morder" o SVG */
+    margin-top: -2px !important; 
+    border-top: none !important;
+    outline: none !important;
+}
+/* 1. O CONTAINER DA ONDA */
+.bottom-organic-divider {
+    position: relative !important;
+    width: 100% !important;
+    line-height: 0 !important;
+    background-color: #ffffff !important; /* Mude para #FDFBFA se sua seção de cima for bege */
+    margin-bottom: -1px !important; /* Faz a onda "entrar" 1px no footer */
+    z-index: 5 !important;
+}
+
+.bottom-organic-divider svg {
+    display: block !important;
+    width: calc(100% + 1.3px) !important;
+    height: 120px !important; /* Altura original do seu divisor estiloso */
+    transform: rotate(0deg) !important; /* Garante que ele não esteja invertido */
+}
+
+/* 2. A COR DA ONDA (O DESENHO EM SI) */
+.bottom-organic-divider .shape-fill {
+    fill: #0a0a0a !important; /* A cor da onda DEVE ser a cor do seu Footer */
+}
+
+/* 3. O FOOTER (O BLOCO FINAL) */
+.main-footer {
+    position: relative !important;
+    z-index: 10 !important;
+    background-color: #0a0a0a !important; /* Preto oficial do footer */
+    margin-top: -1px !important; /* Sobe o footer para morder a onda e sumir com a linha */
+    border-top: none !important;
+    padding-top: 60px !important; /* Ajuste o respiro interno do footer se necessário */
+}
+.monolith-header {
+    position: absolute !important;
+    /* 1. Mude este valor para controlar a altura: 
+       Quanto maior o número negativo (ex: -60px), mais ele SOBE.
+       Quanto menor (ex: -20px), mais ele DESCE. */
+    top: -40px !important; 
+    
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Centraliza sem mexer na altura */
+    width: 100% !important;
+    z-index: 999999 !important;
+    text-align: center !important;
+}
+
+/* 2. Adicione um pouco de espaço extra na seção bege 
+      para o título não bater nas fotos de baixo */
+.monolith-elite-section {
+    padding-top: 140px !important; /* Aumentei de 100px para 140px */
+}
+
+/* 3. Melhora a sombra (aura) para o texto não brigar com os fios */
+.monolith-main-title {
+    text-shadow: 
+        0 0 25px #FDFBFA, 
+        0 0 15px #FDFBFA, 
+        0 0 5px #FDFBFA !important;
+}
+@media (max-width: 768px) {
+    #navbar {
+        height: 70px !important; /* Altura menor no celular */
+        background: #fff !important; /* Força fundo branco no mobile */
+    }
+    
+    .nav-links {
+        display: none !important; /* Esconde links que não cabem */
+    }
+
+    /* Garante que o corpo do site seja rolável */
+    html, body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+/* Garante que o corpo do site seja rolável e visível */
+html, body {
+    overflow-x: hidden;
+    height: auto !important;
+    -webkit-overflow-scrolling: touch; /* Melhora o toque no iPhone */
+}
+
+/* Corrige o problema de elementos que não aparecem no mobile (AOS) */
+@media (max-width: 768px) {
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    /* O logo redondo no topo estava muito grande no celular, bloqueando o clique */
+    .fixed-logo-badge {
+        width: 100px !important;
+        height: 100px !important;
+        padding: 15px !important;
+        top: 10px !important;
+        right: 10px !important;
+    }
+
+    /* Ajuste da Hero para não travar o scroll */
+    .hero-slider {
+        height: 80vh !important; /* Um pouco menor no celular ajuda o usuário a ver que tem conteúdo abaixo */
+    }
+
+    /* Garante que o botão de agendar não cubra a tela toda */
+    .wa-luxury-btn {
+        width: auto !important;
+        max-width: 90vw;
+        bottom: 20px !important;
+        right: 50% !important;
+        transform: translateX(50%) !important;
+        font-size: 10px !important;
+    }
+
+    /* Esconde as redes sociais flutuantes no celular para não poluir */
+    .social-fixed-stack {
+        display: none !important;
+    }
+}
+/* Forçar exibição imediata no mobile para evitar tela branca */
+@media (max-width: 768px) {
+    /* Desativa as animações de opacidade do AOS que causam a tela invisível */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: translate(0) scale(1) !important;
+        transition: none !important;
+    }
+
+    /* Impede que o Lenis ou overflows travem o scroll */
+    html, body {
+        overflow-x: hidden !important;
+        height: auto !important;
+        position: relative !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* Ajuste da Hero que pode estar ocupando 100vh e falhando no carregamento */
+    .hero-slider {
+        height: 100vh !important;
+        min-height: 500px !important;
+    }
+
+    /* Garante que o container principal seja visível */
+    .monolith-elite-section, .monolith-horizontal-section {
+        display: block !important;
+        opacity: 1 !important;
     }
 }
