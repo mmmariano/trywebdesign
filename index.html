@@ -1,506 +1,453 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TryWebDesign | Agência Especializada em Criação de Sites e Otimização SEO</title>
     
-    <!-- This site is optimized with the Yoast SEO plugin v26.9 - https://yoast.com/product/yoast-seo-wordpress/ -->
-	<title>Psicoterapia de Relacionamento & Divórcio | Psicóloga Paula Marques - Psicóloga Paula Marques | Psicoterapia Online</title>
-	
-    <meta name="description" content="Descubra uma abordagem humanizada e eficaz na psicoterapia de relacionamento e divórcio. Agende sua consulta online com a Paula Marques e transforme sua vida hoje.">
-	
-    <link rel="canonical" href="https://psipaulamarques.com.br/">
-	
-    <meta property="og:locale" content="pt_BR">
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="Psicoterapia de Relacionamento &amp; Divórcio | Psicóloga Paula Marques - Psicóloga Paula Marques | Psicoterapia Online">
-	<meta property="og:description" content="Descubra uma abordagem humanizada e eficaz na psicoterapia de relacionamento e divórcio. Agende sua consulta online com a Paula Marques e transforme sua vida hoje.">
-	<meta property="og:url" content="https://psipaulamarques.com.br/">
-	<meta property="og:site_name" content="Psicóloga Paula Marques | Psicoterapia Online">
-	<meta property="article:publisher" content="https://www.facebook.com/psicopaulamarques">
-	<meta property="article:modified_time" content="2025-09-08T17:20:52+00:00">
-	<meta property="og:image" content="https://psipaulamarques.com.br/wp-content/uploads/2025/04/19.png">
-	<meta property="og:image:width" content="1563">
-	<meta property="og:image:height" content="1563">
-	<meta property="og:image:type" content="image/png">
-	<meta name="twitter:card" content="summary_large_image">
-	
-    <!-- / Yoast SEO plugin. -->
-    <!-- Indexação e Performance -->
+    <!-- Tipografia Apple -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Paula Marques">
-    <meta name="keywords" content="psicóloga online, terapia de casal, superação de divórcio, terapia EMDR, Paula Marques psicóloga, ansiedade, traumas">
-    <!-- Fontes e Bibliotecas (Mantido as suas) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <!-- DADOS ESTRUTURADOS (O segredo para o Google entender seu negócio) -->
-    <script type="application/ld+json">
+    <!-- Bibliotecas -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+        <link rel="stylesheet" href="style.css">
+        <script src="components.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    </head>
+    <body>
 
-    {
-      "@context": "https://schema.org",
-      "@type": "MedicalBusiness",
-      "name": "Paula Marques | Psicologia Online",
-      "alternateName": "Psicóloga Paula Marques",
-      "image": "https://psipaulamarques.com.br/logo-paula-marques-atendimento-online-bege.png",
-      "@id": "https://psipaulamarques.com.br/",
-      "url": "https://psipaulamarques.com.br/",
-      "telephone": "+5500000000000", 
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Atendimento Online",
-        "addressLocality": "Salvador",
-        "addressRegion": "BA",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -12.9714, 
-        "longitude": -38.5014
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "08:00",
-        "closes": "20:00"
-      },
-      "sameAs": [
-        "https://www.instagram.com/psipaulamarques/",
-        "https://www.facebook.com/psicopaulamarques"
-      ],
-      "medicalSpecialty": "Psychiatric",
-      "description": "Especialista em Relacionamento, Divórcio, EMDR e Terapia do Esquema."
-    }
-    </script>
-</head>
+    <div class="mouse-glow" id="mouseGlow"></div>
 
-<body>
+    <nav class="navbar" id="navbar"></nav>
 
-    <!-- Menu Superior Minimalista -->
-    <header id="navbar">
-        <nav class="nav-links">
-            <a href="#inicio">Início</a>
-            <a href="#metodos">Metodologia</a>
-            <a href="#sobre">Trajetória</a>
-            <a href="#contato">Agendar</a>
-        </nav>
-    </header>
-
-    <!-- Botão WhatsApp Estilo Barra de Luxo -->
-    <a href="#" class="wa-luxury-btn">
-        <i class="fab fa-whatsapp"></i>
-        <span>AGENDAR ATENDIMENTO ONLINE</span>
-    </a>
-
-    <div class="swiper hero-slider" id="inicio">
-         <!-- ESTE BOX FICA PARADO (FIXO) -->
-    <div class="fixed-logo-badge">
-        <img src="logo-paula-marques-atendimento-online-bege.png" alt="Logo Paula Marques">
-    </div>
-
-        <div class="swiper-wrapper">
-            
-            <!-- SLIDE 1: IMPACTO DIRETO -->
-            <div class="swiper-slide">
-                <div class="bg-img" style="background-image: url('psicologa-paula-marques-atendendo.png');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h2 data-swiper-parallax="-800">Você se perdeu em um relacionamento?</h2>
-                    <p data-swiper-parallax="-500">Vou te ajudar a se reencontrar!</p>
-                    <div data-swiper-parallax="-200">
-                        <a href="#contato" class="btn-main">SIM! QUERO COMEÇAR!</a>
-                    </div>
-                </div>
-               
-            </div>
-
-            <!-- SLIDE 2: CIÊNCIA -->
-            <div class="swiper-slide">
-                <div class="bg-img" style="background-image: url('psicologa-paula-marques-tablet.jpg');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h2 data-swiper-parallax="-800">Ciência e Acolhimento</h2>
-                    <p data-swiper-parallax="-500">EMDR e Terapia do Esquema para reconstruir sua força.</p>
-                    <div data-swiper-parallax="-200">
-                        <a href="#metodos" class="btn-main">CONHECER MÉTODOS</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3: GLOBAL -->
-            <div class="swiper-slide">
-                <div class="bg-img" style="background-image: url('psicologa-paula-marques-atendendo-no-celular.jpg');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h2 data-swiper-parallax="-800">Atendimento Global</h2>
-                    <p data-swiper-parallax="-500">Onde você estiver, estarei com você.</p>
-                    <div data-swiper-parallax="-200">
-                        <a href="#contato" class="btn-main">AGENDAR CONSULTA</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="swiper-pagination"></div>
-    </div>
-
-   <!-- SEÇÃO RECONSTRUÇÃO: ESTILO MONOLÍTICO -->
-<section class="monolith-horizontal-section" id="metodos">
-    <!-- Efeito de Fundo -->
-    <div class="luxury-aura"></div>
-
-    <div class="monolith-container">
-        <div class="monolith-grid">
-            
-            <!-- LADO ESQUERDO: O MANIFESTO -->
-            <div class="column-manifesto" data-aos="fade-right">
-                <span class="editorial-tag">Psicoterapia Especializada</span>
-                <h2 class="editorial-title">
-                    Você se anulou tanto que <br>
-                    <span class="editorial-italic">já nem sabe mais quem é?</span>
-                </h2>
-                
-                <div class="editorial-content">
-                    <p class="highlight-p">"Você não está exagerando."</p>
-                    <p class="main-p">
-                        Quando a relação é marcada por manipulação e críticas constantes, a sua sanidade se torna o alvo. É o momento de recuperar sua voz.
-                    </p>
-                </div>
-            </div>
-
-            <!-- LADO DIREITO: CARDS DE IMPACTO -->
-            <div class="column-cards">
-                <div class="pain-stack">
-                    <div class="luxury-pain-card" data-aos="fade-left" data-aos-delay="200">
-                        <span class="card-idx">I</span>
-                        <div class="card-txt">
-                            <small>Invalidação</small>
-                            <p>“Você está louca.”</p>
-                        </div>
-                    </div>
-                    <div class="luxury-pain-card" data-aos="fade-left" data-aos-delay="400">
-                        <span class="card-idx">II</span>
-                        <div class="card-txt">
-                            <small>Isolamento</small>
-                            <p>“Ninguém vai te aguentar.”</p>
-                        </div>
-                    </div>
-                    <div class="luxury-pain-card" data-aos="fade-left" data-aos-delay="600">
-                        <span class="card-idx">III</span>
-                        <div class="card-txt">
-                            <small>Culpa</small>
-                            <p>“A culpa é sempre sua.”</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- BOX DE RECONSTRUÇÃO (CENTRALIZADO) -->
-        <div class="rebuild-monolith-box" data-aos="zoom-in">
-            <div class="rebuild-content">
-                <h3>A boa notícia é: <strong>você pode se reconstruir.</strong></h3>
-                <p>E não precisa fazer isso sozinha.</p>
-                <a href="https://wa.me/5571900000000" class="btn-architect-luxury">
-                    AGENDAR CONSULTA ONLINE
+    <header class="hero">
+        <div class="container">
+            <h1>
+                Design que Converte.<br>
+                Autoridade que Domina.
+            </h1>
+            <p>Transformamos tráfego em faturamento.<br> Criamos a presença digital que sua empresa merece com um design limpo, rápido e focado em trazer resultados para você.</p>
+            <div class="reveal">
+                <a href="/solucoes/" class="btn-primary">
+                    Explorar Soluções <i data-lucide="arrow-right"></i>
                 </a>
             </div>
         </div>
+    </header>
+   <section class="stats-bar">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="zap"></i></div>
+                <div class="stat-value" data-target="99">0</div>
+                <div class="stat-desc">PageSpeed Insights</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="layout"></i></div>
+                <div class="stat-value" data-target="50">0</div>
+                <div class="stat-desc">Projetos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="code-2"></i></div>
+                <div class="stat-value" data-target="10">0</div>
+                <div class="stat-desc">Anos de Código</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="search"></i></div>
+                <div class="stat-value" data-target="100">0</div>
+                <div class="stat-desc">SEO Otimizado para Google</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i data-lucide="shield-check"></i></div>
+                <div class="stat-value" data-target="100">0</div>
+                <div class="stat-desc">Segurança (SSL)</div>
+            </div>
+        </div>
     </div>
-
 </section>
-<div class="thread-divider-container">
-    <div class="thread-luxury-layer">
-        <svg viewBox="0 0 1440 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Os fios agora começam e terminam no meio (200), longe das bordas -->
-            <path class="luxury-wire wire-1" d="M0,200 C300,300 500,100 720,200 C900,300 1200,100 1440,200" />
-            <path class="luxury-wire wire-2" d="M0,200 C200,100 400,350 700,200 C1000,50 1300,300 1440,200" />
-            <path class="luxury-wire wire-3" d="M0,200 C400,250 600,150 800,200 C1100,250 1300,150 1440,200" />
-            <path class="luxury-wire wire-4" d="M0,200 C100,300 300,50 750,200 C1000,350 1200,50 1440,200" />
-            <path class="luxury-wire wire-5" d="M0,200 C250,50 550,350 850,200 C1050,100 1250,300 1440,200" />
-            <path class="luxury-wire wire-6" d="M0,200 C350,280 650,120 950,200 C1150,280 1350,150 1440,200" />
-        </svg>
-    </div>
-    <!-- Bloco de cor sólida para fazer a emenda sem buracos -->
-    <div class="thread-solid-base"></div>
+<!-- SEÇÃO DE DEPOIMENTOS - APPLE DESIGN SYSTEM -->
+<section id="testimonials" class="section-padding bg-grey">
+    <div class="container">
+       <div class="section-header reveal">
+    <h2>O sucesso de quem <br><span style="color: #86868b">confiou em nosso trabalho.</span></h2>
 </div>
 
-<!-- SEÇÃO MONUMENTAL: PÚBLICO E METODOLOGIA -->
-<section class="monolith-elite-section" id="sobre">
-    <div class="monolith-wrapper">
+        <div class="testimonials-grid">
+            
+      <!-- Depoimento: Lovisetto Contabilidade -->
+<div class="testimonial-card reveal-card">
+    <div class="site-preview">
+        <!-- Mockup de Janela do macOS -->
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <img src="lovisettoportifolio.webp" alt="Site Lovisetto Contabilidade">
+    </div>
+    <div class="testimonial-content">
+        <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+        <p class="testimonial-text">
+            "A nova interface transmite a segurança e a precisão que nossos clientes corporativos exigem. O resultado superou todas as expectativas em termos de autoridade e performance."
+        </p>
+        <div class="testimonial-footer">
+            <span class="client-name">Patricia</span>
+            <span class="client-info">Gestão Contábil & Tributária</span>
+        </div>
+    </div>
+</div>
+             <!-- 01: Miguel - I.M.A -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="imaportifolio.webp" alt="Site I.M.A Soluções">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "O site trouxe o nível de autoridade que a I.M.A precisava para escalar no digital. O design é impecável e muito rápido."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Miguel</span>
+                        <span style="color: #86868b" class="client-info">I.M.A Soluções</span>
+                    </div>
+                </div>
+            </div>
+
+           
+            <!-- 03: Karina Guimarães -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="karinaportifolio.webp" alt="Site Karina Guimarães">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "A TryWebDesign traduziu perfeitamente minha essência em um site funcional e extremamente sofisticado. Estou muito satisfeita."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Karina G. Medronho</span>
+                        <span class="client-info">Psicóloga & Des. Humano</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 04: Flavia Cavalcante -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="flaviaportifolio.webp" alt="Site Flavia Cavalcante">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "A TryWebDesign conseguiu traduzir minha visão em código. Hoje, minha vitrine digital condiz com o valor que entrego."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Flavia Cavalcante</span>
+                        <span class="client-info">Artist & Tattooist</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 05: Kleber - Vrinda Bhumi -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="vrindaportifolio.webp" alt="Site Vrinda Bhumi">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "Conseguiram captar a paz do nosso retiro e transformar em uma experiência digital fluida. Excelente integração de sistema."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Kleber</span>
+                        <span class="client-info">Vrinda Bhumi</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 06: Edmilson Roncari - Solar SP -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="solarportifolio.webp" alt="Site Solar São Paulo">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "O impacto visual e a performance mudaram a forma como investidores nos enxergam. É a vitrine de alto nível que exigimos."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Edmilson Roncari</span>
+                        <span class="client-info">Solar São Paulo</span>
+                    </div>
+                </div>
+            </div>
+ <!-- 02: Paola Barbosa -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="paolaportifolio.webp" alt="Site Paola Barbosa">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "Meus pacientes agora chegam com uma percepção de valor muito maior sobre o meu trabalho. A vitrine do meu consultório ficou elegante."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Paola Barbosa</span>
+                        <span class="client-info">Psicóloga Clínica</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="contato" class="section-padding-refined bg-grey">
+    
+    <!-- Glow de Fundo Posicionado Estrategicamente para fechar o layout -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: rgba(0, 113, 227, 0.03); filter: blur(120px); border-radius: 50%; pointer-events: none;"></div>
+
+    <div class="container">
+        <div class="contact-flex-refined">
+            
+            <!-- LADO ESQUERDO: CONTEÚDO CONDENSADO -->
+            <div class="reveal">
+                <div class="status-pill-pro">
+                    <span class="pulse-dot"></span>
+                </div>
+                
+                <h2 class="title-contact-pro">Vamos tirar a sua ideia do <span class="blue-text">papel?</span></span></h2>
+
+                <p class="description-contact-pro">Design de elite e engenharia de software para marcas que não aceitam o comum.</p>
+                
+                <div class="specialist-box-refined">
+                    <img src="foto_perfil_mateus.webp" alt="Mateus Mariano">
+                    <div class="spec-text">
+                        <strong>Mateus M. Mariano</strong>
+                        <span>Especialista em Criação de Sites e Otimização SEO</span>
+                    </div>
+                </div>
+
+                <div class="contact-widgets-grid">
+                    <a href="https://wa.me/5544999761842" class="widget-mini">
+                        <div class="w-icon wa"><i data-lucide="message-circle" size="18"></i></div>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="mailto:atendimentotrywebdesign@gmail.com" class="widget-mini">
+                        <div class="w-icon mail"><i data-lucide="mail" size="18"></i></div>
+                        <span>E-mail</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- LADO DIREITO: PORTAL DE CONSULTORIA (PROPORCIONAL) -->
+            <div class="reveal">
+              
+            <div class="consultancy-portal-refined">
+    <div class="portal-header">
+        <div class="window-controls"><span></span><span></span><span></span></div>
+        <h3>Iniciar Projeto</h3>
+        <p>Análise técnica em até 24h.</p>
+    </div>
+    
+    <!-- 1. Dei um ID para o form e tirei o 'required' dos campos -->
+    <form id="meuFormulario" class="form-refined">
+        <input type="hidden" name="access_key" value="0b16ed46-9c5c-4f5b-b192-89c76fce3640">
         
-        <!-- HEADER ANCORADO (SEM TAGLINE, FOCO TOTAL NO TÍTULO) -->
-        <header class="monolith-header" data-aos="fade-up">
-            <h2 class="monolith-main-title">Para quem é a Terapia com a <br><span>Paula Marques</span></h2>
-            <div class="monolith-accent-gold"></div>
-        </header>
-
-        <!-- GALERIA DE ARQUÉTIPOS: 4 PINTURAS HORIZONTAIS -->
-        <div class="monolith-archetype-grid">
-            
-            <!-- Solidão -->
-            <div class="archetype-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="archetype-img-wrapper">
-                    <img src="pintura-mulher-vendas.webp" alt="Solidão">
-                </div>
-                <div class="archetype-content">
-                    <h3>Solidão no Vínculo</h3>
-                    <p>Mulheres que querem
-separar e sentem muita
-CULPA e MEDO</p>
-                </div>
-            </div>
-
-            <!-- Filhos -->
-            <div class="archetype-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="archetype-img-wrapper">
-                    <img src="pintura-mae-e-bebe.webp" alt="Filhos e Divórcio">
-                </div>
-                <div class="archetype-content">
-                    <h3>Filhos & Recomeço</h3>
-                    <p>Mulheres com filhos
-e precisam recomeçar
-a vida após o divórcio</p>
-                </div>
-            </div>
-
-            <!-- Culpa -->
-            <div class="archetype-item" data-aos="fade-up" data-aos-delay="400">
-                <div class="archetype-img-wrapper">
-                    <img src="pintura-powerful-woman.webp" alt="Culpa e Medo">
-                </div>
-                <div class="archetype-content">
-                    <h3>Culpa & Medo</h3>
-                    <p>Mulheres cansadas de se
-sentirem sozinhas no
-relacionamento e não
-sabem como dar o
-primeiro passo para resolver</p>
-                </div>
-            </div>
-
-            <!-- Traumas -->
-            <div class="archetype-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="archetype-img-wrapper">
-                    <img src="pintura-mulher-triste.webp" alt="Traumas">
-                </div>
-                <div class="archetype-content">
-                    <h3>Traumas</h3>
-                    <p>Mulheres com traumas, que se
-sentem paralisadas, tristes ou
-sem esperança de serem
-amadas de novo</p>
-                </div>
-            </div>
-
-
+        <div class="field-refined">
+            <input type="text" name="name" placeholder="Nome ou Empresa">
+        </div>
+        <div class="field-refined">
+            <input type="text" name="contact" placeholder="E-mail ou WhatsApp">
+        </div>
+        <div class="field-refined">
+            <textarea name="message" rows="3" placeholder="Qual o seu objetivo?"></textarea>
         </div>
 
-        <!-- SPLIT EDITORIAL: FUNCIONAMENTO E BENEFÍCIOS -->
-        <div class="monolith-editorial-split">
-            
-          <!-- Lado Esquerdo: Como Funciona -->
-<div class="monolith-col" data-aos="fade-right">
-    <h3 class="monolith-sub-title">Como funciona a Terapia</h3>
-    
-    <div class="m-detail-box">
-        <div class="m-header">
-            <i class="fas fa-user-check"></i>
-            <h4>Atendimento Individual</h4>
-        </div>
-        <p>Agora você poderá escolher entre as abordagens (as terapias cognitivas, que são focadas nas terapias da fala e na terapia focada para a eliminação do trauma*).</p>
-    </div>
+        <button type="submit" class="btn-portal-refined">
+            <span>ENVIAR SOLICITAÇÃO</span>
+            <i data-lucide="arrow-right" size="16"></i>
+        </button>
+    </form>
 
-    <div class="m-detail-box">
-        <div class="m-header">
-            <i class="fas fa-video"></i>
-            <h4>Online por Vídeo-Chamada</h4>
-        </div>
-        <p>Encontros semanais, realizados por vídeo-chamada, com duração de 50 minutos cada sessão.</p>
-    </div>
-
-    <div class="m-detail-box">
-        <div class="m-header">
-            <i class="fas fa-heart"></i>
-            <h4>Pacientes Mimados</h4>
-        </div>
-        <p>Recebem mensagens de confirmação automática pelo WhatsApp (do USE CORPORA) e podem me acessar diretamente para compartilhar memes, tirar dúvidas ou desabafar. Criamos uma relação <strong>AFETIVA</strong> e de <strong>SEGURANÇA</strong>.</p>
-    </div>
-
-    <div class="m-detail-box">
-        <div class="m-header">
-            <i class="fas fa-microscope"></i>
-            <h4>Abordagens Científicas</h4>
-        </div>
-        <p>Métodos Cognitivos (Cognitivo Comportamental e Esquemas) e agora também <strong>EMDR</strong> (Terapia de Dessensibilização e Reprocessamento por meio de Movimentos Oculares).</p>
+    <!-- 2. Mensagem de Sucesso que começa escondida (display: none) -->
+    <div id="agradecimento" style="display: none; text-align: center; padding: 40px 20px;">
+        <i data-lucide="party-popper" size="48" style="color: #0071e3; margin-bottom: 20px;"></i>
+        <h3 style="font-size: 24px;">Recebemos seu contato!</h3>
+        <p style="color: #86868b; margin-top: 10px;">Mateus Mariano analisará sua ideia em breve.</p>
     </div>
 </div>
 
-        <!-- Lado Direito: Por que Fazer? -->
-<div class="monolith-col" data-aos="fade-left">
-    <h3 class="monolith-sub-title">Por que fazer Terapia pode me ajudar?</h3>
-    
-    <p class="monolith-intro-text">
-        Você pode estar tentando resolver um <strong>problema em seu relacionamento</strong> sem saber se está focando no problema certo. Além disso, a terapia oferece uma <strong>segurança emocional</strong>, aquele apoio que <strong>não te julga</strong>, que te <strong>escuta e te compreende</strong>, sem passar a mão na cabeça o tempo todo: isso te fará crescer.
-    </p>
-    
-    <div class="monolith-check-list">
-        <p class="list-label">Ao longo das sessões, você irá:</p>
-        <div class="check-item">
-            <i class="fas fa-check-circle"></i> 
-            <p>Recuperar sua autoestima</p>
-        </div>
-        <div class="check-item">
-            <i class="fas fa-check-circle"></i> 
-            <p>Estabelecer limites com mais segurança</p>
-        </div>
-        <div class="check-item">
-            <i class="fas fa-check-circle"></i> 
-            <p>Se sentir capaz de reconstruir sua vida com leveza</p>
-        </div>
-    </div>
 
-    <div class="monolith-empower-quote">
-        <p>"O atendimento comigo é acolhedor, mas também traz confrontações
-empáticas necessárias para o seu crescimento!
-Se é isso que está buscando, vem comigo!!"</p>
-    </div>
-    
-    <small class="monolith-legal-note">
-        *Atenção: o cliente será avaliado em sua primeira sessão e, a depender de seu estado emocional ou sua estrutura psicológica, poderá não obter recomendação para a terapia EMDR, a qual possui restrições para alguns casos.
-    </small>
-</div>
-
-<!-- FECHAMENTO DO GRID E DA CONTAINER (Para garantir a simetria) -->
-</div> 
-</div> 
-
-<!-- INVESTIMENTO: O CARD DE SEDA -->
-<div class="luxury-investment-card" data-aos="zoom-in">
-    <!-- O Fio de Ouro (Borda Animada sutil) -->
-    <div class="thread-border"></div>
-    
-    <div class="investment-inner">
-        <header class="investment-header">
-            <span class="investment-label">Investimento no seu Reencontro</span>
-        </header>
-
-        <div class="investment-price-area">
-            <div class="price-main">
-                <span class="currency-symbol">R$</span>
-                <span class="price-number">400</span>
-                <span class="price-decimal">,00</span>
             </div>
-            <span class="price-period">sessão individual online</span>
-        </div>
 
-        <div class="investment-details">
-            <p>Sessões semanais de 50 minutos com acompanhamento exclusivo.</p>
-            <div class="package-tag">Condições especiais para pacotes mensais</div>
-        </div>
-
-        <div class="investment-cta">
-            <a href="https://wa.me/5571900000000" class="btn-minimal-luxury">
-                AGENDAR CONSULTA
-            </a>
         </div>
     </div>
-</div>
-    </div>
-    
 </section>
-<!-- DIVISOR INFERIOR (Entre a Seção Bege e o Footer Preto) -->
-<div class="bottom-organic-divider">
-    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-    </svg>
-</div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+   <footer id="main-footer"></footer>
+
     <script>
-        const swiper = new Swiper('.hero-slider', {
-            effect: 'fade',
-            speed: 2000,
-            parallax: true,
-            autoplay: { delay: 6000 },
-            pagination: { el: '.swiper-pagination', clickable: true },
-            loop: true
+        lucide.createIcons();
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Seguir mouse com brilho
+        const glow = document.getElementById('mouseGlow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
         });
 
-        window.onscroll = () => {
-            document.getElementById("navbar").classList.toggle("sticky", window.scrollY > 50);
-        };
+        window.addEventListener('load', () => {
+            // Animação Entrada Navbar
+            gsap.to("#navbar", { y: 0, duration: 1.2, ease: "power4.out", delay: 0.2 });
+
+            // Animação Título Hero (Efeito de Escrita/Fade)
+            gsap.from("#heroTitle", { opacity: 0, y: 40, duration: 1.5, ease: "power4.out" });
+
+            // Revelação Geral ao Scroll
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out"
+                });
+            });
+
+            // Parallax Suave no Portifólio
+            gsap.utils.toArray(".portfolio-img").forEach(img => {
+                gsap.to(img, {
+                    scrollTrigger: {
+                        trigger: img,
+                        scrub: 1.5,
+                        start: "top bottom",
+                    },
+                    y: -40
+                });
+            });
+        });
     </script>
-    <footer class="main-footer">
-    <div class="footer-container">
-        <!-- Coluna 1: Logo e Descrição -->
-        <div class="footer-col branding">
-            <img src="logo-paula-marques-atendimento-online-branco.png" alt="Paula Marques Logo" class="footer-logo">
-            <p class="footer-tagline">Psicologia: Reconstruindo sua força e identidade através da ciência e do acolhimento.</p>
-            <div class="social-links">
-                <a href="https://www.instagram.com/psicopaulamarques"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@psipaulamarques"><i class="fab fa-youtube"></i></a>
-                <a href="https://www.facebook.com/psicopaulamarques"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </div>
+ <script>
+    // 1. Inicialização de Ícones
+    lucide.createIcons();
 
-        <!-- Coluna 2: Navegação -->
-        <div class="footer-col">
-            <h4>Navegação</h4>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#metodos">Metodologia</a></li>
-                <li><a href="#sobre">Trajetória</a></li>
-                <li><a href="#contato">Agendar Consulta</a></li>
-            </ul>
-        </div>
+    // 2. Registro do GSAP
+    if (typeof gsap !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+    }
 
-        <!-- Coluna 3: Especialidades -->
-        <div class="footer-col">
-            <h4>Atuação</h4>
-            <ul>
-                <li>Psicoterapia Online</li>
-                <li>Terapia do Esquema</li>
-                <li>EMDR (Trauma)</li>
-                <li>Psicologia Jurídica</li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Barra Inferior: Legal e CRP -->
-    <div class="footer-bottom">
-        <div class="legal-info">
-            <p>©2026 por Paula Karine Araujo Marques | Psicóloga CRP 03/9873</p>
-            <p class="specialties-label">Clínica | Forense</p>
-        </div>
+    // 3. Função de Contagem dos Números (Intersection Observer)
+    function iniciarContadores() {
+        const todosOsNumeros = document.querySelectorAll(".stat-value");
         
-        <div class="emergency-notice">
-            <p><i class="fas fa-exclamation-circle"></i> Informações com caráter informativo. Se tiver risco de danos, procure serviço de emergência (CVV 188).</p>
-        </div>
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) {
+                    const elemento = entrada.target;
+                    const valorFinal = parseInt(elemento.getAttribute("data-target"));
+                    let valorAtual = 0;
+                    const duracao = 2000; 
+                    const incremento = valorFinal / (duracao / 16);
 
-        <div class="footer-links-legal">
-            <a href="https://psipaulamarques.com.br/politica/">Política de Privacidade</a>
-            <span>|</span>
-            <a href="https://psipaulamarques.com.br/termos/">Termos de Uso</a>
-        </div>
-    </div>
-</footer>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
+                    function atualizar() {
+                        valorAtual += incremento;
+                        if (valorAtual < valorFinal) {
+                            elemento.innerText = Math.floor(valorAtual);
+                            requestAnimationFrame(atualizar);
+                        } else {
+                            elemento.innerText = valorFinal;
+                        }
+                    }
+                    atualizar();
+                    observador.unobserve(elemento);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        todosOsNumeros.forEach(num => observador.observe(num));
+    }
+
+    // 4. Animações de Entrada (GSAP)
+    function iniciarAnimacoesGSAP() {
+        if (typeof gsap !== "undefined") {
+            const titulo = document.querySelector("#heroTitle");
+            if (title) {
+                gsap.from(titulo, { opacity: 0, y: 30, duration: 1, ease: "power3.out" });
+            }
+
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: { trigger: el, start: "top 90%" },
+                    opacity: 1, y: 0, duration: 1
+                });
+            });
+        }
+    }
+
+    // 5. Brilho do Mouse (Renomeado para evitar o erro "vermelho")
+    function iniciarBrilhoMouse() {
+        const elementoGlow = document.getElementById('mouseGlow');
+        if (elementoGlow) {
+            document.addEventListener('mousemove', (evento) => {
+                elementoGlow.style.left = evento.clientX + 'px';
+                elementoGlow.style.top = evento.clientY + 'px';
+            });
+        }
+    }
+
+    // Execução após carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+        iniciarContadores();
+        iniciarAnimacoesGSAP();
+        iniciarBrilhoMouse();
+    });
+    // Espera o formulário ser enviado
+document.getElementById('meuFormulario').addEventListener('submit', function(e) {
+    e.preventDefault(); // Impede de sair da página
+
+    const form = this;
+    const btn = form.querySelector('button');
+    btn.innerText = "ENVIANDO...";
+
+    // Envia os dados para o Web3Forms em segundo plano
+    const formData = new FormData(form);
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    }).then(response => {
+        
+        // ANIMAÇÃO: Some com o form e aparece o agradecimento
+        gsap.to(form, { opacity: 0, y: -20, duration: 0.5, onComplete: () => {
+            form.style.display = "none";
+            const msg = document.getElementById('agradecimento');
+            msg.style.display = "block";
+            
+            // Faz a mensagem aparecer "pulando" na tela
+            gsap.from(msg, { opacity: 0, scale: 0.5, duration: 0.8, ease: "back.out(1.7)" });
+
+            // SOLTA OS CONFETES (O toque interativo legal!)
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#0071e3', '#ffffff']
+            });
+        }});
+    });
+});
 </script>
+            
 </body>
 </html>
