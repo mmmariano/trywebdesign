@@ -1003,19 +1003,6 @@ header.sticky .nav-links a { color: var(--dark-taupe); text-shadow: none; }
     font-style: italic;
 }
 
-/* --- BOX DE INVESTIMENTO (O FINAL DA SEÇÃO) --- */
-.monolith-pricing-block {
-    background: var(--dark-taupe); /* Cinza quase preto luxuoso */
-    margin: 100px auto 0;
-    max-width: 1000px;
-    padding: 80px 40px;
-    border-radius: 4px;
-    text-align: center;
-    color: #fff;
-    position: relative;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.15);
-}
-
 .price-eyebrow {
     text-transform: uppercase;
     letter-spacing: 5px;
@@ -1246,4 +1233,147 @@ header.sticky .nav-links a { color: var(--dark-taupe); text-shadow: none; }
     z-index: 1 !important; /* Mantém a seção de baixo em uma camada inferior */
     margin-top: -100px !important; /* Faz o início da seção bege ficar por trás dos fios */
     background-color: #FDFBFA !important;
+}
+/* ============================================================
+   BOX DE INVESTIMENTO - SEDA & SILÊNCIO
+   ============================================================ */
+
+.luxury-investment-card {
+    position: relative;
+    max-width: 900px;
+    margin: 140px auto;
+    padding: 80px 40px;
+    background: #ffffff; /* Fundo branco puro para contraste com o bege */
+    text-align: center;
+    border-radius: 2px;
+    box-shadow: 0 40px 100px rgba(45, 41, 38, 0.05); /* Sombra de "nuvem" */
+    overflow: hidden;
+    z-index: 10;
+}
+
+/* --- O FIO DE OURO (ANIMAÇÃO DE BORDA SUTIL) --- */
+.thread-border {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 1px solid rgba(217, 197, 178, 0.3); /* Linha nude bem clarinha */
+    margin: 15px; /* Recuo da borda */
+    pointer-events: none;
+}
+
+.thread-border::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; width: 0; height: 1px;
+    background: var(--nude);
+    animation: borderFlow 8s infinite linear;
+}
+
+@keyframes borderFlow {
+    0% { width: 0; left: 0; }
+    25% { width: 100%; left: 0; }
+    50% { width: 0; left: 100%; }
+    100% { width: 0; left: 100%; }
+}
+
+/* --- TIPOGRAFIA --- */
+.investment-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--nude);
+    display: block;
+    margin-bottom: 50px;
+}
+
+.investment-price-area {
+    margin-bottom: 40px;
+}
+
+.price-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: var(--dark-taupe);
+}
+
+.currency-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-top: -20px;
+}
+
+.price-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    line-height: 1;
+    font-weight: 400;
+}
+
+.price-decimal {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    align-self: flex-start;
+    margin-top: 15px;
+}
+
+.price-period {
+    display: block;
+    font-size: 0.9rem;
+    color: #999;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+/* --- DETALHES --- */
+.investment-details {
+    max-width: 500px;
+    margin: 0 auto 50px;
+}
+
+.investment-details p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.package-tag {
+    display: inline-block;
+    padding: 8px 20px;
+    border: 1px solid #eee;
+    font-size: 0.8rem;
+    color: var(--nude);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* --- BOTÃO DE ALTA COSTURA --- */
+.btn-minimal-luxury {
+    display: inline-block;
+    padding: 24px 60px;
+    background: var(--dark-taupe);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    transition: all 0.4s ease;
+    border: 1px solid var(--dark-taupe);
+}
+
+.btn-minimal-luxury:hover {
+    background: transparent;
+    color: var(--dark-taupe);
+    transform: translateY(-3px);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .price-number { font-size: 4rem; }
+    .luxury-investment-card { padding: 60px 20px; margin: 80px 20px; }
+    .btn-minimal-luxury { width: 100%; padding: 20px; text-align: center; }
 }
