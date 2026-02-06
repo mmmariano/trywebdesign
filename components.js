@@ -1,9 +1,11 @@
 const navbarHTML = `
 <div class="nav-container">
+    <!-- LADO ESQUERDO: LOGO -->
     <a href="/" class="logo-tech">
         TRY<span class="silver-text">WEBDESIGN</span>
     </a>
     
+    <!-- CENTRO: MENU DESKTOP (Soma no Mobile) -->
     <div class="nav-menu">
         <a href="/" class="nav-item-tech">
             <div class="icon-box"><i data-lucide="home"></i></div>
@@ -41,45 +43,43 @@ const navbarHTML = `
         </a>
     </div>
 
-    <div class="nav-right-wrapper" style="display: flex; align-items: center; gap: 15px;">
+    <!-- DIREITA: CTA + HAMBURGUER -->
+    <div class="nav-right-controls">
         <a href="/iniciarprojeto/" class="cta-silver">
-            <span>Iniciar Projeto</span>
+            <span>PROJETO</span>
             <div class="shimmer"></div>
         </a>
 
-        <button class="mobile-toggle" id="mobileToggle">
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Abrir Menu">
             <span class="line"></span>
             <span class="line"></span>
         </button>
     </div>
 </div>
 
-<!-- OVERLAY DO MENU MOBILE - CORRIGIDO -->
+<!-- MENU MOBILE (FORA DA NAV-CONTAINER PARA NÃO DESALINHAR) -->
 <div class="mobile-menu-overlay" id="mobileMenu">
-    <div class="mobile-menu-inner">
-        <nav class="mobile-nav-list">
-            <a href="/" class="mobile-link">Início</a>
+    <div class="mobile-menu-wrapper">
+        <nav class="mobile-nav-content">
+            <a href="/" class="m-link">Início</a>
             
-            <div class="mobile-nav-group">
-                <span class="mobile-group-title">Soluções</span>
-                <div class="mobile-sub-menu">
-                    <a href="/solucoes/" class="mobile-sub-link">Web Design</a>
-                    <a href="/solucoes/seo" class="mobile-sub-link">SEO & Performance</a>
-                    <a href="/solucoes/landing-pages" class="mobile-sub-link">Landing Pages</a>
-                    <a href="/solucoes/e-commerce" class="mobile-sub-link">E-Commerce</a>
+            <div class="m-group">
+                <span class="m-group-title">Soluções</span>
+                <div class="m-sub-list">
+                    <a href="/solucoes/" class="m-sub-link">Web Design</a>
+                    <a href="/solucoes/seo" class="m-sub-link">SEO & Performance</a>
+                    <a href="/solucoes/landing-pages" class="m-sub-link">Landing Pages</a>
+                    <a href="/solucoes/e-commerce" class="m-sub-link">E-Commerce</a>
                 </div>
             </div>
 
-            <a href="/portifolio/" class="mobile-link">Portfólio</a>
-            <a href="/sobre/" class="mobile-link">Sobre</a>
-            <a href="/#contato" class="mobile-link">Contato</a>
+            <a href="/portifolio/" class="m-link">Portfólio</a>
+            <a href="/sobre/" class="m-link">Sobre</a>
+            <a href="/#contato" class="m-link">Contato</a>
             
-            <div class="mobile-menu-cta">
-                <a href="/iniciarprojeto/" class="cta-silver" style="display: flex; width: 100%; justify-content: center; padding: 20px;">
-                    <span>Iniciar Projeto</span>
-                    <div class="shimmer"></div>
-                </a>
-            </div>
+            <a href="/iniciarprojeto/" class="m-cta-mobile">
+                Iniciar Projeto
+            </a>
         </nav>
     </div>
 </div>
@@ -142,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (typeof lucide !== 'undefined') lucide.createIcons();
 
+    // Lógica Menu Mobile
     const toggle = document.getElementById('mobileToggle');
     const menu = document.getElementById('mobileMenu');
     
@@ -152,13 +153,13 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.style.overflow = isActive ? 'hidden' : '';
         });
 
-        const links = document.querySelectorAll('.mobile-link, .mobile-sub-link, .mobile-menu-cta a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
+        // Fecha ao clicar
+        menu.addEventListener('click', (e) => {
+            if(e.target.tagName === 'A') {
                 toggle.classList.remove('active');
                 menu.classList.remove('active');
                 document.body.style.overflow = '';
-            });
+            }
         });
     }
 });

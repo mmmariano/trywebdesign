@@ -982,151 +982,121 @@
 #navbar {
     overflow: visible !important;
 }
-/* --- ESTILOS DO MENU MOBILE --- */
-
-.mobile-nav-group {
+/* --- RESET E ALINHAMENTO DA NAVBAR --- */
+.nav-container {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.mobile-link-header {
-    font-size: 28px;
-    font-weight: 700;
-    color: #86868b; /* Cinza para indicar que é um cabeçalho de grupo */
-    text-align: center;
-}
-
-.mobile-sub-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 10px 0;
-    background: rgba(0,0,0,0.02); /* Fundo sutil para o grupo */
-    border-radius: 15px;
-}
-
-.mobile-sub-link {
-    font-size: 20px;
-    font-weight: 600;
-    color: #1d1d1f;
-    text-decoration: none;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: 0.4s ease;
-}
-
-/* Animação dos Sub-links quando o menu abre */
-.mobile-menu-overlay.active .mobile-sub-link {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Delay para os sub-links aparecerem depois dos principais */
-.mobile-sub-link:nth-child(1) { transition-delay: 0.2s; }
-.mobile-sub-link:nth-child(2) { transition-delay: 0.25s; }
-.mobile-sub-link:nth-child(3) { transition-delay: 0.3s; }
-.mobile-sub-link:nth-child(4) { transition-delay: 0.35s; }
-
-/* Ajuste no Container do Menu Mobile para suportar o conteúdo maior */
-.mobile-menu-inner {
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    padding: 40px 20px;
+    height: 100%;
 }
-/* --- FIX PARA MOBILE MENU BUG --- */
 
+.nav-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- MENU MOBILE OVERLAY (SISTEMA ISOLADO) --- */
 .mobile-menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100dvh; /* Usa dynamic viewport height */
+    height: 100dvh;
     background: #ffffff;
-    z-index: 9998;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-    display: flex;
+    z-index: 9997; /* Um abaixo do botão Toggle */
+    display: none; /* Começa oculto */
     flex-direction: column;
 }
 
 .mobile-menu-overlay.active {
-    opacity: 1;
-    pointer-events: all;
+    display: flex;
 }
 
-.mobile-menu-inner {
+.mobile-menu-wrapper {
     flex: 1;
-    overflow-y: auto; /* Permite rolar se o menu for grande */
-    padding: 100px 30px 60px; /* Padding superior para não ficar embaixo da logo */
+    overflow-y: auto;
+    padding: 120px 40px 60px; /* Começa abaixo da barra */
 }
 
-.mobile-nav-list {
+.mobile-nav-content {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espaço entre os links principais */
-    max-width: 400px;
-    margin: 0 auto;
+    gap: 25px;
 }
 
-.mobile-link {
-    font-size: 24px;
+/* Links Principais */
+.m-link {
+    font-size: 28px;
     font-weight: 700;
     color: #1d1d1f;
     text-decoration: none;
-    display: block;
 }
 
 /* Grupo de Soluções */
-.mobile-nav-group {
-    padding: 15px 0;
+.m-group {
+    padding: 20px 0;
     border-top: 1px solid #f5f5f7;
     border-bottom: 1px solid #f5f5f7;
 }
 
-.mobile-group-title {
-    font-size: 14px;
+.m-group-title {
+    font-size: 13px;
     text-transform: uppercase;
-    letter-spacing: 1px;
     color: #86868b;
     margin-bottom: 15px;
     display: block;
+    letter-spacing: 1px;
 }
 
-.mobile-sub-menu {
+.m-sub-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
     padding-left: 10px;
 }
 
-.mobile-sub-link {
+.m-sub-link {
     font-size: 18px;
     font-weight: 600;
     color: #1d1d1f;
     text-decoration: none;
 }
 
-/* CTA no Final do Menu Mobile */
-.mobile-menu-cta {
-    margin-top: 20px;
+/* Botão CTA no Mobile */
+.m-cta-mobile {
+    background: #0071e3;
+    color: #fff;
+    text-align: center;
+    padding: 18px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 10px;
 }
 
-/* Ajuste no Hamburger para não sumir */
+/* Ajuste do Botão Hamburguer para ser Fixo e Visível */
 .mobile-toggle {
-    z-index: 10001; /* Garante que o botão X fique acima de tudo */
+    position: relative;
+    z-index: 10000; /* Sempre no topo de tudo */
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 
-/* Efeito de Escrita (Fade In) dos links ao abrir */
-.mobile-menu-overlay.active .mobile-link,
-.mobile-menu-overlay.active .mobile-nav-group,
-.mobile-menu-overlay.active .mobile-menu-cta {
-    animation: menuFadeIn 0.5s ease forwards;
+@media (max-width: 950px) {
+    .nav-menu { display: none !important; }
+    .mobile-toggle { display: flex !important; }
+    
+    /* Ajuste para o botão PROJETO no mobile ser menor se necessário */
+    .cta-silver span { font-size: 11px; }
 }
 
-@keyframes menuFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Fix para impedir que o conteúdo da página empurre a nav */
+#navbar {
+    overflow: visible !important;
 }
