@@ -10,7 +10,6 @@ const navbarHTML = `
             <span>Início</span>
         </a>
 
-        <!-- Soluções com Dropdown via Hover (Desktop) -->
         <div class="nav-item-tech dropdown">
             <div class="dropdown-trigger">
                 <div class="icon-box"><i data-lucide="cpu"></i></div>
@@ -48,7 +47,6 @@ const navbarHTML = `
             <div class="shimmer"></div>
         </a>
 
-        <!-- BOTÃO MOBILE HAMBURGER -->
         <button class="mobile-toggle" id="mobileToggle">
             <span class="line"></span>
             <span class="line"></span>
@@ -56,15 +54,14 @@ const navbarHTML = `
     </div>
 </div>
 
-<!-- OVERLAY DO MENU MOBILE COM DROPDOWN INCLUSO -->
+<!-- OVERLAY DO MENU MOBILE - CORRIGIDO -->
 <div class="mobile-menu-overlay" id="mobileMenu">
     <div class="mobile-menu-inner">
         <nav class="mobile-nav-list">
             <a href="/" class="mobile-link">Início</a>
             
-            <!-- Grupo Soluções no Mobile -->
             <div class="mobile-nav-group">
-                <span class="mobile-link-header">Soluções</span>
+                <span class="mobile-group-title">Soluções</span>
                 <div class="mobile-sub-menu">
                     <a href="/solucoes/" class="mobile-sub-link">Web Design</a>
                     <a href="/solucoes/seo" class="mobile-sub-link">SEO & Performance</a>
@@ -76,7 +73,13 @@ const navbarHTML = `
             <a href="/portifolio/" class="mobile-link">Portfólio</a>
             <a href="/sobre/" class="mobile-link">Sobre</a>
             <a href="/#contato" class="mobile-link">Contato</a>
-            <a href="/iniciarprojeto/" class="mobile-link" style="color: #0071e3; margin-top: 20px;">Iniciar Projeto</a>
+            
+            <div class="mobile-menu-cta">
+                <a href="/iniciarprojeto/" class="cta-silver" style="display: flex; width: 100%; justify-content: center; padding: 20px;">
+                    <span>Iniciar Projeto</span>
+                    <div class="shimmer"></div>
+                </a>
+            </div>
         </nav>
     </div>
 </div>
@@ -92,7 +95,6 @@ const footerHTML = `
                 <span class="status-dot"></span> Disponível para novos projetos
             </div>
         </div>
-
         <div class="footer-nav-group">
             <div class="footer-column">
                 <h4>Explorar</h4>
@@ -102,14 +104,12 @@ const footerHTML = `
                 <a href="/sobre/">Sobre</a>
                 <a href="/iniciarprojeto/">Iniciar Projeto</a>
             </div>
-
             <div class="footer-column">
                 <h4>Contato</h4>
                 <a href="https://wa.me/5544999761842">WhatsApp</a>
                 <a href="mailto:atendimentotrywebdesign@gmail.com">E-mail</a>
                 <a href="/#contato">Consultoria</a>
             </div>
-
             <div class="footer-column">
                 <h4>Social</h4>
                 <a href="https://www.instagram.com/try.web.design/" target="_blank">Instagram</a>
@@ -118,7 +118,6 @@ const footerHTML = `
             </div>
         </div>
     </div>
-
     <div class="footer-bottom">
         <div class="footer-legal">
             <p>© 2025 TRYWEBDESIGN. Todos os direitos reservados.</p>
@@ -141,11 +140,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if (navElement) navElement.innerHTML = navbarHTML;
     if (footerElement) footerElement.innerHTML = footerHTML;
     
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    // Lógica do Menu Mobile
     const toggle = document.getElementById('mobileToggle');
     const menu = document.getElementById('mobileMenu');
     
@@ -156,8 +152,8 @@ document.addEventListener("DOMContentLoaded", function() {
             document.body.style.overflow = isActive ? 'hidden' : '';
         });
 
-        const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-sub-link');
-        mobileLinks.forEach(link => {
+        const links = document.querySelectorAll('.mobile-link, .mobile-sub-link, .mobile-menu-cta a');
+        links.forEach(link => {
             link.addEventListener('click', () => {
                 toggle.classList.remove('active');
                 menu.classList.remove('active');
