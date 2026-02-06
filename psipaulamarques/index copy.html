@@ -92,7 +92,7 @@
 <header id="navbar">
     <nav class="nav-container">
         <!-- Nome/Logo para Mobile (Opcional, mas ajuda a preencher o espaço) -->
-        <div class="mobile-logo-text">PAULA MARQUES - PSICOTERAPIA ONLINE</div>
+        <div style="color: #2D2926; font-weight: 700; font-size: 12px; letter-spacing: 2px;">PAULA MARQUES</div>
 
         <!-- Ícone Hamburguer -->
         <div class="mobile-menu-icon" onclick="toggleMenu()">
@@ -892,6 +892,7 @@ function toggleMenu() {
     } else {
         document.body.style.overflow = 'auto';
     }
+    document.querySelector(".nav-links").classList.toggle("active");
 }
 </script>
 </body>

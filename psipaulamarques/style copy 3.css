@@ -3243,69 +3243,12 @@ html, body {
    Cole este código NO FINAL do seu style.css
    ======================================== */
 
-/* ===== SMOOTH SCROLL PARA DESKTOP ===== */
-@media (min-width: 769px) {
-    html {
-        scroll-behavior: smooth;
-    }
-    
-    /* Scroll suave customizado (mais sofisticado) */
-    * {
-        scroll-behavior: smooth;
-    }
-    
-    /* ===== CORREÇÃO DO SEPARADOR ONDULADO NO DESKTOP ===== */
-    .thread-divider-container {
-        position: relative !important;
-        width: 100% !important;
-        height: 300px !important;
-        background-color: #FDFBFA !important;
-        overflow: hidden !important;
-        z-index: 10 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    
-    .thread-luxury-layer {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        pointer-events: none !important;
-    }
-    
-    .thread-luxury-layer svg {
-        width: 100% !important;
-        height: 100% !important;
-        display: block !important;
-    }
-    
-    .thread-solid-base {
-        position: absolute !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 50% !important;
-        background-color: #FDFBFA !important;
-        z-index: 1 !important;
-    }
-    
-    .monolith-elite-section {
-        margin-top: -100px !important;
-        padding-top: 120px !important;
-        position: relative !important;
-        z-index: 5 !important;
-    }
-}
-
 @media (max-width: 768px) {
     
     /* ===== REGRA GLOBAL: NADA SAI DA TELA ===== */
     html {
         overflow-x: hidden !important;
         max-width: 100vw !important;
-        scroll-behavior: auto; /* Scroll normal no mobile */
     }
     
     body {
@@ -3316,20 +3259,6 @@ html, body {
     
     * {
         max-width: 100vw !important;
-    }
-    
-    /* ===== TEXTO "PAULA MARQUES - PSICOTERAPIA ONLINE" NO MOBILE ===== */
-    .mobile-logo-text {
-        display: block !important;
-        color: #2D2926 !important;
-        font-weight: 700 !important;
-        font-size: 10px !important;
-        letter-spacing: 1.5px !important;
-        text-transform: uppercase !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        max-width: calc(100vw - 80px) !important;
     }
     
     /* ===== CORREÇÃO 1: ELIMINAR ESPAÇO NO TOPO ===== */
@@ -3502,38 +3431,6 @@ html, body {
     }
     
     
-    /* ===== CORREÇÃO DO SEPARADOR ONDULADO NO MOBILE ===== */
-    .thread-divider-container {
-        height: 120px !important;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-        overflow: hidden !important;
-    }
-    
-    .thread-luxury-layer {
-        height: 120px !important;
-    }
-    
-    .thread-luxury-layer svg {
-        height: 120px !important;
-        filter: none !important; /* Remove sombra pesada no mobile */
-    }
-    
-    .luxury-wire {
-        animation: none !important; /* Remove animação no mobile para performance */
-        opacity: 0.3 !important;
-    }
-    
-    .thread-solid-base {
-        height: 60px !important;
-    }
-    
-    .monolith-elite-section {
-        margin-top: -60px !important;
-        padding-top: 80px !important;
-    }
-    
-    
     /* ===== OUTRAS SEÇÕES QUE PODEM ESTAR SAINDO ===== */
     
     .monolith-editorial-split,
@@ -3567,12 +3464,5 @@ html, body {
     
     .wa-luxury-btn span {
         font-size: 0.65rem !important;
-    }
-}
-
-/* ===== ESCONDER TEXTO MOBILE NO DESKTOP ===== */
-@media (min-width: 769px) {
-    .mobile-logo-text {
-        display: none !important;
     }
 }

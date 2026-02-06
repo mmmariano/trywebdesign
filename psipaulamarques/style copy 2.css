@@ -3239,65 +3239,714 @@ html, body {
     width: 100% !important;
   }
 }/* ========================================
+   CORREÇÕES MOBILE - ADICIONE NO FINAL DO SEU CSS
+   ======================================== */
+
+@media (max-width: 768px) {
+    
+    /* ===== 1. CORREÇÃO DO ESPAÇO NO TOPO ===== */
+    body {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    #navbar {
+        height: 60px !important;
+        padding: 0 15px !important;
+    }
+    
+    .hero-slider,
+    #inicio {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+    }
+    
+    .slide-content {
+        margin-top: 0 !important;
+        padding: 30px 20px !important;
+    }
+    
+    .fixed-logo-badge {
+        top: 70px !important;
+        right: 15px !important;
+        width: 70px !important;
+        height: 70px !important;
+        padding: 12px !important;
+    }
+    
+    /* ===== 2. CORREÇÃO "PARA QUEM É" SAINDO DA TELA ===== */
+    .monolith-elite-section,
+    .monolith-editorial-split,
+    .para-quem,
+    section {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    
+    .monolith-grid,
+    .monolith-archetype-grid,
+    .science-grid,
+    .ultimate-layout-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        gap: 20px !important;
+        padding: 0 !important;
+    }
+    
+    .monolith-card,
+    .archetype-card,
+    .science-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .monolith-main-title,
+    .ultimate-title {
+        font-size: 1.6rem !important;
+        padding: 0 10px !important;
+        text-align: center !important;
+    }
+    
+    /* ===== 3. CORREÇÃO BOTÃO WHATSAPP CORTANDO ===== */
+    .wa-luxury-btn {
+        position: fixed !important;
+        bottom: 15px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        max-width: calc(100vw - 30px) !important;
+        padding: 12px 20px !important;
+        font-size: 0.65rem !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        white-space: nowrap !important;
+    }
+    
+    .wa-luxury-btn i {
+        font-size: 1.2rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .wa-luxury-btn span {
+        display: inline-block !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 400px) {
+    .wa-luxury-btn {
+        font-size: 0.6rem !important;
+        padding: 10px 15px !important;
+        max-width: calc(100vw - 20px) !important;
+    }
+}
+/* ========================================
    CORREÇÕES MOBILE DEFINITIVAS
    Cole este código NO FINAL do seu style.css
    ======================================== */
 
-/* ===== SMOOTH SCROLL PARA DESKTOP ===== */
-@media (min-width: 769px) {
-    html {
-        scroll-behavior: smooth;
+@media (max-width: 768px) {
+    
+    /* ===== CORREÇÃO 1: ELIMINAR ESPAÇO NO TOPO ===== */
+    
+    html, body {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
     }
     
-    /* Scroll suave customizado (mais sofisticado) */
-    * {
-        scroll-behavior: smooth;
+    /* Navbar compacta */
+    #navbar {
+        height: 60px !important;
+        min-height: 60px !important;
+        padding: 0 15px !important;
     }
     
-    /* ===== CORREÇÃO DO SEPARADOR ONDULADO NO DESKTOP ===== */
-    .thread-divider-container {
-        position: relative !important;
+    /* Hero slider sem espaço */
+    .hero-slider {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+    }
+    
+    #inicio {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+    }
+    
+    /* Swiper wrapper */
+    .swiper-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    /* Slide content ajustado */
+    .slide-content {
+        margin-top: 0 !important;
+        padding: 30px 20px !important;
+    }
+    
+    /* Logo badge ajustada */
+    .fixed-logo-badge {
+        position: absolute !important;
+        top: 65px !important;
+        right: 15px !important;
+        width: 65px !important;
+        height: 65px !important;
+        padding: 10px !important;
+    }
+    
+    
+    /* ===== CORREÇÃO 2: "PARA QUEM É A TERAPIA" NÃO SAIR DA TELA ===== */
+    
+    /* Container principal */
+    .monolith-elite-section {
         width: 100% !important;
-        height: 300px !important;
-        background-color: #FDFBFA !important;
-        overflow: hidden !important;
-        z-index: 10 !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        padding: 40px 0 !important;
+    }
+    
+    .monolith-wrapper {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 0 20px !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Header do título */
+    .monolith-header {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+        margin: 0 0 30px 0 !important;
+        position: relative !important;
+        transform: none !important;
+    }
+    
+    /* Título principal - AJUSTE PRECISO */
+    .monolith-main-title {
+        font-size: 1.5rem !important;
+        line-height: 1.3 !important;
+        text-align: center !important;
+        padding: 0 !important;
         margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+    
+    /* Remove o <br> forçado */
+    .monolith-main-title br {
+        display: none !important;
+    }
+    
+    /* Grid de arquétipos */
+    .monolith-archetype-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        gap: 20px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .archetype-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .archetype-img-wrapper {
+        height: 250px !important;
+    }
+    
+    
+    /* ===== CORREÇÃO 3: BOTÃO WHATSAPP COMPLETO E CENTRALIZADO ===== */
+    
+    .wa-luxury-btn {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        min-width: auto !important;
+        max-width: calc(100vw - 40px) !important;
+        padding: 14px 24px !important;
+        font-size: 0.7rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+    }
+    
+    .wa-luxury-btn i {
+        font-size: 1.3rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .wa-luxury-btn span {
+        display: inline !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: nowrap !important;
+    }
+    
+    
+    /* ===== OUTRAS SEÇÕES QUE PODEM ESTAR SAINDO ===== */
+    
+    .monolith-editorial-split,
+    .para-quem,
+    section {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    
+    .monolith-grid,
+    .science-grid,
+    .ultimate-layout-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
         padding: 0 !important;
     }
-    
-    .thread-luxury-layer {
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 100% !important;
-        pointer-events: none !important;
+}
+
+/* Para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .monolith-main-title {
+        font-size: 1.3rem !important;
     }
     
-    .thread-luxury-layer svg {
-        width: 100% !important;
-        height: 100% !important;
-        display: block !important;
+    .wa-luxury-btn {
+        font-size: 0.65rem !important;
+        padding: 12px 18px !important;
+        gap: 10px !important;
     }
     
-    .thread-solid-base {
-        position: absolute !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 50% !important;
-        background-color: #FDFBFA !important;
-        z-index: 1 !important;
-    }
-    
-    .monolith-elite-section {
-        margin-top: -100px !important;
-        padding-top: 120px !important;
-        position: relative !important;
-        z-index: 5 !important;
+    .wa-luxury-btn span {
+        font-size: 0.65rem !important;
     }
 }
+/* ========================================
+   CORREÇÕES MOBILE DEFINITIVAS
+   Cole este código NO FINAL do seu style.css
+   ======================================== */
+
+@media (max-width: 768px) {
+    
+    /* ===== CORREÇÃO 1: ELIMINAR ESPAÇO NO TOPO ===== */
+    
+    html, body {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Navbar compacta */
+    #navbar {
+        height: 60px !important;
+        min-height: 60px !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Hero slider sem espaço */
+    .hero-slider {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+    }
+    
+    #inicio {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+    }
+    
+    /* Swiper wrapper */
+    .swiper-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    /* Slide content ajustado */
+    .slide-content {
+        margin-top: 0 !important;
+        padding: 30px 20px !important;
+    }
+    
+    /* Logo badge ajustada */
+    .fixed-logo-badge {
+        position: absolute !important;
+        top: 65px !important;
+        right: 15px !important;
+        width: 65px !important;
+        height: 65px !important;
+        padding: 10px !important;
+    }
+    
+    
+    /* ===== CORREÇÃO 2: "PARA QUEM É A TERAPIA" NÃO SAIR DA TELA ===== */
+    
+    /* Container principal */
+    .monolith-elite-section {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        padding: 40px 0 !important;
+    }
+    
+    .monolith-wrapper {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 0 20px !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* Header do título */
+    .monolith-header {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+        margin: 0 0 30px 0 !important;
+        position: relative !important;
+        transform: none !important;
+    }
+    
+    /* Título principal - ALINHADO À ESQUERDA */
+    .monolith-main-title {
+        font-size: 1.4rem !important;
+        line-height: 1.4 !important;
+        text-align: left !important;
+        padding: 0 15px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+    
+    /* Mantém o span (Paula Marques) com destaque */
+    .monolith-main-title span {
+        display: inline !important;
+    }
+    
+    /* Remove o <br> forçado */
+    .monolith-main-title br {
+        display: none !important;
+    }
+    
+    /* Grid de arquétipos */
+    .monolith-archetype-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        gap: 20px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .archetype-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .archetype-img-wrapper {
+        height: 250px !important;
+    }
+    
+    
+    /* ===== CORREÇÃO 3: BOTÃO WHATSAPP COMPLETO E CENTRALIZADO ===== */
+    
+    .wa-luxury-btn {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        min-width: auto !important;
+        max-width: calc(100vw - 40px) !important;
+        padding: 14px 24px !important;
+        font-size: 0.7rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+    }
+    
+    .wa-luxury-btn i {
+        font-size: 1.3rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .wa-luxury-btn span {
+        display: inline !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: nowrap !important;
+    }
+    
+    
+    /* ===== OUTRAS SEÇÕES QUE PODEM ESTAR SAINDO ===== */
+    
+    .monolith-editorial-split,
+    .para-quem,
+    section {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    
+    .monolith-grid,
+    .science-grid,
+    .ultimate-layout-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+}
+
+/* Para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .monolith-main-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .wa-luxury-btn {
+        font-size: 0.65rem !important;
+        padding: 12px 18px !important;
+        gap: 10px !important;
+    }
+    
+    .wa-luxury-btn span {
+        font-size: 0.65rem !important;
+    }
+}
+/* ========================================
+   CORREÇÕES MOBILE DEFINITIVAS
+   Cole este código NO FINAL do seu style.css
+   ======================================== */
+
+@media (max-width: 768px) {
+    
+    /* ===== CORREÇÃO 1: ELIMINAR ESPAÇO NO TOPO ===== */
+    
+    html, body {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    
+    /* Navbar compacta */
+    #navbar {
+        height: 60px !important;
+        min-height: 60px !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Hero slider sem espaço */
+    .hero-slider {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+    }
+    
+    #inicio {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        height: 100vh !important;
+    }
+    
+    /* Swiper wrapper */
+    .swiper-wrapper {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    /* Slide content ajustado */
+    .slide-content {
+        margin-top: 0 !important;
+        padding: 30px 20px !important;
+    }
+    
+    /* Logo badge ajustada */
+    .fixed-logo-badge {
+        position: absolute !important;
+        top: 65px !important;
+        right: 15px !important;
+        width: 65px !important;
+        height: 65px !important;
+        padding: 10px !important;
+    }
+    
+    
+    /* ===== CORREÇÃO 2: "PARA QUEM É A TERAPIA" NÃO SAIR DA TELA ===== */
+    
+    /* Container principal */
+    .monolith-elite-section {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        padding: 40px 0 !important;
+        box-sizing: border-box !important;
+    }
+    
+    .monolith-wrapper {
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding: 0 !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Header do título */
+    .monolith-header {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 0 30px 0 !important;
+        position: relative !important;
+        transform: none !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Título principal - FORÇAR FICAR DENTRO DA TELA */
+    .monolith-main-title {
+        font-size: 1.3rem !important;
+        line-height: 1.5 !important;
+        text-align: left !important;
+        padding: 0 20px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        word-break: break-word !important;
+        hyphens: auto !important;
+        overflow: hidden !important;
+    }
+    
+    /* Mantém o span (Paula Marques) com destaque */
+    .monolith-main-title span {
+        display: inline !important;
+    }
+    
+    /* Remove o <br> forçado */
+    .monolith-main-title br {
+        display: none !important;
+    }
+    
+    /* Grid de arquétipos */
+    .monolith-archetype-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        gap: 20px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .archetype-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .archetype-img-wrapper {
+        height: 250px !important;
+    }
+    
+    
+    /* ===== CORREÇÃO 3: BOTÃO WHATSAPP COMPLETO E CENTRALIZADO ===== */
+    
+    .wa-luxury-btn {
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        width: auto !important;
+        min-width: auto !important;
+        max-width: calc(100vw - 40px) !important;
+        padding: 14px 24px !important;
+        font-size: 0.7rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+    }
+    
+    .wa-luxury-btn i {
+        font-size: 1.3rem !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .wa-luxury-btn span {
+        display: inline !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        white-space: nowrap !important;
+    }
+    
+    
+    /* ===== OUTRAS SEÇÕES QUE PODEM ESTAR SAINDO ===== */
+    
+    .monolith-editorial-split,
+    .para-quem,
+    section {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+    
+    .monolith-grid,
+    .science-grid,
+    .ultimate-layout-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        padding: 0 !important;
+    }
+}
+
+/* Para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .monolith-main-title {
+        font-size: 1.3rem !important;
+    }
+    
+    .wa-luxury-btn {
+        font-size: 0.65rem !important;
+        padding: 12px 18px !important;
+        gap: 10px !important;
+    }
+    
+    .wa-luxury-btn span {
+        font-size: 0.65rem !important;
+    }
+}
+/* ========================================
+   CORREÇÕES MOBILE DEFINITIVAS
+   Cole este código NO FINAL do seu style.css
+   ======================================== */
 
 @media (max-width: 768px) {
     
@@ -3305,7 +3954,6 @@ html, body {
     html {
         overflow-x: hidden !important;
         max-width: 100vw !important;
-        scroll-behavior: auto; /* Scroll normal no mobile */
     }
     
     body {
@@ -3316,20 +3964,6 @@ html, body {
     
     * {
         max-width: 100vw !important;
-    }
-    
-    /* ===== TEXTO "PAULA MARQUES - PSICOTERAPIA ONLINE" NO MOBILE ===== */
-    .mobile-logo-text {
-        display: block !important;
-        color: #2D2926 !important;
-        font-weight: 700 !important;
-        font-size: 10px !important;
-        letter-spacing: 1.5px !important;
-        text-transform: uppercase !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        max-width: calc(100vw - 80px) !important;
     }
     
     /* ===== CORREÇÃO 1: ELIMINAR ESPAÇO NO TOPO ===== */
@@ -3397,53 +4031,48 @@ html, body {
     .monolith-wrapper {
         width: 100vw !important;
         max-width: 100vw !important;
-        padding: 0 15px !important;
+        padding: 0 !important;
         margin: 0 !important;
         overflow-x: hidden !important;
         box-sizing: border-box !important;
     }
     
-    /* Header - FORÇA ESQUERDA */
+    /* Header do título - SEM PADDING */
     .monolith-header {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
         padding: 0 !important;
         margin: 0 0 30px 0 !important;
-        text-align: left !important;
         position: relative !important;
         transform: none !important;
-        left: 0 !important;
-        right: auto !important;
         box-sizing: border-box !important;
+        overflow-x: hidden !important;
     }
     
-    /* Título - FORÇA ESQUERDA E DENTRO DA TELA */
+    /* Título principal - ULTRA FORÇADO */
     .monolith-main-title {
-        font-family: 'Playfair Display', serif !important;
-        font-size: 1.5rem !important;
-        line-height: 1.5 !important;
+        font-size: 1.2rem !important;
+        line-height: 1.6 !important;
         text-align: left !important;
-        padding: 0 !important;
+        padding: 0 10px !important;
         margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
+        width: calc(100vw - 20px) !important;
+        max-width: calc(100vw - 20px) !important;
         box-sizing: border-box !important;
         word-wrap: break-word !important;
         overflow-wrap: break-word !important;
-        position: relative !important;
-        left: 0 !important;
-        right: auto !important;
-        transform: none !important;
+        word-break: break-word !important;
+        hyphens: auto !important;
+        overflow: hidden !important;
         display: block !important;
     }
     
-    /* Span dentro do título */
+    /* Mantém o span (Paula Marques) com destaque */
     .monolith-main-title span {
         display: inline !important;
-        text-align: left !important;
     }
     
-    /* Remove o <br> */
+    /* Remove o <br> forçado */
     .monolith-main-title br {
         display: none !important;
     }
@@ -3502,38 +4131,6 @@ html, body {
     }
     
     
-    /* ===== CORREÇÃO DO SEPARADOR ONDULADO NO MOBILE ===== */
-    .thread-divider-container {
-        height: 120px !important;
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-        overflow: hidden !important;
-    }
-    
-    .thread-luxury-layer {
-        height: 120px !important;
-    }
-    
-    .thread-luxury-layer svg {
-        height: 120px !important;
-        filter: none !important; /* Remove sombra pesada no mobile */
-    }
-    
-    .luxury-wire {
-        animation: none !important; /* Remove animação no mobile para performance */
-        opacity: 0.3 !important;
-    }
-    
-    .thread-solid-base {
-        height: 60px !important;
-    }
-    
-    .monolith-elite-section {
-        margin-top: -60px !important;
-        padding-top: 80px !important;
-    }
-    
-    
     /* ===== OUTRAS SEÇÕES QUE PODEM ESTAR SAINDO ===== */
     
     .monolith-editorial-split,
@@ -3569,10 +4166,18 @@ html, body {
         font-size: 0.65rem !important;
     }
 }
-
-/* ===== ESCONDER TEXTO MOBILE NO DESKTOP ===== */
-@media (min-width: 769px) {
-    .mobile-logo-text {
-        display: none !important;
+/* Mobile - mostra versão curta */
+@media (max-width: 768px) {
+    .desktop-title { display: none !important; }
+    .mobile-title { 
+        display: block !important;
+        font-size: 1.3rem !important;
+        padding: 0 15px !important;
     }
+}
+
+/* Desktop - mostra versão completa */
+@media (min-width: 769px) {
+    .mobile-title { display: none !important; }
+    .desktop-title { display: block !important; }
 }
