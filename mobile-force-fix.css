@@ -1,0 +1,166 @@
+/* ========================================
+   CORREÇÃO DEFINITIVA DO MENU MOBILE
+   Este arquivo DEVE ser carregado DEPOIS do style.css
+   ======================================== */
+
+/* IMPORTANTE: Remove o display:none da navbar no mobile */
+@media (max-width: 768px) {
+    .navbar {
+        display: flex !important; /* FORÇA a navbar a aparecer */
+        flex-direction: column;
+        height: auto !important;
+        padding: 15px 20px !important;
+    }
+    
+    .nav-container {
+        width: 100%;
+    }
+    
+    /* Esconde apenas o menu desktop */
+    .nav-menu {
+        display: none !important;
+    }
+    
+    /* Força o botão mobile a aparecer */
+    .mobile-toggle {
+        display: flex !important;
+        position: relative;
+        z-index: 10002;
+    }
+}
+
+/* Garantindo que o botão funcione em qualquer tela menor que 950px */
+@media (max-width: 950px) {
+    .mobile-toggle {
+        display: flex !important;
+    }
+    
+    .nav-menu {
+        display: none !important;
+    }
+}
+
+/* Estilos do Botão Mobile - OVERRIDE COMPLETO */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 10001 !important;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.mobile-toggle:hover {
+    background: rgba(245, 245, 247, 1) !important;
+    transform: scale(1.05);
+}
+
+/* Linhas do hambúrguer */
+.mobile-toggle .line {
+    width: 20px !important;
+    height: 2.5px !important;
+    background: #1d1d1f !important;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+/* Estado ATIVO - Vira X */
+.mobile-toggle.active {
+    gap: 0 !important;
+}
+
+.mobile-toggle.active .line:nth-child(1) {
+    transform: translateY(1.25px) rotate(45deg) !important;
+}
+
+.mobile-toggle.active .line:nth-child(2) {
+    transform: translateY(-1.25px) rotate(-45deg) !important;
+}
+
+/* Menu Mobile Overlay */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 10000 !important;
+    display: none;
+    flex-direction: column;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+.mobile-menu-overlay.active {
+    display: flex !important;
+}
+
+/* Lista do Menu Mobile */
+.mobile-list {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    gap: 0;
+}
+
+.m-item {
+    padding: 20px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 22px;
+    font-weight: 600;
+    border-bottom: 1px solid #f5f5f7;
+    transition: background 0.3s;
+}
+
+.m-item:hover {
+    background: #f5f5f7;
+}
+
+.m-group {
+    margin: 10px 0;
+}
+
+.m-label {
+    display: block;
+    padding: 15px 20px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #86868b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.m-sub {
+    display: block;
+    padding: 15px 20px 15px 40px;
+    text-decoration: none;
+    color: #1d1d1f;
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom: 1px solid #f5f5f7;
+    transition: background 0.3s;
+}
+
+.m-sub:hover {
+    background: #f5f5f7;
+}
+
+/* DEBUG - REMOVER DEPOIS DE FUNCIONAR */
+/* Descomentar para ver se o botão está aparecendo */
+/*
+.mobile-toggle {
+    border: 3px solid red !important;
+    background: yellow !important;
+}
+*/
