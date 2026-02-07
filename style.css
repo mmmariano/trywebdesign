@@ -1202,48 +1202,143 @@
         letter-spacing: 0.5px;
     }
 }
-/* BOTÃO HAMBÚRGUER / FECHAR */
+/* NAVBAR - Garantir que fique no topo de tudo */
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1100px;
+    height: 64px;
+    z-index: 10000 !important; /* Valor bem alto */
+    display: flex;
+    align-items: center;
+}
+
+/* BOTÃO MOBILE */
 .mobile-toggle {
-    display: none;
+    display: none; /* Escondido por padrão, aparece no media query */
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px; /* Espaço entre as duas linhas */
+    gap: 4px;
     width: 40px;
     height: 40px;
     background: #f5f5f7;
-    border: 1px solid rgba(0,0,0,0.05);
-    border-radius: 10px;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    z-index: 10001; /* Garante que fique acima de tudo */
     position: relative;
-    transition: all 0.3s ease;
+    z-index: 10001; /* Acima da navbar */
 }
 
 .mobile-toggle .line {
     width: 20px;
     height: 2px;
     background: #1d1d1f;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
-    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* TRANSFORMAÇÃO PARA O "X" (QUANDO ATIVO) */
-.mobile-toggle.active {
-    background: #e8e8ed;
-}
-
+/* O "X" - Quando a classe active for aplicada */
 .mobile-toggle.active .line:nth-child(1) {
-    /* Move a linha para baixo e gira */
-    transform: translateY(3.5px) rotate(45deg);
+    transform: translateY(3px) rotate(45deg);
 }
 
 .mobile-toggle.active .line:nth-child(2) {
-    /* Move a linha para cima e gira */
-    transform: translateY(-3.5px) rotate(-45deg);
+    transform: translateY(-3px) rotate(-45deg);
 }
 
-/* EXIBIÇÃO NO CELULAR */
+/* MENU MOBILE (OVERLAY) */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 9000; /* Menor que a navbar (10000) */
+    display: none;
+    flex-direction: column;
+    padding-top: 100px; /* Espaço para não bater na navbar */
+}
+
+.mobile-menu-overlay.active {
+    display: flex !important;
+}
+
+/* MEDIA QUERY */
+@media (max-width: 950px) {
+    .mobile-toggle {
+        display: flex !important;
+    }
+}
+/* NAVBAR - Garantir que fique no topo de tudo */
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1100px;
+    height: 64px;
+    z-index: 10000 !important; /* Valor bem alto */
+    display: flex;
+    align-items: center;
+}
+
+/* BOTÃO MOBILE */
+.mobile-toggle {
+    display: none; /* Escondido por padrão, aparece no media query */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 40px;
+    height: 40px;
+    background: #f5f5f7;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    z-index: 10001; /* Acima da navbar */
+}
+
+.mobile-toggle .line {
+    width: 20px;
+    height: 2px;
+    background: #1d1d1f;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* O "X" - Quando a classe active for aplicada */
+.mobile-toggle.active .line:nth-child(1) {
+    transform: translateY(3px) rotate(45deg);
+}
+
+.mobile-toggle.active .line:nth-child(2) {
+    transform: translateY(-3px) rotate(-45deg);
+}
+
+/* MENU MOBILE (OVERLAY) */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 9000; /* Menor que a navbar (10000) */
+    display: none;
+    flex-direction: column;
+    padding-top: 100px; /* Espaço para não bater na navbar */
+}
+
+.mobile-menu-overlay.active {
+    display: flex !important;
+}
+
+/* MEDIA QUERY */
 @media (max-width: 950px) {
     .mobile-toggle {
         display: flex !important;
