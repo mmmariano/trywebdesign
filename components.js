@@ -23,7 +23,13 @@ const navbarHTML = `
     </div>
 
     <div class="nav-right" style="display: flex; align-items: center; gap: 12px;">
-        <a href="/iniciarprojeto/" class="cta-silver"><span>INICIAR PROJETO</span><div class="shimmer"></div></a>
+
+        <a href="/iniciarprojeto/" class="cta-silver"><span>INICIAR<span class="hide-mobile"> PROJETO</span></span><div class="shimmer"></div></a>
+
+ 
+
+
+
         <button class="mobile-toggle" id="mobileToggle">
             <span class="line"></span>
             <span class="line"></span>

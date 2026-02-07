@@ -1188,3 +1188,17 @@
     display: block !important;
     opacity: 1 !important;
 }
+/* --- AJUSTE MOBILE PARA O BOTÃO DA NAV --- */
+@media (max-width: 480px) {
+    /* Esconde a palavra PROJETO */
+    .hide-mobile {
+        display: none;
+    }
+
+    /* Ajusta levemente o tamanho do botão para não ficar desproporcional */
+    .cta-silver {
+        padding: 10px 15px !important;
+        font-size: 12px !important;
+        letter-spacing: 0.5px;
+    }
+}
