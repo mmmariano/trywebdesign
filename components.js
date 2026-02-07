@@ -23,6 +23,7 @@ const navbarHTML = `
     </div>
 
     <div class="nav-right" style="display: flex; align-items: center; gap: 12px;">
+
         <a href="/iniciarprojeto/" class="cta-silver"><span>INICIAR<span class="hide-mobile"> PROJETO</span></span><div class="shimmer"></div></a>
 
         <button class="mobile-toggle" id="mobileToggle">
@@ -96,53 +97,62 @@ function setupNavbar() {
     const navElement = document.getElementById('navbar');
     const footerElement = document.getElementById('main-footer');
 
-    // Injeta o HTML da navbar
     if (navElement) {
         navElement.innerHTML = navbarHTML;
         
-        // Pega os elementos APÓS injetar o HTML
+        // Ativa o clique IMEDIATAMENTE após inserir o HTML
         const toggle = document.getElementById('mobileToggle');
         const menu = document.getElementById('mobileMenu');
 
         if (toggle && menu) {
-            // Evento de clique
-            toggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Alterna as classes
+            toggle.onclick = function() {
                 toggle.classList.toggle('active');
                 menu.classList.toggle('active');
                 
-                // Controla o scroll do body
+                if (menu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                    menu.style.display = 'flex'; // Força o display flex
+                } else {
+                    document.body.style.overflow = '';
+                    menu.style.display = 'none'; // Esconde completamente
+                }
+            };
+        }
+    }
+
+    if (footerElement) footerElement.innerHTML = footerHTML;
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+// Inicia tudo
+document.addEventListener("DOMContentLoaded", setupNavbar);
+function setupNavbar() {
+    const navElement = document.getElementById('navbar');
+    const footerElement = document.getElementById('main-footer');
+
+    if (navElement) {
+        navElement.innerHTML = navbarHTML;
+        
+        const toggle = document.getElementById('mobileToggle');
+        const menu = document.getElementById('mobileMenu');
+
+        if (toggle && menu) {
+            toggle.onclick = function(e) {
+                e.preventDefault();
+                // Toggle simples de classes
+                toggle.classList.toggle('active');
+                menu.classList.toggle('active');
+                
+                // Trava o scroll do corpo quando o menu está aberto
                 if (menu.classList.contains('active')) {
                     document.body.style.overflow = 'hidden';
                 } else {
                     document.body.style.overflow = '';
                 }
-            });
-
-            // Fecha o menu ao clicar em um link
-            const menuLinks = menu.querySelectorAll('a');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    toggle.classList.remove('active');
-                    menu.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
-            });
+            };
         }
     }
 
-    // Injeta o footer
-    if (footerElement) {
-        footerElement.innerHTML = footerHTML;
-    }
-
-    // Inicializa os ícones do Lucide
-    if (typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    if (footerElement) footerElement.innerHTML = footerHTML;
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 }
-
-// Executa quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', setupNavbar);
