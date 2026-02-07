@@ -175,6 +175,10 @@
             .navbar { display: none; } /* Mobile Menu simplificado geralmente usa hambúrguer, mas mantivemos o foco no desktop premium */
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
         }
+        @media (max-width: 768px) {
+    .nav-menu { display: none !important; }
+    .mobile-toggle { display: flex !important; }
+}
         /* CSS ESPECÍFICO PARA DEPOIMENTOS COM PREVIEW */
     .testimonials-grid {
         display: grid;
