@@ -1344,3 +1344,88 @@
         display: flex !important;
     }
 }
+/* ========================================
+   CORREÇÃO DO BOTÃO MOBILE (X)
+   ======================================== */
+
+/* Botão Mobile - Estrutura Base */
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px; /* Espaço entre as linhas */
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 10001;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.mobile-toggle:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+/* As duas linhas do hambúrguer */
+.mobile-toggle .line {
+    width: 20px;
+    height: 2.5px;
+    background: #1d1d1f;
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* QUANDO ATIVO - TRANSFORMA EM X */
+.mobile-toggle.active {
+    gap: 0; /* Remove o gap quando vira X */
+}
+
+.mobile-toggle.active .line:nth-child(1) {
+    transform: translateY(1.25px) rotate(45deg); /* Linha de cima gira 45° */
+}
+
+.mobile-toggle.active .line:nth-child(2) {
+    transform: translateY(-1.25px) rotate(-45deg); /* Linha de baixo gira -45° */
+}
+
+/* Overlay do Menu Mobile */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 10000;
+    display: none;
+    flex-direction: column;
+    padding-top: 100px;
+    overflow-y: auto;
+}
+
+.mobile-menu-overlay.active {
+    display: flex !important;
+}
+
+/* Mostra o botão apenas em telas pequenas */
+@media (max-width: 768px) {
+    .mobile-toggle {
+        display: flex !important;
+    }
+}
+
+/* ========================================
+   TESTE VISUAL (REMOVER SE JÁ FUNCIONAR)
+   ======================================== */
+
+/* Se quiser FORÇAR o botão a aparecer sempre (só para testar): */
+/*
+.mobile-toggle {
+    display: flex !important;
+}
+*/
