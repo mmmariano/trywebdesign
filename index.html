@@ -69,51 +69,62 @@
         </div>
     </div>
 </section>
-<!-- SEÇÃO DE DEPOIMENTOS - APPLE DESIGN SYSTEM -->
-<section id="testimonials" class="section-padding bg-grey">
-    <div class="container">
-       <div class="section-header reveal">
-    <h2>O sucesso de quem <br><span style="color: #86868b">confiou em nosso trabalho.</span></h2>
-</div>
+
+    <!-- SEÇÃO DE DEPOIMENTOS - APPLE DESIGN SYSTEM -->
+    <section id="testimonials" class="section-padding bg-grey">
+        <div class="container">
+        <div class="section-header reveal">
+        <h2>O sucesso de quem <br><span style="color: #86868b">confiou em nosso trabalho.</span></h2>
+    </div>
 
         <div class="testimonials-grid">
-            
-      <!-- Depoimento: Lovisetto Contabilidade -->
+     <!-- Depoimento: Lovisetto Contabilidade -->
 <div class="testimonial-card reveal-card">
     <div class="site-preview">
-        <!-- Mockup de Janela do macOS -->
         <div class="browser-dots"><span></span><span></span><span></span></div>
-        <img src="lovisettoportifolio.webp" alt="Site Lovisetto Contabilidade">
+        <img src="lovisettoportifolio.webp" alt="Escritório de contabilidade Lovisetto">
     </div>
     <div class="testimonial-content">
         <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-        <p class="testimonial-text">
-            "A nova interface transmite a segurança e a precisão que nossos clientes corporativos exigem. O resultado superou todas as expectativas em termos de autoridade e performance."
-        </p>
+        
+        <div class="text-container collapsed" id="containerPatricia">
+            <p class="testimonial-text">
+                "O desenvolvimento do site da minha empresa de contabilidade foi essencial para fortalecer a imagem no mercado. O trabalho realizado pelo Mateus conseguiu transmitir com clareza, profissionalismo, organização e, principalmente, confiabilidade — fatores indispensáveis para quem atua na área contábil.
+                <br><br>
+                Após o lançamento do site, percebi uma melhora significativa na percepção dos clientes, que passaram a enxergar a empresa como mais sólida e bem posicionada. O site se tornou uma ferramenta estratégica para captação de clientes, apresentar os serviços oferecidos, reforçar a credibilidade e consolidar a presença no mercado.
+                <br><br>
+                Recomendo o trabalho do Mateus pela disponibilidade, competência, atenção aos detalhes e pela capacidade de traduzir a identidade da empresa em um ambiente digital claro e confiável"
+            </p>
+        </div>
+        
+        <button type="button" class="read-more-btn" onclick="togglePatricia(this)">
+            <span>Mais Informações</span>
+            <i data-lucide="chevron-down" size="14"></i>
+        </button>
+
         <div class="testimonial-footer">
             <span class="client-name">Patricia</span>
             <span class="client-info">Gestão Contábil & Tributária</span>
         </div>
     </div>
 </div>
-             <!-- 01: Miguel - I.M.A -->
+            <!-- 01: Miguel - I.M.A -->
             <div class="testimonial-card reveal-card">
                 <div class="site-preview">
                     <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <img src="imaportifolio.webp" alt="Site I.M.A Soluções">
+                    <img src="psipaulamarques-portifolio.webp" alt="Site I.M.A Soluções">
                 </div>
                 <div class="testimonial-content">
                     <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
                     <p class="testimonial-text">
-                        "O site trouxe o nível de autoridade que a I.M.A precisava para escalar no digital. O design é impecável e muito rápido."
+                        "Impressionada com a rapidez e a qualidade. O projeto foi entregue em tempo recorde e o visual superou todas as minhas expectativas. Excelente trabalho!"
                     </p>
                     <div class="testimonial-footer">
-                        <span class="client-name">Miguel</span>
-                        <span style="color: #86868b" class="client-info">I.M.A Soluções</span>
+                        <span class="client-name">Dra Paula Marques</span>
+                        <span style="color: #86868b" class="client-info">Psicóloga Paula Marques</span>
                     </div>
                 </div>
             </div>
-
            
             <!-- 03: Karina Guimarães -->
             <div class="testimonial-card reveal-card">
@@ -186,7 +197,8 @@
                     </div>
                 </div>
             </div>
- <!-- 02: Paola Barbosa -->
+            
+            <!-- 07: Paola Barbosa -->
             <div class="testimonial-card reveal-card">
                 <div class="site-preview">
                     <div class="browser-dots"><span></span><span></span><span></span></div>
@@ -200,6 +212,24 @@
                     <div class="testimonial-footer">
                         <span class="client-name">Paola Barbosa</span>
                         <span class="client-info">Psicóloga Clínica</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 08: Miguel - I.M.A -->
+            <div class="testimonial-card reveal-card">
+                <div class="site-preview">
+                    <div class="browser-dots"><span></span><span></span><span></span></div>
+                    <img src="imaportifolio.webp" alt="Site I.M.A Soluções">
+                </div>
+                <div class="testimonial-content">
+                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
+                    <p class="testimonial-text">
+                        "O site trouxe o nível de autoridade que a I.M.A precisava para escalar no digital. O design é impecável e muito rápido."
+                    </p>
+                    <div class="testimonial-footer">
+                        <span class="client-name">Miguel</span>
+                        <span style="color: #86868b" class="client-info">I.M.A Soluções</span>
                     </div>
                 </div>
             </div>
@@ -448,6 +478,6 @@ document.getElementById('meuFormulario').addEventListener('submit', function(e) 
     });
 });
 </script>
-            
+<script src="script.js"></script>    
 </body>
 </html>

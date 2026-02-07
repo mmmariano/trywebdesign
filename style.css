@@ -1067,3 +1067,124 @@
     color: #1d1d1f;
     text-decoration: none;
 }
+/* --- ESTILO DO CARD EXPANSÍVEL --- */
+.text-container {
+    max-height: 100px; /* Esconde o texto */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease;
+}
+
+/* Classe que o JavaScript vai aplicar */
+.text-container.aberto {
+    max-height: 1500px !important;
+}
+
+/* Sombra para o fundo cinza da seção */
+.text-container.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(transparent, #f5f5f7);
+    pointer-events: none;
+}
+
+/* Estilo do Botão */
+.read-more-btn {
+    background: #e8e8ed;
+    border: none;
+    color: #0071e3;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 15px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Garante que a imagem não suma */
+.site-preview {
+    display: block !important;
+    height: 180px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* --- CONTAINER DE TEXTO (FADE SUAVE) --- */
+.text-container {
+    max-height: 90px; /* Mais curto para um visual mais limpo */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-container.aberto {
+    max-height: 1200px !important;
+}
+
+/* O gradiente agora é mais sutil e longo */
+.text-container.collapsed::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(transparent, #f5f5f7); /* Cor do fundo da seção */
+    pointer-events: none;
+    transition: opacity 0.4s;
+}
+
+.text-container.aberto::after { opacity: 0; }
+
+/* --- BOTÃO ULTRA-CLEAN --- */
+.read-more-btn {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borda quase invisível */
+    color: #515154; /* Cinza escuro elegante */
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    margin: 15px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.read-more-btn:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+    color: #1d1d1f;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Micro-animação da setinha */
+.read-more-btn i {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.read-more-btn.active {
+    background: #1d1d1f;
+    color: #fff;
+    border-color: #1d1d1f;
+}
+
+.read-more-btn.active i {
+    transform: rotate(180deg);
+}
+
+/* Garantia da imagem do portfólio */
+.site-preview {
+    display: block !important;
+    opacity: 1 !important;
+}
