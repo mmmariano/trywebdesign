@@ -17,7 +17,7 @@ const navbarHTML = `
                 <a href="/solucoes/e-commerce" class="dropdown-link">E-Commerce</a>
             </div>
         </div>
-        <a href="/portifolio/" class="nav-item-tech"><div class="icon-box"><i data-lucide="layers"></i></div><span>Portfólio</span></a>
+        <a href="/portfolio/" class="nav-item-tech"><div class="icon-box"><i data-lucide="layers"></i></div><span>Portfólio</span></a>
         <a href="/sobre/" class="nav-item-tech"><div class="icon-box"><i data-lucide="user"></i></div><span>Sobre</span></a>
         <a href="/#contato" class="nav-item-tech"><div class="icon-box"><i data-lucide="send"></i></div><span>Contato</span></a>
     </div>
@@ -44,7 +44,7 @@ const navbarHTML = `
                 <a href="/solucoes/landing-pages" class="m-sub">Landing Pages</a>
                 <a href="/solucoes/e-commerce" class="m-sub">E-Commerce</a>
             </div>
-            <a href="/portifolio/" class="m-item">Portfólio</a>
+            <a href="/portfolio/" class="m-item">Portfólio</a>
             <a href="/sobre/" class="m-item">Sobre</a>
             <a href="/#contato" class="m-item">Contato</a>
         </nav>
@@ -65,7 +65,7 @@ const footerHTML = `
                 <h4>Explorar</h4>
                 <a href="/">Início</a>
                 <a href="/solucoes/">Soluções</a>
-                <a href="/portifolio/">Portifólio</a>
+                <a href="/portfolio/">Portfólio</a>
                 <a href="/sobre/">Sobre</a>
                 <a href="/iniciarprojeto/">Iniciar Projeto</a>
             </div>
