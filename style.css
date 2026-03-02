@@ -1344,3 +1344,10 @@
         display: flex !important;
     }
 }
+.suffix-h-plus::after {
+    content: "h+";
+    /* Estilização opcional para o h+ não ficar gigante */
+    font-size: 0.7em; 
+    margin-left: 2px;
+    vertical-align: middle;
+}
