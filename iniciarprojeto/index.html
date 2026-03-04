@@ -170,24 +170,29 @@
                 <form id="preview-form">
                     <input type="hidden" name="access_key" value="0b16ed46-9c5c-4f5b-b192-89c76fce3640">
                     <!-- Seção 1 -->
-                    <div class="section-title">
-                        <i data-lucide="building-2" size="20"></i>
-                        <span>1. O Negócio</span>
-                    </div>
-                    <div class="field-row">
-                        <div class="field-group">
-                            <label>Nome da Empresa</label>
-                            <input type="text" name="empresa" placeholder="Ex: Studio Alpha">
-                        </div>
-                        <div class="field-group">
-                            <label>Seu Nome</label>
-                            <input type="text" name="responsavel" placeholder="Como te chamamos?">
-                        </div>
-                    </div>
-                    <div class="field-group">
-                        <label>O que seu negócio faz?</label>
-                        <textarea name="descricao" rows="2" placeholder="Resuma seu produto ou serviço..."></textarea>
-                    </div>
+<div class="section-title">
+    <i data-lucide="building-2" size="20"></i>
+    <span>1. O Negócio</span>
+</div>
+<div class="field-row">
+    <div class="field-group">
+        <label>Nome da Empresa</label>
+        <input type="text" name="empresa" placeholder="Ex: Studio Alpha">
+    </div>
+    <div class="field-group">
+        <label>Seu Nome</label>
+        <input type="text" name="responsavel" placeholder="Como te chamamos?">
+    </div>
+</div>
+<!-- NOVO CAMPO WHATSAPP ABAIXO -->
+<div class="field-group">
+    <label>WhatsApp (com DDD)</label>
+    <input type="tel" name="whatsapp" placeholder="(00) 00000-0000" required>
+</div>
+<div class="field-group">
+    <label>O que seu negócio faz?</label>
+    <textarea name="descricao" rows="2" placeholder="Resuma seu produto ou serviço..."></textarea>
+</div>
 
                     <!-- Seção 2 -->
                     <div class="section-title" style="margin-top: 50px;">
@@ -386,6 +391,23 @@
             );
         });
     });
+</script>
+<script>
+    const handlePhone = (event) => {
+        let input = event.target
+        input.value = phoneMask(input.value)
+    }
+
+    const phoneMask = (value) => {
+        if (!value) return ""
+        value = value.replace(/\D/g, '')
+        value = value.replace(/(\d{2})(\d)/, "($1) $2")
+        value = value.replace(/(\d)(\d{4})$/, "$1-$2")
+        return value
+    }
+
+    // Aplica a máscara ao campo whatsapp
+    document.querySelector('input[name="whatsapp"]').addEventListener('keyup', handlePhone);
 </script>
 </body>
 </html>
