@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juris Prospéct | Escalamos Escritórios Previdenciários</title>
+  <meta name="description" content="Escalamos escritórios previdenciários através do tráfego pago e treinamentos comerciais. Kesley Ramos Guedes — (83) 99869-8607.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&family=Inter:wght@200;300;400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+  <style>
+    :root {
+      --azul:   #0F1C2E;
+      --azul2:  #16263F;
+      --azul3:  #0F1C2E;
+      --ouro:   #C6A75E;
+      --ouro2:  #E2C47A;
+      --ouro3:  #C6A75E;
+      --branco: #F5F3EE;
+    }
+
+    body {
+      background-color: var(--azul3);
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .oswald { font-family: 'Oswald', sans-serif; }
+
+    /* Gradiente Dourado */
+    .text-gold {
+      background: linear-gradient(to right, #9a7a2e, #E2C47A, #8B6E35, #d4aa60, #7a5c1e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, var(--ouro3) 0%, var(--ouro) 50%, var(--ouro3) 100%);
+    }
+
+    /* Vídeo overlay */
+    .video-overlay {
+      background: radial-gradient(circle, rgba(15,28,46,0.3) 0%, rgba(15,28,46,0.88) 100%);
+    }
+
+    /* Navbar glass */
+    .nav-glass {
+      background: rgba(15,28,46,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(198,167,94,0.12);
+    }
+
+    /* Stroke outline */
+    .stroke-gold {
+      -webkit-text-stroke: 1px var(--ouro);
+      color: transparent;
+    }
+
+    /* Btn premium shine */
+    .btn-premium {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(198,167,94,0.3);
+    }
+    .btn-premium::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%;
+      width: 20%; height: 200%;
+      background: rgba(255,255,255,0.18);
+      transform: rotate(30deg);
+      transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+    .btn-premium:hover::after { left: 120%; }
+    .btn-premium:hover {
+      box-shadow: 0 0 24px rgba(198,167,94,0.35);
+      transform: translateY(-2px);
+    }
+
+    /* Swiper */
+    .swiper-pagination-bullet { background: var(--ouro) !important; opacity: .5; }
+    .swiper-pagination-bullet-active { background: var(--ouro2) !important; opacity: 1; transform: scale(1.2); }
+    .swiper-button-next, .swiper-button-prev { color: var(--ouro) !important; }
+
+    /* Problem card hover glow */
+    .prob-glow {
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(135deg, var(--ouro3), var(--ouro));
+      border-radius: 2px;
+      opacity: 0;
+      filter: blur(4px);
+      transition: opacity 0.8s ease;
+    }
+    .group:hover .prob-glow { opacity: 0.22; }
+
+    /* MVV border animated */
+    .mvv-line {
+      width: 3rem; height: 1px;
+      background: var(--ouro);
+      transition: width .6s ease;
+    }
+    .group:hover .mvv-line { width: 5rem; }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .025;
+    }
+
+    /* Marquee */
+    @keyframes marquee { to { transform: translateX(-50%); } }
+    .marquee-run { animation: marquee 24s linear infinite; }
+
+    footer {
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Scroll reveal base (handled by AOS) */
+    [data-aos] { position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="fixed w-full z-[100] transition-all duration-500 py-5 px-6 md:px-12 flex justify-between items-center nav-glass" id="nav">
+  <div class="text-xl md:text-2xl font-bold uppercase tracking-[0.18em] oswald">
+    JURIS <span class="text-gold">PROSPÉCT</span>
+  </div>
+  <div class="hidden lg:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.4em]">
+    <a href="#problema"    class="hover:text-yellow-400 transition">Diagnóstico</a>
+    <a href="#metodo"      class="hover:text-yellow-400 transition">Método</a>
+    <a href="#resultados"  class="hover:text-yellow-400 transition">Resultados</a>
+    <a href="#depoimentos" class="hover:text-yellow-400 transition">Cases</a>
+    <a href="#contato"     class="text-gold">Contato</a>
+  </div>
+  <a href="https://jurisprospects.quillforms.app/forms/primium-consult" target="_blank"
+     class="btn-premium bg-gold-gradient px-7 py-3 text-[9px] font-black uppercase tracking-widest" style="color:#0F1C2E">
+    Diagnóstico Gratuito
+  </a>
+</nav>
+
+<!-- ══ HERO — VIDEO BACKGROUND ══ -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+    <source src="jurisprospect.mp4" type="video/mp4">
+  </video>
+  <div class="absolute inset-0 video-overlay z-10"></div>
+
+  <!-- Linhas decorativas verticais -->
+  <div class="absolute inset-0 z-10 pointer-events-none flex justify-end pr-[6vw]">
+    <div class="flex gap-px h-full opacity-[0.06]">
+      <span class="w-px bg-white"></span>
+      <span class="w-px bg-white mx-6"></span>
+      <span class="w-px bg-white"></span>
+    </div>
+  </div>
+
+  <div class="relative z-20 text-center px-4 max-w-5xl" data-aos="fade-up" data-aos-duration="1400">
+    <span class="text-gold text-[11px] md:text-xs uppercase tracking-[1.4em] font-bold mb-8 block">
+      Especialistas em Advocacia Previdenciária
+    </span>
+    <h1 class="text-5xl md:text-[108px] font-light uppercase tracking-tighter leading-[0.88] mb-12 oswald">
+      SEU ESCRITÓRIO<br>
+      <span class="stroke-gold font-black italic">MERECE ESCALAR.</span>
+    </h1>
+    <p class="text-white/50 text-base md:text-lg font-light max-w-xl mx-auto mb-12 leading-relaxed">
+      Escalamos escritórios previdenciários através do tráfego pago e treinamentos comerciais.
+    </p>
+    <div class="flex flex-col md:flex-row gap-5 justify-center items-center">
+      <a href="https://jurisprospects.quillforms.app/forms/primium-consult" target="_blank"
+         class="btn-premium bg-gold-gradient px-12 py-4 font-black uppercase text-[10px] tracking-widest" style="color:#0F1C2E">
+        Solicitar Diagnóstico Gratuito
+      </a>
+      <a href="https://wa.me/5583998698607" target="_blank"
+         class="px-12 py-4 border border-[rgba(198,167,94,0.4)] text-[var(--ouro)] font-black uppercase text-[10px] tracking-widest hover:bg-[rgba(198,167,94,0.1)] transition-all">
+        Falar com Kesley
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero bottom stats bar -->
+  <div class="absolute bottom-0 left-0 right-0 z-20 flex flex-wrap border-t border-[rgba(198,167,94,0.15)]" data-aos="fade-up" data-aos-delay="600">
+    <div class="flex-1 min-w-[140px] py-6 px-8 border-r border-[rgba(198,167,94,0.1)] hover:bg-[rgba(198,167,94,0.04)] transition-colors">
+      <span class="oswald text-3xl font-bold text-[var(--ouro)] block leading-none" data-counter="3" data-suffix="×">3×</span>
+      <span class="text-[9px] uppercase tracking-widest text-white/40 mt-1 block">Escala média</span>
+    </div>
+    <div class="flex-1 min-w-[140px] py-6 px-8 border-r border-[rgba(198,167,94,0.1)] hover:bg-[rgba(198,167,94,0.04)] transition-colors">
+      <span class="oswald text-3xl font-bold text-[var(--ouro)] block leading-none">60d</span>
+      <span class="text-[9px] uppercase tracking-widest text-white/40 mt-1 block">Primeiros resultados</span>
+    </div>
+    <div class="flex-1 min-w-[140px] py-6 px-8 border-r border-[rgba(198,167,94,0.1)] hover:bg-[rgba(198,167,94,0.04)] transition-colors">
+      <span class="oswald text-3xl font-bold text-[var(--ouro)] block leading-none">+120%</span>
+      <span class="text-[9px] uppercase tracking-widest text-white/40 mt-1 block">Aumento em captação</span>
+    </div>
+    <div class="flex-1 min-w-[140px] py-6 px-8 hover:bg-[rgba(198,167,94,0.04)] transition-colors">
+      <span class="oswald text-3xl font-bold text-[var(--ouro)] block leading-none">100%</span>
+      <span class="text-[9px] uppercase tracking-widest text-white/40 mt-1 block">Foco previdenciário</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MARQUEE ══ -->
+<div class="bg-[var(--ouro)] overflow-hidden py-[14px] relative z-10">
+  <div class="flex w-max marquee-run">
+    <span class="inline-flex items-center gap-6 px-6 text-[10px] font-black uppercase tracking-[.2em] text-[#0A1520] whitespace-nowrap">Tráfego Pago <span class="opacity-40">◆</span> Treinamento Comercial <span class="opacity-40">◆</span> Leads Qualificados <span class="opacity-40">◆</span> Contratos Fechados <span class="opacity-40">◆</span> Escala Previsível <span class="opacity-40">◆</span> Advocacia Previdenciária <span class="opacity-40">◆</span></span>
+    <span class="inline-flex items-center gap-6 px-6 text-[10px] font-black uppercase tracking-[.2em] text-[#0A1520] whitespace-nowrap">Tráfego Pago <span class="opacity-40">◆</span> Treinamento Comercial <span class="opacity-40">◆</span> Leads Qualificados <span class="opacity-40">◆</span> Contratos Fechados <span class="opacity-40">◆</span> Escala Previsível <span class="opacity-40">◆</span> Advocacia Previdenciária <span class="opacity-40">◆</span></span>
+  </div>
+</div>
+
+<!-- ══ DIAGNÓSTICO / PROBLEMA ══ -->
+<section id="problema" class="py-32 bg-[var(--branco)] relative z-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <span class="text-[var(--ouro3)] font-bold uppercase tracking-[0.6em] text-[10px] block mb-4" data-aos="fade-up">O Diagnóstico</span>
+    <h2 class="text-6xl md:text-8xl font-black uppercase oswald italic leading-none mb-20 text-[var(--azul)]" data-aos="fade-up">
+      Por que escritórios<br><span style="-webkit-text-stroke:2px var(--ouro3); color:transparent;">não escalam?</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-[rgba(15,28,46,0.08)]">
+
+      <!-- Card 1 -->
+      <div class="group relative bg-[var(--branco)] overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+        <div class="prob-glow"></div>
+        <div class="relative p-12 border-l-4 border-transparent group-hover:border-[var(--ouro3)] transition-all duration-500">
+          <span class="oswald text-[5rem] font-black text-[rgba(15,28,46,0.05)] absolute top-4 right-6 leading-none group-hover:text-[rgba(139,110,53,0.1)] transition-all">01</span>
+          <div class="w-12 h-12 border border-[rgba(139,110,53,0.3)] flex items-center justify-center mb-6 text-[var(--ouro3)] text-lg">◎</div>
+          <h3 class="oswald text-2xl font-bold uppercase text-[var(--azul)] mb-3">Sem Previsibilidade</h3>
+          <p class="text-[#5a6070] text-sm leading-relaxed font-light">A captação oscila com indicações e sorte. Meses de pico e meses de seca — sem qualquer controle sobre o volume de novos contratos.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group relative bg-[var(--branco)] overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+        <div class="prob-glow"></div>
+        <div class="relative p-12 border-l-4 border-transparent group-hover:border-[var(--ouro3)] transition-all duration-500">
+          <span class="oswald text-[5rem] font-black text-[rgba(15,28,46,0.05)] absolute top-4 right-6 leading-none group-hover:text-[rgba(139,110,53,0.1)] transition-all">02</span>
+          <div class="w-12 h-12 border border-[rgba(139,110,53,0.3)] flex items-center justify-center mb-6 text-[var(--ouro3)] text-lg">△</div>
+          <h3 class="oswald text-2xl font-bold uppercase text-[var(--azul)] mb-3">Tráfego Sem Método</h3>
+          <p class="text-[#5a6070] text-sm leading-relaxed font-light">Agências genéricas não conhecem o cliente previdenciário. Verba desperdiçada em anúncios que trazem curiosos — não pessoas prontas para contratar.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group relative bg-[var(--branco)] overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+        <div class="prob-glow"></div>
+        <div class="relative p-12 border-l-4 border-transparent group-hover:border-[var(--ouro3)] transition-all duration-500">
+          <span class="oswald text-[5rem] font-black text-[rgba(15,28,46,0.05)] absolute top-4 right-6 leading-none group-hover:text-[rgba(139,110,53,0.1)] transition-all">03</span>
+          <div class="w-12 h-12 border border-[rgba(139,110,53,0.3)] flex items-center justify-center mb-6 text-[var(--ouro3)] text-lg">◻</div>
+          <h3 class="oswald text-2xl font-bold uppercase text-[var(--azul)] mb-3">Equipe Sem Processo</h3>
+          <p class="text-[#5a6070] text-sm leading-relaxed font-light">Ótimos advogados, processo de vendas inexistente. Consultas que deveriam virar contratos terminam em "vou pensar" — e o dinheiro escapa.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="group relative bg-[var(--branco)] overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+        <div class="prob-glow"></div>
+        <div class="relative p-12 border-l-4 border-transparent group-hover:border-[var(--ouro3)] transition-all duration-500">
+          <span class="oswald text-[5rem] font-black text-[rgba(15,28,46,0.05)] absolute top-4 right-6 leading-none group-hover:text-[rgba(139,110,53,0.1)] transition-all">04</span>
+          <div class="w-12 h-12 border border-[rgba(139,110,53,0.3)] flex items-center justify-center mb-6 text-[var(--ouro3)] text-lg">⬡</div>
+          <h3 class="oswald text-2xl font-bold uppercase text-[var(--azul)] mb-3">Escritório Estagnado</h3>
+          <p class="text-[#5a6070] text-sm leading-relaxed font-light">Você domina o direito previdenciário, mas o negócio não cresce. Crescer significa trabalhar mais — e não ganhar mais.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ MÉTODO ACP ══ -->
+<section id="metodo" class="pt-32 pb-10 bg-[#16263F] overflow-hidden relative z-10">
+
+  <!-- Watermark -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none opacity-[0.03]">
+    <h2 class="oswald text-[22vw] font-black uppercase leading-none">ACP </h2>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 mb-20">
+    <span class="text-[var(--ouro)] font-bold uppercase tracking-[0.6em] text-[10px] block mb-4" data-aos="fade-up">O Método</span>
+    <h2 class="text-6xl md:text-8xl font-black uppercase oswald italic leading-none" data-aos="fade-up">
+      Blueprint <span class="text-gold">ACP </span><span class="text-[var(--ouro)]">. </span>
+    </h2>
+    <p class="text-white/40 mt-6 max-w-2xl uppercase tracking-widest text-xs leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+      Três pilares integrados e testados em escritórios previdenciários. Uma máquina desenhada especificamente para o mercado da advocacia previdenciária.
+    </p>
+  </div>
+
+  <div class="swiper metodSwiper px-4 !overflow-visible">
+    <div class="swiper-wrapper">
+
+      <!-- Step 1 -->
+      <div class="swiper-slide group relative h-[640px] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[var(--azul3)] to-[var(--azul2)]"></div>
+        <div class="absolute inset-0 border border-[rgba(198,167,94,0.15)] group-hover:border-[rgba(198,167,94,0.4)] transition-all duration-700"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-10 md:p-12 transform group-hover:-translate-y-4 transition-transform duration-500">
+          <div class="w-16 h-[2px] bg-gradient-to-r from-[var(--ouro)] to-[var(--ouro3)] mb-6"></div>
+          <span class="text-[var(--ouro)] text-[9px] font-black uppercase tracking-[.3em] block mb-3">Pilar 01 / Tráfego Estratégico</span>
+          <h3 class="text-4xl md:text-5xl font-black uppercase oswald italic tracking-tighter text-white mb-4">
+            Atrair<br><span class="text-[var(--ouro)]">o cliente certo.</span>
+          </h3>
+          <p class="text-white/50 text-sm uppercase tracking-[0.15em] font-light max-w-sm leading-relaxed">
+            Campanhas com segmentação cirúrgica para o público previdenciário. Leads que já precisam do seu serviço.
+          </p>
+          <a href="https://jurisprospects.quillforms.app/forms/primium-consult" target="_blank"
+             class="inline-block mt-8 px-8 py-3 bg-white/5 backdrop-blur-md border border-[rgba(198,167,94,0.3)] text-[var(--ouro)] text-[10px] font-black uppercase tracking-widest hover:bg-[var(--ouro)] hover:text-[var(--azul3)] transition-all">
+            Quero Atrair Clientes
+          </a>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="swiper-slide group relative h-[640px] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[var(--azul2)] to-[var(--azul)]"></div>
+        <div class="absolute inset-0 border border-[rgba(198,167,94,0.15)] group-hover:border-[rgba(198,167,94,0.4)] transition-all duration-700"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-10 md:p-12 transform group-hover:-translate-y-4 transition-transform duration-500">
+          <div class="w-16 h-[2px] bg-gradient-to-r from-[var(--ouro)] to-[var(--ouro3)] mb-6"></div>
+          <span class="text-[var(--ouro)] text-[9px] font-black uppercase tracking-[.3em] block mb-3">Pilar 02 / Treinamento Comercial</span>
+          <h3 class="text-4xl md:text-5xl font-black uppercase oswald italic tracking-tighter text-white mb-4">
+            Converter<br><span class="text-[var(--ouro)]">consulta em contrato.</span>
+          </h3>
+          <p class="text-white/50 text-sm uppercase tracking-[0.15em] font-light max-w-sm leading-relaxed">
+            Scripts, gestão de objeções, follow-up. Transformamos atendimento em método replicável e mensurável.
+          </p>
+          <a href="https://jurisprospects.quillforms.app/forms/primium-consult" target="_blank"
+             class="inline-block mt-8 px-8 py-3 bg-white/5 backdrop-blur-md border border-[rgba(198,167,94,0.3)] text-[var(--ouro)] text-[10px] font-black uppercase tracking-widest hover:bg-[var(--ouro)] hover:text-[var(--azul3)] transition-all">
+            Quero Converter Mais
+          </a>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="swiper-slide group relative h-[640px] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-[var(--azul)] to-[var(--azul3)]"></div>
+        <div class="absolute inset-0 border border-[rgba(198,167,94,0.15)] group-hover:border-[rgba(198,167,94,0.4)] transition-all duration-700"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-10 md:p-12 transform group-hover:-translate-y-4 transition-transform duration-500">
+          <div class="w-16 h-[2px] bg-gradient-to-r from-[var(--ouro)] to-[var(--ouro3)] mb-6"></div>
+          <span class="text-[var(--ouro)] text-[9px] font-black uppercase tracking-[.3em] block mb-3">Pilar 03 / Escala Sustentável</span>
+          <h3 class="text-4xl md:text-5xl font-black uppercase oswald italic tracking-tighter text-white mb-4">
+            Prosperar<br><span class="text-[var(--ouro)]">com previsibilidade.</span>
+          </h3>
+          <p class="text-white/50 text-sm uppercase tracking-[0.15em] font-light max-w-sm leading-relaxed">
+            Com a máquina rodando, escalamos o investimento e construímos um escritório que cresce sozinho.
+          </p>
+          <a href="https://jurisprospects.quillforms.app/forms/primium-consult" target="_blank"
+             class="inline-block mt-8 px-8 py-3 bg-white/5 backdrop-blur-md border border-[rgba(198,167,94,0.3)] text-[var(--ouro)] text-[10px] font-black uppercase tracking-widest hover:bg-[var(--ouro)] hover:text-[var(--azul3)] transition-all">
+            Quero Escalar
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <div class="swiper-pagination !-bottom-2 mt-8"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- ══ PARA QUEM É / RESULTADOS ══ -->
+<section id="resultados" class="py-32 bg-[#0F1C2E] relative z-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+
+      <!-- Esquerda -->
+      <div data-aos="fade-right">
+        <span class="text-[var(--ouro)] font-bold uppercase tracking-[0.6em] text-[10px] block mb-4">Para Quem É</span>
+        <h2 class="text-6xl md:text-7xl font-light uppercase oswald italic leading-none mb-8">
+          Para o advogado<br><span class="text-gold font-black">que quer fechar </span><br>pelo digital.
+        </h2>
+        <p class="text-white/40 text-base leading-relaxed font-light mb-10">
+          Se você domina o direito previdenciário mas ainda depende de indicações para crescer, o Blueprint ACP foi construído para você.
+        </p>
+        <ul class="space-y-0">
+          <li class="flex items-start gap-4 py-4 border-b border-[rgba(198,167,94,0.1)] text-white/60 text-sm font-light hover:text-white transition-colors group">
+            <span class="w-5 h-px bg-[var(--ouro)] flex-shrink-0 mt-3 group-hover:w-8 transition-all"></span>
+            Advogados que faturam abaixo do potencial do escritório
+          </li>
+          <li class="flex items-start gap-4 py-4 border-b border-[rgba(198,167,94,0.1)] text-white/60 text-sm font-light hover:text-white transition-colors group">
+            <span class="w-5 h-px bg-[var(--ouro)] flex-shrink-0 mt-3 group-hover:w-8 transition-all"></span>
+            Escritórios que investiram em tráfego sem resultado consistente
+          </li>
+          <li class="flex items-start gap-4 py-4 border-b border-[rgba(198,167,94,0.1)] text-white/60 text-sm font-light hover:text-white transition-colors group">
+            <span class="w-5 h-px bg-[var(--ouro)] flex-shrink-0 mt-3 group-hover:w-8 transition-all"></span>
+            Sócios que querem independência de indicações
+          </li>
+          <li class="flex items-start gap-4 py-4 border-b border-[rgba(198,167,94,0.1)] text-white/60 text-sm font-light hover:text-white transition-colors group">
+            <span class="w-5 h-px bg-[var(--ouro)] flex-shrink-0 mt-3 group-hover:w-8 transition-all"></span>
+            Profissionais prontos para montar um time comercial
+          </li>
+          <li class="flex items-start gap-4 py-4 text-white/60 text-sm font-light hover:text-white transition-colors group">
+            <span class="w-5 h-px bg-[var(--ouro)] flex-shrink-0 mt-3 group-hover:w-8 transition-all"></span>
+            Quem quer fechar mais contratos sem trabalhar mais horas
+          </li>
+        </ul>
+      </div>
+
+      <!-- Direita — Números -->
+      <div class="space-y-px" data-aos="fade-left">
+        <div class="group bg-[var(--azul2)] p-10 border-l-2 border-[rgba(198,167,94,0.15)] hover:border-[var(--ouro)] transition-all hover:bg-[rgba(22,38,63,0.8)]">
+          <span class="oswald text-5xl font-bold text-[var(--ouro)] block leading-none mb-2">+120%</span>
+          <span class="text-[9px] uppercase tracking-widest text-white/40">Aumento médio em captação nos primeiros 90 dias</span>
+        </div>
+        <div class="group bg-[var(--azul2)] p-10 border-l-2 border-[rgba(198,167,94,0.15)] hover:border-[var(--ouro)] transition-all hover:bg-[rgba(22,38,63,0.8)]">
+          <span class="oswald text-5xl font-bold text-[var(--ouro)] block leading-none mb-2">−40%</span>
+          <span class="text-[9px] uppercase tracking-widest text-white/40">Custo por lead qualificado após otimização</span>
+        </div>
+        <div class="group bg-[var(--azul2)] p-10 border-l-2 border-[rgba(198,167,94,0.15)] hover:border-[var(--ouro)] transition-all hover:bg-[rgba(22,38,63,0.8)]">
+          <span class="oswald text-5xl font-bold text-[var(--ouro)] block leading-none mb-2">2–4×</span>
+          <span class="text-[9px] uppercase tracking-widest text-white/40">Retorno sobre investimento em tráfego pago</span>
+        </div>
+        <div class="group bg-[var(--azul2)] p-10 border-l-2 border-[rgba(198,167,94,0.15)] hover:border-[var(--ouro)] transition-all hover:bg-[rgba(22,38,63,0.8)]">
+          <span class="oswald text-5xl font-bold text-[var(--ouro)] block leading-none mb-2">60 dias</span>
+          <span class="text-[9px] uppercase tracking-widest text-white/40">Para os primeiros resultados mensuráveis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MVV — FILOSOFIA ══ -->
+<section class="py-32 px-6 bg-[#16263F] relative overflow-hidden z-10">
+
+  <!-- Fundo decorativo -->
+  <div class="absolute top-20 left-1/2 -translate-x-1/2 w-full text-center pointer-events-none opacity-[0.02] select-none">
+    <h2 class="text-[15vw] font-black oswald uppercase leading-none">MÉTODO</h2>
+  </div>
+  <div class="absolute -top-24 -left-24 w-[600px] h-[600px] bg-[var(--ouro3)]/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Card 1 -->
+      <div class="group relative" data-aos="fade-up">
+        <div class="absolute -inset-1 bg-gradient-to-r from-[var(--ouro3)] to-[var(--ouro)] blur opacity-0 group-hover:opacity-20 transition duration-1000"></div>
+        <div class="relative h-full bg-[var(--azul2)] border border-white/10 p-12 transition-all duration-500 group-hover:bg-[var(--azul)]">
+          <div class="absolute top-0 right-0 p-6">
+            <span class="text-[var(--ouro)] oswald text-xs font-bold tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-all italic">MISSÃO</span>
+          </div>
+          <div class="mb-12">
+            <span class="text-6xl font-black oswald stroke-gold opacity-20 group-hover:opacity-100 transition-all duration-700">01</span>
+            <div class="mvv-line mt-2"></div>
+          </div>
+          <div class="space-y-6">
+            <h4 class="oswald uppercase text-3xl font-light tracking-[0.2em] text-white">Missão<span class="text-[var(--ouro)] font-black">.</span></h4>
+            <p class="text-white/40 text-base leading-relaxed font-light italic group-hover:text-white/70 transition-colors">
+              "Escalar escritórios previdenciários com <span class="text-[var(--ouro)] font-medium">método, tráfego e treinamento</span>, transformando boa advocacia em grandes negócios."
+            </p>
+          </div>
+          <div class="absolute inset-2 border border-[rgba(198,167,94,0)] group-hover:border-[rgba(198,167,94,0.1)] pointer-events-none transition-all duration-700"></div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+        <div class="absolute -inset-1 bg-gradient-to-r from-[var(--ouro3)] to-[var(--ouro)] blur opacity-0 group-hover:opacity-20 transition duration-1000"></div>
+        <div class="relative h-full bg-[var(--azul2)] border border-white/10 p-12 transition-all duration-500 group-hover:bg-[var(--azul)]">
+          <div class="absolute top-0 right-0 p-6">
+            <span class="text-[var(--ouro)] oswald text-xs font-bold tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-all italic">VISÃO</span>
+          </div>
+          <div class="mb-12">
+            <span class="text-6xl font-black oswald stroke-gold opacity-20 group-hover:opacity-100 transition-all duration-700">02</span>
+            <div class="mvv-line mt-2"></div>
+          </div>
+          <div class="space-y-6">
+            <h4 class="oswald uppercase text-3xl font-light tracking-[0.2em] text-white">Visão<span class="text-[var(--ouro)] font-black">.</span></h4>
+            <p class="text-white/40 text-base leading-relaxed font-light italic group-hover:text-white/70 transition-colors">
+              "Ser a <span class="text-[var(--ouro)] font-medium">referência nacional</span> em marketing e comercial para a advocacia previdenciária, tornando-se o parceiro estratégico dos maiores escritórios do Brasil."
+            </p>
+          </div>
+          <div class="absolute inset-2 border border-[rgba(198,167,94,0)] group-hover:border-[rgba(198,167,94,0.1)] pointer-events-none transition-all duration-700"></div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="group relative" data-aos="fade-up" data-aos-delay="400">
+        <div class="absolute -inset-1 bg-gradient-to-r from-[var(--ouro3)] to-[var(--ouro)] blur opacity-0 group-hover:opacity-20 transition duration-1000"></div>
+        <div class="relative h-full bg-[var(--azul2)] border border-white/10 p-12 transition-all duration-500 group-hover:bg-[var(--azul)]">
+          <div class="absolute top-0 right-0 p-6">
+            <span class="text-[var(--ouro)] oswald text-xs font-bold tracking-[0.3em] opacity-40 group-hover:opacity-100 transition-all italic">VALORES</span>
+          </div>
+          <div class="mb-12">
+            <span class="text-6xl font-black oswald stroke-gold opacity-20 group-hover:opacity-100 transition-all duration-700">03</span>
+            <div class="mvv-line mt-2"></div>
+          </div>
+          <div class="space-y-6">
+            <h4 class="oswald uppercase text-3xl font-light tracking-[0.2em] text-white">Valores<span class="text-[var(--ouro)] font-black">.</span></h4>
+            <ul class="text-white/40 text-sm space-y-4 font-light italic group-hover:text-white/70 transition-colors">
+              <li class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 bg-[var(--ouro)] rotate-45 flex-shrink-0"></span>Resultados antes de promessas</li>
+              <li class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 bg-[var(--ouro)] rotate-45 flex-shrink-0"></span>Especialização inegociável em previdenciário</li>
+              <li class="flex items-start gap-3"><span class="mt-1.5 w-1.5 h-1.5 bg-[var(--ouro)] rotate-45 flex-shrink-0"></span>Parceria de longo prazo, não serviço pontual</li>
+            </ul>
+          </div>
+          <div class="absolute inset-2 border border-[rgba(198,167,94,0)] group-hover:border-[rgba(198,167,94,0.1)] pointer-events-none transition-all duration-700"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEPOIMENTOS ══ -->
+<section id="depoimentos" class="py-32 bg-[var(--branco)] relative z-10">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-end mb-20 flex-wrap gap-8">
+      <div data-aos="fade-right">
+        <span class="text-[var(--ouro3)] font-bold uppercase tracking-[0.6em] text-[10px] block mb-4">Cases Reais</span>
+        <h2 class="text-6xl md:text-7xl font-black uppercase oswald italic leading-none text-[var(--azul)]">
+          Escritórios que<br><span style="-webkit-text-stroke:2px var(--ouro3); color:transparent;">já escalaram.</span>
+        </h2>
+      </div>
+      <p class="text-[#5a6070] text-sm max-w-xs text-right font-light leading-relaxed" data-aos="fade-left">
+        Resultados reais de advogados previdenciários que aplicaram o Blueprint ACP.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="group bg-white p-10 border-b-4 border-[var(--ouro3)] relative overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex gap-1 mb-6 text-[var(--ouro3)]">★★★★★</div>
+        <p class="text-[var(--azul)] text-base leading-relaxed font-light italic mb-8">
+          "Em menos de 60 dias já tinha uma fila de consultas agendadas. A Juris Prospéct entende de previdenciário de verdade — não é marketing genérico."
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-full bg-[var(--azul)] flex items-center justify-center oswald font-bold text-[var(--ouro)] text-sm flex-shrink-0">DR</div>
+          <div>
+            <span class="text-sm font-bold text-[var(--azul)] block">Dr. Rafael M.</span>
+            <span class="text-[10px] text-[#8a9aaa] uppercase tracking-wider">Advogado Previdenciário · João Pessoa, PB</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="group bg-white p-10 border-b-4 border-[var(--ouro3)] relative overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex gap-1 mb-6 text-[var(--ouro3)]">★★★★★</div>
+        <p class="text-[var(--azul)] text-base leading-relaxed font-light italic mb-8">
+          "Minha equipe não sabia fechar. Com o treinamento comercial, nossa taxa de conversão de consulta para contrato mais que dobrou. O escritório mudou de patamar."
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-full bg-[var(--azul)] flex items-center justify-center oswald font-bold text-[var(--ouro)] text-sm flex-shrink-0">CA</div>
+          <div>
+            <span class="text-sm font-bold text-[var(--azul)] block">Dra. Carla A.</span>
+            <span class="text-[10px] text-[#8a9aaa] uppercase tracking-wider">Sócia Fundadora · Recife, PE</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="group bg-white p-10 border-b-4 border-[var(--ouro3)] relative overflow-hidden hover:-translate-y-2 transition-all duration-500 shadow-sm hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
+        <div class="flex gap-1 mb-6 text-[var(--ouro3)]">★★★★★</div>
+        <p class="text-[var(--azul)] text-base leading-relaxed font-light italic mb-8">
+          "Investia em anúncios há 1 ano sem consistência. Em 90 dias com a Juris Prospéct tive o melhor trimestre da história do meu escritório."
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-full bg-[var(--azul)] flex items-center justify-center oswald font-bold text-[var(--ouro)] text-sm flex-shrink-0">MF</div>
+          <div>
+            <span class="text-sm font-bold text-[var(--azul)] block">Dr. Marcos F.</span>
+            <span class="text-[10px] text-[#8a9aaa] uppercase tracking-wider">Advogado Solo · Fortaleza, CE</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="mt-20 p-12 bg-[#0F1C2E] border border-[rgba(198,167,94,0.3)] flex flex-col md:flex-row items-center justify-between gap-8" data-aos="zoom-in">
+      <div class="text-white">
+        <h3 class="oswald text-3xl font-black uppercase italic leading-none">Pronto para transformar seu escritório?</h3>
+        <p class="uppercase tracking-widest text-[10px] font-bold mt-2 text-white/60">· Diagnóstico gratuito e personalizado.</p>
+      </div>
+      <a href="https://jurisprospects.quillforms.app/forms/primium-consult" target="_blank"
+         class="bg-gold-gradient px-10 py-4 text-[10px] font-black uppercase tracking-[0.2em] transition-all text-center whitespace-nowrap hover:brightness-110" style="color:#0F1C2E">
+        Solicitar Diagnóstico Gratuito
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER / CONTATO ══ -->
+<footer id="contato" class="bg-[#0F1C2E] py-32 px-6 border-t border-[rgba(198,167,94,0.2)] relative overflow-hidden z-10">
+
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-[var(--ouro3)]/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+
+    <!-- CTA Grande -->
+    <div class="text-center mb-32" data-aos="fade-up">
+      <h2 class="text-6xl md:text-[110px] font-black uppercase oswald italic leading-none tracking-tighter text-white">
+        ESCALE SEU <span class="text-gold drop-shadow-[0_2px_15px_rgba(198,167,94,0.3)]">ESCRITÓRIO.</span>
+      </h2>
+      <div class="w-24 h-px bg-[var(--ouro)] mx-auto mt-8 opacity-50"></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+
+      <!-- Contatos -->
+      <div class="space-y-16" data-aos="fade-right">
+        <div class="group">
+          <p class="text-[var(--ouro)] text-[11px] font-bold uppercase tracking-[0.5em] mb-4 opacity-80">Responsável</p>
+          <p class="text-3xl md:text-4xl font-light text-white">Kesley Ramos Guedes</p>
+        </div>
+        <div class="group">
+          <p class="text-[var(--ouro)] text-[11px] font-bold uppercase tracking-[0.5em] mb-4 opacity-80">WhatsApp Direto</p>
+          <a href="https://wa.me/5583998698607" class="text-2xl md:text-4xl font-black oswald uppercase italic tracking-widest text-zinc-100 hover:text-[var(--ouro)] transition-all duration-500">
+            (83) 99869-8607
+          </a>
+        </div>
+      </div>
+
+      <!-- Card de Diagnóstico -->
+      <div class="relative p-px bg-gradient-to-b from-[rgba(198,167,94,0.4)] to-transparent" data-aos="fade-left">
+        <div class="bg-black/80 backdrop-blur-xl p-10 md:p-14">
+          <h4 class="oswald text-2xl font-light uppercase tracking-[0.3em] text-white mb-10 flex items-center gap-4">
+            <span class="w-8 h-px bg-[var(--ouro)]"></span> Diagnóstico Gratuito
+          </h4>
+          <ul class="space-y-6">
+            <li class="flex justify-between items-center border-b border-white/10 pb-4">
+              <span class="text-white/40 uppercase text-[11px] tracking-widest">Análise de captação</span>
+              <span class="text-white oswald text-lg tracking-wider">Gratuita</span>
+            </li>
+            <li class="flex justify-between items-center border-b border-white/10 pb-4">
+              <span class="text-white/40 uppercase text-[11px] tracking-widest">Plano personalizado</span>
+              <span class="text-white oswald text-lg tracking-wider">Incluído</span>
+            </li>
+            <li class="flex justify-between items-center pb-4">
+              <span class="text-white/40 uppercase text-[11px] tracking-widest">Resposta</span>
+              <span class="text-white oswald text-lg tracking-wider">Até 24h</span>
+            </li>
+          </ul>
+          <p class="mt-10 text-[var(--ouro)]/60 italic text-xs font-light tracking-wide text-center">
+            Vagas limitadas · Sem compromisso · 100% focado em previdenciário
+          </p>
+          <a href="https://jurisprospects.quillforms.app/forms/primium-consult" target="_blank"
+             class="mt-10 block text-center bg-gold-gradient py-4 text-[11px] font-black uppercase tracking-[0.3em] hover:brightness-110 transition-all" style="color:#0F1C2E">
+            Solicitar Diagnóstico Agora
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="mt-40 pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div class="text-[11px] uppercase tracking-[0.4em] text-zinc-400 font-medium">
+        © 2024 <span class="text-white">Juris Prospéct</span>
+        <span class="mx-3 text-[rgba(198,167,94,0.3)]">|</span>
+        <span class="text-zinc-500">Escalamos Escritórios Previdenciários</span>
+      </div>
+      <div class="text-[11px] uppercase tracking-[0.4em] text-zinc-500">
+        Kesley Ramos Guedes ·
+        <a href="https://wa.me/5583998698607" class="text-zinc-300 hover:text-[var(--ouro)] transition-colors">(83) 99869-8607</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<!-- ══ BOTÃO VOLTAR AO TOPO ══ -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+  class="fixed bottom-32 right-8 z-[999] opacity-0 translate-y-10 pointer-events-none transition-all duration-700 group">
+  <div class="bg-[var(--azul2)]/90 backdrop-blur-md border border-[rgba(198,167,94,0.5)] h-14 w-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-gold-gradient transition-all duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C6A75E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:stroke-[#0A1520] transition-colors">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </div>
+</button>
+
+<!-- ══ WHATSAPP FLOAT ══ -->
+<a href="https://wa.me/5583998698607?text=Olá%20Kesley,%20gostaria%20de%20solicitar%20um%20diagnóstico%20gratuito."
+   target="_blank" rel="noopener noreferrer"
+   class="fixed bottom-8 right-8 z-[999] group flex items-center justify-center" aria-label="WhatsApp">
+  <span class="absolute inline-flex h-16 w-16 rounded-full bg-[#C6A75E]/40 animate-ping opacity-75"></span>
+  <div class="relative bg-gold-gradient h-16 w-16 rounded-full flex items-center justify-center shadow-2xl border border-white/10 transition-all duration-500 group-hover:scale-110 group-hover:rotate-[360deg]">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0F1C2E">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 0 5.414 0 12.05c0 2.123.552 4.197 1.602 6.02L0 24l6.137-1.611a11.774 11.774 0 005.908 1.573h.005c6.634 0 12.05-5.414 12.05-12.05 0-3.217-1.252-6.242-3.525-8.514z"/>
+    </svg>
+  </div>
+  <div class="absolute right-20 bg-[#0F1C2E]/95 border border-[rgba(198,167,94,0.4)] px-5 py-2 opacity-0 group-hover:opacity-100 transition-all duration-500 pointer-events-none whitespace-nowrap backdrop-blur-md">
+    <span class="text-[var(--ouro)] text-[10px] font-black uppercase tracking-[0.4em]">Falar com Kesley</span>
+  </div>
+</a>
+
+<!-- ══ SCRIPTS ══ -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true, offset: 80 });
+
+  // Método Swiper
+  new Swiper('.metodSwiper', {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    loop: true,
+    autoplay: { delay: 4500, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: {
+      768:  { slidesPerView: 2 },
+      1200: { slidesPerView: 3 }
+    }
+  });
+
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 60) {
+      nav.style.padding = '14px 48px';
+      nav.style.background = 'rgba(15,28,46,0.97)';
+    } else {
+      nav.style.padding = '20px 48px';
+      nav.style.background = 'rgba(15,28,46,0.85)';
+    }
+    if (btn) {
+      const show = window.scrollY > 400;
+      btn.classList.toggle('opacity-0', !show);
+      btn.classList.toggle('translate-y-10', !show);
+      btn.classList.toggle('pointer-events-none', !show);
+      btn.classList.toggle('opacity-100', show);
+      btn.classList.toggle('translate-y-0', show);
+      btn.classList.toggle('pointer-events-auto', show);
+    }
+  });
+</script>
+
+</body>
+</html>

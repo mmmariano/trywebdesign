@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juris Prospéct | Escala para Advocacia Previdenciária</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script> <!-- Adicionar FontAwesome -->
+    <style>
+        :root {
+            --azul-inst: #0F1C2E;
+            --azul-profundo: #16263F;
+            --dourado: #C6A75E;
+            --branco-quente: #F5F3EE;
+            --texto-claro: #F5F3EE;
+            --texto-escuro: #0F1C2E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--azul-inst);
+            color: var(--texto-claro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(198, 167, 94, 0.2);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dourado);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background-color: var(--azul-inst);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero h1 span {
+            color: var(--dourado);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .btn-principal {
+            background-color: var(--dourado);
+            color: var(--azul-inst);
+            padding: 18px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: transform 0.3s ease, background 0.3s ease;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-principal:hover {
+            transform: translateY(-3px);
+            background-color: #d4b97a;
+        }
+
+        /* Seção de Problema */
+        .problema {
+            background-color: var(--branco-quente);
+            color: var(--texto-escuro);
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--dourado);
+            margin: 0 auto;
+        }
+
+        .grid-problemas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card-problema {
+            padding: 30px;
+            border-left: 4px solid var(--dourado);
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .card-problema i {
+            color: var(--dourado);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Método Blueprint ACP */
+        .metodo {
+            background-color: var(--azul-profundo);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .metodo .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(198, 167, 94, 0.1);
+            padding-bottom: 40px;
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--dourado);
+            margin-right: 40px;
+            opacity: 0.5;
+        }
+
+        .step-content h3 {
+            font-size: 1.8rem;
+            color: var(--dourado);
+            margin-bottom: 10px;
+        }
+
+        /* Prova Social */
+        .prova-social {
+            background-color: var(--branco-quente);
+            color: var(--texto-escuro);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        /* CTA Final */
+        .cta-final {
+            padding: 100px 0;
+            background-color: var(--azul-inst);
+            text-align: center;
+        }
+
+        /* Botão Whatsapp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(198, 167, 94, 0.1);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .step { flex-direction: column; text-align: center; }
+            .step-number { margin-right: 0; margin-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Juris Prospéct</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Escalamos seu Escritório Previdenciário através do <span>Digital.</span></h1>
+            <p>Unimos tráfego pago de alta performance e treinamentos comerciais para transformar advogados em donos de escritórios altamente lucrativos.</p>
+            <a href="https://jurisprospects.quillforms.app/forms/primium-consult" class="btn-principal">Quero Consultoria Premium</a>
+        </div>
+    </section>
+
+    <section class="problema">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Obstáculo da Escala</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="grid-problemas">
+                <div class="card-problema">
+                    <h3>Indicação não é previsível</h3>
+                    <p>Depender apenas de "boca a boca" impede que você saiba quantos novos clientes terá no próximo mês.</p>
+                </div>
+                <div class="card-problema">
+                    <h3>Lead sem qualificação</h3>
+                    <p>Receber muitos contatos, mas nenhum com o perfil de cliente ideal para o seu escritório.</p>
+                </div>
+                <div class="card-problema">
+                    <h3>Falta de processo comercial</h3>
+                    <p>O lead chega, mas o seu time (ou você) não consegue converter o contato em contrato assinado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="metodo">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">O Método Blueprint ACP</h2>
+                <p style="color: var(--dourado);">A estratégia por trás dos grandes escritórios</p>
+                <div class="divider"></div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Atração (Tráfego Pago)</h3>
+                    <p>Anúncios segmentados no Google e Meta Ads focados exatamente na dor do seu cliente previdenciário.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Conversão</h3>
+                    <p>Otimização de landing pages e scripts de vendas validados para o nicho jurídico.</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Performance & Escala</h3>
+                    <p>Treinamento comercial para sua equipe e análise de dados para escala contínua do faturamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="prova-social">
+        <div class="container">
+            <div class="section-title">
+                <h2>Resultados Reais</h2>
+                <div class="divider"></div>
+            </div>
+            <p>Centenas de contratos fechados através de nossa metodologia aplicada.</p>
+            <!-- Espaço para Logos ou Depoimentos -->
+             <div style="margin-top: 40px; font-style: italic; color: #666;">
+                 "A Juris Prospéct mudou a forma como encaramos o comercial no nosso escritório."
+             </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>Pronto para escalar seu escritório?</h2>
+            <p style="margin-bottom: 30px;">Clique no botão abaixo para preencher nosso formulário de qualificação.</p>
+            <a href="https://jurisprospects.quillforms.app/forms/primium-consult" class="btn-principal">Quero uma análise do meu negócio</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Juris Prospéct - Kesley Ramos Guedes</p>
+            <p>Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5583998698607" class="whatsapp-float" target="_blank">
+        <svg style="width:30px;height:30px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12.04 2C6.53 2 2.06 6.47 2.06 11.97C2.06 13.73 2.52 15.38 3.33 16.83L2 21.69L6.97 20.39C8.38 21.16 10 21.6 11.63 21.6C11.64 21.6 11.64 21.6 11.65 21.6C17.15 21.6 21.62 17.13 21.62 11.63C21.62 8.96 20.58 6.47 18.7 4.59C16.82 2.71 14.33 1.67 11.66 1.67L12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.39 16.63 20.03 12.17 20.03C12.17 20.03 12.16 20.03 12.16 20.03C10.79 20.03 9.45 19.68 8.27 19.03L8 18.87L5.05 19.64L5.83 16.79L5.65 16.5C4.94 15.36 4.56 14.05 4.56 12.69C4.57 8.23 8.22 4.58 12.68 4.58L12.05 3.67M9.69 8.3C9.47 8.3 9.11 8.38 8.81 8.7C8.5 9.03 7.68 9.8 7.68 11.39C7.68 12.97 8.83 14.5 9 14.72C9.16 14.94 11.26 18.18 14.47 19.57C15.23 19.9 15.82 20.1 16.28 20.25C17.04 20.49 17.73 20.45 18.28 20.37C18.9 20.28 20.18 19.59 20.44 18.85C20.7 18.11 20.7 17.47 20.62 17.34C20.54 17.21 20.32 17.13 19.95 16.95C19.59 16.77 17.81 15.89 17.48 15.77C17.15 15.65 16.91 15.59 16.67 15.95C16.43 16.32 15.75 17.12 15.54 17.37C15.34 17.61 15.13 17.64 14.76 17.46C14.39 17.28 13.2 16.89 11.79 15.63C10.69 14.65 9.95 13.43 9.73 13.06C9.5 12.69 9.71 12.49 9.89 12.31C10.05 12.15 10.25 11.89 10.44 11.67C10.62 11.45 10.68 11.3 10.8 11.06C10.93 10.81 10.87 10.6 10.77 10.41C10.68 10.22 9.91 8.34 9.69 8.3Z" />
+        </svg>
+    </a>
+
+</body>
+</html>
