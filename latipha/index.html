@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latipha Lauanny — Psicóloga da Mulher & Infância</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   RESET & TOKENS
+══════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --rs-red:    #AF7479;   /* blush from logo → substitui o vermelho RS */
+  --rs-green:  #3E7265;
+  --rs-sage:   #E0E7DB;
+  --rs-black:  #0d0d0d;
+  --rs-dark:   #141414;
+  --rs-mid:    #1e1e1e;
+  --rs-white:  #fafaf8;
+  --rs-gray:   #888;
+  --rs-lgray:  #e8e8e6;
+  --rs-border: #2a2a2a;
+  --rs-lbord:  #d8d8d4;
+  --font-head: 'Playfair Display', Georgia, serif;
+  --font-cond: 'Oswald', 'Arial Narrow', sans-serif;
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-ui:   system-ui, -apple-system, sans-serif;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-ui); background: var(--rs-white); color: var(--rs-black); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ══════════════════════════════════════════
+   UTILITY
+══════════════════════════════════════════ */
+.cat-pill {
+  display: inline-block;
+  background: var(--rs-red);
+  color: #fff;
+  font-family: var(--font-cond);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  line-height: 1.4;
+}
+.cat-pill.green { background: var(--rs-green); }
+.cat-pill.outline {
+  background: transparent;
+  border: 1px solid var(--rs-red);
+  color: var(--rs-red);
+}
+.cat-pill.outline-w {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.7);
+}
+.rule { height: 3px; background: var(--rs-black); }
+.rule-red { height: 3px; background: var(--rs-red); }
+.rule-thin { height: 1px; background: var(--rs-lbord); }
+.rule-thin-d { height: 1px; background: var(--rs-border); }
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--rs-black);
+}
+.section-head h2 {
+  font-family: var(--font-cond);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.section-head .sub {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--rs-gray);
+}
+
+/* ══════════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════════ */
+.topbar {
+  background: var(--rs-black);
+  height: 40px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rs-border);
+}
+.topbar-nav { display: flex; gap: 0; }
+.topbar-nav a {
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  padding: 0 16px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--rs-border);
+  transition: color .2s, background .2s;
+}
+.topbar-nav a:first-child { border-left: 1px solid var(--rs-border); }
+.topbar-nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.topbar-right a {
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.45);
+  padding: 0 16px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  transition: color .2s;
+}
+.topbar-right a:hover { color: #fff; }
+.topbar-cta-btn {
+  background: var(--rs-red) !important;
+  color: #fff !important;
+  height: 40px !important;
+  padding: 0 20px !important;
+  font-weight: 700 !important;
+  transition: background .2s !important;
+}
+.topbar-cta-btn:hover { background: #9b5f64 !important; }
+
+/* ══════════════════════════════════════════
+   MASTHEAD / NAV
+══════════════════════════════════════════ */
+.masthead {
+  background: var(--rs-black);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  border-bottom: 2px solid var(--rs-red);
+}
+.masthead-brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.brand-logo-wrap {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.brand-logo-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--rs-red);
+  animation: ring-pulse 3s ease-in-out infinite;
+}
+@keyframes ring-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(175,116,121,.4); }
+  50%       { box-shadow: 0 0 0 6px rgba(175,116,121,0); }
+}
+.brand-logo-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--rs-green);
+}
+.brand-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+.brand-text { line-height: 1; }
+.brand-name {
+  font-family: var(--font-cond);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.brand-tagline {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-style: italic;
+  color: var(--rs-red);
+  letter-spacing: .05em;
+  margin-top: 3px;
+}
+.masthead-nav { display: flex; align-items: center; gap: 0; }
+.masthead-nav a {
+  font-family: var(--font-cond);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  padding: 0 18px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--rs-border);
+  transition: color .2s, background .2s;
+  position: relative;
+}
+.masthead-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 18px; right: 18px;
+  height: 2px;
+  background: var(--rs-red);
+  transform: scaleX(0);
+  transition: transform .25s ease;
+}
+.masthead-nav a:hover { color: #fff; background: rgba(255,255,255,.03); }
+.masthead-nav a:hover::after { transform: scaleX(1); }
+.masthead-wpp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--rs-green);
+  color: #fff !important;
+  padding: 0 22px !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  letter-spacing: .1em;
+  height: 64px;
+  border-right: none !important;
+  transition: background .2s !important;
+}
+.masthead-wpp::after { display: none !important; }
+.masthead-wpp:hover { background: var(--rs-red) !important; color: #fff !important; }
+.masthead-wpp svg { width: 16px; flex-shrink: 0; }
+
+/* ══════════════════════════════════════════
+   HERO — FULL BLEED COVER
+══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 95vh;
+  min-height: 640px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.hero-media {
+  position: absolute;
+  inset: 0;
+  background: #1a2520;
+}
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+}
+/* layered gradient — RS-style cinematic cover */
+.hero-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top,  rgba(0,0,0,.96)  0%,
+                              rgba(0,0,0,.75)  25%,
+                              rgba(0,0,0,.35)  55%,
+                              rgba(0,0,0,.05)  80%,
+                              transparent      100%),
+    linear-gradient(to right, rgba(0,0,0,.5) 0%,
+                               transparent    60%);
+}
+.hero-top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 3;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.hero-issue-tag {
+  font-family: var(--font-cond);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: 5px 12px;
+  backdrop-filter: blur(4px);
+}
+.hero-social {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+.hero-social span {
+  font-family: var(--font-cond);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+}
+.hero-body {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 3;
+  padding: 0 40px 52px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: flex-end;
+}
+.hero-main {}
+.hero-cat-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.hero-exclusive {
+  font-family: var(--font-cond);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+.hero-h1 {
+  font-family: var(--font-head);
+  font-size: clamp(40px, 6.5vw, 90px);
+  font-weight: 900;
+  line-height: .97;
+  color: #fff;
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+.hero-h1 em { font-style: italic; color: var(--rs-sage); }
+.hero-deck {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.65;
+  color: rgba(255,255,255,.65);
+  max-width: 520px;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+.hero-byline-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.hero-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--rs-red);
+  background: var(--rs-green);
+  flex-shrink: 0;
+}
+.hero-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.hero-byline-text small { display: block; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.4); font-family: var(--font-cond); margin-bottom: 3px; }
+.hero-byline-text strong { font-size: 14px; font-weight: 600; color: #fff; font-family: var(--font-body); }
+.hero-btns { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.btn-cover {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--rs-red);
+  color: #fff;
+  padding: 14px 28px;
+  font-family: var(--font-cond);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: background .25s, transform .2s;
+}
+.btn-cover:hover { background: #9b5f64; transform: translateY(-2px); }
+.btn-cover svg { width: 16px; }
+.btn-ghost {
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  padding-bottom: 3px;
+  border-bottom: 1px solid rgba(255,255,255,.25);
+  transition: color .2s, border-color .2s;
+}
+.btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.6); }
+
+/* hero sidebar */
+.hero-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 1px solid rgba(255,255,255,.12);
+  padding-left: 32px;
+}
+.hero-sidebar-label {
+  font-family: var(--font-cond);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--rs-red);
+  margin-bottom: 14px;
+}
+.hero-aside-item {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  cursor: pointer;
+  transition: opacity .2s;
+}
+.hero-aside-item:hover { opacity: .75; }
+.hero-aside-cat {
+  font-family: var(--font-cond);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rs-red);
+  margin-bottom: 6px;
+}
+.hero-aside-title {
+  font-family: var(--font-head);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #fff;
+}
+.hero-aside-title em { font-style: italic; }
+
+/* ══════════════════════════════════════════
+   BREAKING / TICKER BAR
+══════════════════════════════════════════ */
+.ticker-bar {
+  background: var(--rs-black);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--rs-red);
+  overflow: hidden;
+}
+.ticker-label {
+  flex-shrink: 0;
+  background: var(--rs-red);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+  gap: 8px;
+}
+.ticker-label::after { content: '▶'; font-size: 8px; }
+.ticker-scroll { overflow: hidden; flex: 1; }
+.ticker-inner {
+  display: flex;
+  gap: 0;
+  animation: tickscroll 28s linear infinite;
+  width: max-content;
+}
+.ticker-inner a {
+  font-family: var(--font-cond);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  padding: 0 28px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--rs-border);
+  white-space: nowrap;
+  transition: color .2s;
+}
+.ticker-inner a:hover { color: #fff; }
+@keyframes tickscroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ══════════════════════════════════════════
+   MAIN CONTENT WRAPPER
+══════════════════════════════════════════ */
+.content-wrap {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ══════════════════════════════════════════
+   FEATURED STORY GRID (RS main layout)
+══════════════════════════════════════════ */
+.featured-grid-section {
+  padding: 44px 40px 0;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+/* 3-col layout like RS: big feature | middle stack | thin sidebar */
+.featured-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.1fr .85fr;
+  gap: 2px;
+  background: var(--rs-lbord);
+  border: 1px solid var(--rs-lbord);
+}
+.fg-main {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--rs-black);
+  aspect-ratio: 3/2.4;
+}
+.fg-main:hover .fg-img { transform: scale(1.04); }
+.fg-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .5;
+  transition: transform .6s ease, opacity .4s;
+}
+.fg-main:hover .fg-img { opacity: .6; }
+.fg-placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1c3028 0%, #0d1a15 100%);
+  font-size: 80px;
+}
+.fg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.4) 40%, transparent 75%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.fg-number {
+  position: absolute;
+  top: 20px; right: 20px;
+  font-family: var(--font-head);
+  font-size: 120px;
+  font-weight: 900;
+  font-style: italic;
+  color: rgba(255,255,255,.06);
+  line-height: 1;
+  pointer-events: none;
+}
+.fg-cat { margin-bottom: 10px; }
+.fg-title {
+  font-family: var(--font-head);
+  font-size: clamp(20px, 2.2vw, 32px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.fg-title em { font-style: italic; color: var(--rs-sage); }
+.fg-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.55);
+}
+/* middle column — 2 stacked cards */
+.fg-mid {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--rs-lbord);
+}
+.fg-mid-card {
+  background: var(--rs-white);
+  padding: 22px 20px;
+  flex: 1;
+  cursor: pointer;
+  transition: background .2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fg-mid-card:hover { background: #f0f0ee; }
+.fg-mid-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--rs-sage);
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+.fg-mid-thumb-ph {
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  background: var(--rs-sage);
+}
+.fg-mid-title {
+  font-family: var(--font-head);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--rs-black);
+}
+.fg-mid-title em { font-style: italic; }
+.fg-mid-desc {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--rs-gray);
+}
+/* sidebar column — list of items */
+.fg-sidebar {
+  background: var(--rs-white);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+}
+.fg-sidebar-head {
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rs-black);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--rs-black);
+  margin-bottom: 0;
+}
+.fg-list-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rs-lbord);
+  cursor: pointer;
+  transition: opacity .2s;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+.fg-list-item:hover { opacity: .7; }
+.fg-list-num {
+  font-family: var(--font-head);
+  font-size: 20px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--rs-lbord);
+  line-height: 1;
+  margin-top: 1px;
+}
+.fg-list-cat {
+  font-family: var(--font-cond);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--rs-red);
+  margin-bottom: 4px;
+}
+.fg-list-title {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--rs-black);
+}
+
+/* ══════════════════════════════════════════
+   STRIPE / TICKER 2
+══════════════════════════════════════════ */
+.stripe {
+  background: var(--rs-green);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  margin: 36px 0 0;
+}
+.stripe-inner {
+  display: flex;
+  gap: 0;
+  animation: tickscroll 26s linear infinite;
+  width: max-content;
+}
+.stripe-inner span {
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  padding: 0 28px;
+  border-right: 1px solid rgba(255,255,255,.15);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.stripe-inner span.dot { color: var(--rs-sage); font-weight: 900; padding: 0 10px; border: none; }
+
+/* ══════════════════════════════════════════
+   ABORDAGEM — editorial full-width
+══════════════════════════════════════════ */
+.approach-section {
+  padding: 56px 40px;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.approach-left {}
+.approach-lede {
+  font-family: var(--font-head);
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  margin-bottom: 24px;
+}
+.approach-lede em { font-style: italic; color: var(--rs-green); }
+.approach-body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  font-weight: 300;
+  margin-bottom: 16px;
+}
+.approach-pull {
+  border-left: 4px solid var(--rs-red);
+  padding: 16px 0 16px 24px;
+  margin: 32px 0;
+}
+.approach-pull p {
+  font-family: var(--font-head);
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--rs-black);
+}
+.approach-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.pillar {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rs-lbord);
+  align-items: start;
+}
+.pillar:first-child { border-top: 1px solid var(--rs-lbord); }
+.pillar-n {
+  font-family: var(--font-head);
+  font-size: 44px;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--rs-lbord);
+  line-height: 1;
+}
+.pillar-title {
+  font-family: var(--font-cond);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pillar-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: #555;
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════════
+   DARK BAND — ABORDAGEM
+══════════════════════════════════════════ */
+.dark-band {
+  background: var(--rs-dark);
+  padding: 72px 40px;
+  border-top: 3px solid var(--rs-red);
+  border-bottom: 3px solid var(--rs-red);
+}
+.dark-band-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  background: var(--rs-border);
+}
+.dark-stat {
+  background: var(--rs-dark);
+  padding: 36px 32px;
+  border-right: none;
+  position: relative;
+  overflow: hidden;
+}
+.dark-stat::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--rs-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s ease;
+}
+.dark-stat:hover::before { transform: scaleX(1); }
+.dark-stat-num {
+  font-family: var(--font-head);
+  font-size: 56px;
+  font-weight: 900;
+  font-style: italic;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.dark-stat-label {
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--rs-red);
+  margin-bottom: 12px;
+}
+.dark-stat-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,.5);
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════════
+   PROFILE — editorial portrait spread
+══════════════════════════════════════════ */
+.profile-spread {
+  display: grid;
+  grid-template-columns: 520px 1fr;
+  min-height: 620px;
+  background: var(--rs-black);
+}
+.profile-photo {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+.profile-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  opacity: .8;
+  transition: opacity .5s;
+}
+.profile-photo:hover img { opacity: .9; }
+.profile-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 60%, rgba(0,0,0,.6) 100%);
+}
+/* logo badge */
+.logo-badge-wrap {
+  position: absolute;
+  top: 32px; left: 32px;
+  z-index: 2;
+}
+.logo-ring {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px rgba(175,116,121,.4), 0 8px 32px rgba(0,0,0,.6);
+  background: var(--rs-green);
+  transition: box-shadow .3s;
+}
+.logo-ring:hover { box-shadow: 0 0 0 6px rgba(175,116,121,.6), 0 8px 32px rgba(0,0,0,.6); }
+.logo-ring img { width: 100%; height: 100%; object-fit: cover; }
+/* caption strip at bottom of photo */
+.profile-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: var(--rs-red);
+  padding: 10px 20px;
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.profile-text {
+  padding: 56px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profile-kicker {
+  font-family: var(--font-cond);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--rs-red);
+  margin-bottom: 20px;
+}
+.profile-name {
+  font-family: var(--font-head);
+  font-size: clamp(44px, 5.5vw, 72px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: .95;
+  color: #fff;
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+}
+.profile-role {
+  font-family: var(--font-cond);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-bottom: 32px;
+}
+.profile-divider {
+  width: 48px; height: 3px;
+  background: var(--rs-red);
+  margin-bottom: 32px;
+}
+.profile-bio {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.6);
+  font-weight: 300;
+  margin-bottom: 36px;
+  border-left: 2px solid rgba(255,255,255,.08);
+  padding-left: 20px;
+}
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.ptag {
+  font-family: var(--font-cond);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  border: 1px solid rgba(255,255,255,.12);
+  padding: 5px 12px;
+  transition: border-color .2s, color .2s;
+}
+.ptag:hover { border-color: var(--rs-red); color: var(--rs-red); }
+
+/* ══════════════════════════════════════════
+   PROCESSO — horizontal numbered
+══════════════════════════════════════════ */
+.process-section {
+  padding: 64px 40px;
+  background: var(--rs-white);
+  border-top: 1px solid var(--rs-lbord);
+  max-width: 100%;
+}
+.process-inner { max-width: 1380px; margin: 0 auto; }
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--rs-lbord);
+  background: var(--rs-lbord);
+  margin-top: 0;
+}
+.process-step {
+  background: var(--rs-white);
+  padding: 40px 32px;
+  position: relative;
+  transition: background .25s;
+}
+.process-step:hover { background: #f5f5f2; }
+.process-step + .process-step { border-left: 1px solid var(--rs-lbord); }
+.process-num {
+  font-family: var(--font-head);
+  font-size: 80px;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--rs-lgray);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.process-title {
+  font-family: var(--font-cond);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  color: var(--rs-black);
+}
+.process-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--rs-gray);
+  font-weight: 300;
+}
+.process-step::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--rs-green);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s ease;
+}
+.process-step:hover::after { transform: scaleX(1); }
+
+/* ══════════════════════════════════════════
+   FINAL CTA — cover-style dark
+══════════════════════════════════════════ */
+.final-cta {
+  position: relative;
+  background: var(--rs-black);
+  overflow: hidden;
+  border-top: 3px solid var(--rs-red);
+  padding: 100px 40px;
+  text-align: center;
+}
+.final-cta-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(62,114,101,.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 50%, rgba(175,116,121,.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.final-cta-watermark {
+  position: absolute;
+  font-family: var(--font-head);
+  font-size: 320px;
+  font-weight: 900;
+  font-style: italic;
+  color: rgba(255,255,255,.025);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+.final-cta-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.final-kicker {
+  font-family: var(--font-cond);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--rs-red);
+  margin-bottom: 20px;
+}
+.final-h2 {
+  font-family: var(--font-head);
+  font-size: clamp(36px, 5.5vw, 68px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: #fff;
+  letter-spacing: -.02em;
+  margin-bottom: 20px;
+}
+.final-h2 em { font-style: italic; color: var(--rs-sage); }
+.final-p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+.btn-final {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--rs-red);
+  color: #fff;
+  padding: 18px 44px;
+  font-family: var(--font-cond);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  transition: background .25s, transform .2s, box-shadow .25s;
+}
+.btn-final:hover {
+  background: #9b5f64;
+  transform: scale(1.03);
+  box-shadow: 0 12px 40px rgba(175,116,121,.4);
+}
+.btn-final svg { width: 20px; }
+.final-note {
+  margin-top: 24px;
+  font-family: var(--font-cond);
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.footer {
+  background: #080808;
+  padding: 36px 40px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-top: 1px solid var(--rs-border);
+  gap: 24px;
+}
+.footer-brand-wrap { display: flex; align-items: center; gap: 12px; }
+.footer-logo-c {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid rgba(175,116,121,.35);
+  background: var(--rs-green);
+}
+.footer-logo-c img { width: 100%; height: 100%; object-fit: cover; }
+.footer-brand-name {
+  font-family: var(--font-cond);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+.footer-copy {
+  font-family: var(--font-cond);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  text-align: center;
+}
+.footer-info {
+  font-family: var(--font-cond);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  text-align: right;
+}
+
+/* ══════════════════════════════════════════
+   SCROLL ANIMATIONS
+══════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .featured-grid { grid-template-columns: 1.8fr 1fr; }
+  .fg-sidebar { display: none; }
+  .hero-body { grid-template-columns: 1fr; }
+  .hero-sidebar { display: none; }
+  .profile-spread { grid-template-columns: 380px 1fr; }
+  .dark-band-inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .topbar { display: none; }
+  .masthead { padding: 0 20px; }
+  .masthead-nav a:not(.masthead-wpp) { display: none; }
+  .hero-body { padding: 0 24px 44px; }
+  .featured-grid { grid-template-columns: 1fr; }
+  .fg-mid { flex-direction: row; }
+  .approach-grid { grid-template-columns: 1fr; gap: 40px; }
+  .profile-spread { grid-template-columns: 1fr; }
+  .profile-photo { height: 60vw; min-height: 320px; }
+  .process-grid { grid-template-columns: 1fr 1fr; }
+  .footer { grid-template-columns: 1fr; text-align: center; }
+  .footer-info { text-align: center; }
+  .featured-grid-section, .approach-section { padding-left: 20px; padding-right: 20px; }
+  .dark-band { padding: 56px 20px; }
+  .process-section { padding: 56px 20px; }
+}
+@media (max-width: 560px) {
+  .process-grid { grid-template-columns: 1fr; }
+  .hero-h1 { font-size: 36px; }
+  .fg-mid { flex-direction: column; }
+  .profile-text { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <nav class="topbar-nav">
+    <a href="#atendimentos">Atendimentos</a>
+    <a href="#abordagem">Abordagem</a>
+    <a href="#perfil">Sobre</a>
+    <a href="#processo">Como Funciona</a>
+  </nav>
+  <div class="topbar-right">
+    <a href="tel:+5598984114813">(98) 98411-4813</a>
+    <a href="https://wa.me/5598984114813?text=Olá%20Latipha!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="topbar-cta-btn">Agendar Consulta</a>
+  </div>
+</div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <a class="masthead-brand" href="#">
+    <div class="brand-logo-wrap">
+      <div class="brand-logo-ring"></div>
+      <div class="brand-logo-img">
+        <img src="logo.jpg" alt="Logo" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="brand-text">
+      <div class="brand-name">Latipha Lauanny</div>
+      <div class="brand-tagline">Psicóloga da Mulher & Infância</div>
+    </div>
+  </a>
+  <nav class="masthead-nav">
+    <a href="#atendimentos">Atendimentos</a>
+    <a href="#abordagem">Abordagem</a>
+    <a href="#perfil">Sobre</a>
+    <a href="#processo">Como Funciona</a>
+    <a href="https://wa.me/5598984114813?text=Olá%20Latipha!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="masthead-wpp">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.769.463 3.431 1.269 4.874L2 22l5.29-1.243A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      WhatsApp
+    </a>
+  </nav>
+</header>
+
+<!-- HERO COVER -->
+<section class="hero">
+  <div class="hero-media">
+    <img src="psicologa-perfil.jpg" alt="Latipha Lauanny" onerror="this.style.display='none'">
+  </div>
+
+  <div class="hero-top-bar">
+    <span class="hero-issue-tag">Psicologia Clínica · Online · Brasil</span>
+    <div class="hero-social">
+      <span>Atendimento 100% Online</span>
+      <span>(98) 98411-4813</span>
+    </div>
+  </div>
+
+  <div class="hero-body">
+    <div class="hero-main">
+      <div class="hero-cat-row">
+        <span class="cat-pill">Psicologia Clínica</span>
+        <span class="hero-exclusive">Atendimento Online · Todo o Brasil</span>
+      </div>
+      <h1 class="hero-h1">
+        Cuidado que<br>
+        <em>transforma</em><br>
+        vidas reais
+      </h1>
+      <p class="hero-deck">
+        Intervenções especializadas em ABA e Neuropsicologia para mulheres, mães e crianças — com rigor científico e acolhimento humano.
+      </p>
+      <div class="hero-byline-row">
+        <div class="hero-avatar">
+          <img src="psicologa-perfil.jpg" alt="Latipha" onerror="this.style.display='none'">
+        </div>
+        <div class="hero-byline-text">
+          <small>Psicóloga Responsável</small>
+          <strong>Latipha Lauanny</strong>
+        </div>
+      </div>
+      <div class="hero-btns">
+        <a class="btn-cover" href="https://wa.me/5598984114813?text=Olá%20Latipha!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.769.463 3.431 1.269 4.874L2 22l5.29-1.243A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+          Agendar Consulta
+        </a>
+        <a class="btn-ghost" href="#atendimentos">Explorar atendimentos →</a>
+      </div>
+    </div>
+
+    <!-- hero sidebar like RS "also trending" -->
+    <div class="hero-sidebar">
+      <div class="hero-sidebar-label">Atendimentos</div>
+      <div class="hero-aside-item">
+        <div class="hero-aside-cat">Psicoterapia</div>
+        <div class="hero-aside-title">Saúde mental da <em>mulher</em></div>
+      </div>
+      <div class="hero-aside-item">
+        <div class="hero-aside-cat">Maternidade</div>
+        <div class="hero-aside-title">Suporte psicológico para <em>mães</em></div>
+      </div>
+      <div class="hero-aside-item">
+        <div class="hero-aside-cat">Neuropsicologia</div>
+        <div class="hero-aside-title">Neurodesenvolvimento <em>infantil</em></div>
+      </div>
+      <div class="hero-aside-item">
+        <div class="hero-aside-cat">Online · Brasil</div>
+        <div class="hero-aside-title">Terapia por <em>videochamada</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-label">Especialidades</div>
+  <div class="ticker-scroll">
+    <div class="ticker-inner">
+      <a href="#atendimentos">Análise do Comportamento · ABA</a>
+      <a href="#atendimentos">Neuropsicologia Infantil</a>
+      <a href="#atendimentos">Saúde Mental da Mulher</a>
+      <a href="#atendimentos">Neurodesenvolvimento 2–10 anos</a>
+      <a href="#atendimentos">Terapia Online</a>
+      <a href="#atendimentos">Suporte à Maternidade</a>
+      <a href="#atendimentos">Modificação de Comportamento</a>
+      <a href="#atendimentos">Desenvolvimento Cognitivo</a>
+      <a href="#atendimentos">Análise do Comportamento · ABA</a>
+      <a href="#atendimentos">Neuropsicologia Infantil</a>
+      <a href="#atendimentos">Saúde Mental da Mulher</a>
+      <a href="#atendimentos">Neurodesenvolvimento 2–10 anos</a>
+      <a href="#atendimentos">Terapia Online</a>
+      <a href="#atendimentos">Suporte à Maternidade</a>
+      <a href="#atendimentos">Modificação de Comportamento</a>
+      <a href="#atendimentos">Desenvolvimento Cognitivo</a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED GRID -->
+<section id="atendimentos" class="featured-grid-section">
+  <div class="section-head">
+    <h2>Atendimentos</h2>
+    <span class="sub">Para quem é meu trabalho</span>
+  </div>
+
+  <div class="featured-grid">
+    <!-- BIG FEATURE -->
+    <div class="fg-main">
+      <div class="fg-placeholder">🌿</div>
+      <div class="fg-number">1</div>
+      <div class="fg-overlay">
+        <span class="fg-cat"><span class="cat-pill">Psicoterapia Feminina</span></span>
+        <h3 class="fg-title">Cuidado especializado<br>para <em>mulheres</em></h3>
+        <p class="fg-desc">Espaço seguro para trabalhar ansiedade, autoestima, relações, identidade e saúde mental em todas as fases da vida feminina. Atendimento individual online.</p>
+      </div>
+    </div>
+    <!-- MID STACK -->
+    <div class="fg-mid">
+      <div class="fg-mid-card">
+        <div class="fg-mid-thumb"><div class="fg-mid-thumb-ph">🤱</div></div>
+        <span class="fg-cat"><span class="cat-pill green">Maternidade</span></span>
+        <h4 class="fg-mid-title">Suporte psicológico<br>para <em>mães</em></h4>
+        <p class="fg-mid-desc">Acolhimento para sobrecarga emocional, ansiedade materna e os desafios do desenvolvimento dos filhos.</p>
+      </div>
+      <div class="fg-mid-card">
+        <div class="fg-mid-thumb"><div class="fg-mid-thumb-ph">🧩</div></div>
+        <span class="fg-cat"><span class="cat-pill">Neuropsicologia</span></span>
+        <h4 class="fg-mid-title">Neurodesenvolvimento<br><em>infantil</em></h4>
+        <p class="fg-mid-desc">Avaliação e intervenção para crianças de 2,5 a 10 anos com foco em cognição, linguagem e comportamento.</p>
+      </div>
+    </div>
+    <!-- SIDEBAR LIST -->
+    <div class="fg-sidebar">
+      <div class="fg-sidebar-head">Mais Sobre</div>
+      <div class="fg-list-item">
+        <div class="fg-list-num">1</div>
+        <div>
+          <div class="fg-list-cat">Metodologia</div>
+          <div class="fg-list-title">ABA — Análise Aplicada do Comportamento</div>
+        </div>
+      </div>
+      <div class="fg-list-item">
+        <div class="fg-list-num">2</div>
+        <div>
+          <div class="fg-list-cat">Ciência</div>
+          <div class="fg-list-title">Práticas baseadas em evidências</div>
+        </div>
+      </div>
+      <div class="fg-list-item">
+        <div class="fg-list-num">3</div>
+        <div>
+          <div class="fg-list-cat">Foco</div>
+          <div class="fg-list-title">Mulheres de 20 a 45 anos</div>
+        </div>
+      </div>
+      <div class="fg-list-item">
+        <div class="fg-list-num">4</div>
+        <div>
+          <div class="fg-list-cat">Infância</div>
+          <div class="fg-list-title">Crianças de 2,5 a 10 anos</div>
+        </div>
+      </div>
+      <div class="fg-list-item">
+        <div class="fg-list-num">5</div>
+        <div>
+          <div class="fg-list-cat">Formato</div>
+          <div class="fg-list-title">100% online · Todo o Brasil</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GREEN STRIPE -->
+<div class="stripe">
+  <div class="stripe-inner">
+    <span class="dot">◆</span>
+    <span>Psicologia Baseada em Evidências</span>
+    <span class="dot">◆</span>
+    <span>Neurodesenvolvimento Infantil</span>
+    <span class="dot">◆</span>
+    <span>ABA · Análise do Comportamento</span>
+    <span class="dot">◆</span>
+    <span>Saúde Mental da Mulher</span>
+    <span class="dot">◆</span>
+    <span>Terapia Online</span>
+    <span class="dot">◆</span>
+    <span>Neuropsicologia Clínica</span>
+    <span class="dot">◆</span>
+    <span>Suporte à Maternidade</span>
+    <span class="dot">◆</span>
+    <span>Psicologia Baseada em Evidências</span>
+    <span class="dot">◆</span>
+    <span>Neurodesenvolvimento Infantil</span>
+    <span class="dot">◆</span>
+    <span>ABA · Análise do Comportamento</span>
+    <span class="dot">◆</span>
+    <span>Saúde Mental da Mulher</span>
+    <span class="dot">◆</span>
+    <span>Terapia Online</span>
+    <span class="dot">◆</span>
+    <span>Neuropsicologia Clínica</span>
+    <span class="dot">◆</span>
+    <span>Suporte à Maternidade</span>
+    <span class="dot">◆</span>
+  </div>
+</div>
+
+<!-- ABORDAGEM -->
+<section id="abordagem" class="approach-section reveal">
+  <div class="section-head">
+    <h2>Abordagem</h2>
+    <span class="sub">Ciência e acolhimento no mesmo espaço</span>
+  </div>
+  <div class="approach-grid">
+    <div class="approach-left">
+      <h2 class="approach-lede">
+        Cada sessão é conduzida com <em>rigor técnico</em> e escuta profunda
+      </h2>
+      <p class="approach-body">
+        Fundamento meu trabalho na Análise do Comportamento (ABA) e na Neuropsicologia — duas das abordagens mais sólidas e bem documentadas da psicologia contemporânea.
+      </p>
+      <p class="approach-body">
+        Para crianças de 2 a 10 anos, o foco está no neurodesenvolvimento, no aprendizado e no comportamento. Para mulheres e mães, no autoconhecimento, gestão emocional e saúde mental integral.
+      </p>
+      <div class="approach-pull">
+        <p>"O bem-estar genuíno surge quando rigor científico e acolhimento humano caminham juntos."</p>
+      </div>
+    </div>
+    <div class="approach-right">
+      <div class="pillar">
+        <div class="pillar-n">01</div>
+        <div>
+          <div class="pillar-title">Análise do Comportamento · ABA</div>
+          <p class="pillar-text">Metodologia estruturada para modificação de comportamento e desenvolvimento de habilidades funcionais, especialmente eficaz para crianças em fase de neurodesenvolvimento.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">02</div>
+        <div>
+          <div class="pillar-title">Neuropsicologia Clínica</div>
+          <p class="pillar-text">Compreensão aprofundada das funções cognitivas e emocionais para intervenções mais precisas, personalizadas e eficazes para cada paciente.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-n">03</div>
+        <div>
+          <div class="pillar-title">Práticas Baseadas em Evidências</div>
+          <p class="pillar-text">Todo o trabalho é fundamentado em pesquisa científica atual, garantindo intervenções eficazes, éticas e com resultados mensuráveis.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK STATS BAND -->
+<div class="dark-band">
+  <div class="dark-band-inner">
+    <div class="dark-stat">
+      <div class="dark-stat-num">ABA</div>
+      <div class="dark-stat-label">Análise do Comportamento</div>
+      <p class="dark-stat-text">Uma das abordagens com maior respaldo científico para o desenvolvimento infantil e modificação de comportamento.</p>
+    </div>
+    <div class="dark-stat">
+      <div class="dark-stat-num">100%</div>
+      <div class="dark-stat-label">Online · Todo o Brasil</div>
+      <p class="dark-stat-text">Atendimento por videochamada com segurança, conforto e sigilo — de onde você estiver no território nacional.</p>
+    </div>
+    <div class="dark-stat">
+      <div class="dark-stat-num">2–10</div>
+      <div class="dark-stat-label">Anos · Foco Infantil</div>
+      <p class="dark-stat-text">Especialização em neurodesenvolvimento para crianças de 2,5 a 10 anos, com intervenções individualizadas e orientadas por evidências.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE SPREAD -->
+<section id="perfil" class="profile-spread">
+  <div class="profile-photo">
+    <img src="psicologa-perfil.jpg" alt="Latipha Lauanny" onerror="this.style.opacity='0'">
+    <div class="profile-photo-overlay"></div>
+    <div class="logo-badge-wrap">
+      <div class="logo-ring">
+        <img src="logo.jpg" alt="Logo Latipha" onerror="this.parentElement.style.background='#3E7265'">
+      </div>
+    </div>
+    <div class="profile-caption">Latipha Lauanny · Psicóloga · CRP</div>
+  </div>
+  <div class="profile-text">
+    <div class="profile-kicker">Sobre Mim</div>
+    <h2 class="profile-name">Latipha<br>Lauanny</h2>
+    <p class="profile-role">Psicóloga da Mulher & Infância</p>
+    <div class="profile-divider"></div>
+    <p class="profile-bio">
+      Ofereço intervenções psicológicas especializadas para mulheres e crianças, fundamentadas na Análise do Comportamento (ABA) e em práticas baseadas em evidências. Meu trabalho une o acolhimento clínico ao rigor da Neuropsicologia, focando na modificação de comportamento, desenvolvimento cognitivo e suporte emocional — garantindo resultados mensuráveis e éticos para o bem-estar da família e o neurodesenvolvimento infantil.
+    </p>
+    <div class="profile-tags">
+      <span class="ptag">CRP Registrada</span>
+      <span class="ptag">ABA</span>
+      <span class="ptag">Neuropsicologia</span>
+      <span class="ptag">Online</span>
+      <span class="ptag">Infância 2–10</span>
+      <span class="ptag">Mulher & Mãe</span>
+    </div>
+    <a class="btn-cover" href="https://wa.me/5598984114813?text=Olá%20Latipha!%20Gostaria%20de%20saber%20mais." target="_blank">
+      Falar com Latipha
+    </a>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo" class="process-section">
+  <div class="process-inner">
+    <div class="section-head">
+      <h2>Como Funciona</h2>
+      <span class="sub">Seu caminho começa aqui</span>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal">
+        <div class="process-num">01</div>
+        <h3 class="process-title">Primeiro Contato</h3>
+        <p class="process-text">Envie uma mensagem pelo WhatsApp com um breve relato do que você está buscando. Responderei com atenção e agilidade.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">02</div>
+        <h3 class="process-title">Sessão de Acolhimento</h3>
+        <p class="process-text">Na primeira sessão, realizamos uma escuta aprofundada para entender seu contexto e traçar os objetivos terapêuticos.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">03</div>
+        <h3 class="process-title">Plano Personalizado</h3>
+        <p class="process-text">Definimos juntos a frequência e abordagem mais adequada — baseado em evidências científicas e no seu ritmo de vida.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="process-num">04</div>
+        <h3 class="process-title">Acompanhamento Online</h3>
+        <p class="process-text">Sessões por videochamada com total segurança, conforto e sigilo — de onde você estiver, em qualquer lugar do Brasil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-watermark">LL</div>
+  <div class="final-cta-inner reveal">
+    <div class="final-kicker">Agende sua Consulta</div>
+    <h2 class="final-h2">
+      Pronta para<br>
+      o <em>primeiro passo?</em>
+    </h2>
+    <p class="final-p">
+      Atendimento psicológico online para mulheres, mães e crianças em todo o Brasil. Fale diretamente comigo pelo WhatsApp.
+    </p>
+    <a class="btn-final" href="https://wa.me/5598984114813?text=Olá%20Latipha!%20Gostaria%20de%20agendar%20uma%20consulta." target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.769.463 3.431 1.269 4.874L2 22l5.29-1.243A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+      Chamar no WhatsApp
+    </a>
+    <div class="final-note">(98) 98411-4813 · Seg–Sex · Maranhão / Todo o Brasil</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand-wrap">
+    <div class="footer-logo-c">
+      <img src="logo.jpg" alt="Logo" onerror="this.style.display='none'">
+    </div>
+    <span class="footer-brand-name">Latipha Lauanny</span>
+  </div>
+  <p class="footer-copy">© 2025 · Todos os direitos reservados</p>
+  <p class="footer-info">Maranhão, Brasil · Psicologia Online</p>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      // stagger children if process steps
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.1 + 's';
+  obs.observe(el);
+});
+</script>
+
+</body>
+</html>
