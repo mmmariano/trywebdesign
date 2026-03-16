@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rethiar Compressores, Bombas e Ferramentas — Maringá/PR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:      #0a0d0f;
+    --steel:    #1a2332;
+    --mid:      #253447;
+    --orange:   #f5620a;
+    --orange2:  #ff8c3a;
+    --silver:   #8fa3b8;
+    --light:    #e8edf2;
+    --white:    #ffffff;
+    --card-bg:  #131b26;
+    --border:   rgba(143,163,184,0.15);
+    --font-head: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--light);
+    font-family: var(--font-body);
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ── TOPBAR ─────────────────────────────────────────── */
+  .topbar {
+    background: var(--steel);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0;
+    font-size: 13px;
+    color: var(--silver);
+  }
+  .topbar .wrap {
+    max-width: 1280px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+  }
+  .topbar a { color: var(--silver); text-decoration: none; transition: color .2s; }
+  .topbar a:hover { color: var(--orange); }
+  .topbar .tb-contact { display: flex; gap: 24px; align-items: center; }
+  .topbar .tb-contact span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── NAV ────────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(10,13,15,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--orange);
+  }
+  .nav-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; height: 68px;
+  }
+  .logo {
+    font-family: var(--font-head); font-weight: 900; font-size: 28px;
+    letter-spacing: -0.5px; color: var(--white); text-decoration: none; line-height: 1;
+  }
+  .logo span { color: var(--orange); }
+  .logo small { display: block; font-size: 11px; font-weight: 400; letter-spacing: 2px; color: var(--silver); text-transform: uppercase; margin-top: 1px; }
+
+  .nav-links { display: flex; gap: 4px; align-items: center; list-style: none; }
+  .nav-links a {
+    font-family: var(--font-head); font-weight: 600; font-size: 15px; letter-spacing: 0.5px;
+    text-transform: uppercase; color: var(--silver); text-decoration: none;
+    padding: 8px 14px; border-radius: 4px; transition: all .2s;
+  }
+  .nav-links a:hover { color: var(--white); background: rgba(245,98,10,0.12); }
+  .nav-links .cta-nav {
+    background: var(--orange); color: var(--white) !important;
+    margin-left: 8px; border-radius: 4px;
+  }
+  .nav-links .cta-nav:hover { background: var(--orange2) !important; }
+
+  /* dropdown */
+  .nav-links .has-drop { position: relative; }
+  .nav-links .dropdown {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: var(--steel); border: 1px solid var(--border);
+    border-radius: 8px; min-width: 280px; padding: 8px 0;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    columns: 2; column-gap: 0;
+  }
+  .nav-links .has-drop:hover .dropdown { display: block; }
+  .nav-links .dropdown a {
+    display: block; font-size: 13px; padding: 7px 18px;
+    border-radius: 0; text-transform: none; font-weight: 400;
+    break-inside: avoid;
+  }
+
+  /* hamburger */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+  .hamburger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all .3s; }
+
+  /* ── HERO ───────────────────────────────────────────── */
+  .hero {
+    position: relative; min-height: 92vh;
+    display: flex; align-items: center;
+    background: var(--steel);
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 70% 50%, rgba(245,98,10,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(37,52,71,0.8) 0%, transparent 60%);
+  }
+  /* Geometric accent */
+  .hero-geo {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 48%;
+    background: var(--card-bg);
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+    overflow: hidden;
+  }
+  .hero-geo::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('https://www.rethiar.com.br/img_site/g/20200605_110625.jpg') center/cover no-repeat;
+    opacity: 0.35;
+  }
+  .hero-geo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--card-bg) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 1280px; margin: 0 auto; padding: 80px 24px;
+    width: 100%;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(245,98,10,0.15); border: 1px solid rgba(245,98,10,0.4);
+    color: var(--orange2); font-size: 12px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+
+  .hero h1 {
+    font-family: var(--font-head); font-weight: 900; font-size: clamp(52px, 7vw, 92px);
+    line-height: .95; letter-spacing: -1px; text-transform: uppercase;
+    color: var(--white); margin-bottom: 24px; max-width: 600px;
+  }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+
+  .hero p {
+    font-size: 17px; color: var(--silver); line-height: 1.7;
+    max-width: 440px; margin-bottom: 40px;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--font-head); font-weight: 700; font-size: 16px; letter-spacing: 1px;
+    text-transform: uppercase; padding: 15px 36px; border-radius: 4px;
+    text-decoration: none; transition: all .25s; cursor: pointer; border: none; display: inline-block;
+  }
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { background: var(--orange2); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(245,98,10,0.35); }
+  .btn-ghost { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.25); }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 60px; flex-wrap: wrap;
+  }
+  .hero-stat strong {
+    display: block; font-family: var(--font-head); font-weight: 900; font-size: 40px;
+    color: var(--orange); line-height: 1;
+  }
+  .hero-stat span { font-size: 13px; color: var(--silver); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── SECTION GENERIC ───────────────────────────────── */
+  section { padding: 80px 0; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+  .sec-label {
+    font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+  }
+  .sec-title {
+    font-family: var(--font-head); font-weight: 900; font-size: clamp(34px, 4vw, 52px);
+    line-height: 1; text-transform: uppercase; color: var(--white); margin-bottom: 16px;
+  }
+  .sec-sub { font-size: 16px; color: var(--silver); line-height: 1.7; max-width: 560px; }
+  .divider { width: 48px; height: 3px; background: var(--orange); margin: 20px 0; }
+
+  /* ── MARCAS ─────────────────────────────────────────── */
+  #marcas { background: var(--card-bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 0; }
+  .marcas-title { text-align: center; margin-bottom: 36px; }
+  .brands-track-wrap { overflow: hidden; position: relative; }
+  .brands-track-wrap::before,
+  .brands-track-wrap::after {
+    content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2;
+  }
+  .brands-track-wrap::before { left: 0; background: linear-gradient(to right, var(--card-bg), transparent); }
+  .brands-track-wrap::after  { right:0; background: linear-gradient(to left,  var(--card-bg), transparent); }
+
+  .brands-track { display: flex; gap: 0; animation: scroll-brands 40s linear infinite; width: max-content; }
+  .brands-track:hover { animation-play-state: paused; }
+  @keyframes scroll-brands { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .brand-chip {
+    background: var(--mid); border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px 24px; margin: 0 8px; white-space: nowrap;
+    font-family: var(--font-head); font-size: 15px; font-weight: 700; letter-spacing: 1px;
+    color: var(--silver); text-transform: uppercase; transition: all .2s;
+    cursor: default;
+  }
+  .brand-chip:hover { color: var(--white); border-color: var(--orange); background: rgba(245,98,10,0.1); }
+
+  /* ── PRODUTOS ────────────────────────────────────────── */
+  #produtos { background: var(--ink); }
+  .prod-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; gap: 24px; flex-wrap: wrap; }
+  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+
+  .prod-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    overflow: hidden; transition: all .3s; cursor: pointer; text-decoration: none; display: block;
+  }
+  .prod-card:hover { border-color: var(--orange); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  .prod-card-img {
+    height: 200px; background: var(--mid) center/cover no-repeat;
+    position: relative; overflow: hidden;
+  }
+  .prod-card-img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(10,13,15,0.7));
+  }
+  .prod-card-badge {
+    position: absolute; top: 12px; right: 12px; z-index: 1;
+    background: var(--orange); color: var(--white);
+    font-family: var(--font-head); font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 3px;
+  }
+  .prod-card-body { padding: 18px; }
+  .prod-card-body h3 {
+    font-family: var(--font-head); font-size: 16px; font-weight: 700; text-transform: uppercase;
+    color: var(--white); line-height: 1.3; margin-bottom: 12px;
+  }
+  .prod-card-action {
+    display: flex; gap: 8px;
+  }
+  .btn-sm {
+    font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase; padding: 8px 14px; border-radius: 3px;
+    text-decoration: none; transition: all .2s; cursor: pointer; border: none; flex: 1; text-align: center;
+  }
+  .btn-sm-orange { background: var(--orange); color: var(--white); }
+  .btn-sm-orange:hover { background: var(--orange2); }
+  .btn-sm-ghost { background: transparent; color: var(--silver); border: 1px solid var(--border); }
+  .btn-sm-ghost:hover { color: var(--white); border-color: var(--silver); }
+
+  /* ── CATEGORIAS ─────────────────────────────────────── */
+  #categorias { background: var(--steel); }
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-top: 40px; }
+  .cat-chip {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 18px 14px; text-align: center; transition: all .25s;
+    text-decoration: none; display: block;
+  }
+  .cat-chip:hover { border-color: var(--orange); background: rgba(245,98,10,0.08); transform: translateY(-2px); }
+  .cat-chip .cat-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+  .cat-chip span {
+    font-family: var(--font-head); font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; color: var(--silver); transition: color .2s; display: block;
+  }
+  .cat-chip:hover span { color: var(--white); }
+
+  /* ── SOBRE ──────────────────────────────────────────── */
+  #sobre { background: var(--ink); }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .sobre-img {
+    position: relative; border-radius: 12px; overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .sobre-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; filter: brightness(0.85); }
+  .sobre-img::before {
+    content: ''; position: absolute;
+    top: -16px; left: -16px; right: 16px; bottom: 16px;
+    border: 2px solid var(--orange); border-radius: 12px; z-index: -1;
+  }
+  .sobre-img-accent {
+    position: absolute; bottom: 24px; left: 24px;
+    background: var(--orange); color: var(--white);
+    font-family: var(--font-head); font-weight: 900; font-size: 52px; line-height: 1;
+    padding: 16px 20px; border-radius: 8px;
+  }
+  .sobre-img-accent small { display: block; font-size: 12px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+  .sobre-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
+  .sobre-feat {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px; display: flex; align-items: flex-start; gap: 12px;
+  }
+  .feat-icon { font-size: 22px; flex-shrink: 0; }
+  .sobre-feat strong { display: block; font-size: 14px; color: var(--white); margin-bottom: 2px; }
+  .sobre-feat p { font-size: 12px; color: var(--silver); line-height: 1.4; }
+
+  /* ── ORCAMENTO ───────────────────────────────────────── */
+  #orcamento { background: var(--steel); }
+  .orc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: 12px; font-weight: 600; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--silver); margin-bottom: 8px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%; background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 13px 16px; color: var(--white); font-family: var(--font-body);
+    font-size: 15px; transition: border-color .2s; resize: vertical;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--orange); }
+  .form-group select option { background: var(--steel); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-notice {
+    font-size: 12px; color: var(--silver); margin-top: 12px; line-height: 1.6;
+    padding: 12px; background: rgba(245,98,10,0.08); border-radius: 6px;
+    border-left: 3px solid var(--orange);
+  }
+  .orc-info { }
+  .contact-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .contact-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 20px; display: flex; align-items: center; gap: 16px;
+  }
+  .contact-card .cc-icon {
+    width: 48px; height: 48px; border-radius: 8px; background: rgba(245,98,10,0.15);
+    display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0;
+  }
+  .contact-card strong { display: block; font-size: 14px; color: var(--white); margin-bottom: 2px; }
+  .contact-card a { color: var(--orange); text-decoration: none; font-size: 14px; }
+  .contact-card a:hover { color: var(--orange2); }
+
+  /* ── MAPA ─────────────────────────────────────────── */
+  #localizacao { background: var(--ink); padding: 0; }
+  .mapa-wrap { display: grid; grid-template-columns: 1fr 2fr; }
+  .mapa-info {
+    background: var(--card-bg); padding: 56px 40px;
+    display: flex; flex-direction: column; justify-content: center;
+    border-right: 1px solid var(--border);
+  }
+  .mapa-info h3 {
+    font-family: var(--font-head); font-weight: 900; font-size: 32px;
+    text-transform: uppercase; color: var(--white); margin-bottom: 24px;
+  }
+  .mapa-detail { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+  .mapa-detail .md-icon { font-size: 20px; margin-top: 2px; flex-shrink: 0; }
+  .mapa-detail strong { display: block; font-size: 13px; color: var(--orange); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+  .mapa-detail p { font-size: 15px; color: var(--light); }
+  .mapa-detail a { color: var(--light); text-decoration: none; }
+  .mapa-detail a:hover { color: var(--orange); }
+  #map-iframe { height: 400px; width: 100%; display: block; border: none; filter: grayscale(30%) contrast(110%); }
+
+  /* ── FOOTER ───────────────────────────────────────── */
+  footer {
+    background: var(--steel); border-top: 2px solid var(--orange); padding: 48px 0 28px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+  .footer-logo {
+    font-family: var(--font-head); font-weight: 900; font-size: 24px;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .footer-logo span { color: var(--orange); }
+  footer p { font-size: 14px; color: var(--silver); line-height: 1.7; }
+  .footer-nav h4 {
+    font-family: var(--font-head); font-size: 13px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase; color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .footer-nav ul { list-style: none; }
+  .footer-nav li { margin-bottom: 10px; }
+  .footer-nav a { font-size: 14px; color: var(--silver); text-decoration: none; transition: color .2s; }
+  .footer-nav a:hover { color: var(--orange); }
+  .footer-bottom {
+    border-top: 1px solid var(--border); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+    font-size: 12px; color: var(--silver);
+  }
+  .footer-bottom a { color: var(--orange); text-decoration: none; }
+
+  /* ── WHATSAPP BUTTON ─────────────────────────────── */
+  .whatsapp-fab {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    width: 58px; height: 58px; border-radius: 50%;
+    background: #25d366; box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; transition: all .3s;
+  }
+  .whatsapp-fab:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
+  .whatsapp-fab svg { width: 30px; height: 30px; fill: white; }
+
+  /* ── MOBILE NAV ──────────────────────────────────── */
+  #mobile-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--ink); z-index: 9998; padding: 80px 24px 40px;
+    overflow-y: auto;
+  }
+  #mobile-menu.open { display: block; }
+  #mobile-menu ul { list-style: none; }
+  #mobile-menu li { border-bottom: 1px solid var(--border); }
+  #mobile-menu a {
+    display: block; font-family: var(--font-head); font-weight: 700; font-size: 20px;
+    text-transform: uppercase; color: var(--light); text-decoration: none; padding: 16px 0;
+  }
+  #mobile-menu a:hover { color: var(--orange); }
+  .mobile-close {
+    position: absolute; top: 20px; right: 24px; background: none; border: none;
+    color: var(--white); font-size: 28px; cursor: pointer;
+  }
+
+  /* ── SCROLL ANIMATIONS ───────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .sobre-grid { grid-template-columns: 1fr; }
+    .orc-grid { grid-template-columns: 1fr; }
+    .mapa-wrap { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-geo { display: none; }
+    .hero h1 { font-size: 48px; }
+    section { padding: 56px 0; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .sobre-features { grid-template-columns: 1fr; }
+    .cat-grid { grid-template-columns: repeat(3,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-contact">
+      <span>📍 Av. Morangueira, 3683 – Jd. Dias I, Maringá/PR</span>
+      <span>🕐 Seg–Sex: 08h–18h | Sáb: 08h–12h</span>
+    </div>
+    <div class="tb-contact">
+      <a href="tel:4432462121">📞 (44) 3246-2121</a>
+      <a href="https://wa.me/5544991156249" target="_blank">💬 (44) 99115-6249</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      Rethiar<span>.</span>
+      <small>Compressores · Bombas · Ferramentas</small>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#sobre">A Empresa</a></li>
+      <li><a href="#marcas">Marcas</a></li>
+      <li class="has-drop">
+        <a href="#produtos">Produtos ▾</a>
+        <div class="dropdown">
+          <a href="#">Compressores a Pistão</a>
+          <a href="#">Compressores Parafuso</a>
+          <a href="#">Bombas de Vácuo</a>
+          <a href="#">Lavadoras de Pressão</a>
+          <a href="#">Ferramentas Elétricas</a>
+          <a href="#">Ferramentas Pneumáticas</a>
+          <a href="#">Ferramentas Manuais</a>
+          <a href="#">Geradores</a>
+          <a href="#">Hidráulicos</a>
+          <a href="#">Abrasivos</a>
+          <a href="#">Calibradores</a>
+          <a href="#">Instrumentos de Medição</a>
+          <a href="#">Motobombas</a>
+          <a href="#">Tecnologia em Soldagem</a>
+          <a href="#">Aspiradores</a>
+          <a href="#">Escadas</a>
+          <a href="#">Ver todos os produtos →</a>
+        </div>
+      </li>
+      <li><a href="#categorias">Categorias</a></li>
+      <li><a href="#localizacao">Localização</a></li>
+      <li><a href="#orcamento" class="cta-nav">Solicitar Orçamento</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <ul>
+    <li><a href="#sobre" onclick="toggleMenu()">A Empresa</a></li>
+    <li><a href="#marcas" onclick="toggleMenu()">Marcas</a></li>
+    <li><a href="#produtos" onclick="toggleMenu()">Produtos</a></li>
+    <li><a href="#categorias" onclick="toggleMenu()">Categorias</a></li>
+    <li><a href="#localizacao" onclick="toggleMenu()">Localização</a></li>
+    <li><a href="#orcamento" onclick="toggleMenu()">Solicitar Orçamento</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-geo">
+    <div class="hero-geo-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">Referência em Maringá há décadas</div>
+    <h1>Força que<br>move <em>sua<br>empresa</em></h1>
+    <p>Compressores, bombas, ferramentas e muito mais. Mais de 100 marcas líderes, atendimento especializado e assistência técnica própria.</p>
+    <div class="hero-btns">
+      <a href="#orcamento" class="btn btn-primary">Solicitar Orçamento</a>
+      <a href="#produtos" class="btn btn-ghost">Ver Produtos</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>100+</strong><span>Marcas</span></div>
+      <div class="hero-stat"><strong>5000+</strong><span>Produtos</span></div>
+      <div class="hero-stat"><strong>Anos</strong><span>de experiência</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARCAS -->
+<section id="marcas">
+  <div class="wrap marcas-title reveal">
+    <div class="sec-label">Nossos Parceiros</div>
+    <div class="sec-title">Principais Marcas</div>
+  </div>
+  <div class="brands-track-wrap">
+    <div class="brands-track" id="brandsTrack">
+      <!-- duplicado para loop infinito -->
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS EM DESTAQUE -->
+<section id="produtos">
+  <div class="wrap">
+    <div class="prod-header reveal">
+      <div>
+        <div class="sec-label">Catálogo</div>
+        <div class="sec-title">Produtos em Destaque</div>
+        <div class="divider"></div>
+      </div>
+      <a href="#" class="btn btn-ghost" style="white-space:nowrap">Ver Todos →</a>
+    </div>
+    <div class="prod-grid">
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/produtos/produto_pequenas/20100524_133441.jpg')">
+          <span class="prod-card-badge">Destaque</span>
+        </div>
+        <div class="prod-card-body">
+          <h3>Compressor Ônix 10/200 V</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/produtos/produto_pequenas/20150622_150607.jpg')">
+          <span class="prod-card-badge">Kärcher</span>
+        </div>
+        <div class="prod-card-body">
+          <h3>Lavadora Alta Pressão HD 585 New Plus</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/p/SecadoresAtlasCopco-20170123_105423.jpg')">
+          <span class="prod-card-badge">Atlas Copco</span>
+        </div>
+        <div class="prod-card-body">
+          <h3>Secadores Atlas Copco</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/p/KITFERRAMENTAS110PEC387ASVONDER-20210615_150333.jpg')">
+          <span class="prod-card-badge">Vonder</span>
+        </div>
+        <div class="prod-card-body">
+          <h3>Kit Ferramentas 110 Peças</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/produtos/produto_pequenas/20100517_172421.jpg')">
+        </div>
+        <div class="prod-card-body">
+          <h3>Acoplador Hidráulico Universal Profissional 304-C</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/p/MAKITA-20210615_141321.jpg')">
+          <span class="prod-card-badge">Makita</span>
+        </div>
+        <div class="prod-card-body">
+          <h3>Ferramentas Makita — Linha Profissional</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/p/DeWALT-20220826_084957.jpg')">
+          <span class="prod-card-badge">DeWalt</span>
+        </div>
+        <div class="prod-card-body">
+          <h3>Linha DeWalt Ferramentas Elétricas</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+      <a class="prod-card reveal" href="#">
+        <div class="prod-card-img" style="background-image:url('https://www.rethiar.com.br/img_site/produtos/produto_pequenas/20100518_081909.jpg')">
+        </div>
+        <div class="prod-card-body">
+          <h3>Calibrador de Pneus Profissional 0167</h3>
+          <div class="prod-card-action">
+            <a href="#orcamento" class="btn-sm btn-sm-orange">Orçamento</a>
+            <a href="#" class="btn-sm btn-sm-ghost">Detalhes</a>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIAS -->
+<section id="categorias">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label">Navegue por Área</div>
+      <div class="sec-title">Categorias de Produtos</div>
+      <div class="divider"></div>
+    </div>
+    <div class="cat-grid">
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">⚙️</span><span>Compressores a Pistão</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🔩</span><span>Compressores Parafuso</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">💧</span><span>Bombas de Vácuo</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🔧</span><span>Ferramentas Elétricas</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🔨</span><span>Ferramentas Manuais</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">💨</span><span>Ferramentas Pneumáticas</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🚿</span><span>Lavadoras de Pressão</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">⚡</span><span>Geradores</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🌿</span><span>Cortadores de Grama</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">📏</span><span>Instrumentos de Medição</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🔥</span><span>Tecnologia em Soldagem</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🛡️</span><span>Uso de EPI</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🪜</span><span>Escadas</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">💡</span><span>Iluminação</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🚗</span><span>Tecnologia Automotiva</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🏗️</span><span>Construção Civil</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🌱</span><span>Tecnologia em Jardinagem</span></a>
+      <a href="#" class="cat-chip reveal"><span class="cat-icon">🔌</span><span>Auto Transformadores</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="wrap">
+    <div class="sobre-grid">
+      <div class="sobre-img reveal">
+        <img src="https://www.rethiar.com.br/img_site/g/20200605_110625.jpg" alt="Rethiar Loja" loading="lazy">
+        <div class="sobre-img-accent">
+          +20<small>anos de mercado</small>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="sec-label">Quem somos</div>
+        <div class="sec-title">Tradição e Qualidade em Maringá</div>
+        <div class="divider"></div>
+        <p style="color:var(--silver);line-height:1.8;margin-bottom:16px;">
+          A Rethiar Compressores, Bombas e Ferramentas é uma empresa com anos de história em Maringá, consolidada como referência regional na venda de equipamentos industriais, ferramentas e soluções para os mais diversos segmentos.
+        </p>
+        <p style="color:var(--silver);line-height:1.8;margin-bottom:32px;">
+          Trabalhamos com as melhores marcas do mercado — Schulz, Atlas Copco, Kärcher, DeWalt, Makita, Bosch e mais de 100 outras — garantindo qualidade, disponibilidade e suporte técnico especializado.
+        </p>
+        <div class="sobre-features">
+          <div class="sobre-feat">
+            <span class="feat-icon">🏆</span>
+            <div><strong>Marcas Líderes</strong><p>Mais de 100 marcas nacionais e importadas</p></div>
+          </div>
+          <div class="sobre-feat">
+            <span class="feat-icon">🔧</span>
+            <div><strong>Assistência Técnica</strong><p>Equipe própria para manutenção e reparos</p></div>
+          </div>
+          <div class="sobre-feat">
+            <span class="feat-icon">🚀</span>
+            <div><strong>Atendimento Ágil</strong><p>Orçamento rápido e entrega eficiente</p></div>
+          </div>
+          <div class="sobre-feat">
+            <span class="feat-icon">📦</span>
+            <div><strong>Estoque Amplo</strong><p>Produtos prontos para entrega imediata</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORCAMENTO -->
+<section id="orcamento">
+  <div class="wrap">
+    <div class="orc-grid">
+      <div class="reveal">
+        <div class="sec-label">Fale Conosco</div>
+        <div class="sec-title">Solicite seu Orçamento</div>
+        <div class="divider"></div>
+        <p class="sec-sub" style="margin-bottom:32px;">Preencha o formulário e nossa equipe entrará em contato o mais breve possível com as melhores condições.</p>
+
+        <form id="orcForm" onsubmit="enviarForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nome Completo *</label>
+              <input type="text" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label>Telefone / WhatsApp *</label>
+              <input type="tel" placeholder="(44) 99999-9999" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" placeholder="seu@email.com.br">
+          </div>
+          <div class="form-group">
+            <label>Empresa / Ramo de Atuação</label>
+            <input type="text" placeholder="Nome da empresa ou profissão">
+          </div>
+          <div class="form-group">
+            <label>Produto / Categoria de Interesse</label>
+            <select>
+              <option value="">Selecione uma categoria</option>
+              <option>Compressores a Pistão</option>
+              <option>Compressores Parafuso Rotativo</option>
+              <option>Bombas de Vácuo / Motobombas</option>
+              <option>Lavadoras de Alta Pressão</option>
+              <option>Ferramentas Elétricas</option>
+              <option>Ferramentas Pneumáticas</option>
+              <option>Ferramentas Manuais</option>
+              <option>Geradores</option>
+              <option>Hidráulicos</option>
+              <option>Instrumentos de Medição</option>
+              <option>Tecnologia em Soldagem</option>
+              <option>EPI e Segurança</option>
+              <option>Outro / Múltiplos Produtos</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Descreva sua Necessidade</label>
+            <textarea rows="4" placeholder="Descreva o produto que precisa, quantidade, especificações técnicas ou qualquer informação relevante..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;font-size:17px;padding:16px;">
+            Enviar Solicitação →
+          </button>
+          <p class="form-notice">
+            Você também pode entrar em contato diretamente pelo WhatsApp <strong>(44) 99115-6249</strong> ou pelo telefone <strong>(44) 3246-2121</strong>.
+          </p>
+        </form>
+        <div id="form-success" style="display:none;background:rgba(39,174,96,0.12);border:1px solid rgba(39,174,96,0.4);border-radius:8px;padding:24px;text-align:center;margin-top:16px;">
+          <div style="font-size:40px;margin-bottom:12px;">✅</div>
+          <strong style="color:#2ecc71;font-size:18px;display:block;margin-bottom:8px;">Mensagem enviada com sucesso!</strong>
+          <p style="color:var(--silver);font-size:14px;">Nossa equipe entrará em contato em breve. Você também pode nos chamar pelo WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="orc-info reveal">
+        <div class="sec-label">Informações de Contato</div>
+        <div class="sec-title" style="font-size:32px;">Como nos encontrar</div>
+        <div class="divider"></div>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="cc-icon">📍</div>
+            <div>
+              <strong>Endereço</strong>
+              <a href="https://maps.google.com/?q=Compressores+Rethiar+Maringa" target="_blank">
+                Av. Morangueira, 3683<br>Jd. Dias I — Maringá / PR
+              </a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">📞</div>
+            <div>
+              <strong>Telefone Fixo</strong>
+              <a href="tel:4432462121">(44) 3246-2121</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">💬</div>
+            <div>
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/5544991156249" target="_blank">(44) 99115-6249</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="cc-icon">🕐</div>
+            <div>
+              <strong>Horário de Atendimento</strong>
+              <p style="color:var(--light);font-size:14px;">Seg a Sex: 08h–18h<br>Sábado: 08h–12h</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Whatsapp -->
+        <a href="https://wa.me/5544991156249?text=Olá! Gostaria de solicitar um orçamento." target="_blank"
+           class="btn btn-primary" style="display:block;text-align:center;margin-top:24px;font-size:17px;padding:18px;">
+          💬 Chamar no WhatsApp Agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAPA -->
+<section id="localizacao">
+  <div class="mapa-wrap">
+    <div class="mapa-info">
+      <h3>Nossa Localização</h3>
+      <div class="mapa-detail">
+        <span class="md-icon">📍</span>
+        <div>
+          <strong>Endereço</strong>
+          <p>Av. Morangueira, 3683<br>Jd. Dias I — Maringá/PR</p>
+        </div>
+      </div>
+      <div class="mapa-detail">
+        <span class="md-icon">📞</span>
+        <div>
+          <strong>Telefone</strong>
+          <p><a href="tel:4432462121">(44) 3246-2121</a></p>
+        </div>
+      </div>
+      <div class="mapa-detail">
+        <span class="md-icon">💬</span>
+        <div>
+          <strong>WhatsApp</strong>
+          <p><a href="https://wa.me/5544991156249" target="_blank">(44) 99115-6249</a></p>
+        </div>
+      </div>
+      <div class="mapa-detail">
+        <span class="md-icon">🕐</span>
+        <div>
+          <strong>Horário</strong>
+          <p>Seg–Sex 08h–18h<br>Sábado 08h–12h</p>
+        </div>
+      </div>
+      <a href="https://maps.google.com/?q=Compressores+e+Bombas+Rethiar+Maringa" target="_blank"
+         class="btn btn-primary" style="margin-top:32px;display:inline-block;font-size:14px;padding:12px 24px;">
+        Abrir no Google Maps →
+      </a>
+    </div>
+    <iframe id="map-iframe"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.124846905529!2d-51.91812608443972!3d-23.383700360941734!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ecd1420b18060f%3A0xc6ed8c8c245cf0a1!2sCompressores+e+Bombas+Rethiar!5e0!3m2!1spt-BR!2sbr!4v1462479441003"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Rethiar<span>.</span></div>
+        <p style="margin-bottom:16px;">Compressores, Bombas e Ferramentas. Referência em Maringá e região, com mais de 100 marcas e atendimento especializado.</p>
+        <p style="font-size:13px;">Av. Morangueira, 3683 – Jd. Dias I<br>Maringá / PR — CEP 87040-000</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#sobre">A Empresa</a></li>
+          <li><a href="#marcas">Marcas</a></li>
+          <li><a href="#produtos">Produtos em Destaque</a></li>
+          <li><a href="#categorias">Categorias</a></li>
+          <li><a href="#orcamento">Solicitar Orçamento</a></li>
+          <li><a href="#localizacao">Localização</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="tel:4432462121">📞 (44) 3246-2121</a></li>
+          <li><a href="https://wa.me/5544991156249">💬 (44) 99115-6249</a></li>
+          <li><a href="mailto:contato@rethiar.com.br">✉️ contato@rethiar.com.br</a></li>
+          <li><a href="#">Seg–Sex: 08h–18h</a></li>
+          <li><a href="#">Sáb: 08h–12h</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Rethiar Compressores, Bombas e Ferramentas. Todos os direitos reservados.</span>
+      <span>Desenvolvido por <a href="https://trywebdesign.com.br" target="_blank">TryWebDesign</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<a class="whatsapp-fab" href="https://wa.me/5544991156249?text=Olá! Gostaria de tirar algumas dúvidas." target="_blank" title="Chamar no WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+// ── Brands carousel ───────────────────────────────────────
+const brands = [
+  'Pressure','Schulz','Atlas Copco','Jacto','ZM Bombas','Kärcher','Puma',
+  'FIAC','Somar','Vonder','V8 Brasil','Bosch','Record','Bambozzi',
+  'Makita','DeWalt','Tramontina','Gedore','Esab','Norton','Marcon',
+  'Brudden','Balmer','IPC','Wesco','Tekbond','Bovenau','Chiaperini',
+  'Lorenzetti','Lynus','Gerdau','Ciser','Hidraflux','Metalcava'
+];
+const track = document.getElementById('brandsTrack');
+const doubled = [...brands, ...brands];
+doubled.forEach(b => {
+  const chip = document.createElement('div');
+  chip.className = 'brand-chip';
+  chip.textContent = b;
+  track.appendChild(chip);
+});
+
+// ── Scroll reveal ─────────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.08 + 's';
+  observer.observe(el);
+});
+
+// ── Mobile menu ───────────────────────────────────────────
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+// ── Form submit ───────────────────────────────────────────
+function enviarForm(e) {
+  e.preventDefault();
+  document.getElementById('orcForm').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+  document.getElementById('form-success').scrollIntoView({behavior:'smooth', block:'center'});
+}
+</script>
+</body>
+</html>
