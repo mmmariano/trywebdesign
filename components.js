@@ -86,7 +86,7 @@ const footerHTML = `
     <div class="footer-bottom">
         <div class="footer-legal">
             <p>© 2025 TRYWEBDESIGN. Todos os direitos reservados.</p>
-            <div class="legal-links"><a href="#">Privacidade</a><a href="#">Termos</a></div>
+            
         </div>
         <div class="back-to-top"><a href="#" class="scroll-top">Voltar ao topo <i data-lucide="arrow-up" size="14"></i></a></div>
     </div>
