@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Portfólio -->
     <title>Portfólio | Projetos Realizados por Nós | TryWebDesign Portfólio</title>
     <meta name="description" content="Veja nossos projetos recentes. Confira como ajudamos empresas de diversos setores a dominarem o digital com vitrines elegantes e modernas.">
-    <meta name="keywords" content="exemplos de sites, portfólio web design, cases de sucesso, sites modernos, sites de alta performance">
 
-    <!-- Compartilhamento Social (Open Graph) -->
-    <meta property="og:title" content="Conheça Nossos Projetos | TryWebDesign Portfólio">
-    <meta property="og:description" content="Inspire-se com empresas que já transformaram sua presença online com nossa ajuda.">
-    <meta property="og:url" content="https://trywebdesign.com.br/portfolio/">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-   
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -23,128 +14,398 @@
     <!-- Componente de Menu e Footer -->
     <script src="../components.js" defer></script>
     <link rel="stylesheet" href="../style.css">
-    
     <link rel="icon" type="image/png" href="../favicon.png">
 
     <style>
         :root {
             --white: #ffffff;
-            --bg-apple: #f5f5f7;
-            --text-dark: #1d1d1f;
-            --text-muted: #86868b;
-            --apple-blue: #0071e3;
-            --border: rgba(0,0,0,0.08);
-            --card-radius: 24px;
+            --bg: #f7f6f3;
+            --bg-card: #ffffff;
+            --text: #111110;
+            --muted: #6b6b67;
+            --accent: #0a5cf5;
+            --accent-hover: #0048d4;
+            --accent-light: #e8efff;
+            --green: #16a34a;
+            --green-light: #dcfce7;
+            --border: rgba(0,0,0,0.07);
+            --radius: 20px;
+            --radius-sm: 12px;
+            --wpp: #25D366;
+            --wpp-hover: #1aab52;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .blue-text-gradient { background: linear-gradient(135deg, #0071e3 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 
-        /* NAVBAR (CSS de estabilidade) */
-        .navbar { 
-            position: fixed; top: 15px; width: 95%; max-width: 1100px; left: 50%; transform: translateX(-50%); 
-            z-index: 1000; background: rgba(255, 255, 255, 0.7); 
-            backdrop-filter: saturate(180%) blur(20px); border: 1px solid var(--border); 
-            height: 64px; display: flex; align-items: center; border-radius: 20px;
-            padding: 0 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        /* ── NAVBAR ── */
+        .navbar {
+            position: fixed; top: 14px; width: 95%; max-width: 1100px;
+            left: 50%; transform: translateX(-50%); z-index: 1000;
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: saturate(180%) blur(20px);
+            border: 1px solid var(--border);
+            height: 62px; display: flex; align-items: center;
+            border-radius: 18px; padding: 0 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
         }
 
-        /* HERO PORTFOLIO */
-        .portfolio-hero { padding: 180px 0 60px; text-align: center; }
-        .portfolio-hero h1 { 
-            font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(38px, 7vw, 64px); 
-            font-weight: 800; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 20px;
+        /* ── HERO ── */
+        .hero {
+            padding: 160px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .portfolio-hero p { font-size: 20px; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            width: 700px; height: 700px;
+            background: radial-gradient(ellipse, rgba(10,92,245,0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-        /* GRID DETALHADA */
-        .portfolio-section { padding: 60px 0 120px; background: var(--bg-apple); }
-        .portfolio-grid-detailed {
+        /* ── TRUST BAR ── */
+        .trust-bar {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; margin-bottom: 28px;
+        }
+        .trust-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--green-light); color: var(--green);
+            font-size: 13px; font-weight: 500;
+            padding: 6px 14px; border-radius: 50px;
+            border: 1px solid rgba(22,163,74,0.2);
+        }
+        .trust-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse-dot 2s infinite; }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.85); }
+        }
+
+        .hero h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(40px, 6.5vw, 68px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.08;
+            margin-bottom: 22px;
+            color: var(--text);
+        }
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(120deg, #0a5cf5 0%, #00b4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-sub {
+            font-size: 19px;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* ── STATS ROW ── */
+        .stats-row {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0; margin-bottom: 48px; flex-wrap: wrap;
+        }
+        .stat-item {
+            padding: 0 28px;
+            text-align: center;
+        }
+        .stat-item + .stat-item {
+            border-left: 1px solid var(--border);
+        }
+        .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -0.03em;
+        }
+        .stat-label {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* ── CTA HERO ── */
+        .hero-cta {
+            display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+        }
+        .btn-wpp {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--wpp); color: #fff;
+            padding: 16px 28px; border-radius: 14px;
+            font-weight: 500; font-size: 16px; text-decoration: none;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+        }
+        .btn-wpp:hover { background: var(--wpp-hover); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+        .btn-wpp svg { flex-shrink: 0; }
+
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--muted); font-size: 15px; font-weight: 400;
+            text-decoration: none; transition: color 0.2s;
+        }
+        .btn-secondary:hover { color: var(--text); }
+
+        /* ── SCROLL INDICATOR ── */
+        .scroll-hint {
+            margin-top: 60px; display: flex; flex-direction: column;
+            align-items: center; gap: 8px;
+            color: var(--muted); font-size: 13px;
+            animation: bob 2s ease-in-out infinite;
+        }
+        @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+        /* ── PROJECTS SECTION ── */
+        .section-projects { padding: 20px 0 100px; }
+
+        .section-label {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 40px;
+        }
+        .section-label span {
+            font-size: 12px; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 1.5px; color: var(--muted);
+        }
+        .section-label::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+
+        /* ── PROJECT GRID ── */
+        .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
         }
 
-        /* CARD DO PROJETO */
-        .project-detail-card {
-            background: var(--white);
-            border-radius: var(--card-radius);
+        /* ── PROJECT CARD ── */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
             overflow: hidden;
             border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+            display: flex; flex-direction: column;
+            transition: transform 0.4s cubic-bezier(0.2,0.8,0.2,1), box-shadow 0.4s;
         }
-        .project-detail-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0,0,0,0.07);
         }
 
-        /* Mockup de Janela do Navegador */
-        .project-image-wrapper {
+        .card-img {
             position: relative;
-            background: #fff;
-            padding-top: 30px; /* Espaço para os botões do browser */
-            border-bottom: 1px solid var(--border);
             overflow: hidden;
             aspect-ratio: 16 / 10;
+            background: #f0eeeb;
         }
-        .browser-header {
-            position: absolute; top: 12px; left: 15px; display: flex; gap: 6px;
+        .browser-dots {
+            position: absolute; top: 10px; left: 12px;
+            display: flex; gap: 5px; z-index: 2;
         }
-        .browser-header span { width: 8px; height: 8px; border-radius: 50%; background: #e0e0e2; }
-        
-        .project-image-wrapper img {
-            width: 100%; height: 100%; object-fit: cover; object-position: top;
-            transition: 1s ease-in-out;
+        .browser-dots span {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(0,0,0,0.12);
         }
-        .project-detail-card:hover .project-image-wrapper img {
-            object-position: bottom;
+        .card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: top;
+            transition: object-position 1.2s ease;
+        }
+        .card:hover .card-img img { object-position: bottom; }
+
+        .card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+
+        .card-tag {
+            font-size: 11px; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 1px;
+            color: var(--accent); margin-bottom: 10px;
+        }
+        .card-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 20px; font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+        .card-desc {
+            font-size: 14px; line-height: 1.65;
+            color: var(--muted); margin-bottom: 16px;
         }
 
-        /* CONTEÚDO DO CARD */
-        .project-content { padding: 30px; display: flex; flex-direction: column; flex-grow: 1; }
-        .project-tag { 
-            font-size: 11px; font-weight: 700; text-transform: uppercase; 
-            color: var(--apple-blue); letter-spacing: 1px; margin-bottom: 12px;
-        }
-        .project-content h3 { font-size: 24px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; }
-        .project-description { font-size: 15px; line-height: 1.6; color: var(--text-muted); margin-bottom: 20px; }
-
-        /* TECH STACK */
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
-        .tech-badge { 
-            font-size: 10px; font-weight: 700; background: var(--bg-apple); 
-            padding: 5px 12px; border-radius: 50px; color: var(--text-dark);
+        /* ── RESULT BADGE ── */
+        .card-result {
+            display: inline-flex; align-items: center; gap: 7px;
+            background: var(--green-light);
+            color: var(--green);
+            font-size: 12px; font-weight: 500;
+            padding: 6px 12px; border-radius: 50px;
+            border: 1px solid rgba(22,163,74,0.15);
+            margin-bottom: 18px;
+            align-self: flex-start;
         }
 
-        /* BOTÃO */
-        .btn-view-project {
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+        .tech-badge {
+            font-size: 11px; font-weight: 500;
+            background: var(--bg); padding: 4px 10px;
+            border-radius: 50px; color: var(--muted);
+            border: 1px solid var(--border);
+        }
+
+        .btn-card {
             margin-top: auto;
-            background: var(--apple-blue);
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 14px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 14px;
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            transition: 0.3s;
+            background: var(--text); color: #fff;
+            padding: 14px; border-radius: var(--radius-sm);
+            text-decoration: none; font-weight: 500; font-size: 14px;
+            transition: background 0.2s, transform 0.15s;
         }
-        .btn-view-project:hover { background: var(--apple-blue-hover); transform: scale(1.02); }
+        .btn-card:hover { background: #2a2a28; transform: scale(1.02); }
 
-        /* FOOTER */
+        /* ── TESTIMONIAL CARD ── */
+        .testimonial-card {
+            background: var(--accent);
+            border-radius: var(--radius);
+            padding: 32px;
+            color: #fff;
+            display: flex; flex-direction: column;
+            justify-content: space-between;
+        }
+        .testimonial-quote {
+            font-size: 17px; line-height: 1.7;
+            font-weight: 400; margin-bottom: 24px;
+            opacity: 0.95;
+        }
+        .testimonial-quote::before { content: '\201C'; font-size: 28px; line-height: 0; vertical-align: -8px; margin-right: 4px; opacity: 0.6; }
+        .testimonial-author {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px;
+        }
+        .testimonial-name { font-weight: 500; font-size: 14px; }
+        .testimonial-role { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+
+        /* ── BOTTOM CTA SECTION ── */
+        .cta-section {
+            background: var(--text);
+            border-radius: 28px;
+            padding: 72px 48px;
+            text-align: center;
+            margin: 0 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 360px; height: 360px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(10,92,245,0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -60px;
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37,211,102,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-eyebrow {
+            font-size: 12px; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 2px;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 20px;
+        }
+        .cta-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(30px, 4.5vw, 48px);
+            font-weight: 800; letter-spacing: -0.04em;
+            color: #fff; margin-bottom: 16px; line-height: 1.15;
+        }
+        .cta-sub {
+            font-size: 17px; color: rgba(255,255,255,0.55);
+            max-width: 500px; margin: 0 auto 40px; line-height: 1.6;
+        }
+        .cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .btn-wpp-large {
+            display: inline-flex; align-items: center; gap: 12px;
+            background: var(--wpp); color: #fff;
+            padding: 18px 36px; border-radius: 16px;
+            font-weight: 500; font-size: 17px; text-decoration: none;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+            position: relative; z-index: 1;
+        }
+        .btn-wpp-large:hover { background: var(--wpp-hover); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(37,211,102,0.5); }
+        .cta-note { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 20px; }
+
+        /* ── FLOATING WhatsApp BUTTON ── */
+        .fab-wpp {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            z-index: 999;
+            background: var(--wpp);
+            color: #fff;
+            width: 58px; height: 58px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 6px 24px rgba(37,211,102,0.55);
+            transition: transform 0.25s, box-shadow 0.25s;
+            animation: fab-in 0.6s 1.2s both;
+        }
+        @keyframes fab-in {
+            from { opacity: 0; transform: scale(0.5) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .fab-wpp:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.65); }
+        .fab-wpp .fab-tooltip {
+            position: absolute; right: 70px; top: 50%; transform: translateY(-50%);
+            background: var(--text); color: #fff;
+            font-size: 13px; font-weight: 500;
+            padding: 8px 14px; border-radius: 10px;
+            white-space: nowrap; pointer-events: none;
+            opacity: 0; transition: opacity 0.2s;
+        }
+        .fab-wpp .fab-tooltip::after {
+            content: ''; position: absolute;
+            left: 100%; top: 50%; transform: translateY(-50%);
+            border: 6px solid transparent; border-left-color: var(--text);
+        }
+        .fab-wpp:hover .fab-tooltip { opacity: 1; }
+
+        /* ── FOOTER ── */
         footer { background: var(--white); padding: 80px 0 40px; border-top: 1px solid var(--border); }
 
-        .reveal { opacity: 0; transform: translateY(30px); }
+        /* ── ANIMATIONS ── */
+        .reveal { opacity: 0; transform: translateY(28px); }
 
         @media (max-width: 768px) {
-            .portfolio-grid-detailed { grid-template-columns: 1fr; }
+            .project-grid { grid-template-columns: 1fr; }
+            .stats-row { gap: 20px; }
+            .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--border); padding-top: 20px; }
+            .stats-row { flex-direction: row; flex-wrap: wrap; }
+            .stat-item { flex: 1; min-width: 120px; }
+            .stat-item + .stat-item { border-left: 1px solid var(--border); border-top: none; }
+            .cta-section { padding: 48px 24px; border-radius: 20px; }
+            .hero-cta { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -152,203 +413,378 @@
 
     <nav class="navbar" id="navbar"></nav>
 
+    <!-- ─── FLOATING WHATSAPP BTN ─── -->
+    <a href="https://wa.me/5544999999999?text=Ol%C3%A1!%20Vi%20o%20portf%C3%B3lio%20de%20voc%C3%AAs%20e%20quero%20um%20or%C3%A7amento." 
+       target="_blank" class="fab-wpp" aria-label="Falar pelo WhatsApp">
+        <span class="fab-tooltip">Pedir orçamento</span>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
     <main>
-        <section class="portfolio-hero">
+        <!-- ─── HERO ─── -->
+        <section class="hero">
             <div class="container">
-    
-                <h1 class="reveal">Trabalhos que mostram o <br><span class="blue-text-gradient">valor da sua marca.</span></h1>
-                <p class="reveal">Sites modernos e exclusivos, criados exatamente do jeito que você precisa.</p>
+
+                <div class="trust-bar reveal">
+                    <div class="trust-badge">
+                        <span class="trust-dot"></span>
+                        Aceitando novos projetos em março
+                    </div>
+                </div>
+
+                <h1 class="reveal">
+                    Cada site que fazemos<br>
+                    <em>traz clientes reais.</em>
+                </h1>
+
+                <p class="hero-sub reveal">
+                    Sites que vendem, convencem e convertem — para profissionais que 
+                    querem crescer online de verdade.
+                </p>
+
+                <!-- STATS -->
+                <div class="stats-row reveal">
+                    <div class="stat-item">
+                        <div class="stat-num">+40</div>
+                        <div class="stat-label">Projetos entregues</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">100%</div>
+                        <div class="stat-label">Clientes satisfeitos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">3x</div>
+                        <div class="stat-label">Mais contatos em média</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">7 dias</div>
+                        <div class="stat-label">Prazo de entrega</div>
+                    </div>
+                </div>
+
+                <div class="hero-cta reveal">
+                    <a href="https://wa.me/5544999999999?text=Ol%C3%A1!%20Vi%20o%20portf%C3%B3lio%20de%20voc%C3%AAs%20e%20quero%20um%20or%C3%A7amento." 
+                       target="_blank" class="btn-wpp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Quero um site assim
+                    </a>
+                    <a href="#projetos" class="btn-secondary">
+                        Ver os projetos <i data-lucide="arrow-down" style="width:16px;height:16px;"></i>
+                    </a>
+                </div>
+
+                <div class="scroll-hint reveal">
+                    <i data-lucide="chevron-down" style="width:20px;height:20px;"></i>
+                </div>
+
             </div>
         </section>
 
-        <section class="portfolio-section">
+        <!-- ─── PROJECTS ─── -->
+        <section class="section-projects" id="projetos">
             <div class="container">
-                <div class="portfolio-grid-detailed">
 
-                    <!-- Projeto 00: Psicologa Paula Marques -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
-                            <img src="../curso-alem-do-divorcio-portifolio.webp" alt="Landing Page de alta conversão focada para vendas de cursos.">
+                <div class="section-label">
+                    <span>Projetos selecionados</span>
+                </div>
+
+                <div class="project-grid">
+
+                    <!-- PROJETO 00: Curso Além do Divórcio -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <img src="../curso-alem-do-divorcio-portifolio.webp" alt="Landing Page de alta conversão - Curso Além do Divórcio">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Pagina de Vendas</span>
-                            <h3>Curso Além do Divórcio</h3>
-                            <p class="project-description">Pagina de vendas do curso Além do Divórcio.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Página de Vendas</span>
+                            <h3 class="card-title">Curso Além do Divórcio</h3>
+                            <p class="card-desc">Página de vendas focada em conversão para o curso da psicóloga Paula Marques.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Aumentou inscrições no lançamento
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Marketing</span>
                                 <span class="tech-badge">Vendas Online</span>
                             </div>
-                            <a href="https://www.psipaulamarques.com.br/alem-do-divorcio" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.psipaulamarques.com.br/alem-do-divorcio" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 01: Psicologa Paula Marques -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
-                            <img src="../psipaulamarques-portifolio.webp" alt="Landing Page de alta conversão focada para consultas online.">
+                    <!-- PROJETO 01: Psicóloga Paula Marques -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <img src="../psipaulamarques-portifolio.webp" alt="Psicóloga Paula Marques - Landing Page">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Agendamento de consultas online</span>
-                            <h3>Psicóloga Paula Marques</h3>
-                            <p class="project-description">Landing Page de alta conversão focada para consultas online.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Agendamento Online</span>
+                            <h3 class="card-title">Psicóloga Paula Marques</h3>
+                            <p class="card-desc">Landing page focada em consultas online com copywriting voltado para conversão.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Mais agendamentos via WhatsApp
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Copywriting</span>
                                 <span class="tech-badge">Consultas Online</span>
                             </div>
-                            <a href="https://www.psipaulamarques.com.br" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.psipaulamarques.com.br" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-
-                    <!-- Projeto 02: Flavia Cavalcante -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
-                            <img src="../flaviaportifolio.webp" alt="Flavia Cavalcante">
+                    <!-- DEPOIMENTO 1 (inserido entre cards) -->
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-quote">
+                            Depois do novo site, minha agenda de consultas online lotou em menos de duas semanas. O resultado superou tudo que eu esperava.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">PM</div>
+                            <div>
+                                <div class="testimonial-name">Paula Marques</div>
+                                <div class="testimonial-role">Psicóloga — psipaulamarques.com.br</div>
+                            </div>
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Tattoo & Art</span>
-                            <h3>Flavia Cavalcante</h3>
-                            <p class="project-description">Portfólio artístico de alto impacto visual. Galeria otimizada para alta resolução e velocidade extrema.</p>
+                    </div>
+
+                    <!-- PROJETO 02: Flavia Cavalcante -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <img src="../flaviaportifolio.webp" alt="Flavia Cavalcante - Portfólio Tattoo">
+                        </div>
+                        <div class="card-body">
+                            <span class="card-tag">Tattoo & Arte</span>
+                            <h3 class="card-title">Flavia Cavalcante</h3>
+                            <p class="card-desc">Portfólio artístico de alto impacto visual com galeria otimizada para alta resolução e velocidade.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Mais clientes chegam pelo site
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Galeria Pro</span>
                                 <span class="tech-badge">Mobile First</span>
                             </div>
-                            <a href="https://www.flaviacavalcante.com.br" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.flaviacavalcante.com.br" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 03: Solar São Paulo -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
+                    <!-- PROJETO 03: Solar São Paulo -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
                             <img src="../solarportifolio.webp" alt="Solar São Paulo">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Engenharia & Energia</span>
-                            <h3>Solar São Paulo</h3>
-                            <p class="project-description">Website institucional robusto focado em autoridade e captação de leads corporativos para energia fotovoltaica.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Engenharia & Energia</span>
+                            <h3 class="card-title">Solar São Paulo</h3>
+                            <p class="card-desc">Website institucional focado em autoridade e captação de leads corporativos para energia fotovoltaica.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Mais orçamentos B2B por semana
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">SEO Avançado</span>
                                 <span class="tech-badge">UI/UX Premium</span>
                             </div>
-                            <a href="https://www.solarsaopaulo.com" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.solarsaopaulo.com" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 04: Vrinda Bhumi -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
+                    <!-- PROJETO 04: Vrinda Bhumi -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
                             <img src="../vrindaportifolio.webp" alt="Vrinda Bhumi">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Ecosistema Yoga</span>
-                            <h3>Vrinda Bhumi</h3>
-                            <p class="project-description">Portal espiritual com design zen. Integração de informações sobre retiros com navegação fluida.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Ecossistema Yoga</span>
+                            <h3 class="card-title">Vrinda Bhumi</h3>
+                            <p class="card-desc">Portal espiritual com design zen, integração de informações sobre retiros e navegação fluida.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Retiros com inscrições pelo site
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Design Zen</span>
                                 <span class="tech-badge">Institucional</span>
                             </div>
-                            <a href="https://www.vrindabhumi.org" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.vrindabhumi.org" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 05: Psicóloga Karina -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
+                    <!-- DEPOIMENTO 2 -->
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-quote">
+                            Profissionalismo impecável. O site ficou exatamente como eu precisava e os clientes comentam que parece de empresa grande.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">CS</div>
+                            <div>
+                                <div class="testimonial-name">Contabilidade Sarruf</div>
+                                <div class="testimonial-role">contabilidadesarruf.com.br</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PROJETO 05: Psicóloga Karina -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
                             <img src="../karinaportifolio.webp" alt="Psicóloga Karina">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Design Clínico</span>
-                            <h3>Psicóloga Karina</h3>
-                            <p class="project-description">Interface acolhedora projetada para transmitir segurança no atendimento clínico online.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Design Clínico</span>
+                            <h3 class="card-title">Psicóloga Karina</h3>
+                            <p class="card-desc">Interface acolhedora projetada para transmitir segurança e gerar agendamentos no atendimento clínico online.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Pacientes chegam direto pelo site
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Clean Design</span>
                                 <span class="tech-badge">WhatsApp Cloud</span>
                             </div>
-                            <a href="https://www.psikarina.com.br" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.psikarina.com.br" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 06: Contabilidade Sarruf -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
-                            <img src="../contabilidadesarruf.webp" alt="Escritório de Contabilidade Sarruf">
+                    <!-- PROJETO 06: Contabilidade Sarruf -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <img src="../contabilidadesarruf.webp" alt="Contabilidade Sarruf">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Escritório de Contabilidade</span>
-                            <h3>Escritório de Contabilidade Sarruf</h3>
-                            <p class="project-description">Estratégia digital com design de luxo para captação de clientes com foco em autoridade.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Escritório de Contabilidade</span>
+                            <h3 class="card-title">Contabilidade Sarruf</h3>
+                            <p class="card-desc">Design de luxo focado em autoridade para captação de clientes empresariais.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Novos clientes PJ pelo site
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Luxuoso</span>
                                 <span class="tech-badge">SEO Local</span>
                             </div>
-                            <a href="https://www.contabilidadesarruf.com.br" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.contabilidadesarruf.com.br" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 07: Dra Mirela Boba -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
-                            <img src="../mirelaborba-portifolio.webp" alt="Maria Clara Silveira">
+                    <!-- PROJETO 07: Dra. Mirela Borba -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
+                            <img src="../mirelaborba-portifolio.webp" alt="Dra. Mirela Borba">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Forbes UK 2025</span>
-                            <h3>Dra. Mirela Borba</h3>
-                            <p class="project-description">A estratégia prioriza a profundidade sobre a frequência. O layout valoriza textos ou vídeos que demonstram domínio clínico. O objetivo é que o visitante sinta que o psicólogo entende o seu íntimo, transformando leitura em desejo de consulta.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Forbes UK 2025</span>
+                            <h3 class="card-title">Dra. Mirela Borba</h3>
+                            <p class="card-desc">Estratégia digital que prioriza profundidade e autoridade clínica, transformando leitura em desejo de consulta.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Autoridade consolidada online
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Autoridade Digital</span>
                                 <span class="tech-badge">Conversão</span>
                             </div>
-                            <a href="https://psimirelaborba.com.br" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://psimirelaborba.com.br" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 11: Contabilidade Lovisetto -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
+                    <!-- PROJETO 08: Contabilidade Lovisetto -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
                             <img src="../lovisettoportifolio.webp" alt="Contabilidade Lovisetto">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Contabilidade</span>
-                            <h3>Contabilidade Lovisetto</h3>
-                            <p class="project-description">Segurança financeira para o crescimento sustentável de empresas modernas.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Contabilidade</span>
+                            <h3 class="card-title">Contabilidade Lovisetto</h3>
+                            <p class="card-desc">Segurança financeira e crescimento sustentável para empresas modernas, comunicado com clareza.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Clientes chegam pelo Google
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">BPO Financeiro</span>
                                 <span class="tech-badge">Empresarial</span>
                             </div>
-                            <a href="https://www.contabilidadelovisetto.com.br" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.contabilidadelovisetto.com.br" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Projeto 13: I.M.A Soluções -->
-                    <div class="project-detail-card reveal">
-                        <div class="project-image-wrapper">
-                            <div class="browser-header"><span></span><span></span><span></span></div>
+                    <!-- PROJETO 09: IMA Soluções -->
+                    <div class="card reveal">
+                        <div class="card-img">
+                            <div class="browser-dots"><span></span><span></span><span></span></div>
                             <img src="../imaportifolio.webp" alt="I.M.A Soluções">
                         </div>
-                        <div class="project-content">
-                            <span class="project-tag">Marketing Digital</span>
-                            <h3>I.M.A Soluções</h3>
-                            <p class="project-description">Landing Page de alta conversão estruturada com gatilhos mentais para agendamento direto de consultorias.</p>
+                        <div class="card-body">
+                            <span class="card-tag">Marketing Digital</span>
+                            <h3 class="card-title">I.M.A Soluções</h3>
+                            <p class="card-desc">Landing page estruturada com gatilhos mentais para agendamento direto de consultorias.</p>
+                            <div class="card-result">
+                                <i data-lucide="trending-up" style="width:13px;height:13px;"></i>
+                                Mais consultorias agendadas
+                            </div>
                             <div class="tech-stack">
                                 <span class="tech-badge">Copywriting</span>
                                 <span class="tech-badge">Lead Gen</span>
                             </div>
-                            <a href="https://www.ima-marketing-digital.com.br" target="_blank" class="btn-view-project">Acessar Projeto <i data-lucide="external-link" size="14"></i></a>
+                            <a href="https://www.ima-marketing-digital.com.br" target="_blank" class="btn-card">
+                                Ver projeto <i data-lucide="external-link" style="width:14px;height:14px;"></i>
+                            </a>
                         </div>
                     </div>
 
+                </div><!-- /grid -->
+            </div>
+        </section>
+
+        <!-- ─── BOTTOM CTA ─── -->
+        <section>
+            <div class="container">
+                <div class="cta-section reveal">
+                    <p class="cta-eyebrow">Próximo projeto</p>
+                    <h2 class="cta-title">O seu site pode ser<br>o próximo aqui.</h2>
+                    <p class="cta-sub">
+                        Fale com a gente agora e receba uma proposta personalizada — sem enrolação, sem compromisso.
+                    </p>
+                    <div class="cta-btns">
+                        <a href="https://wa.me/5544999999999?text=Ol%C3%A1!%20Vi%20o%20portf%C3%B3lio%20de%20voc%C3%AAs%20e%20quero%20um%20or%C3%A7amento." 
+                           target="_blank" class="btn-wpp-large">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Quero meu site agora
+                        </a>
+                    </div>
+                    <p class="cta-note">Resposta em até 2 horas no horário comercial</p>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer id="main-footer"></footer>
@@ -358,10 +794,18 @@
         gsap.registerPlugin(ScrollTrigger);
 
         window.addEventListener('load', () => {
+            // Hero elements
+            gsap.from(".trust-bar", { opacity: 0, y: 20, duration: 0.8, ease: "power3.out" });
+            gsap.from(".hero h1",   { opacity: 0, y: 30, duration: 1,   ease: "power3.out", delay: 0.15 });
+            gsap.from(".hero-sub",  { opacity: 0, y: 20, duration: 0.9, ease: "power3.out", delay: 0.3  });
+            gsap.from(".stats-row", { opacity: 0, y: 20, duration: 0.9, ease: "power3.out", delay: 0.45 });
+            gsap.from(".hero-cta",  { opacity: 0, y: 20, duration: 0.9, ease: "power3.out", delay: 0.6  });
+
+            // Scroll reveals
             gsap.utils.toArray(".reveal").forEach(el => {
                 gsap.to(el, {
-                    scrollTrigger: { trigger: el, start: "top 85%" },
-                    opacity: 1, y: 0, duration: 1.2, ease: "power3.out"
+                    scrollTrigger: { trigger: el, start: "top 88%" },
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out"
                 });
             });
         });
