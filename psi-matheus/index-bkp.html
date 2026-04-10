@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matheus Oliveira | Neuropsicólogo e Psicólogo</title>
+<meta name="description" content="Neuropsicólogo e Psicólogo especialista em ansiedade, TDAH, burnout e bem-estar emocional. Atendimento online e presencial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #112240;
+    --blue: #1a6fa8;
+    --blue-light: #4fb3e8;
+    --sky: #e8f4fd;
+    --green: #4caf82;
+    --green-light: #e8f5ee;
+    --gold: #c9a84c;
+    --gold-light: #f5e6c0;
+    --red: #e05252;
+    --yellow: #f5c842;
+    --white: #ffffff;
+    --off-white: #f8fafb;
+    --text: #1e2a3a;
+    --text-light: #5a6a7a;
+    --border: #e0eaf3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    background: rgba(10,22,40,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all .3s;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: .5px;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.82);
+    text-decoration: none;
+    font-size: .88rem;
+    font-weight: 500;
+    letter-spacing: .3px;
+    transition: color .2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: 9px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: all .2s !important;
+  }
+
+  .nav-cta:hover { background: var(--yellow) !important; color: var(--navy) !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: white; transition: .3s; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 72px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 75% 50%, rgba(26,111,168,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    gap: 60px;
+    align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+    color: var(--gold);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: .8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    color: var(--white);
+    line-height: 1.18;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: .95rem;
+    text-decoration: none;
+    transition: all .25s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  .btn-primary:hover { background: var(--yellow); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: .95rem;
+    text-decoration: none;
+    transition: all .25s;
+  }
+
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    display: flex; gap: 32px;
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stat-item strong {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .stat-item span { font-size: .82rem; color: rgba(255,255,255,0.6); }
+
+  .hero-photo {
+    display: flex; justify-content: flex-end; align-items: flex-end;
+    position: relative;
+  }
+
+  .photo-frame {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0; left: 40px; top: 40px;
+    background: linear-gradient(135deg, var(--blue) 0%, rgba(10,22,40,0.6) 100%);
+    border-radius: 20px;
+    z-index: 0;
+  }
+
+  .photo-frame img {
+    position: relative; z-index: 1;
+    width: 90%;
+    max-height: 560px;
+    object-fit: contain;
+    object-position: bottom;
+    display: block;
+  }
+
+  .photo-card {
+    position: absolute;
+    z-index: 2;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+  }
+
+  .photo-card.card-crp {
+    bottom: 30px; left: -10px;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--navy);
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .photo-card.card-crp::before {
+    content: '✓';
+    width: 24px; height: 24px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem;
+    font-weight: 700;
+  }
+
+  .photo-card.card-rating {
+    top: 20px; right: -20px;
+    display: flex; flex-direction: column; gap: 2px;
+    font-size: .78rem;
+  }
+
+  .stars { color: var(--yellow); font-size: 1rem; }
+
+  /* ── SECTION GENERIC ── */
+  section { padding: 90px 40px; }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-tag {
+    display: inline-block;
+    color: var(--gold);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    color: var(--text-light);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+
+  /* ── SERVIÇOS ── */
+  .services { background: var(--off-white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .service-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 36px 28px;
+    border: 1px solid var(--border);
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--green));
+    opacity: 0;
+    transition: opacity .3s;
+  }
+
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,22,40,0.1); }
+  .service-card:hover::after { opacity: 1; }
+
+  .svc-icon {
+    width: 54px; height: 54px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .svc-icon.blue { background: var(--sky); }
+  .svc-icon.green { background: var(--green-light); }
+  .svc-icon.gold { background: var(--gold-light); }
+
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+
+  .service-card p { color: var(--text-light); font-size: .92rem; line-height: 1.65; }
+
+  /* ── ÁREAS DE ATUAÇÃO ── */
+  .areas { background: var(--white); }
+
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .area-tag {
+    background: var(--sky);
+    border: 1px solid rgba(79,179,232,0.25);
+    border-radius: 10px;
+    padding: 18px 16px;
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 500;
+    color: var(--navy);
+    transition: all .2s;
+    cursor: default;
+  }
+
+  .area-tag:hover { background: var(--blue); color: white; border-color: var(--blue); transform: scale(1.03); }
+  .area-tag span { display: block; font-size: 1.4rem; margin-bottom: 6px; }
+
+  /* ── SOBRE ── */
+  .about { background: var(--navy); color: white; }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-image-wrap {
+    position: relative;
+  }
+
+  .about-img-bg {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--blue) 0%, var(--navy2) 100%);
+    border-radius: 20px;
+    display: flex; align-items: flex-end; justify-content: center;
+    overflow: hidden;
+  }
+
+  .about-img-bg img {
+    width: 85%;
+    object-fit: contain;
+    object-position: bottom;
+  }
+
+  .about-badge {
+    position: absolute;
+    top: -16px; right: -16px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: .85rem;
+    line-height: 1.3;
+    box-shadow: 0 8px 24px rgba(201,168,76,0.4);
+  }
+
+  .about .section-title { color: white; }
+
+  .about-text { color: rgba(255,255,255,0.78); line-height: 1.8; margin-bottom: 24px; }
+
+  .credentials {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .credential-item {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,0.9);
+    font-size: .92rem;
+  }
+
+  .credential-item::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── PRODUTOS ── */
+  .products { background: var(--off-white); }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 48px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all .3s;
+  }
+
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,22,40,0.1); }
+
+  .product-thumb {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-thumb.ebook { background: linear-gradient(135deg, #1a6fa8, #0a1628); }
+  .product-thumb.course { background: linear-gradient(135deg, #4caf82, #0a2a1a); }
+  .product-thumb.online { background: linear-gradient(135deg, #c9a84c, #3a2800); }
+
+  .product-body { padding: 24px; }
+
+  .product-type {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .product-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+  }
+
+  .product-card p { color: var(--text-light); font-size: .88rem; line-height: 1.6; margin-bottom: 18px; }
+
+  .btn-card {
+    display: inline-block;
+    background: var(--navy);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: .88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .2s;
+  }
+
+  .btn-card:hover { background: var(--blue); }
+
+  /* ── DEPOIMENTOS ── */
+  .testimonials { background: var(--white); }
+
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .test-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .test-card::before {
+    content: '"';
+    position: absolute;
+    top: 16px; right: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: .3;
+    line-height: 1;
+  }
+
+  .test-stars { color: var(--yellow); font-size: .95rem; margin-bottom: 12px; }
+
+  .test-text { color: var(--text); font-size: .92rem; line-height: 1.7; margin-bottom: 20px; }
+
+  .test-author { display: flex; align-items: center; gap: 10px; }
+
+  .test-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .95rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .test-author-name { font-weight: 600; font-size: .9rem; }
+  .test-author-sub { font-size: .78rem; color: var(--text-light); }
+
+  /* ── BLOG PREVIEW ── */
+  .blog { background: var(--off-white); }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .blog-card {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all .3s;
+  }
+
+  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(10,22,40,0.08); }
+
+  .blog-img {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.8rem;
+  }
+
+  .blog-img.b1 { background: linear-gradient(135deg, var(--sky), #c8e9f9); }
+  .blog-img.b2 { background: linear-gradient(135deg, var(--green-light), #c2e8d4); }
+  .blog-img.b3 { background: linear-gradient(135deg, var(--gold-light), #ffe8a0); }
+
+  .blog-body { padding: 20px; }
+
+  .blog-cat {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .blog-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: 8px; line-height: 1.4; }
+  .blog-card p { font-size: .85rem; color: var(--text-light); line-height: 1.6; }
+
+  /* ── FAQ ── */
+  .faq { background: var(--white); }
+
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 18px 22px;
+    background: var(--off-white);
+    font-weight: 600;
+    font-size: .95rem;
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: background .2s;
+    user-select: none;
+  }
+
+  .faq-q:hover { background: var(--sky); }
+  .faq-q.open { background: var(--navy); color: white; }
+  .faq-q .icon { font-size: 1.2rem; transition: transform .2s; flex-shrink: 0; margin-left: 12px; }
+  .faq-q.open .icon { transform: rotate(45deg); }
+
+  .faq-a {
+    padding: 0 22px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all .35s ease;
+    font-size: .92rem;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .faq-a.open { padding: 16px 22px; max-height: 200px; }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    padding: 80px 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .cta-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .cta-band p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 36px; position: relative; }
+
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366;
+    color: white;
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all .25s;
+    position: relative;
+  }
+
+  .btn-whatsapp:hover { background: #1db954; transform: translateY(-3px); box-shadow: 0 12px 32px rgba(37,211,102,0.4); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    padding: 60px 40px 30px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand h3 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+
+  .footer-brand h3 span { color: var(--gold); }
+  .footer-brand p { font-size: .88rem; line-height: 1.7; margin-bottom: 20px; }
+
+  .footer-crp {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: .8rem;
+    font-weight: 600;
+  }
+
+  .footer-col h4 { color: white; font-size: .9rem; font-weight: 600; margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: .88rem; transition: color .2s; }
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .8rem;
+    flex-wrap: wrap; gap: 12px;
+  }
+
+  .emergency-box {
+    background: rgba(224,82,82,0.1);
+    border: 1px solid rgba(224,82,82,0.3);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: .82rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 24px;
+    max-width: 1200px;
+    margin: 24px auto 0;
+  }
+
+  .emergency-box strong { color: var(--red); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .hero-grid { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
+    .hero-photo { justify-content: center; }
+    .photo-frame { max-width: 340px; }
+
+    section { padding: 60px 24px; }
+
+    .services-grid,
+    .products-grid,
+    .test-grid,
+    .blog-grid { grid-template-columns: 1fr; }
+
+    .areas-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-image-wrap { max-width: 360px; margin: 0 auto; }
+
+    .faq-grid { grid-template-columns: 1fr; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content > * {
+    animation: fadeUp .7s ease both;
+  }
+
+  .hero-content > *:nth-child(1) { animation-delay: .1s; }
+  .hero-content > *:nth-child(2) { animation-delay: .25s; }
+  .hero-content > *:nth-child(3) { animation-delay: .4s; }
+  .hero-content > *:nth-child(4) { animation-delay: .55s; }
+  .hero-content > *:nth-child(5) { animation-delay: .7s; }
+
+  .hero-photo { animation: fadeUp .9s ease .3s both; }
+
+  /* Floating WhatsApp button */
+  .float-wa {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    z-index: 999;
+    background: #25D366;
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+    transition: all .25s;
+    text-decoration: none;
+  }
+
+  .float-wa:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(37,211,102,0.55); }
+  .float-wa svg { width: 30px; height: 30px; fill: white; }
+</style>
+</head>
+<body>
+
+<!-- FLOAT WA -->
+<a class="float-wa" href="https://wa.me/5573988177680" target="_blank" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#inicio" class="nav-logo">Matheus <span>Oliveira</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#produtos">E-books & Cursos</a></li>
+    <li><a href="#blog">Conteúdo</a></li>
+    <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+  </ul>
+  <div class="hamburger" onclick="this.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">Neuropsicólogo & Psicólogo Clínico</div>
+      <h1>Sua mente merece<br><em>cuidado de qualidade</em></h1>
+      <p class="hero-desc">Ajudo adolescentes, adultos e idosos a lidarem melhor com suas emoções, encontrando qualidade de vida e bem-estar através da psicoterapia especializada.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5573988177680" class="btn-primary" target="_blank">
+          💬 Agendar Consulta
+        </a>
+        <a href="#sobre" class="btn-outline">Conhecer o Dr. Matheus</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><strong>+500</strong><span>Pacientes atendidos</span></div>
+        <div class="stat-item"><strong>7+</strong><span>Anos de experiência</span></div>
+        <div class="stat-item"><strong>100%</strong><span>Online & Presencial</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img src="1775836143982_foto-matheus-psi-perfil-setnado-na-cadeiras.png" alt="Matheus Oliveira - Neuropsicólogo">
+        <div class="photo-card card-crp">CRP 03/18092 — Registrado CFP</div>
+        <div class="photo-card card-rating">
+          <div class="stars">★★★★★</div>
+          <span style="font-size:.78rem;font-weight:600;color:#0a1628">Avaliação Excelente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-tag">O que ofereço</div>
+    <h2 class="section-title">Atendimento especializado<br>para cada fase da vida</h2>
+    <p class="section-sub">Sessões conduzidas com empatia, ciência e foco em resultados reais para sua saúde mental.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon blue">🧠</div>
+        <h3>Avaliação Neuropsicológica</h3>
+        <p>Diagnóstico especializado para TDAH, TDA, dificuldades de aprendizagem e funções cognitivas em todas as idades.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon green">💬</div>
+        <h3>Psicoterapia Individual</h3>
+        <p>Atendimento online e presencial para adolescentes (a partir de 10 anos), adultos e idosos com abordagem baseada em evidências.</p>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon gold">🎯</div>
+        <h3>Saúde Mental & Performance</h3>
+        <p>Programas para controle de ansiedade, burnout, autoestima e desenvolvimento do potencial pessoal e profissional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÁREAS DE ATUAÇÃO -->
+<section class="areas">
+  <div class="container">
+    <div class="section-tag">Especialidades</div>
+    <h2 class="section-title">Posso te ajudar com</h2>
+    <div class="areas-grid">
+      <div class="area-tag"><span>😰</span>Ansiedade</div>
+      <div class="area-tag"><span>😔</span>Depressão</div>
+      <div class="area-tag"><span>🧩</span>TDAH / TDA</div>
+      <div class="area-tag"><span>🔥</span>Burnout</div>
+      <div class="area-tag"><span>🔁</span>TOC / TOD</div>
+      <div class="area-tag"><span>💔</span>Relacionamentos</div>
+      <div class="area-tag"><span>🌱</span>Autoestima</div>
+      <div class="area-tag"><span>🧘</span>Autoconhecimento</div>
+      <div class="area-tag"><span>👴</span>Saúde do Idoso</div>
+      <div class="area-tag"><span>🎒</span>Adolescentes</div>
+      <div class="area-tag"><span>😴</span>Insônia & Estresse</div>
+      <div class="area-tag"><span>⚡</span>Traumas & Lutos</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <div class="about-img-bg">
+          <img src="1775836143982_foto-matheus-psi-perfil-setnado-na-cadeiras.png" alt="Dr. Matheus Oliveira">
+        </div>
+        <div class="about-badge">CRP 03/18092<br>Neuropsicólogo</div>
+      </div>
+      <div>
+        <div class="section-tag">Sobre mim</div>
+        <h2 class="section-title">Prazer, sou o Dr. Matheus Oliveira</h2>
+        <p class="about-text">Sou neuropsicólogo e psicólogo clínico apaixonado por transformar vidas através da ciência e do cuidado humano. Trabalho com adolescentes, adultos e idosos que enfrentam dificuldades emocionais ou buscam prevenção e qualidade de vida.</p>
+        <p class="about-text">Minha missão é ajudar cada pessoa a lidar melhor com suas emoções, encontrar equilíbrio interior e construir uma vida com mais bem-estar, sentido e propósito.</p>
+        <div class="credentials">
+          <div class="credential-item">Neuropsicólogo e Psicólogo — CRP 03/18092</div>
+          <div class="credential-item">Especialização em Neuropsicologia Clínica</div>
+          <div class="credential-item">Atendimento online para todo o Brasil</div>
+          <div class="credential-item">Experiência com adolescentes (10+), adultos e idosos</div>
+        </div>
+        <a href="https://wa.me/5573988177680" class="btn-primary" target="_blank">💬 Vamos conversar?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS -->
+<section class="products" id="produtos">
+  <div class="container">
+    <div class="section-tag">E-books & Cursos</div>
+    <h2 class="section-title">Conteúdo exclusivo para<br>sua saúde mental</h2>
+    <p class="section-sub">Materiais desenvolvidos com base científica para você aplicar no seu dia a dia.</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-thumb ebook">📖</div>
+        <div class="product-body">
+          <div class="product-type">E-book</div>
+          <h3>Dominando a Ansiedade</h3>
+          <p>Guia prático com técnicas comprovadas para reduzir a ansiedade e recuperar o controle da sua vida.</p>
+          <a href="https://wa.me/5573988177680" class="btn-card" target="_blank">Adquirir →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-thumb course">🎓</div>
+        <div class="product-body">
+          <div class="product-type">Curso Online</div>
+          <h3>Regulação Emocional na Prática</h3>
+          <p>Curso completo com videoaulas, exercícios e suporte para desenvolver inteligência emocional.</p>
+          <a href="https://wa.me/5573988177680" class="btn-card" target="_blank">Saiba mais →</a>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-thumb online">🧠</div>
+        <div class="product-body">
+          <div class="product-type">Atendimento Online</div>
+          <h3>Sessão de Psicoterapia</h3>
+          <p>Consultas individuais pelo Google Meet, com comodidade e privacidade onde você estiver.</p>
+          <a href="https://wa.me/5573988177680" class="btn-card" target="_blank">Agendar →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-tag">Depoimentos</div>
+    <h2 class="section-title">O que meus pacientes dizem</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">O Dr. Matheus me ajudou a entender e controlar minha ansiedade de uma forma que nunca imaginei ser possível. Profissional extremamente atencioso e humano.</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:#1a6fa8">A</div>
+          <div>
+            <div class="test-author-name">Ana C.</div>
+            <div class="test-author-sub">Paciente — Ansiedade</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Meu filho foi diagnosticado com TDAH pelo Dr. Matheus. A avaliação foi completa e o acompanhamento fez uma diferença enorme na escola e em casa.</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:#4caf82">R</div>
+          <div>
+            <div class="test-author-name">Roberto M.</div>
+            <div class="test-author-sub">Pai de paciente — TDAH</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">Estava em burnout total quando comecei as sessões. Hoje me sinto renovada, com clareza mental e ferramentas para lidar com o estresse do trabalho.</p>
+        <div class="test-author">
+          <div class="test-avatar" style="background:#c9a84c">P</div>
+          <div>
+            <div class="test-author-name">Patrícia L.</div>
+            <div class="test-author-sub">Paciente — Burnout</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="section-tag">Conteúdo</div>
+    <h2 class="section-title">Artigos sobre saúde mental</h2>
+    <p class="section-sub">Dicas, reflexões e ciência para o seu bem-estar.</p>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img b1">🧠</div>
+        <div class="blog-body">
+          <div class="blog-cat">Neuropsicologia</div>
+          <h3>Como o TDAH afeta adultos no trabalho</h3>
+          <p>Entenda os sinais do TDAH na vida adulta e como o tratamento pode transformar sua produtividade.</p>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img b2">😌</div>
+        <div class="blog-body">
+          <div class="blog-cat">Bem-estar</div>
+          <h3>5 técnicas de respiração para ansiedade</h3>
+          <p>Aprenda exercícios simples e eficazes para controlar crises de ansiedade no dia a dia.</p>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img b3">💪</div>
+        <div class="blog-body">
+          <div class="blog-cat">Autoconhecimento</div>
+          <h3>Burnout: como identificar e se recuperar</h3>
+          <p>Reconheça os sinais de esgotamento emocional e descubra os primeiros passos para a recuperação.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="duvidas">
+  <div class="container">
+    <div class="section-tag">Dúvidas frequentes</div>
+    <h2 class="section-title">Perguntas que recebo com frequência</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Como funciona a terapia online? <span class="icon">+</span></div>
+        <div class="faq-a">As sessões são realizadas pelo Google Meet, com duração de 50 minutos, semanalmente. Você pode participar de casa, do trabalho ou de qualquer lugar com privacidade e boa conexão.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">A partir de qual idade você atende? <span class="icon">+</span></div>
+        <div class="faq-a">Atendo adolescentes a partir de 10 anos, adultos e idosos. Cada faixa etária tem abordagem adaptada às suas necessidades específicas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Atende convênio? <span class="icon">+</span></div>
+        <div class="faq-a">Atendo pelo sistema de reembolso. Cada plano possui regras próprias. Entre em contato pelo WhatsApp para esclarecimentos sobre o seu plano específico.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">O que é a avaliação neuropsicológica? <span class="icon">+</span></div>
+        <div class="faq-a">É um conjunto de testes científicos que avaliam funções cognitivas como memória, atenção, raciocínio e linguagem, auxiliando no diagnóstico de TDAH, dificuldades de aprendizagem e outras condições.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Qual o valor da consulta? <span class="icon">+</span></div>
+        <div class="faq-a">O Código de Ética do CFP não permite divulgação de valores online. Entre em contato pelo WhatsApp e terei prazer em informar valores e formas de pagamento.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Como sei que preciso de terapia? <span class="icon">+</span></div>
+        <div class="faq-a">A psicoterapia beneficia qualquer pessoa aberta ao processo, seja em momentos de crise ou como prevenção. Se você sente que algo te incomoda ou quer se conhecer melhor, a terapia pode ajudar.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band" id="contato">
+  <div class="container" style="position:relative">
+    <h2>Pronto para cuidar da sua saúde mental?</h2>
+    <p>Dê o primeiro passo hoje. Entre em contato e agende sua primeira sessão.</p>
+    <a href="https://wa.me/5573988177680?text=Olá%20Dr.%20Matheus%2C%20gostaria%20de%20agendar%20uma%20consulta." class="btn-whatsapp" target="_blank">
+      <svg style="width:22px;height:22px;fill:white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar com o Dr. Matheus
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Matheus <span>Oliveira</span></h3>
+      <p>Neuropsicólogo e Psicólogo Clínico comprometido com o seu bem-estar emocional e qualidade de vida.</p>
+      <div class="footer-crp">CRP 03/18092</div>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#sobre">Sobre Mim</a></li>
+        <li><a href="#produtos">E-books & Cursos</a></li>
+        <li><a href="#blog">Conteúdo</a></li>
+        <li><a href="#duvidas">Dúvidas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/5573988177680" target="_blank">📱 (73) 98817-7680</a></li>
+        <li><a href="#contato">📅 Agendar Consulta</a></li>
+        <li><a href="#produtos">📖 E-books</a></li>
+        <li><a href="#produtos">🎓 Cursos Online</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="emergency-box">
+    <strong>⚠️ Atenção:</strong> Este site não oferece atendimento imediato a pessoas em situação de emergência. Em caso de crise, ligue para o <strong>CVV: 188</strong> ou <strong>SAMU: 192</strong>.
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Matheus Oliveira — Todos os direitos reservados.</span>
+    <span>CRP 03/18092 | Neuropsicólogo & Psicólogo Clínico</span>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    el.classList.add('open');
+    el.nextElementSibling.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>
