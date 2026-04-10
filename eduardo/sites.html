@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sites & Landing Pages para Tatuadores | Sublime × trywebdesign</title>
+<meta name="description" content="Site profissional pensado para transformar visitantes em orçamentos. Em parceria com trywebdesign.com.br — design de elite para tatuadores."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Barlow:wght@200;300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --k:#080808;--k2:#0e0e0e;--k3:#141414;--k4:#1c1c1c;
+  --w:#f0ede8;--silver:#9a9590;--bone:#c8c3b8;
+  --accent:#c9a84c;--accent2:#e8c96a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--k);color:var(--w);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;}
+#dot{width:5px;height:5px;background:var(--w);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;}
+#ring{width:38px;height:38px;border:1px solid rgba(240,237,232,0.25);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .35s,height .35s;}
+body.on-link #ring{width:60px;height:60px;border-color:rgba(240,237,232,.55);}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.04;}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:200;padding:0 60px;height:80px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(8,8,8,.92);backdrop-filter:blur(20px);border-color:rgba(240,237,232,.06);}
+.nav-back{font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);text-decoration:none;display:flex;align-items:center;gap:10px;transition:color .25s;}
+.nav-back:hover{color:var(--w);}
+.logo-name{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.14em;color:var(--w);transform: translateY(14px);}
+.nav-cta{display:inline-flex;align-items:center;border:1px solid rgba(240,237,232,.25);color:var(--w);padding:11px 26px;font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:background .3s;}
+.nav-cta:hover{background:var(--w);color:var(--k);}
+
+/* HERO */
+#inicio{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-canvas{position:absolute;inset:0;overflow:hidden;}
+.hero-line{position:absolute;background:rgba(240,237,232,.03);}
+.hero-content{position:relative;z-index:10;text-align:center;padding:0 24px;padding-bottom:140px;opacity:0;animation:heroin 1.4s .2s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes heroin{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:none;}}
+.hero-badge{display:inline-flex;align-items:center;gap:14px;border:1px solid rgba(201,168,76,.3);padding:9px 22px;margin-bottom:40px;font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(201,168,76,.85);}
+.partner-x{font-size:.9rem;opacity:.5;}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,9vw,10rem);letter-spacing:.02em;line-height:.9;color:var(--w);text-shadow:0 4px 40px rgba(0,0,0,.7);}
+h1 .outline{-webkit-text-stroke:1px rgba(240,237,232,.45);color:transparent;}
+h1 em{font-family:'Cormorant',serif;font-style:italic;font-weight:300;font-size:.48em;color:rgba(200,195,184,.85);display:block;letter-spacing:.06em;line-height:1.3;margin-top:14px;}
+.hero-sub{font-size:.92rem;font-weight:300;line-height:1.85;color:rgba(240,237,232,.68);max-width:560px;margin:44px auto 48px;}
+.btn-main{display:inline-flex;align-items:center;gap:10px;background:var(--w);color:var(--k);padding:18px 44px;font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;transition:background .3s,transform .2s;position:relative;overflow:hidden;}
+.btn-main::after{content:'';position:absolute;top:-50%;left:-60%;width:20%;height:200%;background:rgba(0,0,0,.12);transform:rotate(30deg);transition:left .6s cubic-bezier(.19,1,.22,1);}
+.btn-main:hover::after{left:120%;}
+.btn-main:hover{background:var(--bone);transform:translateY(-2px);}
+.btn-ghost{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(240,237,232,.38);color:rgba(240,237,232,.85);padding:18px 40px;font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;transition:border-color .3s,color .3s;}
+.btn-ghost:hover{border-color:rgba(240,237,232,.7);color:var(--w);}
+.hero-cta-wrap{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.hero-bar{position:absolute;bottom:0;left:0;right:0;z-index:10;display:flex;border-top:1px solid rgba(240,237,232,.07);opacity:0;animation:heroin 1.2s .9s ease forwards;}
+.hero-bar-item{flex:1;padding:22px 32px;border-right:1px solid rgba(240,237,232,.07);transition:background .3s;}
+.hero-bar-item:last-child{border-right:none;}
+.hero-bar-item:hover{background:rgba(240,237,232,.03);}
+.hero-bar-num{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;color:var(--w);display:block;line-height:1;margin-bottom:5px;}
+.hero-bar-label{font-size:.6rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,237,232,.4);}
+
+/* SECTION BASE */
+.section-label{font-size:.6rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--silver);display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.section-label::before{content:'';width:24px;height:1px;background:var(--silver);}
+h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,5.5vw,6.5rem);letter-spacing:.03em;line-height:.9;color:var(--w);}
+h2 .outline{-webkit-text-stroke:1px rgba(240,237,232,.28);color:transparent;}
+h2 em{font-family:'Cormorant',serif;font-style:italic;font-weight:300;font-size:.7em;color:var(--bone);}
+
+/* POR QUE */
+#porque{padding:140px 60px;background:var(--k2);}
+.por-inner{max-width:1300px;margin:0 auto;}
+.por-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;margin-top:72px;}
+.por-p{font-size:.97rem;font-weight:300;line-height:2;color:rgba(240,237,232,.55);margin-bottom:16px;}
+.por-p strong{color:var(--w);font-weight:500;}
+.por-divider{width:32px;height:1px;background:rgba(240,237,232,.15);margin:28px 0;}
+/* Site mockup */
+.site-mock{border:1px solid rgba(240,237,232,.08);overflow:hidden;}
+.mock-bar{background:rgba(240,237,232,.04);padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(240,237,232,.06);}
+.mock-dots{display:flex;gap:6px;}
+.mock-dot{width:8px;height:8px;border-radius:50%;}
+.mock-url{flex:1;background:rgba(240,237,232,.04);border:1px solid rgba(240,237,232,.06);padding:5px 12px;font-size:.65rem;color:rgba(240,237,232,.3);font-family:'Barlow',sans-serif;}
+.mock-body{padding:28px;}
+.mock-hero{background:rgba(240,237,232,.03);height:180px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(240,237,232,.04);margin-bottom:16px;position:relative;overflow:hidden;}
+.mock-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.04),transparent);}
+.mock-title{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;letter-spacing:.06em;color:var(--w);opacity:.6;}
+.mock-sub{font-size:.68rem;color:rgba(240,237,232,.25);margin-top:6px;}
+.mock-btn{margin-top:14px;background:var(--w);color:var(--k);padding:8px 20px;font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;opacity:.7;}
+.mock-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.mock-card{background:rgba(240,237,232,.03);height:70px;border:1px solid rgba(240,237,232,.04);}
+.mock-conversion{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.15);}
+.mock-conversion span{font-size:.65rem;color:var(--accent);font-weight:600;letter-spacing:.1em;}
+
+/* TIPOS */
+#tipos{padding:140px 60px;background:var(--w);}
+#tipos .section-label{color:rgba(8,8,8,.35);}
+#tipos .section-label::before{background:rgba(8,8,8,.25);}
+#tipos h2{color:#0d0d0d;}
+#tipos h2 .outline{-webkit-text-stroke:1px rgba(8,8,8,.2);}
+.tip-inner{max-width:1300px;margin:0 auto;}
+.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(8,8,8,.08);margin-top:72px;}
+.tcard{background:var(--w);padding:56px 48px;position:relative;overflow:hidden;transition:background .4s;}
+.tcard:hover{background:#ede9e3;}
+.tcard-n{font-family:'Bebas Neue',sans-serif;font-size:6rem;color:rgba(8,8,8,.05);position:absolute;top:10px;right:24px;line-height:1;}
+.tcard-tag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(8,8,8,.15);color:rgba(8,8,8,.5);margin-bottom:22px;}
+.tcard h3{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;color:#0d0d0d;margin-bottom:14px;}
+.tcard p{font-size:.85rem;font-weight:300;line-height:1.85;color:rgba(8,8,8,.48);}
+.tcard-features{margin-top:24px;display:flex;flex-direction:column;gap:0;}
+.tf{font-size:.78rem;font-weight:400;color:rgba(8,8,8,.55);padding:8px 0;border-bottom:1px solid rgba(8,8,8,.06);display:flex;gap:10px;align-items:center;}
+.tf::before{content:'→';color:rgba(8,8,8,.25);font-size:.7rem;}
+.tcard-bar{position:absolute;bottom:0;left:0;width:0;height:2px;background:#0d0d0d;transition:width .5s ease;}
+.tcard:hover .tcard-bar{width:100%;}
+
+/* PROCESSO */
+#processo{padding:140px 60px;background:var(--k3);position:relative;overflow:hidden;}
+.proc-wm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Bebas Neue',sans-serif;font-size:clamp(12rem,20vw,22rem);color:rgba(240,237,232,.018);pointer-events:none;white-space:nowrap;}
+.proc-inner{max-width:1300px;margin:0 auto;}
+.proc-header{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px;}
+.proc-header p{font-size:.88rem;font-weight:300;line-height:1.9;color:rgba(240,237,232,.5);align-self:end;}
+.proc-steps{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(240,237,232,.06);}
+.pstep{background:var(--k3);padding:48px 40px;position:relative;overflow:hidden;transition:background .3s;}
+.pstep:hover{background:var(--k4);}
+.pstep-n{font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(240,237,232,.04);position:absolute;top:10px;right:20px;line-height:1;}
+.pstep h3{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;color:var(--w);margin-bottom:12px;}
+.pstep p{font-size:.83rem;font-weight:300;color:rgba(240,237,232,.5);line-height:1.8;}
+.pstep-tag{display:inline-block;margin-top:18px;font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(240,237,232,.1);color:rgba(240,237,232,.3);padding:6px 12px;}
+
+/* PARCERIA */
+#parceria{padding:140px 60px;background:var(--k2);}
+.par-inner{max-width:1300px;margin:0 auto;}
+.par-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:72px;}
+.par-left{}
+.par-logos{display:flex;align-items:center;gap:24px;margin-bottom:40px;}
+.par-logo-box{padding:16px 24px;border:1px solid rgba(240,237,232,.1);font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.08em;color:rgba(240,237,232,.5);}
+.par-logo-box.main{color:var(--w);border-color:rgba(240,237,232,.25);}
+.par-x{font-size:1.5rem;color:rgba(240,237,232,.15);}
+.par-p{font-size:.97rem;font-weight:300;line-height:2;color:rgba(240,237,232,.55);margin-bottom:16px;}
+.par-p strong{color:var(--w);font-weight:500;}
+.par-p a{color:var(--accent);text-decoration:none;transition:color .2s;}
+.par-p a:hover{color:var(--accent2);}
+.par-divider{width:32px;height:1px;background:rgba(240,237,232,.15);margin:28px 0;}
+.par-feats{display:flex;flex-direction:column;gap:0;}
+.pfeat{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(240,237,232,.05);}
+.pfeat:first-child{border-top:1px solid rgba(240,237,232,.05);}
+.pfeat-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:9px;}
+.pfeat p{font-size:.85rem;font-weight:300;color:rgba(240,237,232,.55);line-height:1.6;}
+.pfeat p strong{color:var(--w);font-weight:500;}
+.par-right{}
+.par-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(240,237,232,.06);}
+.pstat{background:var(--k2);padding:36px 28px;transition:background .3s;cursor:default;}
+.pstat:hover{background:var(--k3);}
+.pstat em{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--w);display:block;line-height:1;margin-bottom:8px;}
+.pstat span{font-size:.62rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(240,237,232,.28);}
+.par-partner-note{margin-top:20px;padding:20px;border:1px solid rgba(201,168,76,.2);background:rgba(201,168,76,.03);}
+.par-partner-note p{font-size:.78rem;font-weight:300;line-height:1.7;color:rgba(240,237,232,.45);}
+.par-partner-note a{color:var(--accent);text-decoration:none;}
+
+/* DIFERENCIAIS */
+#diferenciais{padding:120px 60px;background:var(--k);}
+.dif-inner{max-width:1300px;margin:0 auto;}
+.dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(240,237,232,.06);margin-top:60px;}
+.dcard{background:var(--k);padding:44px 36px;transition:background .3s;cursor:default;}
+.dcard:hover{background:var(--k2);}
+.dcard-icon{font-size:1.5rem;margin-bottom:18px;}
+.dcard h4{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--w);margin-bottom:12px;}
+.dcard p{font-size:.82rem;font-weight:300;color:rgba(240,237,232,.48);line-height:1.75;}
+
+/* CTA */
+#contato{padding:140px 60px;background:var(--k3);position:relative;overflow:hidden;}
+.cta-bg{position:absolute;bottom:-60px;left:0;font-family:'Bebas Neue',sans-serif;font-size:clamp(8rem,18vw,20rem);letter-spacing:.02em;color:rgba(240,237,232,.025);white-space:nowrap;pointer-events:none;}
+.cta-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:72px;}
+.cta-left{}
+.cta-left h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.04em;color:var(--w);margin-bottom:20px;line-height:1.1;}
+.cta-left p{font-size:.88rem;font-weight:300;line-height:1.9;color:rgba(240,237,232,.48);margin-bottom:32px;}
+.cta-list{display:flex;flex-direction:column;gap:0;}
+.cli{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(240,237,232,.05);}
+.cli:first-child{border-top:1px solid rgba(240,237,232,.05);}
+.cli-dot{width:4px;height:4px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:10px;}
+.cli p{font-size:.82rem;font-weight:300;color:rgba(240,237,232,.5);}
+.cli p strong{color:var(--w);font-weight:500;}
+.form-box{background:var(--k2);border:1px solid rgba(240,237,232,.08);padding:52px 48px;}
+.form-box h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--w);margin-bottom:6px;}
+.form-box>p{font-size:.82rem;color:rgba(240,237,232,.4);margin-bottom:32px;font-weight:300;}
+.fg{margin-bottom:18px;}
+.fg label{display:block;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(240,237,232,.28);margin-bottom:8px;}
+.fg input,.fg select,.fg textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(240,237,232,.1);padding:12px 0;font-family:'Barlow',sans-serif;font-size:.9rem;color:var(--w);outline:none;transition:border-color .25s;border-radius:0;}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(240,237,232,.18);}
+.fg select option{background:var(--k2);color:var(--w);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(240,237,232,.4);}
+.fg textarea{resize:none;height:80px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.fsub{width:100%;background:var(--w);color:var(--k);border:none;padding:18px;font-family:'Barlow',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;cursor:pointer;margin-top:10px;transition:background .3s,transform .15s;position:relative;overflow:hidden;}
+.fsub::after{content:'';position:absolute;top:-50%;left:-60%;width:20%;height:200%;background:rgba(0,0,0,.08);transform:rotate(30deg);transition:left .5s cubic-bezier(.19,1,.22,1);}
+.fsub:hover::after{left:120%;}
+.fsub:hover{background:var(--bone);transform:translateY(-1px);}
+
+/* FOOTER */
+footer{background:var(--k2);border-top:1px solid rgba(240,237,232,.06);padding:36px 60px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+.fl{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.12em;color:rgba(240,237,232,.4);}
+.flinks{display:flex;gap:28px;flex-wrap:wrap;}
+.flinks a{font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,232,.2);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:rgba(240,237,232,.6);}
+.fright{font-size:.6rem;color:rgba(240,237,232,.12);letter-spacing:.1em;text-transform:uppercase;}
+
+/* WA */
+.wa-float{position:fixed;bottom:32px;right:32px;z-index:300;display:flex;align-items:center;}
+.wa-label{background:var(--k2);border:1px solid rgba(240,237,232,.1);padding:11px 18px;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,237,232,.5);white-space:nowrap;opacity:0;transform:translateX(8px);transition:opacity .3s,transform .3s;pointer-events:none;}
+.wa-float:hover .wa-label{opacity:1;transform:translateX(0);}
+.wa-btn{width:56px;height:56px;background:var(--w);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .3s,transform .2s;flex-shrink:0;}
+.wa-btn:hover{background:var(--bone);transform:scale(1.05);}
+.wa-btn svg{width:24px;height:24px;fill:var(--k);}
+
+/* REVEAL */
+.rev{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease;}
+.rev.vis{opacity:1;transform:none;}
+.rev-l{opacity:0;transform:translateX(-22px);transition:opacity .8s ease,transform .8s ease;}
+.rev-l.vis{opacity:1;transform:none;}
+.rev-r{opacity:0;transform:translateX(22px);transition:opacity .8s ease,transform .8s ease;}
+.rev-r.vis{opacity:1;transform:none;}
+.d1{transition-delay:.07s!important;}
+.d2{transition-delay:.14s!important;}
+.d3{transition-delay:.21s!important;}
+.d4{transition-delay:.28s!important;}
+
+@media(max-width:1000px){
+  .por-grid,.par-grid,.proc-header,.cta-grid{grid-template-columns:1fr;gap:48px;}
+  .tip-grid,.proc-steps,.dif-grid{grid-template-columns:1fr;}
+  nav{padding:0 24px;}
+  #porque,#tipos,#processo,#parceria,#diferenciais,#contato{padding:80px 24px;}
+  footer{padding:28px 24px;flex-direction:column;text-align:center;}
+  .flinks{justify-content:center;}
+  h2{font-size:clamp(2.5rem,8vw,5rem);}
+}
+@media(max-width:600px){.hero-bar{display:none;}.frow{grid-template-columns:1fr;}.par-stat-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div id="dot"></div>
+<div id="ring"></div>
+
+<nav id="nav">
+  <a href="index.html" class="nav-back">← Voltar para Sublime</a>
+  <div class="logo-name">Sublime × trywebdesign</div>
+  <a href="#contato" class="nav-cta">Quero Meu Site</a>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-canvas">
+    <div class="hero-line" style="top:25%;left:0;right:0;height:1px;"></div>
+    <div class="hero-line" style="top:50%;left:0;right:0;height:1px;"></div>
+    <div class="hero-line" style="top:75%;left:0;right:0;height:1px;"></div>
+    <div class="hero-line" style="left:25%;top:0;bottom:0;width:1px;"></div>
+    <div class="hero-line" style="left:50%;top:0;bottom:0;width:1px;"></div>
+    <div class="hero-line" style="left:75%;top:0;bottom:0;width:1px;"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      Assessoria Sublime <span class="partner-x">×</span> trywebdesign.com.br
+    </div>
+    <h1>
+      UM SITE QUE
+      <span class="outline">TRABALHA</span>
+      <em>enquanto você tatua.</em>
+    </h1>
+    <p class="hero-sub">
+      Não é só um site bonito. É uma máquina de conversão construída especificamente para tatuadores — que transforma visitantes em orçamentos, e orçamentos em agenda cheia.
+    </p>
+    <div class="hero-cta-wrap">
+      <a href="#contato" class="btn-main">Quero Meu Site Agora</a>
+      <a href="#porque" class="btn-ghost">Por que você precisa disso ↓</a>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="hero-bar-item">
+      <span class="hero-bar-num">Elite</span>
+      <span class="hero-bar-label">Design diferenciado</span>
+    </div>
+    <div class="hero-bar-item">
+      <span class="hero-bar-num">Conv.</span>
+      <span class="hero-bar-label">Focado em orçamentos</span>
+    </div>
+    <div class="hero-bar-item">
+      <span class="hero-bar-num">Rápido</span>
+      <span class="hero-bar-label">Performance máxima</span>
+    </div>
+    <div class="hero-bar-item">
+      <span class="hero-bar-num">100%</span>
+      <span class="hero-bar-label">Para tatuadores</span>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUE -->
+<section id="porque">
+  <div class="por-inner">
+    <div class="rev">
+      <div class="section-label">O diagnóstico</div>
+      <h2>SEM SITE,<br><span class="outline">VOCÊ DEPENDE</span><br><em>de terceiros.</em></h2>
+    </div>
+    <div class="por-grid">
+      <div>
+        <p class="por-p rev d1">O Instagram pode te banir. O algoritmo pode te sufocar. O WhatsApp não dá credibilidade profissional. Mas um site próprio — <strong>esse é seu território.</strong></p>
+        <p class="por-p rev d2">Mais do que isso: quando alguém chega pelo Google ou pelos Ads, <strong>o site é o primeiro lugar que ele visita</strong>. Se esse site for fraco, você perdeu o cliente ali.</p>
+        <p class="por-p rev d3">Um site bem construído faz o cliente entender seu nível <strong>antes mesmo de falar com você</strong> — e chegar já convencido, já sabendo o que quer, já disposto a pagar seu preço.</p>
+        <div class="por-divider"></div>
+        <p class="por-p rev d4"><strong>Isso não é um custo. É a parte do sistema que trabalha por você 24 horas.</strong></p>
+      </div>
+      <div class="rev-r">
+        <div class="site-mock">
+          <div class="mock-bar">
+            <div class="mock-dots">
+              <div class="mock-dot" style="background:rgba(234,67,53,.5)"></div>
+              <div class="mock-dot" style="background:rgba(251,188,5,.5)"></div>
+              <div class="mock-dot" style="background:rgba(52,168,83,.5)"></div>
+            </div>
+            <div class="mock-url">seutatuador.com.br</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-hero">
+              <div class="mock-title">SEU NOME</div>
+              <div class="mock-sub">Tatuador Especialista · Sua Cidade</div>
+              <div class="mock-btn">Solicitar Orçamento →</div>
+            </div>
+            <div class="mock-grid">
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+              <div class="mock-card"></div>
+            </div>
+            <div class="mock-conversion">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.49a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Contato direto → +3 orçamentos hoje</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOS -->
+<section id="tipos">
+  <div class="tip-inner">
+    <div class="rev">
+      <div class="section-label">O que entregamos</div>
+      <h2>DOIS TIPOS<br><span class="outline">DE SOLUÇÃO</span><br><em>para cada momento.</em></h2>
+    </div>
+    <div class="tip-grid">
+      <div class="tcard rev d1">
+        <span class="tcard-n">01</span>
+        <span class="tcard-tag">Mais indicado para começar</span>
+        <h3>Landing Page de Conversão</h3>
+        <p>Uma página única, rápida e direta ao ponto — construída para transformar visitas em orçamentos. Ideal para quem quer entrar no digital com impacto imediato e menor investimento.</p>
+        <div class="tcard-features">
+          <div class="tf">Hero com sua arte e CTA principal</div>
+          <div class="tf">Portfólio selecionado em galeria</div>
+          <div class="tf">Seção de estilos e especialidades</div>
+          <div class="tf">Avaliações e prova social</div>
+          <div class="tf">Formulário de orçamento integrado</div>
+          <div class="tf">Botão WhatsApp direto</div>
+          <div class="tf">100% responsivo e rápido</div>
+        </div>
+        <div class="pcard-bar" style="position:absolute;bottom:0;left:0;width:0;height:2px;background:#0d0d0d;transition:width .5s ease;"></div>
+      </div>
+      <div class="tcard rev d2">
+        <span class="tcard-n">02</span>
+        <span class="tcard-tag">Para quem quer dominar o mercado</span>
+        <h3>Site Completo de Estúdio</h3>
+        <p>Presença digital completa com múltiplas páginas, portfólio expandido por estilo, blog, SEO avançado e todas as ferramentas para você aparecer em toda busca do Google na sua região.</p>
+        <div class="tcard-features">
+          <div class="tf">Tudo da Landing Page +</div>
+          <div class="tf">Múltiplas páginas por estilo/serviço</div>
+          <div class="tf">Blog para SEO orgânico</div>
+          <div class="tf">Página de agendamento online</div>
+          <div class="tf">Integração com Google Business</div>
+          <div class="tf">SEO on-page completo</div>
+          <div class="tf">Analytics e acompanhamento</div>
+        </div>
+        <div class="pcard-bar" style="position:absolute;bottom:0;left:0;width:0;height:2px;background:#0d0d0d;transition:width .5s ease;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo">
+  <div class="proc-wm">PROCESSO</div>
+  <div class="proc-inner">
+    <div class="proc-header rev">
+      <div>
+        <div class="section-label">Como funciona</div>
+        <h2>DO BRIEFING<br><span class="outline">AO AR</span><br><em>em semanas.</em></h2>
+      </div>
+      <p>Processo estruturado para o resultado certo — sem vai e vem interminável, sem achismo, sem layout genérico que parece todo mundo.</p>
+    </div>
+    <div class="proc-steps">
+      <div class="pstep rev d1">
+        <div class="pstep-n">01</div>
+        <h3>Briefing & Estratégia</h3>
+        <p>Entendemos seu estilo, seu cliente ideal, seus diferenciais e o que precisa acontecer no site para gerar resultado real.</p>
+        <span class="pstep-tag">Semana 1</span>
+      </div>
+      <div class="pstep rev d2">
+        <div class="pstep-n">02</div>
+        <h3>Design & Identidade</h3>
+        <p>Layout exclusivo que reflete seu trabalho e convence o cliente antes mesmo de falar com você. Sem template genérico.</p>
+        <span class="pstep-tag">Semana 1-2</span>
+      </div>
+      <div class="pstep rev d3">
+        <div class="pstep-n">03</div>
+        <h3>Desenvolvimento & Conteúdo</h3>
+        <p>Codificação responsiva, rápida e otimizada para SEO. Textos pensados para conversão e posicionamento no Google.</p>
+        <span class="pstep-tag">Semana 2-3</span>
+      </div>
+      <div class="pstep rev d4">
+        <div class="pstep-n">04</div>
+        <h3>Revisão, Ajustes & Publicação</h3>
+        <p>Você aprova, ajustamos o que for necessário e publicamos no ar — integrado ao Google Analytics, Business e Ads.</p>
+        <span class="pstep-tag">Semana 3-4</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARCERIA -->
+<section id="parceria">
+  <div class="par-inner">
+    <div class="rev">
+      <div class="section-label">A parceria</div>
+      <h2>SUBLIME<br><span class="outline">×</span><br><em>trywebdesign.</em></h2>
+    </div>
+    <div class="par-grid">
+      <div class="par-left">
+        <div class="par-logos rev d1">
+          <div class="par-logo-box main">SUBLIME</div>
+          <div class="par-x">×</div>
+          <div class="par-logo-box">TRYWEBDESIGN</div>
+        </div>
+        <p class="par-p rev d2">A <strong>Assessoria Sublime</strong> cuida da estratégia, do posicionamento, do tráfego e dos resultados. A <strong><a href="https://trywebdesign.com.br" target="_blank">trywebdesign.com.br</a></strong> cuida do design e desenvolvimento de elite.</p>
+        <p class="par-p rev d3">Juntos, entregamos um sistema completo: o site certo, na frente do cliente certo, na hora certa. Não é serviço avulso — é integração total entre design e estratégia.</p>
+        <div class="par-divider"></div>
+        <div class="par-feats">
+          <div class="pfeat rev d1"><div class="pfeat-dot"></div><p><strong>Design exclusivo</strong> — nenhum site igual ao outro, nenhum template</p></div>
+          <div class="pfeat rev d2"><div class="pfeat-dot"></div><p><strong>Foco em conversão</strong> — cada elemento do site existe para gerar orçamento</p></div>
+          <div class="pfeat rev d3"><div class="pfeat-dot"></div><p><strong>Integrado ao sistema Sublime</strong> — Google Ads, Business e Analytics conectados</p></div>
+          <div class="pfeat rev d4"><div class="pfeat-dot"></div><p><strong>Suporte contínuo</strong> — você nunca fica sozinho depois que o site vai ao ar</p></div>
+        </div>
+      </div>
+      <div class="par-right">
+        <div class="par-stat-grid rev-r">
+          <div class="pstat"><em>+95%</em><span>Performance Google</span></div>
+          <div class="pstat"><em>100%</em><span>Mobile first</span></div>
+          <div class="pstat"><em>2-4sem</em><span>Prazo de entrega</span></div>
+          <div class="pstat"><em>Único</em><span>Design exclusivo</span></div>
+        </div>
+        <div class="par-partner-note rev-r d1">
+          <p>Os sites são desenvolvidos pela equipe da <a href="https://trywebdesign.com.br" target="_blank">trywebdesign.com.br</a> — especialistas em design de alto nível para negócios que levam presença digital a sério.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="dif-inner">
+    <div class="rev">
+      <div class="section-label">Por que não qualquer site</div>
+      <h2>FEITO PARA<br><em>tatuadores,</em><br><span class="outline">POR QUEM ENTENDE.</span></h2>
+    </div>
+    <div class="dif-grid">
+      <div class="dcard rev d1">
+        <div class="dcard-icon">🎨</div>
+        <h4>Design que reflete sua arte</h4>
+        <p>Não é layout de dentista com tema escuro. É um site que faz o cliente sentir o nível do seu trabalho antes de ver uma foto.</p>
+      </div>
+      <div class="dcard rev d2">
+        <div class="dcard-icon">⚡</div>
+        <h4>Velocidade que ranqueia</h4>
+        <p>Sites lentos perdem no Google e perdem o cliente. Performance acima de 90% no PageSpeed — requisito, não diferencial.</p>
+      </div>
+      <div class="dcard rev d3">
+        <div class="dcard-icon">🔍</div>
+        <h4>SEO local otimizado</h4>
+        <p>Cada página construída para ranquear nas buscas da sua cidade e pelo seu estilo específico. Presença orgânica real.</p>
+      </div>
+      <div class="dcard rev d4">
+        <div class="dcard-icon">💬</div>
+        <h4>CTAs que funcionam</h4>
+        <p>Botões, formulários e jornada do usuário projetados para maximizar o número de pessoas que entram em contato.</p>
+      </div>
+      <div class="dcard rev">
+        <div class="dcard-icon">📱</div>
+        <h4>Mobile first de verdade</h4>
+        <p>A maioria dos seus clientes abre pelo celular. O design começa pelo mobile — não é uma adaptação do desktop.</p>
+      </div>
+      <div class="dcard rev">
+        <div class="dcard-icon">🔗</div>
+        <h4>Integrado ao ecossistema Sublime</h4>
+        <p>Google Ads, Business e Analytics conectados desde o primeiro dia. O site não é uma ilha — é parte do sistema.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contato">
+  <div class="cta-bg">WEBSITE</div>
+  <div class="cta-inner">
+    <div class="rev">
+      <div class="section-label">Dar o próximo passo</div>
+      <h2>VAMOS CONSTRUIR<br><em>seu</em><br><span class="outline">SITE AGORA.</span></h2>
+    </div>
+    <div class="cta-grid">
+      <div class="cta-left">
+        <h3>Antes de falar com a gente, saiba que você vai receber:</h3>
+        <p>Uma análise do que você precisa, uma proposta adequada ao seu momento e um cronograma claro. Sem enrolação.</p>
+        <div class="cta-list">
+          <div class="cli rev d1"><div class="cli-dot"></div><p><strong>Briefing estratégico</strong> — entendemos seu negócio e seu cliente ideal</p></div>
+          <div class="cli rev d2"><div class="cli-dot"></div><p><strong>Proposta personalizada</strong> — landing page ou site completo, o que faz sentido pra você</p></div>
+          <div class="cli rev d3"><div class="cli-dot"></div><p><strong>Cronograma definido</strong> — você sabe exatamente quando seu site vai ao ar</p></div>
+          <div class="cli rev d4"><div class="cli-dot"></div><p><strong>Integração com o sistema Sublime</strong> — o site conectado à sua estratégia de clientes</p></div>
+        </div>
+        <div style="margin-top:32px;" class="rev">
+          <p style="font-size:.72rem;font-weight:300;color:rgba(240,237,232,.28);line-height:1.7;">Sites desenvolvidos em parceria com <a href="https://trywebdesign.com.br" target="_blank" style="color:rgba(240,237,232,.4);text-decoration:none;">trywebdesign.com.br</a> — design de elite para quem leva a presença digital a sério.</p>
+        </div>
+      </div>
+      <div class="form-box rev-r">
+        <h3>Quero meu site</h3>
+        <p>Preencha e entro em contato em até 24h</p>
+        <div class="frow">
+          <div class="fg"><label>Nome</label><input type="text" placeholder="Seu nome"/></div>
+          <div class="fg"><label>Cidade / Estado</label><input type="text" placeholder="Ex: Curitiba, PR"/></div>
+        </div>
+        <div class="fg"><label>WhatsApp</label><input type="tel" placeholder="(00) 99999-9999"/></div>
+        <div class="fg">
+          <label>O que você precisa?</label>
+          <select>
+            <option value="">Selecione uma opção</option>
+            <option>Landing Page de Conversão</option>
+            <option>Site Completo de Estúdio</option>
+            <option>Não sei ainda — quero orientação</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Estilo de Tatuagem</label>
+          <select>
+            <option value="">Selecione seu estilo</option>
+            <option>Black &amp; Grey</option>
+            <option>Fine Line / Pontilhismo</option>
+            <option>Realismo</option>
+            <option>Aquarela</option>
+            <option>Neo Traditional</option>
+            <option>Old School</option>
+            <option>Oriental / Japonês</option>
+            <option>Geométrico</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="fg"><label>Contexto</label><textarea placeholder="Me conte um pouco sobre o seu estúdio e o que você espera do site..."></textarea></div>
+        <button class="fsub" onclick="submitForm(this)">Quero Meu Site Agora →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">ASSESSORIA SUBLIME <span style="color:rgba(240,237,232,.15);margin:0 10px;">×</span> TRYWEBDESIGN · Sites para Tatuadores</div>
+  <div class="flinks">
+    <a href="index.html">Início</a>
+    <a href="index.html#metodo">Estratégia 3Phi</a>
+    <a href="google-business.html">Google Business</a>
+    <a href="index.html#contato">Contato</a>
+    <a href="https://trywebdesign.com.br" target="_blank">trywebdesign.com.br</a>
+  </div>
+  <div class="fright">© 2025 · Sublime × trywebdesign</div>
+</footer>
+
+<div class="wa-float">
+  <div class="wa-label">Quero meu site</div>
+  <a href="https://wa.me/55SEUNUMERO?text=Olá,%20quero%20saber%20mais%20sobre%20sites%20para%20tatuadores." target="_blank" class="wa-btn">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+const dot=document.getElementById('dot'),ring=document.getElementById('ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.tcard,.pstep,.dcard,.pstat,.cli').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('on-link'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('on-link'));
+});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*55);obs.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('.rev,.rev-l,.rev-r').forEach(el=>obs.observe(el));
+// hover fix for pcard-bar inside tcard
+document.querySelectorAll('.tcard').forEach(card=>{
+  const bar=card.querySelector('.pcard-bar');
+  if(bar){card.addEventListener('mouseenter',()=>bar.style.width='100%');card.addEventListener('mouseleave',()=>bar.style.width='0');}
+});
+function submitForm(btn){
+  btn.textContent='✓ Mensagem enviada!';btn.style.background='rgba(240,237,232,.2)';btn.style.color='rgba(240,237,232,.6)';btn.disabled=true;
+  setTimeout(()=>{btn.textContent='Quero Meu Site Agora →';btn.style.background='';btn.style.color='';btn.disabled=false;},4000);
+}
+</script>
+</body>
+</html>
