@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doctor Paint Brasil | Funilaria, Pintura e Estética Automotiva</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D41B1B;
+    --red-dark: #9B0000;
+    --red-glow: rgba(212,27,27,0.35);
+    --black: #0A0A0A;
+    --black2: #141414;
+    --black3: #1E1E1E;
+    --white: #F5F5F0;
+    --gold: #C8A044;
+    --gold-light: #E8C06A;
+    --gray: #888;
+    --gray-light: #CCCCCC;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-ui: 'Barlow Condensed', sans-serif;
+    --font-body: 'Barlow', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%,-50%);
+    transition: transform .1s, width .2s, height .2s, background .2s;
+    mix-blend-mode: normal;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1.5px solid var(--red);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%,-50%);
+    transition: transform .12s ease, width .25s, height .25s, opacity .2s;
+    opacity: .6;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 180px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: .4;
+  }
+
+  /* ─── TOP BAR ─────────────────────────────────────── */
+  #topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 64px;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(212,27,27,0.25);
+    transition: background .3s;
+  }
+  #topbar.scrolled { background: rgba(10,10,10,0.99); }
+
+  .topbar-logo {
+    display: flex; align-items: center; gap: .75rem;
+    text-decoration: none;
+  }
+  .topbar-logo img {
+    height: 42px;
+    filter: drop-shadow(0 0 8px var(--red-glow));
+  }
+
+  .topbar-cta-group {
+    display: flex; align-items: center; gap: .75rem;
+  }
+.btn-cta-top {
+    display: inline-flex; 
+    align-items: center; 
+    gap: .5rem;
+    padding: .55rem 1.3rem;
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s;
+    /* ADICIONE ESTA LINHA ABAIXO */
+    z-index: 1; 
+  }
+
+  .btn-cta-top::before {
+    content: '';
+    position: absolute; 
+    inset: 0;
+    transform: translateX(-101%);
+    transition: transform .3s ease;
+    /* ADICIONE ESTA LINHA ABAIXO */
+    z-index: -1; 
+  }
+  
+  .btn-cta-top:hover { transform: translateY(-2px); }
+  .btn-cta-top:hover::before { transform: translateX(0); }
+
+  .btn-loja {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    box-shadow: 0 0 18px var(--red-glow);
+  }
+  .btn-loja::before { background: var(--red-dark); }
+
+  .btn-escola {
+    background: transparent;
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+  }
+  .btn-escola::before { background: rgba(200,160,68,.15); }
+
+  .topbar-nav { display: flex; align-items: center; gap: 1.8rem; }
+  .topbar-nav a {
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    text-decoration: none;
+    position: relative;
+    transition: color .2s;
+  }
+  .topbar-nav a::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0;
+    width: 0; height: 1.5px;
+    background: var(--red);
+    transition: width .25s;
+  }
+  .topbar-nav a:hover { color: #fff; }
+  .topbar-nav a:hover::after { width: 100%; }
+
+  /* ─── HERO ────────────────────────────────────────── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('background-section-hero.png') center/cover no-repeat;
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      120deg,
+      rgba(10,10,10,0.92) 0%,
+      rgba(10,10,10,0.75) 50%,
+      rgba(10,10,10,0.45) 100%
+    );
+  }
+
+  /* animated scan-line sweep */
+  .hero-scan {
+    position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none;
+  }
+  .hero-scan::before {
+    content: '';
+    position: absolute;
+    top: -100%; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+    animation: scanDown 6s linear infinite;
+    opacity: .4;
+  }
+  @keyframes scanDown { 0%{top:-3px} 100%{top:100%} }
+
+  /* red vertical stripe accent */
+  .hero-stripe {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: linear-gradient(to bottom, transparent, var(--red) 30%, var(--red) 70%, transparent);
+    opacity: .18;
+    animation: stripeFlicker 4s ease-in-out infinite alternate;
+  }
+  @keyframes stripeFlicker { 0%{opacity:.1} 100%{opacity:.25} }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 780px;
+    padding: 3rem 4rem;
+    animation: fadeUp .9s ease both;
+  }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.25rem;
+    animation: fadeUp .9s .15s ease both;
+  }
+  .hero-tag span { width: 32px; height: 1px; background: var(--red); display: block; }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    line-height: .95;
+    color: #fff;
+    letter-spacing: .02em;
+    margin-bottom: 1.25rem;
+    animation: fadeUp .9s .25s ease both;
+  }
+  .hero-title .accent { color: var(--red); display: block; }
+
+  .hero-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(245,245,240,.7);
+    max-width: 540px;
+    margin-bottom: 2.25rem;
+    font-weight: 300;
+    animation: fadeUp .9s .35s ease both;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp .9s .45s ease both;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .85rem 2.2rem;
+    background: var(--red);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 3px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 6px 30px var(--red-glow);
+    transition: transform .2s, box-shadow .2s;
+    cursor: none;
+  }
+  .btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--red-dark);
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .3s ease;
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 40px var(--red-glow); }
+  .btn-primary:hover::before { transform: scaleX(1); transform-origin: left; }
+  .btn-primary span { position: relative; z-index: 1; }
+
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .85rem 2.2rem;
+    background: transparent;
+    color: var(--white);
+    font-family: var(--font-ui);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1.5px solid rgba(245,245,240,.3);
+    border-radius: 3px;
+    transition: border-color .2s, color .2s, transform .2s;
+    cursor: none;
+  }
+  .btn-outline:hover { border-color: var(--white); color: #fff; transform: translateY(-3px); }
+
+  .hero-badges {
+    position: absolute; right: 4rem; bottom: 4rem; z-index: 2;
+    display: flex; flex-direction: column; gap: .75rem;
+    animation: fadeUp .9s .6s ease both;
+  }
+  .hero-badge {
+    display: flex; align-items: center; gap: .75rem;
+    background: rgba(20,20,20,.75);
+    border: 1px solid rgba(212,27,27,.3);
+    border-left: 3px solid var(--red);
+    padding: .6rem 1.1rem;
+    backdrop-filter: blur(10px);
+    border-radius: 2px;
+  }
+  .hero-badge .ico { font-size: 1.2rem; }
+  .hero-badge .txt { font-family: var(--font-ui); font-size: .85rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--gray-light); }
+
+  /* ─── BANNER SLIDER ───────────────────────────────── */
+  #banner-slider-wrap {
+    background: var(--black2);
+    padding: 2.5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  #banner-slider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 60px rgba(0,0,0,.65), 0 0 0 1px rgba(212,27,27,.2);
+    flex-shrink: 1;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity .9s ease;
+  }
+  .slide.active { opacity: 1; }
+  .slide img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+  .slide-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(10,10,10,.85) 28%, transparent 72%);
+    display: flex; align-items: center;
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+  }
+  .slide-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    color: #fff;
+    line-height: 1;
+    margin-bottom: .65rem;
+  }
+  .slide-text h2 .red { color: var(--red); }
+  .slide-text p {
+    font-family: var(--font-ui);
+    font-size: 1rem;
+    color: rgba(245,245,240,.75);
+    max-width: 340px;
+    font-weight: 400;
+  }
+
+  /* Arrow buttons — fora do slide, lado esquerdo e direito */
+  .slider-arrow {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    background: rgba(20,20,20,.85);
+    border: 1.5px solid rgba(212,27,27,.5);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: background .22s, border-color .22s, transform .22s, box-shadow .22s;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    position: static;         /* fora do slider, no flex row */
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0,0,0,.45);
+  }
+  .slider-arrow:hover {
+    background: var(--red);
+    border-color: var(--red);
+    transform: scale(1.12);
+    box-shadow: 0 6px 28px var(--red-glow);
+  }
+  .slider-arrow:active { transform: scale(.93); }
+
+  .slider-dots {
+    position: absolute; bottom: 1rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: .55rem; z-index: 10;
+  }
+  .dot {
+    width: 24px; height: 3px;
+    background: rgba(255,255,255,.25);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background .3s, width .3s;
+  }
+  .dot.active { background: var(--red); width: 40px; }
+
+  /* ─── SECTION COMMON ──────────────────────────────── */
+  .section { padding: 6rem 4rem; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-family: var(--font-ui);
+    font-size: .75rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1rem;
+  }
+  .section-label::before { content: ''; width: 28px; height: 1.5px; background: var(--red); display: block; }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: #fff;
+    letter-spacing: .02em;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+  .section-title .accent { color: var(--red); }
+  .section-sub {
+    font-size: 1.05rem;
+    color: rgba(245,245,240,.6);
+    max-width: 560px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── SERVICES ────────────────────────────────────── */
+  #services { background: var(--black2); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px;
+    margin-top: 3.5rem;
+  }
+  .service-card {
+    position: relative;
+    background: var(--black3);
+    padding: 2.5rem 2rem;
+    overflow: hidden;
+    cursor: none;
+    transition: transform .25s;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--red);
+    transition: height .4s ease;
+  }
+  .service-card:hover::before { height: 100%; }
+  .service-card:hover { transform: translateY(-4px); }
+  .service-card:hover { background: #1a1a1a; }
+
+  .svc-num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    color: rgba(212,27,27,.1);
+    position: absolute; top: .5rem; right: 1.5rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .svc-icon {
+    font-size: 2rem;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+  .svc-title {
+    font-family: var(--font-ui);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: .6rem;
+  }
+  .svc-desc {
+    font-size: .9rem;
+    color: rgba(245,245,240,.5);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ─── MOSAICO / GALLERY ───────────────────────────── */
+  #gallery { background: var(--black); padding: 6rem 0; }
+  .gallery-header { padding: 0 4rem; margin-bottom: 3rem; }
+
+  .gallery-mosaic {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 200px);
+    gap: 3px;
+  }
+  .gm-item { overflow: hidden; position: relative; }
+  .gm-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .gm-item:hover img { transform: scale(1.06); }
+  .gm-item .img-overlay {
+    position: absolute; inset: 0;
+    background: rgba(10,10,10,.5);
+    opacity: 0; transition: opacity .3s;
+    display: flex; align-items: flex-end; padding: 1rem;
+  }
+  .gm-item:hover .img-overlay { opacity: 1; }
+  .img-overlay-label {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .gm-item:nth-child(1) { grid-column: 1 / 6; grid-row: 1 / 3; }
+  .gm-item:nth-child(2) { grid-column: 6 / 9; grid-row: 1 / 2; }
+  .gm-item:nth-child(3) { grid-column: 9 / 13; grid-row: 1 / 2; }
+  .gm-item:nth-child(4) { grid-column: 6 / 9; grid-row: 2 / 3; }
+  .gm-item:nth-child(5) { grid-column: 9 / 11; grid-row: 2 / 3; }
+  .gm-item:nth-child(6) { grid-column: 11 / 13; grid-row: 2 / 3; }
+  .gm-item:nth-child(7) { grid-column: 1 / 4; grid-row: 3 / 4; }
+  .gm-item:nth-child(8) { grid-column: 4 / 8; grid-row: 3 / 4; }
+  .gm-item:nth-child(9) { grid-column: 8 / 13; grid-row: 3 / 4; }
+
+  /* ─── ROUNDED IMAGE EFFECTS ──────────────────────── */
+  /* Shared rounded image style */
+  .img-rounded {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 12px 48px rgba(0,0,0,.55), 0 0 0 1px rgba(212,27,27,.12) !important;
+    position: relative;
+  }
+  .img-rounded img {
+    border-radius: 16px;
+    display: block;
+    transition: transform .6s ease !important;
+  }
+  .img-rounded:hover img { transform: scale(1.04) !important; }
+  /* red glow shimmer on hover */
+  .img-rounded::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(212,27,27,.18) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity .4s;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .img-rounded:hover::after { opacity: 1; }
+  /* shine sweep */
+  .img-rounded::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -80%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.13) 50%, transparent 80%);
+    border-radius: 16px;
+    z-index: 3;
+    transform: skewX(-15deg);
+    transition: left .6s ease;
+    pointer-events: none;
+  }
+  .img-rounded:hover::before { left: 130%; }
+
+  /* ─── SOBRE / WILLIAM ─────────────────────────────── */
+  #about { background: var(--black2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3.5rem;
+  }
+  .about-img-wrap {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 16px 56px rgba(0,0,0,.6), 0 0 0 1px rgba(212,27,27,.15);
+  }
+  .about-img-wrap img { width: 100%; height: 500px; object-fit: cover; transition: transform .6s ease; }
+  .about-img-wrap:hover img { transform: scale(1.04); }
+  .about-img-wrap::after {
+    content: '';
+    position: absolute; inset: 0; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(212,27,27,.15) 0%, transparent 55%);
+    opacity: 0; transition: opacity .4s; pointer-events: none; z-index: 2;
+  }
+  .about-img-wrap:hover::after { opacity: 1; }
+  .about-img-wrap::before {
+    content: '';
+    position: absolute; top: 0; left: -80%; width: 55%; height: 100%;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.11) 50%, transparent 80%);
+    z-index: 3; transform: skewX(-15deg); transition: left .65s ease; pointer-events: none;
+  }
+  .about-img-wrap:hover::before { left: 130%; }
+  .about-img-badge {
+    position: absolute; bottom: 2rem; left: -1.5rem;
+    background: var(--red);
+    color: #fff;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-ui);
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    box-shadow: 0 6px 24px rgba(212,27,27,.4);
+  }
+  .about-img-badge strong { display: block; font-family: var(--font-display); font-size: 2rem; line-height: 1; }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: rgba(245,245,240,.65);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .stat-box {
+    border-left: 3px solid var(--red);
+    padding-left: 1rem;
+  }
+  .stat-box .num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--red);
+    line-height: 1;
+  }
+  .stat-box .lbl {
+    font-family: var(--font-ui);
+    font-size: .75rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-top: .25rem;
+  }
+
+  /* ─── 3M BADGE STRIP ──────────────────────────────── */
+  #strip {
+    background: var(--red);
+    padding: 2.25rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    position: relative; overflow: hidden;
+  }
+  #strip::before {
+    content: '';
+    position: absolute; top: 0; bottom: 0; left: 0;
+    width: 6px;
+    background: rgba(0,0,0,.2);
+  }
+  .strip-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: #fff;
+    letter-spacing: .05em;
+  }
+  .strip-badges { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .strip-badge {
+    background: rgba(0,0,0,.2);
+    color: #fff;
+    font-family: var(--font-ui);
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: .5rem 1.25rem;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,.2);
+  }
+
+  /* ─── ESPELHAMENTO / FEATURE SECTION ─────────────── */
+  #feature {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+  .feature-img {
+    position: relative; overflow: hidden; border-radius: 16px;
+    margin: 3rem 0 3rem 3rem;
+    box-shadow: 0 16px 60px rgba(0,0,0,.65), 0 0 0 1px rgba(212,27,27,.15);
+  }
+  .feature-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; display: block; }
+  .feature-img:hover img { transform: scale(1.04); }
+  .feature-img::after {
+    content: ''; position: absolute; inset: 0; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(212,27,27,.15) 0%, transparent 60%);
+    opacity: 0; transition: opacity .4s; pointer-events: none; z-index: 2;
+  }
+  .feature-img:hover::after { opacity: 1; }
+  .feature-img::before {
+    content: ''; position: absolute; top: 0; left: -80%; width: 55%; height: 100%;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.12) 50%, transparent 80%);
+    z-index: 3; transform: skewX(-15deg); transition: left .65s ease; pointer-events: none;
+  }
+  .feature-img:hover::before { left: 130%; }
+  .feature-text {
+    padding: 5rem 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .feature-text p {
+    font-size: 1.05rem;
+    color: rgba(245,245,240,.6);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ─── POLIMENTO / DETAILING ───────────────────────── */
+  #detailing {
+    background: var(--black2);
+  }
+  .detailing-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .detailing-img { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 14px 52px rgba(0,0,0,.55), 0 0 0 1px rgba(212,27,27,.13); }
+  .detailing-img img { width: 100%; height: 460px; object-fit: cover; transition: transform .6s ease; display: block; }
+  .detailing-img:hover img { transform: scale(1.04); }
+  .detailing-img::after {
+    content: ''; position: absolute; inset: 0; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(212,27,27,.14) 0%, transparent 55%);
+    opacity: 0; transition: opacity .4s; pointer-events: none; z-index: 2;
+  }
+  .detailing-img:hover::after { opacity: 1; }
+  .detailing-img::before {
+    content: ''; position: absolute; top: 0; left: -80%; width: 55%; height: 100%;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.11) 50%, transparent 80%);
+    z-index: 3; transform: skewX(-15deg); transition: left .65s ease; pointer-events: none;
+  }
+  .detailing-img:hover::before { left: 130%; }
+
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: .85rem; margin-top: 1.5rem; }
+  .checklist li {
+    display: flex; align-items: flex-start; gap: .75rem;
+    font-size: 1rem; color: rgba(245,245,240,.7); font-weight: 400;
+  }
+  .checklist li::before {
+    content: '✓';
+    color: var(--red);
+    font-family: var(--font-ui);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  /* ─── OFICINA / WHEEL SECTION ─────────────────────── */
+  #oficina {
+    background: var(--black);
+    padding: 0;
+  }
+  .oficina-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+  .oficina-img { overflow: hidden; position: relative; }
+  .oficina-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 8s ease; }
+  .oficina-img:hover img { transform: scale(1.05); }
+  .oficina-text {
+    background: var(--red);
+    padding: 4rem;
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .oficina-text::before {
+    content: 'DETAIL';
+    position: absolute; right: -1rem; top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: var(--font-display);
+    font-size: 8rem;
+    color: rgba(0,0,0,.1);
+    letter-spacing: .1em;
+    pointer-events: none;
+  }
+  .oficina-text .section-label { color: rgba(255,255,255,.8); }
+  .oficina-text .section-label::before { background: rgba(255,255,255,.6); }
+  .oficina-text .section-title { color: #fff; }
+  .oficina-text .section-title .accent { color: rgba(255,255,255,.6); }
+  .oficina-text p {
+    color: rgba(255,255,255,.8);
+    line-height: 1.7;
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-top: 1.25rem;
+    max-width: 420px;
+  }
+  .oficina-text .btn-outline { border-color: rgba(255,255,255,.5); color: #fff; margin-top: 2rem; }
+  .oficina-text .btn-outline:hover { border-color: #fff; }
+
+  /* ─── MANUTENCAO ──────────────────────────────────── */
+  #manutencao { background: var(--black2); }
+  .manu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .manu-img { position: relative; overflow: hidden; border-radius: 16px; box-shadow: 0 14px 52px rgba(0,0,0,.55), 0 0 0 1px rgba(212,27,27,.13); }
+  .manu-img img { width: 100%; height: 460px; object-fit: cover; transition: transform .6s ease; display: block; }
+  .manu-img:hover img { transform: scale(1.04); }
+  .manu-img::after {
+    content: ''; position: absolute; inset: 0; border-radius: 16px;
+    background: linear-gradient(135deg, rgba(212,27,27,.14) 0%, transparent 55%);
+    opacity: 0; transition: opacity .4s; pointer-events: none; z-index: 2;
+  }
+  .manu-img:hover::after { opacity: 1; }
+  .manu-img::before {
+    content: ''; position: absolute; top: 0; left: -80%; width: 55%; height: 100%;
+    background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.11) 50%, transparent 80%);
+    z-index: 3; transform: skewX(-15deg); transition: left .65s ease; pointer-events: none;
+  }
+  .manu-img:hover::before { left: 130%; }
+
+  /* ─── CTA QUOTE ───────────────────────────────────── */
+  #quote {
+    background: var(--black);
+    padding: 7rem 4rem;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  #quote::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(212,27,27,.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.5vw, 3rem);
+    color: var(--white);
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.25;
+    letter-spacing: .03em;
+  }
+  .quote-text .red { color: var(--red); }
+  .quote-author {
+    font-family: var(--font-ui);
+    font-size: .85rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ─── CONTATO ─────────────────────────────────────── */
+  #contato { background: var(--black3); }
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 4rem;
+    margin-top: 3.5rem;
+    align-items: start;
+  }
+  .contato-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .info-item { display: flex; align-items: flex-start; gap: 1rem; }
+  .info-icon {
+    width: 42px; height: 42px;
+    background: rgba(212,27,27,.12);
+    border: 1px solid rgba(212,27,27,.3);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .info-text span {
+    display: block;
+    font-family: var(--font-ui);
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: .25rem;
+  }
+  .info-text p { font-size: .95rem; color: rgba(245,245,240,.7); line-height: 1.6; }
+
+  .contato-map {
+    border-radius: 3px;
+    overflow: hidden;
+    border: 1px solid rgba(212,27,27,.2);
+    height: 340px;
+  }
+  .contato-map iframe { width: 100%; height: 100%; border: none; filter: invert(.85) hue-rotate(180deg) saturate(0.8); }
+
+  /* ─── WHATSAPP FLOAT ──────────────────────────────── */
+  .wa-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 900;
+    display: flex; align-items: center;
+    animation: wa-bounce 2.5s ease-in-out infinite;
+  }
+  @keyframes wa-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .wa-float a {
+    display: flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    color: #fff; font-size: 1.6rem;
+    box-shadow: 0 6px 28px rgba(37,211,102,.45);
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    cursor: none;
+  }
+  .wa-float a:hover { transform: scale(1.1); box-shadow: 0 10px 40px rgba(37,211,102,.55); }
+
+  /* ─── FOOTER ──────────────────────────────────────── */
+  footer {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,.07);
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-logo img { height: 40px; filter: brightness(.8); }
+  .footer-copy {
+    font-family: var(--font-ui);
+    font-size: .8rem;
+    color: var(--gray);
+    letter-spacing: .08em;
+  }
+  .footer-socials { display: flex; gap: 1rem; }
+  .footer-socials a {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gray-light);
+    font-size: 1rem;
+    text-decoration: none;
+    transition: border-color .2s, color .2s;
+    cursor: none;
+  }
+  .footer-socials a:hover { border-color: var(--red); color: var(--red); }
+
+  /* ─── GLITCH TITLE EFFECT ─────────────────────────── */
+  @keyframes glitch1 {
+    0%,100%{clip-path:inset(0 0 97% 0);transform:translateX(-3px)}
+    20%{clip-path:inset(40% 0 50% 0);transform:translateX(3px)}
+    40%{clip-path:inset(80% 0 5% 0);transform:translateX(-3px)}
+    60%{clip-path:inset(20% 0 70% 0);transform:translateX(3px)}
+    80%{clip-path:inset(60% 0 30% 0);transform:translateX(-3px)}
+  }
+  .glitch { position: relative; display: inline-block; }
+  .glitch::before,.glitch::after {
+    content: attr(data-text);
+    position: absolute; left: 0; top: 0;
+    font-family: inherit; font-size: inherit; font-weight: inherit;
+    letter-spacing: inherit; line-height: inherit;
+    width: 100%;
+    animation: glitch1 5s infinite;
+    opacity: .7;
+  }
+  .glitch::before { color: var(--red); animation-delay: 0s; }
+  .glitch::after { color: #0ff; animation-delay: .15s; mix-blend-mode: screen; }
+
+  /* ─── ANIMATED PARTICLES ──────────────────────────── */
+  #particles { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--red);
+    border-radius: 50%;
+    opacity: 0;
+    animation: particle-float linear infinite;
+  }
+  @keyframes particle-float {
+    0% { opacity: 0; transform: translateY(0) scale(.5); }
+    10% { opacity: .7; }
+    90% { opacity: .3; }
+    100% { opacity: 0; transform: translateY(-100vh) scale(1.5); }
+  }
+
+  /* ─── RESPONSIVE ──────────────────────────────────── */
+  @media(max-width:900px){
+    .hero-content { padding: 2rem 1.5rem; }
+    .hero-badges { display: none; }
+    .section { padding: 4rem 1.5rem; }
+    .about-grid, .detailing-inner, .manu-grid, .contato-grid { grid-template-columns: 1fr; }
+    .feature-inner, .oficina-grid { grid-template-columns: 1fr; }
+    .feature-img { height: 260px; margin: 0; border-radius: 0 !important; box-shadow: none !important; }
+    .gallery-mosaic { grid-template-columns: repeat(6,1fr); grid-template-rows: repeat(5,160px); }
+    .gm-item:nth-child(1){grid-column:1/7;grid-row:1/3;}
+    .gm-item:nth-child(2){grid-column:1/4;grid-row:3/4;}
+    .gm-item:nth-child(3){grid-column:4/7;grid-row:3/4;}
+    .gm-item:nth-child(4){grid-column:1/4;grid-row:4/5;}
+    .gm-item:nth-child(5){grid-column:4/7;grid-row:4/5;}
+    .gm-item:nth-child(6){grid-column:1/3;grid-row:5/6;}
+    .gm-item:nth-child(7){grid-column:3/5;grid-row:5/6;}
+    .gm-item:nth-child(8){grid-column:5/7;grid-row:5/6;}
+    .gm-item:nth-child(9){display:none;}
+    .topbar-nav { display: none; }
+    footer { flex-direction: column; text-align: center; }
+    /* Slider mobile */
+    #banner-slider-wrap { padding: 1.5rem 1rem; gap: .75rem; }
+    #banner-slider { height: 240px; border-radius: 14px; }
+    .slider-arrow { width: 40px; height: 40px; font-size: 1rem; }
+    /* Show touch-friendly dots bigger on mobile */
+    .dot { height: 4px; }
+    /* rounded images mobile */
+    .about-img-wrap img, .detailing-img img, .manu-img img { height: 260px; }
+    .about-img-badge { left: .5rem; }
+    .about-stats { grid-template-columns: repeat(3,1fr); gap: .75rem; }
+    /* Strip */
+    #strip { padding: 1.5rem; justify-content: center; text-align: center; }
+    .strip-badges { justify-content: center; gap: .75rem; }
+    /* Topbar CTA labels */
+    .btn-cta-top { padding: .45rem .8rem; font-size: .8rem; }
+    /* topbar compact on mobile */
+    #topbar { padding: 0 1rem; }
+  }
+  @media(max-width:480px){
+    .topbar-cta-group { gap: .4rem; }
+    .btn-cta-top { padding: .4rem .65rem; font-size: .72rem; letter-spacing: .04em; }
+    #banner-slider { height: 200px; border-radius: 12px; }
+    #banner-slider-wrap { padding: 1.25rem .5rem; gap: .5rem; }
+    .slider-arrow { width: 36px; height: 36px; font-size: .95rem; }
+    .slide-overlay { padding: 1.25rem 1.25rem; }
+    .slide-text h2 { font-size: 1.25rem; }
+    .slide-text p { font-size: .8rem; display: none; }
+    .hero-title { font-size: clamp(2.8rem, 13vw, 5rem); }
+    .section { padding: 3rem 1rem; }
+    .services-grid { grid-template-columns: 1fr; gap: 2px; }
+    .manu-img img, .about-img-wrap img, .detailing-img img { height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- TOP BAR -->
+<header id="topbar">
+  <a href="#" class="topbar-logo">
+    <img src="logo-doctor-paint-transparente-opcao-2.png" alt="Doctor Paint Brasil" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span style="display:none;font-family:var(--font-display);font-size:1.4rem;color:#fff;letter-spacing:.05em">DOCTOR<span style="color:var(--red)">PAINT</span></span>
+  </a>
+  <nav class="topbar-nav">
+    <a href="#services">Serviços</a>
+    <a href="#gallery">Galeria</a>
+    <a href="#about">Sobre</a>
+    <a href="#contato">Contato</a>
+  </nav>
+  <div class="topbar-cta-group">
+    <a href="#" class="btn-cta-top btn-loja">🛒 Loja Virtual</a>
+    <a href="#" class="btn-cta-top btn-escola">🎓 Escola Virtual</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div id="particles"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-stripe"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag"><span></span>Maringá · Paraná · Brasil</div>
+    <h1 class="hero-title">
+      <span class="glitch" data-text="DOCTOR">DOCTOR</span>
+      <span class="accent">PAINT BRASIL</span>
+    </h1>
+    <p class="hero-desc">Deixe seu carro brilhando e com aspecto de novo. Estética automotiva profissional onde cuidamos do seu veículo com carinho e dedicação — qualidade e satisfação em cada detalhe.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5544997174303" class="btn-primary" target="_blank">
+        <span>💬 Falar no WhatsApp</span>
+      </a>
+      <a href="#services" class="btn-outline">Ver Serviços →</a>
+    </div>
+  </div>
+
+  <div class="hero-badges">
+    <div class="hero-badge"><span class="ico">⭕</span><span class="txt">Autorizada 3M</span></div>
+    <div class="hero-badge"><span class="ico">🏆</span><span class="txt">+7 Anos de Mercado</span></div>
+    <div class="hero-badge"><span class="ico">🔧</span><span class="txt">PDR Especializado</span></div>
+    <div class="hero-badge"><span class="ico">✦</span><span class="txt">Clientes Exigentes</span></div>
+  </div>
+</section>
+
+<!-- BANNER SLIDER -->
+<div id="banner-slider-wrap">
+  <button class="slider-arrow prev" id="sliderPrev" aria-label="Anterior">&#8592;</button>
+  <div id="banner-slider">
+    <div class="slide active" id="slide1">
+      <img src="banner1.png" alt="Banner 1" onerror="this.src='foto-da-oficina.webp'">
+      <div class="slide-overlay">
+        <div class="slide-text">
+          <h2>RESTAURAÇÃO<br><span class="red">COMPLETA</span></h2>
+          <p>Do clássico ao moderno — devolvemos a vida ao seu veículo com tecnologia de ponta.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide" id="slide2">
+      <img src="banner2.png" alt="Banner 2" onerror="this.src='polimento-profissional.webp'">
+      <div class="slide-overlay">
+        <div class="slide-text">
+          <h2>PROTEÇÃO<br><span class="red">3M PREMIUM</span></h2>
+          <p>Revendedor autorizado. Os melhores produtos para proteger e valorizar seu carro.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slider-dots">
+      <div class="dot active" onclick="goSlide(0)"></div>
+      <div class="dot" onclick="goSlide(1)"></div>
+    </div>
+  </div>
+  <button class="slider-arrow next" id="sliderNext" aria-label="Próximo">&#8594;</button>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="reveal">
+    <div class="section-label">O Que Fazemos</div>
+    <h2 class="section-title">SERVIÇOS <span class="accent">EXCLUSIVOS</span></h2>
+    <p class="section-sub">Para clientes que exigem o máximo em qualidade, tecnologia e cuidado com seus veículos.</p>
+  </div>
+  <div class="services-grid reveal">
+    <div class="service-card">
+      <span class="svc-num">01</span>
+      <span class="svc-icon">🔧</span>
+      <div class="svc-title">Funilaria & Pintura</div>
+      <p class="svc-desc">Correção de amassados, riscos e danos com acabamento perfeito. Pintura original e customizada.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">02</span>
+      <span class="svc-icon">✨</span>
+      <div class="svc-title">Polimento Profissional</div>
+      <p class="svc-desc">Polimento técnico com produtos premium para restaurar o brilho original da pintura.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">03</span>
+      <span class="svc-icon">🛡️</span>
+      <div class="svc-title">Proteção Vitrificação</div>
+      <p class="svc-desc">Vitrificação cerâmica e películas protetoras para preservar a pintura por anos.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">04</span>
+      <span class="svc-icon">🚗</span>
+      <div class="svc-title">Restauração de Clássicos</div>
+      <p class="svc-desc">Especialistas em restauração completa de veículos clássicos e antigos. Do zero ao show.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">05</span>
+      <span class="svc-icon">🔩</span>
+      <div class="svc-title">PDR – Reparo de Amassados</div>
+      <p class="svc-desc">Técnica sem pintura para remover amassados preservando o acabamento original.</p>
+    </div>
+    <div class="service-card">
+      <span class="svc-num">06</span>
+      <span class="svc-icon">🧴</span>
+      <div class="svc-title">Detalhamento Completo</div>
+      <p class="svc-desc">Higienização profunda, tratamento de couro, limpeza de motor e detalhamento externo/interno.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY MOSAIC -->
+<section id="gallery">
+  <div class="gallery-header reveal">
+    <div class="section-label">Portfólio</div>
+    <h2 class="section-title">NOSSOS <span class="accent">TRABALHOS</span></h2>
+  </div>
+  <div class="gallery-mosaic">
+    <div class="gm-item">
+      <img src="mosaico-otima-imagem-com-carros-restaurado-melhor-imagem-usar-primeiro.jpg" alt="Carros Restaurados">
+      <div class="img-overlay"><span class="img-overlay-label">Restauração Completa</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="carro-antigo-restaurado.webp" alt="Carro Antigo Restaurado">
+      <div class="img-overlay"><span class="img-overlay-label">Clássico Restaurado</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="doctor-paint-brasil-polimento.jpg" alt="Espelhamento Doctor Paint">
+      <div class="img-overlay"><span class="img-overlay-label">Espelhamento Premium</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="foto-da-oficina.webp" alt="Oficina Doctor Paint">
+      <div class="img-overlay"><span class="img-overlay-label">Nossa Oficina</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="foto-da-roda-carro-antigo-restaurado.webp" alt="Roda Restaurada">
+      <div class="img-overlay"><span class="img-overlay-label">Detalhamento</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="funelaria-carro-antigo-restaurado-brilhando.webp" alt="Funilaria">
+      <div class="img-overlay"><span class="img-overlay-label">Funilaria</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="polimento-profissional.webp" alt="Polimento">
+      <div class="img-overlay"><span class="img-overlay-label">Polimento Pro</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="foto-doctor-paint-carro-em-manutencao.webp" alt="Manutenção">
+      <div class="img-overlay"><span class="img-overlay-label">Manutenção</span></div>
+    </div>
+    <div class="gm-item">
+      <img src="espelhamento-doctor-paint-william-trabalhando.png" alt="Doctor Paint">
+      <div class="img-overlay"><span class="img-overlay-label">Doctor Paint</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE / WILLIAM -->
+<section id="about" class="section">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="foto-william.webp" alt="William Rufato – Doctor Paint Brasil" onerror="this.src='foto-da-oficina.webp'">
+      <div class="about-img-badge">
+        <strong>+7</strong>Anos de Experiência
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <div class="section-label">Quem Somos</div>
+      <h2 class="section-title">WILLIAM<br><span class="accent">RUFATO</span></h2>
+      <p>Empresa fundada com tecnologia americana, com o objetivo de trazer sempre o máximo de qualidade para projetos especiais. Nossa equipe recebe treinamento contínuo através de certificações de indústrias de produtos de alta tecnologia.</p>
+      <p>Nossa visão é nos tornarmos referência em serviços de pinturas e polimentos, trazendo o mais alto nível de tecnologia e qualidade em produtos e serviços. Atendemos Moto, Carro, Jet Ski, Caminhão, Lancha e Bug.</p>
+      <p>Somos revendedores autorizados 3M — a marca mais confiável do mercado em proteção e tratamento automotivo.</p>
+      <div class="about-stats">
+        <div class="stat-box"><div class="num">7+</div><div class="lbl">Anos</div></div>
+        <div class="stat-box"><div class="num">5k+</div><div class="lbl">Clientes</div></div>
+        <div class="stat-box"><div class="num">100%</div><div class="lbl">Qualidade</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3M STRIP -->
+<div id="strip">
+  <div class="strip-text">⭕ REVENDEDOR AUTORIZADO 3M</div>
+  <div class="strip-badges">
+    <div class="strip-badge">Restauração</div>
+    <div class="strip-badge">Detalhamento</div>
+    <div class="strip-badge">Proteção</div>
+    <div class="strip-badge">Manutenção</div>
+    <div class="strip-badge">PDR</div>
+  </div>
+</div>
+
+<!-- ESPELHAMENTO / FEATURE -->
+<section id="feature">
+  <div class="feature-inner">
+    <div class="feature-img">
+      <img src="espelhamento-doctor-paint-imagem-com-textos-embutidos.jpg" alt="Espelhamento Doctor Paint">
+    </div>
+    <div class="feature-text reveal">
+      <div class="section-label">Espelhamento Total</div>
+      <h2 class="section-title">BRILHO<br><span class="accent">ABSOLUTO</span></h2>
+      <p>O espelhamento é o processo definitivo para quem quer ver o reflexo perfeito na lataria do carro. Utilizamos compostos de última geração, aplicados por profissionais certificados.</p>
+      <p>Cada etapa do polimento é executada com máquinas de alta rotação e produtos 3M, garantindo um acabamento espelhado que dura e protege.</p>
+      <a href="https://wa.me/5544997174303" class="btn-primary" target="_blank" style="width:fit-content;margin-top:1rem"><span>Solicitar Orçamento</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILING -->
+<section id="detailing" class="section">
+  <div class="detailing-inner">
+    <div class="detailing-text reveal">
+      <div class="section-label">Detalhamento</div>
+      <h2 class="section-title">POLIMENTO<br><span class="accent">PROFISSIONAL</span></h2>
+      <p class="section-sub">O cuidado que seu veículo merece — do exterior ao interior, cada detalhe importa.</p>
+      <ul class="checklist">
+        <li>Correção de pintura e remoção de imperfeições</li>
+        <li>Polimento com 1, 2 e 3 etapas</li>
+        <li>Aplicação de cera e vitrificação premium</li>
+        <li>Higienização completa de estofados</li>
+        <li>Tratamento de couro e plásticos</li>
+        <li>Limpeza e proteção de rodas e pneus</li>
+        <li>Descontaminação ferrosa e química</li>
+      </ul>
+    </div>
+    <div class="detailing-img reveal">
+      <img src="polimento-profissional.webp" alt="Polimento Profissional Doctor Paint">
+    </div>
+  </div>
+</section>
+
+<!-- OFICINA / WHEEL -->
+<section id="oficina">
+  <div class="oficina-grid">
+    <div class="oficina-text reveal">
+      <div class="section-label">Estrutura</div>
+      <h2 class="section-title">NOSSA<br><span class="accent">OFICINA</span></h2>
+      <p>Equipamentos de última geração, ambiente organizado e profissionais treinados. Nossa oficina foi projetada para receber veículos especiais e entregar resultados excepcionais.</p>
+      <a href="#contato" class="btn-outline">Como Chegar →</a>
+    </div>
+    <div class="oficina-img">
+      <img src="foto-da-oficina.webp" alt="Oficina Doctor Paint Brasil">
+    </div>
+  </div>
+  <!-- RODA -->
+  <div class="oficina-grid" style="flex-direction:row-reverse;">
+    <div class="oficina-img">
+      <img src="foto-da-roda-carro-antigo-restaurado.webp" alt="Roda Restaurada">
+    </div>
+    <div class="oficina-text" style="background:var(--black2);position:relative;">
+      <div class="section-label">Detalhes que Fazem a Diferença</div>
+      <h2 class="section-title">RODA A<br><span class="accent">RODA</span></h2>
+      <p>Cada parafuso, cada rim, cada detalhe. Tratamos rodas e calotas com o mesmo rigor que aplicamos na lataria — polimento, pintura e proteção completa.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANUTENÇÃO -->
+<section id="manutencao" class="section">
+  <div class="manu-grid">
+    <div class="manu-img reveal">
+      <img src="foto-doctor-paint-carro-em-manutencao.webp" alt="Carro em Manutenção Doctor Paint">
+    </div>
+    <div class="reveal">
+      <div class="section-label">Manutenção</div>
+      <h2 class="section-title">CUIDADO<br><span class="accent">PREVENTIVO</span></h2>
+      <p class="section-sub" style="margin-bottom:1.5rem">Manutenção periódica para manter o brilho e proteção do seu veículo sempre em dia.</p>
+      <ul class="checklist">
+        <li>Revisão e manutenção de pintura</li>
+        <li>Planos de polimento e vitrificação periódicos</li>
+        <li>Inspeção de lataria e proteção</li>
+        <li>Higienização completa programada</li>
+        <li>Avaliação de película e proteção</li>
+      </ul>
+      <a href="https://wa.me/5544997174303" class="btn-primary" target="_blank" style="margin-top:2rem;display:inline-flex"><span>Agendar Manutenção</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE CTA -->
+<section id="quote">
+  <p class="quote-text reveal">
+    "Deixe seu carro brilhando e com aspecto de novo, confie em nosso estética automotiva profissional, onde cuidamos do seu veículo com <span class="red">carinho e dedicação</span>, garantindo qualidade e satisfação em cada lavagem. Afinal, seu carro merece o melhor tratamento!"
+  </p>
+  <p class="quote-author reveal">— Doctor Paint Brasil · Maringá, PR</p>
+  <div class="reveal">
+    <a href="https://wa.me/5544997174303" class="btn-primary" target="_blank" style="margin:0 auto;display:inline-flex">
+      <span>💬 Solicitar Orçamento Agora</span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="section">
+  <div class="reveal">
+    <div class="section-label">Fale Conosco</div>
+    <h2 class="section-title">ONDE <span class="accent">ESTAMOS</span></h2>
+  </div>
+  <div class="contato-grid">
+    <div class="contato-info reveal">
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <span>Endereço</span>
+          <p>R. Tulípa, 717 C – Parque Industrial<br>Maringá – PR, 87065-320</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📱</div>
+        <div class="info-text">
+          <span>WhatsApp / Telefone</span>
+          <p><a href="https://wa.me/5544997174303" style="color:var(--red);text-decoration:none">(44) 99717-4303</a></p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📸</div>
+        <div class="info-text">
+          <span>Instagram</span>
+          <p><a href="https://instagram.com/doctorpaintbrasil" target="_blank" style="color:var(--red);text-decoration:none">@doctorpaintbrasil</a></p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <span>Horário</span>
+          <p>Seg – Sex: 08h às 18h<br>Sáb: 08h às 13h</p>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">⭕</div>
+        <div class="info-text">
+          <span>Certificação</span>
+          <p>Revendedor Autorizado 3M<br>Tecnologia Americana</p>
+        </div>
+      </div>
+    </div>
+    <div class="contato-map reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.3834479289694!2d-51.9781003257874!3d-23.444464578880364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ecd70ba3f95555%3A0x79223c63dae40621!2sR.%20Tul%C3%ADpa%2C%20717%20C%20-%20Parque%20Industrial%2C%20Maring%C3%A1%20-%20PR%2C%2087065-320%2C%20Brasil!5e1!3m2!1spt-BR!2sus!4v1775926767694!5m2!1spt-BR!2sus"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Doctor Paint Brasil no Mapa">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo-doctor-paint-transparente-opcao-2.png" alt="Doctor Paint Brasil" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span style="display:none;font-family:var(--font-display);font-size:1.1rem;color:#fff">DOCTOR<span style="color:var(--red)">PAINT</span> BRASIL</span>
+  </div>
+  <p class="footer-copy">© 2025 Doctor Paint Brasil · Maringá, PR · CNPJ 31.401.182/0001-36</p>
+  <div class="footer-socials">
+    <a href="https://instagram.com/doctorpaintbrasil" target="_blank" title="Instagram">📸</a>
+    <a href="https://wa.me/5544997174303" target="_blank" title="WhatsApp">💬</a>
+    <a href="https://facebook.com/doctorpaintbrasil" target="_blank" title="Facebook">📘</a>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wa-float">
+  <a href="https://wa.me/5544997174303" target="_blank" title="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+// ── Cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cursor.style.left=mx+'px'; cursor.style.top=my+'px'; });
+(function loopRing(){
+  rx+=(mx-rx)*0.15; ry+=(my-ry)*0.15;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(loopRing);
+})();
+document.querySelectorAll('a,button,.service-card,.gm-item,.dot').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{ cursor.style.width='20px'; cursor.style.height='20px'; ring.style.width='56px'; ring.style.height='56px'; });
+  el.addEventListener('mouseleave',()=>{ cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='36px'; ring.style.height='36px'; });
+});
+
+// ── Topbar scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('topbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── Slider
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let sliderTimer;
+function goSlide(idx){
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (idx + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+function startTimer(){ sliderTimer = setInterval(()=>{ goSlide(currentSlide+1); }, 5000); }
+function resetTimer(){ clearInterval(sliderTimer); startTimer(); }
+startTimer();
+document.getElementById('sliderPrev').addEventListener('click',()=>{ goSlide(currentSlide-1); resetTimer(); });
+document.getElementById('sliderNext').addEventListener('click',()=>{ goSlide(currentSlide+1); resetTimer(); });
+// Touch swipe
+(function(){
+  const sl = document.getElementById('banner-slider');
+  let tx=0;
+  sl.addEventListener('touchstart', e=>{ tx = e.touches[0].clientX; }, {passive:true});
+  sl.addEventListener('touchend', e=>{
+    const diff = tx - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 40){ goSlide(diff > 0 ? currentSlide+1 : currentSlide-1); resetTimer(); }
+  }, {passive:true});
+})();
+
+// ── Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el=>obs.observe(el));
+
+// ── Particles
+const container = document.getElementById('particles');
+for(let i=0;i<28;i++){
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random()*100+'%';
+  p.style.top = Math.random()*100+'%';
+  p.style.width = (1+Math.random()*3)+'px';
+  p.style.height = p.style.width;
+  p.style.animationDuration = (8+Math.random()*18)+'s';
+  p.style.animationDelay = (-Math.random()*20)+'s';
+  p.style.opacity = Math.random()*.5;
+  container.appendChild(p);
+}
+
+// ── Counter animation
+function animateCount(el, target){
+  let count=0, step = target/60;
+  const timer = setInterval(()=>{
+    count = Math.min(count+step, target);
+    el.textContent = (target>100 ? Math.round(count)+'%' : Math.round(count)+(target>10?'+':''));
+    if(count>=target) clearInterval(timer);
+  }, 30);
+}
+const statObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.num').forEach(el=>{
+        const raw = el.textContent;
+        const num = parseInt(raw);
+        if(!isNaN(num)) animateCount(el, num);
+      });
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.about-stats').forEach(el=>statObs.observe(el));
+</script>
+</body>
+</html>
