@@ -57,7 +57,7 @@ const footerHTML = `
     <div class="footer-top">
         <div class="footer-brand">
             <div class="footer-logo logo">TRY<span>WEBDESIGN</span></div>
-            <p class="footer-description">CNPJ: 59.618.031/0001-53 - Precisão que gera autoridade.</p>
+            <p class="footer-description">Precisão que gera autoridade.</p>
             <div class="footer-status"><span class="status-dot"></span> Disponível para novos projetos</div>
         </div>
         <div class="footer-nav-group">
@@ -85,8 +85,7 @@ const footerHTML = `
     </div>
     <div class="footer-bottom">
         <div class="footer-legal">
-            <p>© 2025 TRYWEBDESIGN. Todos os direitos reservados.</p>
-            
+            <p>© 2025 TRYWEBDESIGN. Todos os direitos reservados. Mateus M. Mariano CNPJ: 59.618.031/0001-53 </p>
         </div>
         <div class="back-to-top"><a href="#" class="scroll-top">Voltar ao topo <i data-lucide="arrow-up" size="14"></i></a></div>
     </div>
