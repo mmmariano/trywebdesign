@@ -186,6 +186,32 @@ footer{background:var(--k2);border-top:1px solid rgba(240,237,232,.06);padding:3
   h2{font-size:clamp(2.5rem,8vw,5rem);}
 }
 @media(max-width:600px){.hero-bar{display:none;}.res-grid{grid-template-columns:1fr;}}
+/* --- MELHORIAS DE LEGIBILIDADE SUBLIME --- */
+
+/* 1. Negritos em Azul */
+strong { color: #0547A9 !important; }
+
+/* 2. Textos em seções pretas (Branco nítido) */
+#inicio .hero-sub, 
+#oqueeh .oq-p, 
+#fazemos p, 
+#resultados h4, 
+#parceria p, 
+#contato p {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 3. Textos em seções brancas (Preto total) */
+#porque p, #porque h3 {
+    color: #000000 !important;
+}
+
+/* 4. Destaque para as tags de etapas */
+.fstep-tag {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+/* ----------------------------------------- */
 </style>
 </head>
 <body>
