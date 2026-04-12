@@ -31,6 +31,9 @@ body{
   overflow-x:hidden;
   cursor:default;
 }
+  strong {
+  color: #0547A9;
+}
 #dot{width:5px;height:5px;background:var(--w);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;}
 #ring{width:38px;height:38px;border:1px solid rgba(240,237,232,0.25);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .35s cubic-bezier(.23,1,.32,1),width .35s,height .35s,opacity .35s;}
 body.on-link #ring{width:60px;height:60px;border-color:rgba(240,237,232,.55);}
@@ -320,6 +323,42 @@ footer{background:var(--k2);border-top:1px solid rgba(240,237,232,.06);padding:3
 @media(max-width:600px){
   .frow{grid-template-columns:1fr;}
   .hero-bar{display:none;}
+}
+  /* Forçar parágrafos a ficarem mais brancos em fundos escuros */
+#crenca p, #virada p, #metodo p, #beneficios p, #servicos p, #qualificacao p {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+  .qual-col.no h3 {
+  color: #ff4d4d; /* Vermelho para dar destaque ao "Não" */
+  opacity: 1;    /* Tira a transparência */
+}
+
+.qual-col.no .qitem p {
+  color: rgba(255, 255, 255, 0.85); /* Texto bem legível */
+}
+
+.qual-col.no .qitem-dot {
+  background: #ff4d4d; /* Pontinho vermelho em vez de cinza */
+}
+  #dor p, #oferta p, .oitem p {
+  color: #1a1a1a !important;
+}
+  /* 1. Negritos em Azul */
+strong { color: #0547A9 !important; }
+
+/* 2. Legibilidade Máxima em fundos escuros */
+#crenca p, #virada p, #metodo p, #beneficios p, #servicos p, #qualificacao p, .phi-card p, .vcol p {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 3. Destaque Seção NÃO FAZ SENTIDO */
+.qual-col.no h3 { color: #ff4d4d !important; opacity: 1 !important; }
+.qual-col.no .qitem p { color: rgba(255, 255, 255, 0.8) !important; }
+.qual-col.no .qitem-dot { background: #ff4d4d !important; }
+
+/* 4. Ajuste para textos no fundo branco (Dor e Oferta) */
+#dor p, #oferta p, .oitem p, .oitem h4, .pcard p, .pcard h3 {
+    color: #000000 !important;
 }
 </style>
 </head>
