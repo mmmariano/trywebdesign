@@ -32,18 +32,25 @@
         .nav-links a:hover { color: var(--secundaria); }
 
         /* Hero Section */
-        .hero { height: 100vh; display: flex; align-items: center; position: relative; padding-top: 80px; }
+        .hero { height: 100vh; display: flex; align-items: center; position: relative; padding-top: 100px; }
         .hero-text { flex: 1; padding: 0 8%; z-index: 10; }
         .hero-text h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 25px; }
         .hero-text p { font-size: 1.1rem; margin-bottom: 35px; color: #555; max-width: 500px; }
- .hero-img { 
+.hero-img { 
     flex: 1; 
     height: 100%; 
     background: linear-gradient(to right, var(--fundo-claro) 0%, transparent 15%), 
                 url('https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg') no-repeat; 
     background-size: cover; 
-    /* Ajuste aqui: center (horizontal) e 15% (vertical - quanto menor o número, mais a foto desce) */
-    background-position: center 15%; 
+    
+    /* 1. CORREÇÃO DA POSIÇÃO (Para mostrar a cabeça) */
+    background-position: center 0%; 
+
+    /* 2. CORREÇÃO DO SERRILHADO (Qualidade) */
+    image-rendering: -webkit-optimize-contrast; /* Melhora nitidez */
+    transform: translateZ(0); /* Força renderização suave */
+    -webkit-backface-visibility: hidden;
+    
     clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
 }
         /* Botões */
