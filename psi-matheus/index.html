@@ -36,8 +36,14 @@
         .hero-text { flex: 1; padding: 0 8%; z-index: 10; }
         .hero-text h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 25px; }
         .hero-text p { font-size: 1.1rem; margin-bottom: 35px; color: #555; max-width: 500px; }
-        .hero-img { flex: 1; height: 100%; background: url('https://www.trywebdesign.com.br/psi-matheus/foto-matheus-psi-perfil-setnado-na-cadeiras.png') no-repeat center center; background-size: cover; clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%); }
-
+        .hero-img { 
+    flex: 1; 
+    height: 100%; 
+    background: linear-gradient(to right, var(--fundo-claro) 0%, transparent 15%), 
+                url('perfil-matheus.jpg') no-repeat center center; 
+    background-size: cover; 
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%); /* Borda cortada moderna */
+}
         /* Botões */
         .btn-gold { background: var(--secundaria); color: white; padding: 18px 35px; border-radius: 4px; text-decoration: none; display: inline-block; transition: 0.4s; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
         .btn-gold:hover { background: var(--primaria); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
@@ -104,9 +110,9 @@
     <nav>
         <div class="nav-container">
             <div class="logo-text">
-                <strong>MATHEUS OLIVEIRA</strong><br>
-                <small style="color: var(--secundaria); font-weight: 600; font-size: 11px;">NEUROPSICÓLOGO | CRP 03/18092</small>
-            </div>
+    <img src="logo-matheus.png" alt="Matheus Oliveira Logo" style="height: 50px; width: auto; display: block;">
+    <small style="color: var(--secundaria); font-weight: 600; font-size: 11px; letter-spacing: 1px;">CRP 03/18092</small>
+</div>
             <div class="nav-links">
                 <a href="#home">Início</a>
                 <a href="#especialidades">Especialidades</a>
@@ -195,9 +201,13 @@
                 <p><strong>Minha Formação:</strong> Especialista em Neuropsicologia com foco em transtornos do neurodesenvolvimento e saúde mental do adulto.</p>
                 <a href="https://wa.me/5573988177680" class="btn-gold" style="background: var(--primaria);">Falar diretamente com Matheus</a>
             </div>
-            <div style="flex: 1; min-width: 350px;">
-                <img src="https://www.trywebdesign.com.br/psi-matheus/foto-matheus-psi-perfil-setnado-na-cadeiras.png" alt="Matheus Oliveira" style="width: 100%; border: 15px solid var(--fundo-claro); box-shadow: 30px 30px 0 var(--secundaria);">
-            </div>
+            <div style="flex: 1; min-width: 350px; position: relative;">
+    <img src="perfil-matheus.jpg" alt="Matheus Oliveira" 
+         style="width: 100%; 
+                border-radius: 15px; 
+                box-shadow: 20px 20px 0px var(--secundaria); 
+                filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
+</div>
         </div>
     </section>
 
