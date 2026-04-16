@@ -1,305 +1,983 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matheus Oliveira | Neuropsicologia & Psicologia Clínica</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/457740d774.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<title>Psicólogo Matheus Oliveira | Neuropsicologia & Psicologia Clínica</title>
 
-    <style>
-        :root {
-            --primaria: #0f1c2e; /* Azul Marinho Profundo (Luxo) */
-            --secundaria: #c5a059; /* Dourado Champagne */
-            --acentuado: #7a2021; /* Vinho Marsala */
-            --fundo-claro: #f4f7f6; /* Verde sálvia ultra claro */
-            --branco: #ffffff;
-            --texto: #2c3e50;
-        }
+<!-- SEO -->
+<meta name="description" content="Atendimento especializado em Neuropsicologia e Psicologia Clínica para adolescentes (10+), adultos e idosos.">
+<meta name="keywords" content="Psicólogo online, Matheus Oliveira, Neuropsicologia, TDAH, Burnout, Ansiedade, Depressão">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Matheus Oliveira">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Psicólogo Matheus Oliveira">
+<meta property="og:description" content="Atendimento especializado em Neuropsicologia e Psicologia Clínica.">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; color: var(--texto); line-height: 1.6; background: var(--fundo-claro); overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--primaria); }
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        /* Menu de Navegação */
-        nav { background: rgba(255,255,255,0.3); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .logo-text { line-height: 1; }
-        .logo-text strong { font-size: 20px; letter-spacing: 2px; color: var(--primaria); }
-        .nav-links a { text-decoration: none; color: var(--primaria); margin-left: 30px; font-weight: 500; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--secundaria); }
+<!-- Fontes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* Hero Section */
-        .hero { height: 100vh; display: flex; align-items: center; position: relative; padding-top: 100px; }
-        .hero-text { flex: 1; padding: 0 8%; z-index: 10; }
-        .hero-text h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 25px; }
-        .hero-text p { font-size: 1.1rem; margin-bottom: 35px; color: #555; max-width: 500px; }
-.hero-img { 
-    flex: 1; 
-    height: 100%; 
-    background: linear-gradient(to right, var(--fundo-claro) 0%, transparent 15%), 
-                url('https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg') no-repeat; 
-    background-size: cover; 
-    
-    /* 1. CORREÇÃO DA POSIÇÃO (Para mostrar a cabeça) */
-    background-position: center 0%; 
-
-    /* 2. CORREÇÃO DO SERRILHADO (Qualidade) */
-    image-rendering: -webkit-optimize-contrast; /* Melhora nitidez */
-    transform: translateZ(0); /* Força renderização suave */
-    -webkit-backface-visibility: hidden;
-    
-    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+<style>
+/* ===== VARIÁVEIS DE COR ===== */
+:root {
+  --color1: #0f1c2e;   /* Azul marinho escuro */
+  --color2: #c5a059;   /* Dourado */
+  --color3: #7a2021;   /* Vinho */
+  --color4: #e7ecf0;   /* Cinza claro */
+  --color5: #f4f7f6;   /* Fundo sálvia */
+  --color6: #555;
+  --branco: #ffffff;
+  --texto: #2c3e50;
+  --verde-wa: #25d366;
 }
-        /* Botões */
-        .btn-gold { background: var(--secundaria); color: white; padding: 18px 35px; border-radius: 4px; text-decoration: none; display: inline-block; transition: 0.4s; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-        .btn-gold:hover { background: var(--primaria); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        /* Números de Impacto */
-        .metrics { background: var(--primaria); color: white; padding: 60px 0; }
-        .metrics-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-around; text-align: center; }
-        .metric-item h2 { color: var(--secundaria); font-size: 3rem; margin-bottom: 5px; }
-        .metric-item p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* Seção Áreas de Atuação */
-        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-header h2 { font-size: 2.8rem; }
-        .section-header .line { width: 60px; height: 3px; background: var(--secundaria); margin: 20px auto; }
-
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .service-card { background: white; padding: 45px; border-radius: 2px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); transition: 0.4s; border-bottom: 4px solid transparent; }
-        .service-card:hover { border-bottom-color: var(--secundaria); transform: translateY(-10px); }
-        .service-card i { font-size: 30px; color: var(--secundaria); margin-bottom: 20px; display: block; }
-        .service-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
-        .service-card p { font-size: 0.95rem; color: #666; }
-
-        /* Seção Sobre Mim Detalhada */
-        .about-detailed { background: #fff; max-width: 100%; position: relative; overflow: hidden; }
-        .about-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 80px; flex-wrap: wrap; }
-        .about-info { flex: 1; min-width: 400px; }
-        .about-info h2 { font-size: 3rem; margin-bottom: 20px; }
-        .about-info .subtitle { color: var(--secundaria); font-weight: 600; margin-bottom: 25px; display: block; }
-        .about-info p { margin-bottom: 20px; text-align: justify; }
-
-        /* Digital Products (E-books e Cursos) */
-        .products { background: #f0f2f5; max-width: 100%; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .product-item { background: white; border: 1px solid #eee; overflow: hidden; text-align: center; padding: 20px; transition: 0.3s; }
-        .product-item img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; background: #eee; }
-        .badge { background: var(--acentuado); color: white; padding: 5px 12px; font-size: 11px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
-
-        /* FAQ Estilizado */
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        details { background: white; margin-bottom: 15px; padding: 20px; border-radius: 5px; cursor: pointer; }
-        summary { font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; color: var(--secundaria); font-size: 20px; }
-
-        /* Footer Luxo */
-        footer { background: var(--primaria); color: white; padding: 80px 20px; text-align: center; }
-        .footer-logo { font-size: 25px; font-family: 'Playfair Display'; margin-bottom: 30px; }
-        .social-links a { color: white; margin: 0 15px; font-size: 20px; transition: 0.3s; }
-        .social-links a:hover { color: var(--secundaria); }
-
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
-
-        @media (max-width: 992px) {
-    .hero { flex-direction: column; height: auto; text-align: center; }
-    .hero-text { padding: 80px 20px; }
-    .hero-img { 
-        width: 100%; 
-        height: 500px; 
-        clip-path: none; 
-        /* No mobile, o 0% garante que o topo da foto apareça primeiro */
-        background-position: center 0%; 
-    }
-    .hero-text h1 { font-size: 2.5rem; }
-    .about-container { flex-direction: column; }
+/* ===== RESET ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Lato', sans-serif;
+  color: var(--texto);
+  line-height: 1.7;
+  background: var(--color5);
+  overflow-x: hidden;
 }
-    </style>
+h1, h2, h3 { font-family: 'Playfair Display', serif; }
+h2 { font-size: 2.2rem; color: var(--color1); }
+p { margin-bottom: 15px; }
+img { max-width: 100%; }
+
+/* ===== UTILITÁRIOS ===== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.center { text-align: center; }
+.padding-topo { padding-top: 70px; }
+.padding-bottom { padding-bottom: 70px; }
+.padding-15 { padding: 15px 0; }
+.bold { font-weight: 700; }
+.rounded { border-radius: 30px; }
+.fundo { width: 100%; position: relative; }
+
+/* ===== BOTÃO WHATSAPP ===== */
+.btn-whatsapp {
+  display: inline-block;
+  background: var(--verde-wa);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+.btn-whatsapp:hover { background: #1da851; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.3); }
+
+.btn-outline {
+  display: inline-block;
+  border: 2px solid var(--color2);
+  color: var(--color2);
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  cursor: pointer;
+  background: transparent;
+}
+.btn-outline:hover { background: var(--color2); color: white; }
+
+/* ===== NAVBAR ===== */
+#menu-fixo {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.97);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+  display: none;
+}
+#menu-fixo.ativo { display: block; }
+
+.menu-interno {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.menu-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--color1); font-weight: 700; text-decoration: none; letter-spacing: 1px; }
+.menu-links { display: flex; gap: 28px; align-items: center; }
+.menu-links a { text-decoration: none; color: var(--color1); font-size: 0.88rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; transition: color 0.3s; }
+.menu-links a:hover { color: var(--color2); }
+.menu-links .link-agendar { color: var(--verde-wa); border: 1.5px solid var(--verde-wa); padding: 7px 18px; border-radius: 20px; }
+.menu-links .link-agendar:hover { background: var(--verde-wa); color: white; }
+
+/* ===== HERO (ABERTURA) ===== */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  background-color: var(--color4);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-foto {
+  position: absolute;
+  right: 0; top: 0;
+  width: 55%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* SVG decorativo que divide a foto do conteúdo */
+.hero-divisor {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 50%;
+  padding: 0 5% 0 6%;
+}
+
+.hero-pretitulo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--color2);
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  color: var(--color1);
+  margin-bottom: 25px;
+}
+
+.hero-content .hero-sub {
+  font-size: 1rem;
+  color: var(--color6);
+  margin-bottom: 30px;
+  max-width: 430px;
+  line-height: 1.7;
+}
+
+/* Hero Mobile */
+.hero-mobile {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--color1);
+}
+.hero-mobile-foto {
+  width: 100%;
+  height: 55vh;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* SVG curva mobile */
+.hero-mobile-curva { display: block; margin-top: -1px; }
+
+.hero-mobile-conteudo {
+  background: var(--color4);
+  padding: 30px 25px 50px;
+  text-align: center;
+}
+.hero-mobile-conteudo h1 { font-size: 1.8rem; color: var(--color1); margin-bottom: 15px; }
+.hero-mobile-conteudo p { font-size: 0.95rem; color: var(--color6); margin-bottom: 20px; }
+
+/* ===== BARRA INFERIOR DO HERO (MENU RODA-PÉ DO SLIDER) ===== */
+.barra-menu-rodape {
+  background: var(--color1);
+  padding: 10px 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  text-align: center;
+}
+.barra-menu-rodape a {
+  display: inline-block;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 18px;
+  transition: color 0.3s;
+  font-weight: 600;
+}
+.barra-menu-rodape a:hover { color: var(--color2); }
+
+/* ===== SEÇÃO ATENDIMENTO ONLINE ===== */
+.secao-atendimento {
+  background: var(--color4);
+  padding: 80px 20px;
+}
+.secao-atendimento h2 { color: var(--color1); margin-bottom: 12px; }
+.secao-atendimento .subtitulo-secao {
+  font-size: 1.1rem;
+  color: var(--color6);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+/* ===== MÉTRICAS / NÚMEROS ===== */
+.secao-numeros {
+  background: var(--color2);
+  padding: 40px 20px;
+}
+.numeros-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.numero-item { text-align: center; color: var(--color1); }
+.numero-item .num { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 700; display: block; }
+.numero-item .desc { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+/* ===== COMO TE AJUDO (ACORDEÃO) ===== */
+.secao-ajudo {
+  position: relative;
+  background: var(--color4);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.foto-sessao {
+  position: absolute;
+  right: 0; top: 0;
+  height: 100%;
+  width: 42%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.ajudo-content {
+  max-width: 520px;
+  padding: 0 20px 0 60px;
+  position: relative;
+  z-index: 2;
+}
+.ajudo-content h2 { margin-bottom: 15px; }
+.ajudo-content > p { margin-bottom: 25px; color: var(--color6); }
+
+/* Acordeão */
+.set {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.set button {
+  width: 100%;
+  text-align: left;
+  background: var(--branco);
+  border: none;
+  padding: 15px 20px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  transition: background 0.3s;
+}
+.set button:hover { background: #f0f4f8; }
+.set button .fa-plus { color: var(--color2); transition: transform 0.3s; }
+.set button.aberto .fa-plus { transform: rotate(45deg); }
+.set .content {
+  display: none;
+  background: rgba(255,255,255,0.7);
+  padding: 15px 20px 20px;
+  font-size: 0.9rem;
+  color: var(--color6);
+  line-height: 1.7;
+}
+.set .content.visivel { display: block; }
+.set .content a { text-decoration: none; }
+.set .content .btn-outline { margin-top: 12px; font-size: 0.8rem; padding: 7px 18px; }
+
+/* ===== SOBRE MIM ===== */
+.secao-sobre {
+  background: var(--branco);
+  padding: 80px 20px;
+}
+.sobre-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.sobre-foto {
+  position: relative;
+}
+.sobre-foto img {
+  width: 100%;
+  border-radius: 15px;
+  display: block;
+  box-shadow: 20px 20px 0px var(--color2);
+}
+.sobre-texto h2 { margin-bottom: 8px; }
+.sobre-texto .subtitulo { color: var(--color2); font-weight: 700; display: block; margin-bottom: 20px; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+.sobre-texto p { color: var(--color6); font-size: 0.95rem; text-align: justify; }
+
+/* ===== DEPOIMENTOS ===== */
+.secao-depoimentos {
+  background: var(--color5);
+  padding: 80px 20px;
+}
+.secao-depoimentos h2 { text-align: center; margin-bottom: 50px; }
+
+.carrossel-wrapper { position: relative; overflow: hidden; }
+.carrossel-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s ease;
+}
+.depoimento-card {
+  min-width: calc(33.333% - 16px);
+  background: var(--branco);
+  border-radius: 12px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.dep-letra {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 15px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: white;
+  font-weight: 700;
+}
+.dep-estrelas { color: var(--color2); font-size: 1rem; margin-bottom: 8px; }
+.dep-nome { font-weight: 700; color: var(--color1); margin-bottom: 5px; font-size: 0.9rem; }
+.dep-texto { font-size: 0.88rem; color: var(--color6); line-height: 1.6; }
+.dep-plataforma { font-size: 0.75rem; color: #aaa; margin-top: 8px; }
+
+.carrossel-dots {
+  display: flex; justify-content: center; gap: 8px;
+  margin-top: 30px;
+}
+.carrossel-dots button {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: background 0.3s;
+  padding: 0;
+}
+.carrossel-dots button.ativo { background: var(--color2); }
+
+/* ===== DÚVIDAS (FAQ) ===== */
+.secao-faq {
+  background: var(--color1);
+  padding: 80px 20px;
+}
+.secao-faq h2 { color: var(--color2); text-align: center; margin-bottom: 50px; }
+.faq-lista { max-width: 750px; margin: 0 auto; }
+
+.faq-item { margin-bottom: 10px; border-radius: 8px; overflow: hidden; }
+.faq-item button {
+  width: 100%;
+  text-align: left;
+  background: rgba(255,255,255,0.07);
+  border: none;
+  padding: 18px 22px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--branco);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Lato', sans-serif;
+  transition: background 0.3s;
+}
+.faq-item button:hover { background: rgba(255,255,255,0.12); }
+.faq-item button .fa-plus { color: var(--color2); transition: transform 0.3s; }
+.faq-item button.aberto .fa-plus { transform: rotate(45deg); }
+.faq-item .content {
+  display: none;
+  background: rgba(255,255,255,0.04);
+  padding: 15px 22px 20px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+.faq-item .content.visivel { display: block; }
+
+/* ===== CONTATO / RODAPÉ ===== */
+.secao-contato {
+  background: var(--color4);
+  padding: 70px 20px;
+}
+.contato-grid {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.contato-info { flex: 1; min-width: 260px; }
+.contato-foto-round {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  margin-bottom: 18px;
+}
+.contato-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--color1); margin-bottom: 5px; }
+.contato-info .crp { font-size: 0.85rem; color: var(--color6); margin-bottom: 15px; }
+.contato-info .contato-wpp { color: var(--color1); font-weight: 700; font-size: 1rem; }
+.contato-info .contato-wpp i { color: var(--verde-wa); margin-right: 5px; }
+
+.rodape-aviso {
+  background: var(--color1);
+  padding: 30px 20px;
+  text-align: center;
+}
+.rodape-aviso p { color: rgba(255,255,255,0.55); font-size: 0.78rem; max-width: 700px; margin: 0 auto 8px; line-height: 1.6; }
+.rodape-aviso a { color: var(--color2); text-decoration: none; }
+.social-links { margin: 15px 0; }
+.social-links a { color: rgba(255,255,255,0.7); margin: 0 10px; font-size: 1.3rem; transition: color 0.3s; }
+.social-links a:hover { color: var(--color2); }
+
+/* ===== BOTÃO FLUTUANTE WHATSAPP ===== */
+#btnwhatsapp {
+  position: fixed;
+  bottom: 25px; right: 25px;
+  z-index: 9999;
+  display: none;
+}
+#btnwhatsapp.ativo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wa-balao {
+  background: var(--branco);
+  color: var(--texto);
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.wa-circulo {
+  width: 62px; height: 62px;
+  background: var(--verde-wa);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  color: white;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  animation: pulsar 2s infinite;
+}
+@keyframes pulsar {
+  0%, 100% { box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+  50% { box-shadow: 0 6px 30px rgba(37,211,102,0.7); }
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .hero-section { display: none; }
+  .hero-mobile { display: flex; }
+  .foto-sessao { display: none; }
+  .ajudo-content { max-width: 100%; padding: 0 20px; }
+  .sobre-grid { grid-template-columns: 1fr; gap: 30px; }
+  .sobre-foto { order: -1; }
+  .depoimento-card { min-width: calc(100% - 0px); }
+  .contato-grid { flex-direction: column; align-items: center; text-align: center; }
+  .menu-links { display: none; }
+}
+
+@media (max-width: 600px) {
+  h2 { font-size: 1.7rem; }
+  .hero-mobile-conteudo h1 { font-size: 1.5rem; }
+  .numeros-grid { gap: 30px; }
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-container">
-            <div class="logo-text">
-    <img src="https://i.ibb.co/whjJg51K/logo-matheus.png" alt="Matheus Oliveira Logo" style="height: 80px; width: auto; display: block;">
-    
-</div>
-            <div class="nav-links">
-                <a href="#home">Início</a>
-                <a href="#especialidades">Especialidades</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#produtos">Produtos</a>
-                <a href="https://wa.me/5573988177680" target="_blank" style="color: var(--secundaria); border: 1px solid; padding: 8px 15px; border-radius: 4px;">Agendar</a>
-            </div>
-        </div>
+<!-- ===== MENU FIXO (aparece ao rolar) ===== -->
+<div id="menu-fixo">
+  <div class="menu-interno">
+    <a href="#inicio" class="menu-logo">MATHEUS OLIVEIRA</a>
+    <nav class="menu-links">
+      <a href="#inicio">Início</a>
+      <a href="#atendimento">Terapia Online</a>
+      <a href="#como-te-ajudo">Como te Ajudo</a>
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="https://wa.me/5573988177680" target="_blank" class="link-agendar">Agendar</a>
     </nav>
+  </div>
+</div>
 
-    <section id="home" class="hero" style="max-width: 100%; padding: 0;">
-        <div class="hero-text">
-            <span style="color: var(--secundaria); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; font-size: 13px;">Ciência e Empatia</span>
-            <h1>Saúde Mental com <br><span style="color: var(--secundaria); font-style: italic;">Excelência</span> Clínica.</h1>
-            <p>Atendimento especializado em Neuropsicologia e Psicologia Clínica para adolescentes (10+), adultos e idosos. Recupere sua qualidade de vida com foco em evidências científicas.</p>
-            <a href="https://wa.me/5573988177680" class="btn-gold">Iniciar Psicoterapia <i class="fab fa-whatsapp"></i></a>
-        </div>
-        <div class="hero-img"></div>
-    </section>
+<!-- ===== HERO DESKTOP ===== -->
+<div id="inicio" class="hero-section">
 
-    <div class="metrics">
-        <div class="metrics-container">
-            <div class="metric-item">
-                <h2>+7</h2>
-                <p>Anos de Experiência</p>
-            </div>
-            <div class="metric-item">
-                <h2>+1k</h2>
-                <p>Vidas Transformadas</p>
-            </div>
-            <div class="metric-item">
-                <h2>100%</h2>
-                <p>Sigilo e Ética</p>
-            </div>
+  <!-- Foto de fundo -->
+  <img class="hero-foto" src="https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg" alt="Matheus Oliveira">
+
+  <!-- SVG decorativo divisor (igual ao da Élida, invertido) -->
+  <div class="hero-divisor">
+    <svg height="100vh" viewBox="0 0 256 1080" preserveAspectRatio="none" style="height:100vh; width:160px;">
+      <defs>
+        <style type="text/css">
+          .fil0 { fill: #e7ecf0; }
+          .fil6 { fill: var(--color2); }
+        </style>
+      </defs>
+      <g>
+        <path class="fil0" d="M255.99 0l-256 0 0 1080.09 113.62 0c-103.47,-213.58 -124.12,-379.37 -100.21,-519.48 -0.14,-6.17 -0.23,-12.36 -0.23,-18.57 0,-229.74 97.26,-430.9 242.82,-542.04z"></path>
+        <path class="fil6" d="M253.93 1080.09c-267.13,-266.85 -238.25,-604.26 -139.13,-784.08 -114.29,195.45 -176.83,420.74 0,784.08l139.13 0z"></path>
+      </g>
+    </svg>
+  </div>
+
+  <!-- Conteúdo hero -->
+  <div class="hero-content">
+    <span class="hero-pretitulo">Neuropsicologia & Psicologia Clínica</span>
+    <h1>Saúde mental com <em style="color:var(--color2); font-style:italic;">excelência</em> clínica</h1>
+    <p class="hero-sub">Atendimento especializado para adolescentes (10+), adultos e idosos. Ciência e empatia para você retomar o protagonismo da sua vida.</p>
+    <a href="https://wa.me/5573988177680?text=Olá,%20Matheus,%20gostaria%20de%20mais%20informações%20sobre%20as%20sessões%20de%20terapia." target="_blank" class="btn-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>&nbsp; Vamos Conversar?
+    </a>
+  </div>
+
+  <!-- Barra de navegação flutuante no rodapé do hero -->
+  <div style="position:absolute; bottom:0; left:0; right:0; z-index:10;">
+    <div class="barra-menu-rodape">
+      <a href="#atendimento">Terapia Online</a>
+      <a href="#como-te-ajudo">Como te Ajudo</a>
+      <a href="#sobre">Sobre Mim</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO MOBILE ===== -->
+<div class="hero-mobile">
+  <img class="hero-mobile-foto" src="https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg" alt="Matheus Oliveira">
+
+  <!-- Curva SVG de transição (igual ao site da Élida) -->
+  <svg class="hero-mobile-curva" width="100%" viewBox="0 0 1080 255" style="display:block; margin-top:-1px; background:var(--color1);">
+    <defs>
+      <style>.fil2m{fill:#e7ecf0}.fil5m{fill:var(--color2)}</style>
+    </defs>
+    <path class="fil2m" d="M-0.01 0l0 255.98 1080 0 0 -113.61c-213.56,103.46 -379.34,124.1 -519.44,100.2 -6.17,0.14 -12.36,0.23 -18.57,0.23 -229.72,0 -430.86,-97.25 -541.99,-242.8z"></path>
+    <path class="fil5m" d="M1079.99 2.06c-266.83,267.11 -604.21,238.23 -784.01,139.12 195.43,114.28 420.69,176.81 784.01,0l0 -139.12z"></path>
+  </svg>
+
+  <div class="hero-mobile-conteudo">
+    <span class="hero-pretitulo" style="display:block; margin-bottom:10px;">Neuropsicologia & Psicologia Clínica</span>
+    <h1>Saúde mental com <em style="color:var(--color2);">excelência</em> clínica</h1>
+    <p>Atendimento especializado para adolescentes (10+), adultos e idosos. Ciência e empatia a serviço da sua saúde mental.</p>
+    <a href="https://wa.me/5573988177680?text=Olá,%20Matheus,%20gostaria%20de%20mais%20informações%20sobre%20as%20sessões%20de%20terapia." target="_blank" class="btn-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>&nbsp; Vamos Conversar?
+    </a>
+  </div>
+</div>
+
+<!-- ===== SEÇÃO ATENDIMENTO ONLINE ===== -->
+<div id="atendimento" class="secao-atendimento">
+  <div class="container center">
+    <h2>Atendimento Psicológico Online</h2>
+    <p class="subtitulo-secao" style="font-size:1.05rem; margin:12px auto 10px; max-width:680px; color:var(--color6);">
+      Psicólogo com mais de 7 anos de experiência, especialista em Neuropsicologia e Psicologia Clínica, atendendo pela abordagem baseada em evidências científicas.
+    </p>
+    <p style="max-width:680px; margin:0 auto 30px; color:var(--color6); font-size:0.95rem;">
+      A psicoterapia online oferece acolhimento, flexibilidade e continuidade do cuidado, permitindo que você cuide da sua saúde emocional de qualquer lugar, com toda a segurança e sigilo que você merece.
+    </p>
+    <a href="https://wa.me/5573988177680?text=Olá,%20Matheus,%20gostaria%20de%20agendar%20uma%20sessão." target="_blank" class="btn-whatsapp">
+      <i class="fa-brands fa-whatsapp"></i>&nbsp; Agende uma Sessão
+    </a>
+  </div>
+</div>
+
+<!-- ===== MÉTRICAS ===== -->
+<div class="secao-numeros">
+  <div class="numeros-grid">
+    <div class="numero-item">
+      <span class="num">+7</span>
+      <span class="desc">Anos de Experiência</span>
+    </div>
+    <div class="numero-item">
+      <span class="num">+1k</span>
+      <span class="desc">Vidas Transformadas</span>
+    </div>
+    <div class="numero-item">
+      <span class="num">100%</span>
+      <span class="desc">Sigilo & Ética</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMO TE AJUDO ===== -->
+<div id="como-te-ajudo" class="secao-ajudo">
+
+  <!-- Foto decorativa lateral (oculta no mobile) -->
+  <img class="foto-sessao" src="https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg" alt="Matheus Oliveira - Como te ajudo">
+
+  <div class="container">
+    <div class="ajudo-content">
+      <h2 style="color:var(--color1);">Como te Ajudo</h2>
+      <p>Ofereço um espaço de escuta acolhedora, unindo o rigor científico da Neuropsicologia com a sensibilidade da Psicologia Clínica. Cada processo terapêutico é conduzido com ética, empatia e foco nos seus objetivos.</p>
+
+      <!-- Acordeão -->
+      <div class="set">
+        <button onclick="toggleAcordeon(this)">
+          TDAH e TDA <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>Muito além da falta de atenção. Trabalhamos regulação emocional, funções executivas e estratégias práticas para lidar com a procrastinação, impulsividade e organização — em adultos e adolescentes.</p>
+          <a href="#contato"><span class="btn-outline">Saiba Mais</span></a>
         </div>
+      </div>
+
+      <div class="set">
+        <button onclick="toggleAcordeon(this)">
+          Burnout e Esgotamento <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>Acompanhamento para profissionais em esgotamento. Reorganização de limites, tratamento da ansiedade corporativa e recuperação da saúde mental no trabalho, de forma estruturada e eficaz.</p>
+          <a href="#contato"><span class="btn-outline">Saiba Mais</span></a>
+        </div>
+      </div>
+
+      <div class="set">
+        <button onclick="toggleAcordeon(this)">
+          Ansiedade <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>A ansiedade pode fazer com que a mente não desacelere, trazendo uma sensação constante de alerta e preocupação com o que ainda não aconteceu. Trabalhamos juntos para resgatar o controle e a leveza.</p>
+          <a href="#contato"><span class="btn-outline">Saiba Mais</span></a>
+        </div>
+      </div>
+
+      <div class="set">
+        <button onclick="toggleAcordeon(this)">
+          Depressão e Tristeza Persistente <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>Sentir-se desanimado com frequência, sem energia e com sensação de vazio pode ser extremamente solitário. Juntos construímos um caminho de recuperação real e duradouro.</p>
+          <a href="#contato"><span class="btn-outline">Saiba Mais</span></a>
+        </div>
+      </div>
+
+      <div class="set">
+        <button onclick="toggleAcordeon(this)">
+          Avaliação Neuropsicológica <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>Investigação detalhada de memória, atenção, linguagem e inteligência para diagnósticos precisos. Fundamental para laudo de TDAH, dificuldades de aprendizagem e planejamento de reabilitação cognitiva.</p>
+          <a href="#contato"><span class="btn-outline">Saiba Mais</span></a>
+        </div>
+      </div>
+
+      <div class="set">
+        <button onclick="toggleAcordeon(this)">
+          Autoconhecimento e Bem-estar <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>A terapia não é só para momentos de crise. Ela é um espaço para se conhecer melhor, tomar decisões mais conscientes e construir uma vida com mais sentido e equilíbrio.</p>
+          <a href="#contato"><span class="btn-outline">Saiba Mais</span></a>
+        </div>
+      </div>
+
+      <div style="margin-top: 25px;">
+        <a href="https://wa.me/5573988177680?text=Olá,%20Matheus,%20gostaria%20de%20mais%20informações%20sobre%20as%20sessões%20de%20terapia." target="_blank" class="btn-whatsapp">
+          <i class="fa-brands fa-whatsapp"></i>&nbsp; Fale Comigo!
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SOBRE MIM ===== -->
+<section id="sobre" class="secao-sobre">
+  <div class="sobre-grid">
+    <div class="sobre-foto">
+      <img src="https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg" alt="Matheus Oliveira">
+    </div>
+    <div class="sobre-texto">
+      <h2>Muito prazer em receber você aqui!</h2>
+      <span class="subtitulo">Conheça Matheus Oliveira</span>
+      <p>Olá, meu nome é <strong>Matheus Oliveira</strong>, sou psicólogo especialista em Neuropsicologia com foco em transtornos do neurodesenvolvimento e saúde mental do adulto, com mais de 7 anos de experiência em atendimento clínico.</p>
+      <p>Atendo adolescentes a partir dos 10 anos, adultos e idosos que enfrentam tempestades emocionais. Acredito que a terapia de alto nível deve ser personalizada, unindo o rigor científico à sensibilidade humana.</p>
+      <p>Com a psicoterapia, tenho a oportunidade de contribuir para que você alcance uma vida que vale a pena ser vivida, encontrando resoluções, traçando planos e construindo uma autonomia emocional que será a base para sua qualidade de vida.</p>
+      <a href="https://wa.me/5573988177680?text=Olá,%20Matheus,%20gostaria%20de%20mais%20informações%20sobre%20as%20sessões%20de%20terapia." target="_blank" class="btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>&nbsp; Vamos Conversar?
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEPOIMENTOS ===== -->
+<div id="depoimentos" class="secao-depoimentos">
+  <div class="container">
+    <h2>Depoimentos</h2>
+
+    <div class="carrossel-wrapper">
+      <div class="carrossel-track" id="carrossel">
+
+        <div class="depoimento-card">
+          <div class="dep-letra" style="background:#1565c0;">A</div>
+          <div class="dep-estrelas">★★★★★</div>
+          <div class="dep-nome">A.M.</div>
+          <p class="dep-texto">A terapia foi um divisor de águas na minha vida. O Matheus me ajudou a entender meu TDAH de uma forma que nenhum outro profissional havia conseguido. Me sinto muito mais capaz e organizado hoje.</p>
+          <span class="dep-plataforma"><i class="fa-brands fa-whatsapp" style="color:var(--verde-wa)"></i> WhatsApp</span>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="dep-letra" style="background:#6a1b9a;">C</div>
+          <div class="dep-estrelas">★★★★★</div>
+          <div class="dep-nome">Carolina S.</div>
+          <p class="dep-texto">Profissional extremamente competente e acolhedor. Passei por um burnout severo e o Matheus foi fundamental na minha recuperação. Super recomendo a quem busca atendimento sério e humanizado.</p>
+          <span class="dep-plataforma"><i class="fab fa-google" style="color:#ea4335"></i> Google</span>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="dep-letra" style="background:#00695c;">R</div>
+          <div class="dep-estrelas">★★★★★</div>
+          <div class="dep-nome">Roberto P.</div>
+          <p class="dep-texto">Fiz a avaliação neuropsicológica com o Matheus e fiquei impressionado com a profundidade e clareza do laudo. Finalmente entendi meu funcionamento e pude buscar o tratamento certo.</p>
+          <span class="dep-plataforma"><i class="fab fa-google" style="color:#ea4335"></i> Google</span>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="dep-letra" style="background:#c62828;">F</div>
+          <div class="dep-estrelas">★★★★★</div>
+          <div class="dep-nome">Fernanda L.</div>
+          <p class="dep-texto">Minha filha adolescente estava em um momento muito difícil. Com o acompanhamento do Matheus, ela floresceu de uma forma que não imaginávamos possível. Obrigada de coração!</p>
+          <span class="dep-plataforma"><i class="fab fa-google" style="color:#ea4335"></i> Google</span>
+        </div>
+
+        <div class="depoimento-card">
+          <div class="dep-letra" style="background:#e65100;">G</div>
+          <div class="dep-estrelas">★★★★★</div>
+          <div class="dep-nome">Gustavo N.</div>
+          <p class="dep-texto">Atencioso, pontual, empático e extremamente competente. As sessões online funcionam perfeitamente — mesma qualidade de presencial. Recomendo sem hesitar.</p>
+          <span class="dep-plataforma"><i class="fab fa-google" style="color:#ea4335"></i> Google</span>
+        </div>
+
+      </div>
     </div>
 
-    <section id="especialidades">
-        <div class="section-header">
-            <h2>Especialidades Clínicas</h2>
-            <div class="line"></div>
-            <p style="max-width: 700px; margin: 0 auto;">Tratamento focado em demandas complexas, unindo o entendimento do funcionamento cerebral (Neuro) com a escuta terapêutica acolhedora.</p>
-        </div>
-
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-brain"></i>
-                <h3>TDAH e TDA</h3>
-                <p>Muito além da falta de atenção. Trabalhamos regulação emocional, funções executivas e estratégias práticas para lidar com a procrastinação e impulsividade em adultos e adolescentes.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-briefcase"></i>
-                <h3>Burnout e Stress</h3>
-                <p>Acompanhamento para profissionais em esgotamento. Reorganização de limites, tratamento da ansiedade corporativa e recuperação da saúde mental no trabalho.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-user-shield"></i>
-                <h3>Transtornos de Conduta (TOD)</h3>
-                <p>Atendimento especializado para adolescentes, auxiliando na regulação do comportamento opositor e no fortalecimento dos vínculos familiares.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-heart"></i>
-                <h3>Depressão e Ansiedade</h3>
-                <p>Intervenções profundas para insegurança, conflitos internos e quadros depressivos, buscando a raiz do sofrimento e construindo autonomia emocional.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-microscope"></i>
-                <h3>Avaliação Neuropsicológica</h3>
-                <p>Investigação detalhada de memória, atenção e inteligência para diagnósticos precisos e planejamento de reabilitação cognitiva.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-infinity"></i>
-                <h3>Prevenção e Bem-estar</h3>
-                <p>Psicoterapia para quem busca autoconhecimento e deseja prevenir o adoecimento mental em fases de transição da vida.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="sobre" class="about-detailed">
-        <div class="about-container">
-            <div class="about-info">
-                <span class="subtitle">Conheça Matheus Oliveira</span>
-                <h2>Matheus Oliveira</h2>
-                <p>Como Neuropsicólogo e Psicólogo Clínico, dedico minha carreira a entender a complexa relação entre o cérebro e o comportamento humano. Acredito que a terapia de alto nível deve ser personalizada, unindo o rigor científico à sensibilidade humana.</p>
-                <p>Meu trabalho é focado em acolher adolescentes a partir dos 10 anos, adultos e idosos que enfrentam tempestades emocionais. Seja através do diagnóstico neuropsicológico ou da psicoterapia clínica, meu objetivo é fornecer as ferramentas para que você retome o protagonismo da sua história.</p>
-                <p><strong>Minha Formação:</strong> Especialista em Neuropsicologia com foco em transtornos do neurodesenvolvimento e saúde mental do adulto.</p>
-                <a href="https://wa.me/5573988177680" class="btn-gold" style="background: var(--primaria);">Falar diretamente com Matheus</a>
-            </div>
-            <div style="flex: 1; min-width: 350px; position: relative;">
-    <img src="https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg" alt="Matheus Oliveira" 
-         style="width: 100%; 
-                border-radius: 15px; 
-                box-shadow: 20px 20px 0px var(--secundaria); 
-                filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));">
+    <div class="carrossel-dots" id="dots"></div>
+  </div>
 </div>
-        </div>
-    </section>
 
-    <section id="produtos" class="products">
-        <div class="section-header">
-            <h2>Recursos Digitais</h2>
-            <div class="line"></div>
-            <p>Conhecimento acessível para o seu desenvolvimento pessoal.</p>
-        </div>
-        <div class="product-grid">
-            <div class="product-item">
-                <span class="badge">E-book</span>
-                <img src="https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=400" alt="E-book TDAH">
-                <h3>Vencendo o TDAH Adulto</h3>
-                <p>Guia prático com estratégias neuropsicológicas.</p>
-                <a href="#" style="color: var(--secundaria); font-weight: bold; text-decoration: none; display: block; margin-top: 15px;">EM BREVE</a>
-            </div>
-            <div class="product-item">
-                <span class="badge">Curso Online</span>
-                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400" alt="Curso Ansiedade">
-                <h3>Mente em Equilíbrio</h3>
-                <p>Curso completo para controle da ansiedade e stress.</p>
-                <a href="#" style="color: var(--secundaria); font-weight: bold; text-decoration: none; display: block; margin-top: 15px;">EM BREVE</a>
-            </div>
-            <div class="product-item">
-                <span class="badge">E-book</span>
-                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=400" alt="E-book Burnout">
-                <h3>Guia Contra o Burnout</h3>
-                <p>Como identificar e sair do esgotamento profissional.</p>
-                <a href="#" style="color: var(--secundaria); font-weight: bold; text-decoration: none; display: block; margin-top: 15px;">EM BREVE</a>
-            </div>
-        </div>
-    </section>
+<!-- ===== DÚVIDAS (FAQ) ===== -->
+<section id="duvidas" class="secao-faq">
+  <div class="container">
+    <h2>Dúvidas</h2>
+    <div class="faq-lista">
 
-    <section id="faq">
-        <div class="section-header">
-            <h2>Dúvidas Frequentes</h2>
-            <div class="line"></div>
+      <div class="faq-item">
+        <button onclick="toggleFaq(this)">
+          Como saber que preciso de terapia? <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>A psicoterapia é um recurso valioso em diversos momentos: tomadas de decisão, mudanças de ciclo, diagnósticos, sintomas emocionais ou simplesmente o desejo de se conhecer melhor. Qualquer pessoa pode se beneficiar desse espaço de escuta e acolhimento.</p>
         </div>
-        <div class="faq-container">
-            <details>
-                <summary>Como funciona a terapia online?</summary>
-                <p style="padding-top: 10px;">A sessão ocorre via videochamada em plataforma segura e sigilosa. Tem a mesma eficácia da presencial, com a conveniência de ser feita de qualquer lugar do mundo.</p>
-            </details>
-            <details>
-                <summary>Qual o valor das sessões?</summary>
-                <p style="padding-top: 10px;">Os valores seguem a tabela de honorários do CFP. Para informações sobre valores e pacotes mensais, por favor entre em contato via WhatsApp.</p>
-            </details>
-            <details>
-                <summary>O atendimento é para qual idade?</summary>
-                <p style="padding-top: 10px;">Atendo adolescentes a partir dos 10 anos, adultos de todas as idades e idosos.</p>
-            </details>
-            <details>
-                <summary>Você aceita planos de saúde?</summary>
-                <p style="padding-top: 10px;">Atendo exclusivamente de forma particular, mas emito nota fiscal para que você possa solicitar o reembolso integral ou parcial junto ao seu plano de saúde.</p>
-            </details>
-        </div>
-    </section>
+      </div>
 
-    <footer>
-        <div class="footer-logo">MATHEUS OLIVEIRA</div>
-        <p>Neuropsicologia & Psicologia Clínica Especializada</p>
-        <p style="margin: 20px 0;">WhatsApp: (73) 98817-7680</p>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="https://wa.me/5573988177680"><i class="fab fa-whatsapp"></i></a>
+      <div class="faq-item">
+        <button onclick="toggleFaq(this)">
+          Atende convênio? <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>Atendo exclusivamente de forma particular, mas emito nota fiscal para que você possa solicitar o reembolso integral ou parcial junto ao seu plano de saúde. Cada plano tem suas próprias regras — me chame no WhatsApp e te auxilio nesse processo.</p>
         </div>
-        <div style="margin-top: 50px; opacity: 0.6; font-size: 12px; max-width: 600px; margin-left: auto; margin-right: auto;">
-            <p>AVISO: Este site não oferece atendimento emergencial. Em situações de risco imediato ou pensamentos autodestrutivos, ligue 188 (CVV) ou procure a emergência mais próxima.</p>
-            <p style="margin-top: 20px;">© 2025 Matheus Oliveira. Todos os direitos reservados. CRP 03/18092</p>
-        </div>
-    </footer>
+      </div>
 
-    <a href="https://wa.me/5573988177680" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+      <div class="faq-item">
+        <button onclick="toggleFaq(this)">
+          Como funciona a terapia online? <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>As sessões são realizadas por videochamada em plataforma segura e sigilosa, com duração de 50 minutos. Você pode participar de casa, do trabalho ou de qualquer lugar onde tenha privacidade e boa conexão com a internet. A eficácia é comprovada cientificamente.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button onclick="toggleFaq(this)">
+          Qual o valor da sessão? <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>O código de ética do Conselho Federal de Psicologia (CFP) não permite a divulgação de valores publicamente. Para informações sobre honorários e pacotes mensais, entre em contato pelo WhatsApp — terei o maior prazer em te responder.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button onclick="toggleFaq(this)">
+          Para qual faixa etária você atende? <i class="fa fa-plus"></i>
+        </button>
+        <div class="content">
+          <p>Atendo adolescentes a partir dos 10 anos, adultos de todas as idades e idosos. Para adolescentes, o acompanhamento familiar é integrado ao processo terapêutico de forma estratégica.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<div id="contato" class="secao-contato">
+  <div class="contato-grid">
+    <div class="contato-info">
+      <img class="contato-foto-round" src="https://i.ibb.co/Gf82HsR9/perfil-matheus.jpg" alt="Matheus Oliveira">
+      <h3>Matheus Oliveira</h3>
+      <p class="crp">Neuropsicólogo & Psicólogo Clínico<br>CRP 03/18092</p>
+      <p class="contato-wpp"><i class="fa-brands fa-whatsapp"></i> +55 (73) 98817-7680</p>
+      <br>
+      <a href="https://wa.me/5573988177680?text=Olá,%20Matheus,%20gostaria%20de%20mais%20informações%20sobre%20as%20sessões%20de%20terapia." target="_blank" class="btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>&nbsp; Fale Comigo!
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RODAPÉ AVISO ===== -->
+<div class="rodape-aviso">
+  <div class="social-links">
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://wa.me/5573988177680" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p><strong>Atenção:</strong> Este site não oferece atendimento imediato a pessoas em situação de emergência. Em caso de crise, ligue para o <strong>188</strong> (CVV – Centro de Valorização da Vida) ou acesse o SAMU pelo <strong>192</strong>.</p>
+  <p>© Matheus Oliveira <script>document.write(new Date().getFullYear());</script>. Todos os direitos reservados.</p>
+</div>
+
+<!-- ===== BOTÃO FLUTUANTE WHATSAPP ===== -->
+<div id="btnwhatsapp">
+  <div class="wa-balao">Vamos conversar?</div>
+  <a href="https://wa.me/5573988177680?text=Olá,%20Matheus,%20gostaria%20de%20mais%20informações%20sobre%20as%20sessões%20de%20terapia." target="_blank">
+    <div class="wa-circulo"><i class="fa-brands fa-whatsapp"></i></div>
+  </a>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// Menu fixo ao rolar
+window.addEventListener('scroll', function() {
+  const menu = document.getElementById('menu-fixo');
+  const btn = document.getElementById('btnwhatsapp');
+  if (window.scrollY > 10) {
+    menu.classList.add('ativo');
+    btn.classList.add('ativo');
+  } else {
+    menu.classList.remove('ativo');
+    btn.classList.remove('ativo');
+  }
+});
+
+// Acordeão "Como te Ajudo"
+function toggleAcordeon(btn) {
+  const content = btn.nextElementSibling;
+  const isAberto = btn.classList.contains('aberto');
+  // Fecha todos
+  document.querySelectorAll('.set button').forEach(b => { b.classList.remove('aberto'); b.nextElementSibling.classList.remove('visivel'); });
+  // Abre o clicado se estava fechado
+  if (!isAberto) {
+    btn.classList.add('aberto');
+    content.classList.add('visivel');
+  }
+}
+
+// FAQ
+function toggleFaq(btn) {
+  const content = btn.nextElementSibling;
+  const isAberto = btn.classList.contains('aberto');
+  document.querySelectorAll('.faq-item button').forEach(b => { b.classList.remove('aberto'); b.nextElementSibling.classList.remove('visivel'); });
+  if (!isAberto) {
+    btn.classList.add('aberto');
+    content.classList.add('visivel');
+  }
+}
+
+// Carrossel de Depoimentos
+(function() {
+  const track = document.getElementById('carrossel');
+  const dotsContainer = document.getElementById('dots');
+  const cards = track.querySelectorAll('.depoimento-card');
+  let atual = 0;
+  let perSlide = window.innerWidth > 900 ? 3 : 1;
+  let total = Math.ceil(cards.length / perSlide);
+
+  function buildDots() {
+    dotsContainer.innerHTML = '';
+    perSlide = window.innerWidth > 900 ? 3 : 1;
+    total = Math.ceil(cards.length / perSlide);
+    for (let i = 0; i < total; i++) {
+      const btn = document.createElement('button');
+      if (i === atual) btn.classList.add('ativo');
+      btn.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(btn);
+    }
+  }
+
+  function goTo(idx) {
+    atual = idx;
+    const cardWidth = cards[0].offsetWidth + 24; // gap
+    track.style.transform = `translateX(-${idx * perSlide * cardWidth}px)`;
+    dotsContainer.querySelectorAll('button').forEach((b, i) => {
+      b.classList.toggle('ativo', i === idx);
+    });
+  }
+
+  buildDots();
+  window.addEventListener('resize', () => { buildDots(); goTo(0); });
+
+  // Auto-play
+  setInterval(() => {
+    const next = (atual + 1) % total;
+    goTo(next);
+  }, 5000);
+})();
+</script>
 
 </body>
 </html>
