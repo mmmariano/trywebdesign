@@ -85,7 +85,7 @@ const footerHTML = `
     </div>
     <div class="footer-bottom">
         <div class="footer-legal">
-            <p>© 2025 TRYWEBDESIGN. Todos os direitos reservados. Mateus M. Mariano CNPJ: 59.618.031/0001-53 </p>
+            <p>© 2025 TRYWEBDESIGN. Todos os direitos reservados. Mateus M. Mariano </p>
         </div>
         <div class="back-to-top"><a href="#" class="scroll-top">Voltar ao topo <i data-lucide="arrow-up" size="14"></i></a></div>
     </div>
