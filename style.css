@@ -1354,7 +1354,7 @@
 /* Botões Flutuantes */
 .floating-buttons {
   position: fixed;
-  right: 30px;
+  right: 26px;
   bottom: 90px;
   display: flex;
   flex-direction: column;
