@@ -1355,7 +1355,7 @@
 .floating-buttons {
   position: fixed;
   right: 20px;
-  bottom: 40px;
+  bottom: 90px;
   display: flex;
   flex-direction: column;
   gap: 12px;
