@@ -121,6 +121,11 @@ function setupNavbar() {
     }
 
     if (footerElement) footerElement.innerHTML = footerHTML;
+    
+    // ✅ Botão flutuante do WhatsApp
+    const whatsappContainer = document.createElement('div');
+    whatsappContainer.innerHTML = whatsappFluanteHTML;
+    document.body.appendChild(whatsappContainer);
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
 
