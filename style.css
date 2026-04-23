@@ -1456,3 +1456,22 @@
     width: 28px;
     height: 28px;
 }
+/* Ajuste para o container da Navbar */
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Isso empurra a logo para a esquerda e os botões para a direita */
+    align-items: center;
+    width: 100%;
+    padding: 0 15px; /* Garante que não colem nas bordas da tela */
+}
+
+/* Forçar um espaçamento mínimo no mobile */
+@media (max-width: 768px) {
+    .nav-right {
+        margin-left: 20px; /* Cria um respiro de 20px entre a logo e o botão */
+    }
+    
+    .logo-tech {
+        flex-shrink: 0; /* Impede que a logo diminua de tamanho para dar espaço ao botão */
+    }
+}
