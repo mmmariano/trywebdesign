@@ -1389,3 +1389,44 @@
     position: relative;
     z-index: 10001;
 }
+
+/* Botão WhatsApp Pequeno */
+.whatsapp-fixo-small {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;  /* Tamanho menor que o padrão */
+    height: 48px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-fixo-small svg {
+    width: 28px;
+    height: 28px;
+}
+
+.whatsapp-fixo-small:hover {
+    transform: scale(1.1);
+    background-color: #20ba5a;
+}
+
+/* Esconder em telas muito pequenas se necessário ou apenas manter discreto */
+@media (max-width: 480px) {
+    .whatsapp-fixo-small {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
+    .whatsapp-fixo-small svg {
+        width: 24px;
+        height: 24px;
+    }
+}
