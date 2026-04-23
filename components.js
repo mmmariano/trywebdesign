@@ -1,6 +1,6 @@
 const navbarHTML = `
-<div class="nav-container">
-    <a href="/" class="logo-tech">TRY<span class="silver-text">WEBDESIGN</span></a>
+<div class="nav-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 20px;">
+    <a href="/" class="logo-tech" style="flex-shrink: 0; margin-right: 20px;">TRY<span class="silver-text">WEBDESIGN</span></a>
     
     <div class="nav-menu">
         <a href="/" class="nav-item-tech"><div class="icon-box"><i data-lucide="home"></i></div><span>Início</span></a>
