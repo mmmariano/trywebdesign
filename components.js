@@ -22,7 +22,8 @@ const navbarHTML = `
         <a href="/#contato" class="nav-item-tech"><div class="icon-box"><i data-lucide="send"></i></div><span>Contato</span></a>
     </div>
 
-    <div class="nav-right" style="display: flex; align-items: center; gap: 12px;">
+    // No seu components.js, altere essa linha:
+<div class="nav-right" style="display: flex; align-items: center; gap: 12px; margin-left: auto;">
         <a href="/iniciarprojeto/" class="cta-silver"><span>INICIAR<span class="hide-mobile"> PROJETO</span></span><div class="shimmer"></div></a>
         <button class="mobile-toggle" id="mobileToggle">
             <span class="line"></span>
