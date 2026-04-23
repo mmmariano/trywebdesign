@@ -123,7 +123,7 @@ function setupNavbar() {
     if (footerElement) footerElement.innerHTML = footerHTML;
     if (typeof lucide !== 'undefined') lucide.createIcons();
 }
-document.body.insertAdjacentHTML('beforeend', whatsappFluanteHTML);
+
 // Inicia tudo
 document.addEventListener("DOMContentLoaded", setupNavbar);
 function setupNavbar() {
