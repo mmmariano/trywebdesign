@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TryWebDesign | Agência Especializada em Criação de Sites e Otimização SEO</title>
+    <title>TryWebDesign | Site Profissional Sem Custo de Criação</title>
     
     <!-- Tipografia Apple -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
@@ -14,30 +14,606 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-        <link rel="stylesheet" href="style.css">
-        <script src="components.js" defer></script>
-        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    </head>
-    <body>
-    <div class="mouse-glow" id="mouseGlow"></div>
+    <link rel="stylesheet" href="style.css">
+    <script src="components.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-    <nav class="navbar" id="navbar"></nav>
+    <style>
+    /* =====================================================
+       HERO V2 — ANIMATED MARQUEE BACKGROUND
+       Adicione APÓS style.css para override correto
+    ===================================================== */
 
-    <header class="hero">
-        <div class="container">
-            <h1>
-                Design  impecável.<br>
-                Presença  inesquecível.
-            </h1>
-            <p>Transformamos tráfego em faturamento.<br> Criamos a presença digital que sua empresa merece com um design limpo, rápido e focado em trazer resultados para você.</p>
-            <div class="reveal">
-                <a href="/solucoes/" class="btn-primary">
-                    Explorar Soluções <i data-lucide="arrow-right"></i>
-                </a>
-            </div>
-        </div>
-    </header>
-   <section class="stats-bar">
+    .hero.hero-v2 {
+      position: relative !important;
+      min-height: 100vh !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      background: #050505 !important;
+    }
+
+    /* ── Background Layer ── */
+    .hero-bg-layer {
+      position: absolute;
+      inset: -20%;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      transform: rotate(-4deg) scale(1.1);
+      pointer-events: none;
+    }
+
+    .marquee-track {
+      overflow: hidden;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .marquee-row {
+      display: flex;
+      gap: 14px;
+      width: max-content;
+      animation: marqueeLeft 42s linear infinite;
+      will-change: transform;
+    }
+    .marquee-row.marquee-reverse {
+      animation: marqueeRight 54s linear infinite;
+    }
+    .marquee-row.marquee-slow {
+      animation: marqueeLeft 68s linear infinite;
+    }
+
+    .site-thumb {
+      flex-shrink: 0;
+      width: 320px;
+      height: 210px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.55);
+      background: #111;
+    }
+
+    .site-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: brightness(0.6) saturate(0.75);
+    }
+
+    @keyframes marqueeLeft {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marqueeRight {
+      0%   { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* ── Overlays & Glows ── */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.78) 80%),
+        linear-gradient(180deg,
+          rgba(5,5,5,0.80) 0%,
+          rgba(5,5,5,0.05) 28%,
+          rgba(5,5,5,0.05) 68%,
+          rgba(5,5,5,0.88) 100%
+        );
+    }
+
+    .hero-glow {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-glow-blue {
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0,113,227,0.20) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(70px);
+      animation: glowBreath 5s ease-in-out infinite;
+    }
+
+    .hero-glow-cyan {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(90,200,250,0.10) 0%, transparent 70%);
+      bottom: 10%;
+      right: 12%;
+      filter: blur(50px);
+      animation: glowBreath 7s ease-in-out infinite reverse;
+    }
+
+    .hero-glow-warm {
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255,159,10,0.08) 0%, transparent 70%);
+      top: 20%;
+      left: 8%;
+      filter: blur(40px);
+      animation: glowBreath 9s ease-in-out infinite;
+    }
+
+    @keyframes glowBreath {
+      0%, 100% { opacity: 0.6; }
+      50%       { opacity: 1; }
+    }
+
+    /* ── Content Wrapper ── */
+    .hero-content-v2 {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 150px 24px 110px;
+      max-width: 920px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ── Offer Pill ── */
+    .offer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(0,113,227,0.12);
+      border: 1px solid rgba(0,113,227,0.30);
+      border-radius: 100px;
+      padding: 9px 22px;
+      margin-bottom: 36px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      color: #5ac8fa;
+      text-transform: uppercase;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      animation: revealUp 0.7s ease 0.2s forwards;
+    }
+
+    .offer-dot {
+      width: 8px;
+      height: 8px;
+      background: #34c759;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: dotGlow 1.8s ease-in-out infinite;
+    }
+
+    @keyframes dotGlow {
+      0%, 100% { box-shadow: 0 0 4px #34c759; }
+      50%       { box-shadow: 0 0 14px #34c759, 0 0 28px rgba(52,199,89,0.5); }
+    }
+
+    /* ── Title ── */
+    .hero-title-v2 {
+      margin: 0 0 24px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+    }
+
+    .title-line {
+      display: block;
+      opacity: 0;
+      transform: translateY(52px);
+    }
+
+    .title-line-1 {
+      font-size: clamp(54px, 9.5vw, 118px);
+      color: #f5f5f7;
+      animation: revealLine 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .title-line-2 {
+      font-size: clamp(54px, 9.5vw, 118px);
+      background: linear-gradient(90deg, #0071e3 0%, #5ac8fa 40%, #a0d8ff 60%, #0071e3 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation:
+        revealLine  0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards,
+        gradientFlow 4s linear 1.5s infinite;
+    }
+
+    .title-line-3 {
+      font-size: clamp(22px, 3.8vw, 54px);
+      color: rgba(245,245,247,0.38);
+      font-weight: 700;
+      margin-top: 10px;
+      animation: revealLine 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+
+    @keyframes revealLine {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientFlow {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* ── Subtitle ── */
+    .hero-sub-v2 {
+      font-size: clamp(15px, 1.8vw, 19px);
+      color: rgba(245,245,247,0.52);
+      line-height: 1.68;
+      max-width: 550px;
+      margin: 0 auto 32px;
+      font-weight: 400;
+      opacity: 0;
+      animation: revealUp 0.8s ease 1.0s forwards;
+    }
+
+    /* ── Proof row ── */
+    .hero-proof {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: revealUp 0.8s ease 1.2s forwards;
+    }
+
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(245,245,247,0.60);
+    }
+
+    .proof-check {
+      color: #34c759;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    /* ── CTA Buttons ── */
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: revealUp 0.8s ease 1.4s forwards;
+    }
+
+    .btn-hero-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 17px 38px;
+      background: #0071e3;
+      color: #fff;
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s;
+      box-shadow: 0 0 40px rgba(0,113,227,0.50), 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .btn-hero-main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 55%);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .btn-hero-main:hover {
+      transform: translateY(-3px);
+      background: #0084ff;
+      box-shadow: 0 0 65px rgba(0,113,227,0.70), 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    .btn-arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+
+    .btn-hero-main:hover .btn-arrow {
+      transform: translateX(6px);
+    }
+
+    .btn-hero-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 16px 30px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.13);
+      color: rgba(245,245,247,0.82);
+      border-radius: 100px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: all 0.25s ease;
+    }
+
+    .btn-hero-ghost:hover {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.28);
+      transform: translateY(-2px);
+    }
+
+    /* ── Scroll Hint ── */
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: revealUp 0.8s ease 2.2s forwards;
+    }
+
+    .scroll-mouse {
+      width: 22px;
+      height: 34px;
+      border: 2px solid rgba(255,255,255,0.18);
+      border-radius: 100px;
+      display: flex;
+      justify-content: center;
+      padding-top: 6px;
+    }
+
+    .scroll-dot-anim {
+      width: 4px;
+      height: 7px;
+      background: rgba(255,255,255,0.45);
+      border-radius: 2px;
+      animation: scrollBounce 1.9s ease-in-out infinite;
+    }
+
+    .scroll-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.22);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0);   opacity: 1; }
+      60%       { transform: translateY(9px); opacity: 0.3; }
+    }
+
+    /* ── Shared keyframes ── */
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .hero-bg-layer {
+        inset: -25%;
+        transform: rotate(-5deg) scale(1.18);
+        gap: 10px;
+      }
+
+      .site-thumb {
+        width: 210px;
+        height: 145px;
+        border-radius: 8px;
+      }
+
+      .hero-content-v2 {
+        padding: 115px 20px 90px;
+      }
+
+      .hero-proof {
+        gap: 14px;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 310px;
+        margin: 0 auto;
+      }
+
+      .btn-hero-main,
+      .btn-hero-ghost {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero-glow-blue  { width: 350px; height: 350px; }
+      .hero-glow-cyan  { display: none; }
+      .hero-glow-warm  { display: none; }
+
+      .desktop-br { display: none; }
+    }
+
+    /* ── Reduce Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-row,
+      .marquee-row.marquee-reverse,
+      .marquee-row.marquee-slow { animation: none; }
+    }
+    </style>
+</head>
+<body>
+<div class="mouse-glow" id="mouseGlow"></div>
+
+<nav class="navbar" id="navbar"></nav>
+
+<!-- ══════════════════════════════════════════
+     HERO V2 — ANIMATED SITE MARQUEE
+══════════════════════════════════════════ -->
+<header class="hero hero-v2">
+
+  <!-- ── Animated Background Layer ── -->
+  <div class="hero-bg-layer" aria-hidden="true">
+
+    <!-- Row 1 · left -->
+    <div class="marquee-track">
+      <div class="marquee-row">
+        <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
+        <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
+        <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
+        <!-- duplicate for seamless loop -->
+        <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
+        <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
+        <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
+      </div>
+    </div>
+
+    <!-- Row 2 · right -->
+    <div class="marquee-track">
+      <div class="marquee-row marquee-reverse">
+        <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
+        <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
+        <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
+        <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
+        <!-- duplicate -->
+        <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
+        <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
+        <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
+        <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
+      </div>
+    </div>
+
+    <!-- Row 3 · left slow -->
+    <div class="marquee-track">
+      <div class="marquee-row marquee-slow">
+        <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
+        <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
+        <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
+        <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
+        <!-- duplicate -->
+        <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
+        <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
+        <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
+        <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
+        <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
+        <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
+      </div>
+    </div>
+
+    <!-- Overlays -->
+    <div class="hero-overlay"></div>
+    <div class="hero-glow hero-glow-blue"></div>
+    <div class="hero-glow hero-glow-cyan"></div>
+    <div class="hero-glow hero-glow-warm"></div>
+  </div>
+
+  <!-- ── Main Content ── -->
+  <div class="container hero-content-v2">
+
+    <div class="offer-pill">
+      <span class="offer-dot"></span>
+      Site profissional sem custo de criação
+    </div>
+
+    <h1 class="hero-title-v2">
+      <span class="title-line title-line-1">Seu site,</span>
+      <span class="title-line title-line-2">de graça.</span>
+      <span class="title-line title-line-3">Pague só a hospedagem.</span>
+    </h1>
+
+    <p class="hero-sub-v2">
+      Design exclusivo, código limpo e SEO incluso —<br class="desktop-br">
+      criamos seu site sem cobrar pela criação.
+    </p>
+
+    <div class="hero-proof">
+      <span class="proof-item"><span class="proof-check">✓</span> Design Exclusivo</span>
+      <span class="proof-item"><span class="proof-check">✓</span> SEO para Google</span>
+      <span class="proof-item"><span class="proof-check">✓</span> Mobile-First</span>
+      <span class="proof-item"><span class="proof-check">✓</span> 99 PageSpeed</span>
+    </div>
+
+    <div class="hero-cta-group">
+      <a href="#contato" class="btn-hero-main">
+        Quero meu site grátis <span class="btn-arrow">→</span>
+      </a>
+      <a href="https://wa.me/5544999761842" class="btn-hero-ghost" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="scroll-mouse"><div class="scroll-dot-anim"></div></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+
+</header>
+<!-- ══════════════════════════════════════════
+     FIM DO HERO V2
+══════════════════════════════════════════ -->
+
+<section class="stats-bar">
     <div class="container">
         <div class="stats-grid">
             <div class="stat-item">
@@ -451,7 +1027,7 @@
     function iniciarAnimacoesGSAP() {
         if (typeof gsap !== "undefined") {
             const titulo = document.querySelector("#heroTitle");
-            if (title) {
+            if (titulo) {
                 gsap.from(titulo, { opacity: 0, y: 30, duration: 1, ease: "power3.out" });
             }
 
