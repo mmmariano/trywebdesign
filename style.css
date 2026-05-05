@@ -700,7 +700,8 @@
 
 /* Garantir que os ícones dentro da aba também sigam a regra */
 .dropdown-link {
-    color: #888888 !important;
+    /*color: #888888 !important; */
+    color: #000000 !important;
     display: flex;
     align-items: center;
     gap: 10px;
