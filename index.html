@@ -165,42 +165,50 @@
       margin: 0 auto;
       width: 100%;
     }
+/* ── Offer Pill Renovada ── */
+.offer-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03); /* Fundo mais sutil */
+  border: 1px solid rgba(0, 113, 227, 0.4); /* Borda com a cor da marca */
+  border-radius: 100px;
+  padding: 10px 24px;
+  margin-bottom: 36px;
+  font-size: 12px; /* Aumentado levemente */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-transform: uppercase;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: revealUp 0.7s ease 0.2s forwards;
+}
 
-    /* ── Offer Pill ── */
-    .offer-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      background: rgba(0,113,227,0.12);
-      border: 1px solid rgba(0,113,227,0.30);
-      border-radius: 100px;
-      padding: 9px 22px;
-      margin-bottom: 36px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      color: #5ac8fa;
-      text-transform: uppercase;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      opacity: 0;
-      animation: revealUp 0.7s ease 0.2s forwards;
-    }
+/* Deixando o ponto pulsante mais atraente */
+.offer-dot {
+  width: 6px;
+  height: 6px;
+  background: #34c759;
+  border-radius: 50%;
+  position: relative;
+}
 
-    .offer-dot {
-      width: 8px;
-      height: 8px;
-      background: #34c759;
-      border-radius: 50%;
-      flex-shrink: 0;
-      animation: dotGlow 1.8s ease-in-out infinite;
-    }
+.offer-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #34c759;
+  animation: dotRipple 2s infinite;
+}
 
-    @keyframes dotGlow {
-      0%, 100% { box-shadow: 0 0 4px #34c759; }
-      50%       { box-shadow: 0 0 14px #34c759, 0 0 28px rgba(52,199,89,0.5); }
-    }
-
+@keyframes dotRipple {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
     /* ── Title ── */
     .hero-title-v2 {
       margin: 0 0 24px;
@@ -566,11 +574,12 @@
 
   <!-- ── Main Content ── -->
   <div class="container hero-content-v2">
-
-    <div class="offer-pill">
-      <span class="offer-dot"></span>
-      Site profissional sem custo de criação
-    </div>
+      
+<div class="offer-pill">
+  <span class="offer-dot"></span>
+  <span>Site profissional • <strong>Taxa de Criação Zero</strong></span>
+</div>
+   
 
     <h1 class="hero-title-v2">
       <span class="title-line title-line-1">Seu site,</span>
