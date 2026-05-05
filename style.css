@@ -1483,25 +1483,30 @@
     font-weight: 500;
 }
 
-/* 2. Botão "Iniciar Projeto" com letras brancas */
-/* Nota: Geralmente botões de destaque usam classes como .btn-primary ou .nav-btn */
-.navbar a.btn-primary, 
-.navbar a[href*="contato"], 
-.navbar .nav-cta {
-    color: #ffffff !important;
-    background-color: #0071e3; /* Azul padrão Apple */
-    padding: 8px 20px;
-    border-radius: 20px;
-    transition: background 0.3s ease;
+/* 2. Botão "Iniciar Projeto" com letras brancas *//* 1. Todos os links do menu ficam pretos */
+#navbar a, 
+.navbar a, 
+.nav-link {
+    color: #000000 !important;
 }
 
-/* Efeito Hover para o botão */
-.navbar a.btn-primary:hover {
-    background-color: #0077ed;
+/* 2. O botão específico de "Iniciar Projeto" fica com letras brancas */
+/* Tentamos pegar por classe de botão ou pelo último link da lista */
+#navbar a.btn-primary, 
+#navbar a.nav-btn,
+#navbar a:last-child,
+.navbar .btn-primary {
     color: #ffffff !important;
+    background-color: #0071e3 !important; /* Azul Apple */
+    padding: 10px 22px !important;
+    border-radius: 20px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Garante que se houver um ícone no botão, ele também fique branco */
-.navbar a.btn-primary i {
+/* Garante que se houver um ícone dentro do botão, ele também fique branco */
+#navbar a.btn-primary i,
+#navbar a:last-child i {
     stroke: #ffffff !important;
 }
