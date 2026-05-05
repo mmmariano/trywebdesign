@@ -1493,3 +1493,27 @@
     color: #424245 !important;
     opacity: 0.8;
 }
+/* 1. Altera todos os links e textos da navbar para PRETO */
+.navbar a:not(.cta-silver), 
+.navbar span:not(.cta-silver span),
+.navbar .nav-link,
+.nav-item-tech span {
+    color: #000000 !important;
+}
+
+/* 2. Altera especificamente o botão INICIAR PROJETO para BRANCO */
+.cta-silver, 
+.cta-silver span, 
+.cta-silver .hide-mobile {
+    color: #ffffff !important;
+}
+
+/* 3. Garante que os ícones da navbar fiquem pretos */
+.navbar i:not(.cta-silver i) {
+    stroke: #000000 !important;
+}
+
+/* Efeito Hover para os links pretos (opcional) */
+.nav-item-tech:hover span {
+    opacity: 0.7;
+}
