@@ -1476,3 +1476,21 @@
         flex-shrink: 0; /* Impede que a logo diminua de tamanho para dar espaço ao botão */
     }
 }
+/*RETIRAR AQUI PARA BAIXO*/
+/* Altera a cor dos links da navbar para preto */
+.navbar a, 
+.navbar span,
+.navbar .nav-link {
+    color: #000000 !important;
+}
+
+/* Garante que ícones (se houver) acompanhem a cor */
+.navbar i {
+    stroke: #000000 !important;
+}
+
+/* Opcional: Alterar a cor quando passar o mouse (hover) para um cinza escuro */
+.navbar a:hover {
+    color: #424245 !important;
+    opacity: 0.8;
+}
