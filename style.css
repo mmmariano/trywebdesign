@@ -1476,37 +1476,20 @@
         flex-shrink: 0; /* Impede que a logo diminua de tamanho para dar espaço ao botão */
     }
 }
-/*RETIRAR AQUI PARA BAIXO*//* 1. Letras do menu (links) em preto */
+/*RETIRAR AQUI PARA BAIXO*//* Altera a cor dos links da navbar para preto */
 .navbar a, 
+.navbar span,
 .navbar .nav-link {
     color: #000000 !important;
-    font-weight: 500;
 }
 
-/* 2. Botão "Iniciar Projeto" com letras brancas *//* 1. Todos os links do menu ficam pretos */
-#navbar a, 
-.navbar a, 
-.nav-link {
-    color: #000000 !important;
+/* Garante que ícones (se houver) acompanhem a cor */
+.navbar i {
+    stroke: #000000 !important;
 }
 
-/* 2. O botão específico de "Iniciar Projeto" fica com letras brancas */
-/* Tentamos pegar por classe de botão ou pelo último link da lista */
-#navbar a.btn-primary, 
-#navbar a.nav-btn,
-#navbar a:last-child,
-.navbar .btn-primary {
-    color: #ffffff !important;
-    background-color: #0071e3 !important; /* Azul Apple */
-    padding: 10px 22px !important;
-    border-radius: 20px !important;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Garante que se houver um ícone dentro do botão, ele também fique branco */
-#navbar a.btn-primary i,
-#navbar a:last-child i {
-    stroke: #ffffff !important;
+/* Opcional: Alterar a cor quando passar o mouse (hover) para um cinza escuro */
+.navbar a:hover {
+    color: #424245 !important;
+    opacity: 0.8;
 }
