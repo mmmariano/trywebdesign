@@ -86,7 +86,7 @@
 }
 
 /* BOTÃO PRETO PARA CONTRASTE */
-.btn-primary {
+.btn-primary .nav-right {
     display: inline-flex;
     align-items: center;
     gap: 12px;
