@@ -1476,21 +1476,32 @@
         flex-shrink: 0; /* Impede que a logo diminua de tamanho para dar espaço ao botão */
     }
 }
-/*RETIRAR AQUI PARA BAIXO*/
-/* Altera a cor dos links da navbar para preto */
+/*RETIRAR AQUI PARA BAIXO*//* 1. Letras do menu (links) em preto */
 .navbar a, 
-.navbar span,
 .navbar .nav-link {
     color: #000000 !important;
+    font-weight: 500;
 }
 
-/* Garante que ícones (se houver) acompanhem a cor */
-.navbar i {
-    stroke: #000000 !important;
+/* 2. Botão "Iniciar Projeto" com letras brancas */
+/* Nota: Geralmente botões de destaque usam classes como .btn-primary ou .nav-btn */
+.navbar a.btn-primary, 
+.navbar a[href*="contato"], 
+.navbar .nav-cta {
+    color: #ffffff !important;
+    background-color: #0071e3; /* Azul padrão Apple */
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: background 0.3s ease;
 }
 
-/* Opcional: Alterar a cor quando passar o mouse (hover) para um cinza escuro */
-.navbar a:hover {
-    color: #424245 !important;
-    opacity: 0.8;
+/* Efeito Hover para o botão */
+.navbar a.btn-primary:hover {
+    background-color: #0077ed;
+    color: #ffffff !important;
+}
+
+/* Garante que se houver um ícone no botão, ele também fique branco */
+.navbar a.btn-primary i {
+    stroke: #ffffff !important;
 }
