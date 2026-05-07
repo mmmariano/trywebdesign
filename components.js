@@ -92,7 +92,7 @@ const footerHTML = `
 
 // ✅ Declarada ANTES da função que a usa
 const whatsappFluanteHTML = `
-<a href="https://wa.me/5544999761842?text=Olá,%20necessito%20de%20um%20orçamento%20da%20TryWebDesign" class="whatsapp-fixo-small"  target="_blank" aria-label="Chat no WhatsApp" style="
+<a href="https://wa.me/5544999761842?text=Olá,%20quero%20um%20orçamento%20da%20TryWebDesign" class="whatsapp-fixo-small"  target="_blank" aria-label="Chat no WhatsApp" style="
     position: fixed;
     bottom: 24px;
     right: 24px;
