@@ -69,7 +69,7 @@ const footerHTML = `
             </div>
             <div class="footer-column">
                 <h4>Contato</h4>
-                <a href="https://wa.me/5544999761842?text=Olá,%20necessito%20de%20um%20orçamento%20da%20TryWebDesign">WhatsApp</a>
+                <a href="https://wa.me/5544999761842?text=Olá,%20quero%20um%20orçamento%20da%20TryWebDesign">WhatsApp</a>
                 <a href="mailto:atendimentotrywebdesign@gmail.com">E-mail</a>
                 <a href="/#contato">Consultoria</a>
             </div>
