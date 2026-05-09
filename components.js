@@ -112,8 +112,6 @@ const whatsappFluanteHTML = `
     </svg>
 </a>
 `;
-
-// ✅ Apenas UMA função setupNavbar
 function setupNavbar() {
     const navElement = document.getElementById('navbar');
     const footerElement = document.getElementById('main-footer');
@@ -132,6 +130,16 @@ function setupNavbar() {
                 document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
             };
         }
+
+        // --- NOVO: Lógica para fechar menu mobile ao clicar em links de âncora ---
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.onclick = () => {
+                toggle.classList.remove('active');
+                menu.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+        });
     }
 
     if (footerElement) footerElement.innerHTML = footerHTML;
@@ -145,6 +153,20 @@ function setupNavbar() {
     }
 
     if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    // --- NOVO: Lógica de Rolagem para o ID #contato vindo de outras páginas ---
+    if (window.location.hash === '#contato') {
+        // Esperamos um pouco (500ms) para o layout e GSAP estabilizarem
+        setTimeout(() => {
+            const contactSection = document.getElementById('contato');
+            if (contactSection) {
+                const yOffset = -80; // Ajuste para não ficar colado no topo por causa da navbar
+                const y = contactSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }, 600);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", setupNavbar);
