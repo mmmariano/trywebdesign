@@ -357,6 +357,66 @@
 .quote-icon i {
     color: #0071e3 !important; /* Mantém o azul do destaque */
 }
+      /* =====================================================
+   ESTILO DA SEÇÃO DEPOIMENTOS (VERSÃO MAIS CLARA)
+===================================================== */
+
+#testimonials {
+    position: relative !important;
+    /* Alterado de #050505 para um cinza mais claro */
+    background-color: #1c1c1e !important; 
+    overflow: hidden;
+}
+
+#testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('backfundo.png');
+    background-size: cover;
+    background-position: center;
+    /* Aumentado de 0.25 para 0.6 para a imagem aparecer mais */
+    opacity: 0.6; 
+    z-index: 0;
+}
+
+/* 2. Títulos */
+#testimonials h2 {
+    color: #ffffff !important;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra para ler melhor no fundo claro */
+}
+
+#testimonials h2 span {
+    color: rgba(255, 255, 255, 0.7) !important; 
+}
+
+/* 3. Ajustando os Cards para ficarem mais nítidos */
+.testimonial-card {
+    /* Deixando o fundo do card um pouco mais sólido para contraste */
+    background: rgba(30, 30, 32, 0.8) !important; 
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* 4. Cores dos textos */
+.testimonial-text {
+    color: #ffffff !important;
+    font-weight: 400;
+}
+
+.client-name {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+
+.client-info {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
     </style>
 </head>
 <body>
