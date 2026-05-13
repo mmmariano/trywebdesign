@@ -1,1057 +1,1102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<!-- Google tag (gtag.js) -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TryWebDesign | Criação de Sites, Blogs, Landing Pages e SEO</title>
+
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10847459616"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-10847459616');
-</script>
-   <!-- Event snippet for Page view conversion page -->
-<script>
   gtag('event', 'conversion', {'send_to': 'AW-10847459616/FNCJCN-Z0oEbEKCyvLQo'});
 </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TryWebDesign | Criação de Sites, Blogs, Landing Pages e SEO</title>
-    
-    <!-- Tipografia Apple -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-    
-    <!-- Bibliotecas -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="components.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="stylesheet" href="style.css">
+<script src="components.js" defer></script>
 
-    <style>
-    /* =====================================================
-       HERO — BACKGROUND ANIMADO (MARQUEE)
-       Injetado sobre o hero existente sem alterar mais nada
-    ===================================================== */
+<style>
+/* ═══ TOKENS ═══ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #06060b;
+  --bg2:      #09090f;
+  --surf:     #0f0f18;
+  --surf2:    #141420;
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.13);
+  --blue:     #2563eb;
+  --blue-hi:  #3b82f6;
+  --blue-glo: rgba(37,99,235,0.28);
+  --blue-dim: rgba(37,99,235,0.12);
+  --white:    #f4f4ff;
+  --white80:  rgba(244,244,255,0.78);
+  --muted:    rgba(244,244,255,0.40);
+  --font-d:   'Syne', sans-serif;
+  --font-b:   'DM Sans', sans-serif;
+  --ease-e:   cubic-bezier(0.16,1,0.3,1);
+  --ease-s:   cubic-bezier(0.34,1.56,0.64,1);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-b);
+  background: var(--bg); color: var(--white);
+  overflow-x: hidden; cursor: none;
+  -webkit-font-smoothing: antialiased;
+}
 
-    /* Faz o hero aceitar posicionamento absoluto dos filhos */
-    .hero {
-      position: relative !important;
-      overflow: hidden !important;
-      background: #050505 !important;
-    }
+/* ── CURSOR ── */
+#cur, #ring {
+  position: fixed; top: 0; left: 0; pointer-events: none;
+  border-radius: 50%; transform: translate(-50%,-50%); z-index: 9999;
+}
+#cur  { width: 10px; height: 10px; background: var(--blue-hi); transition: transform .12s; }
+#ring { width: 38px; height: 38px; border: 1.5px solid rgba(59,130,246,.38); z-index:9998;
+        transition: width .3s var(--ease-s), height .3s var(--ease-s), border-color .25s; }
+body.hov #ring { width: 58px; height: 58px; border-color: var(--blue-hi); }
+body.hov #cur  { transform: translate(-50%,-50%) scale(.5); }
 
-    /* Eleva o container original acima das camadas do bg */
-    .hero > .container {
-      position: relative;
-      z-index: 3;
-    }
+/* ── GRAIN ── */
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9997; opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)'/%3E%3C/svg%3E");
+}
 
-    /* ── Textos existentes: cor + sombra para legibilidade ── */
-    .hero h1 {
-      color: #f5f5f7 !important;
-      /* Borda/halo escuro atrás de cada letra */
-      text-shadow:
-        0 0 40px rgba(0, 0, 0, 0.9),
-        0 2px 4px  rgba(0, 0, 0, 0.8),
-        0 4px 24px rgba(0, 0, 0, 0.7) !important;
-    }
+/* ── CONTAINER ── */
+.container { max-width:1160px; margin:0 auto; padding:0 28px; }
+.sp { padding:120px 0; }
 
-    .hero p {
-      color: rgba(245, 245, 247, 0.80) !important;
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9) !important;
-    }
+/* ────────────────────── NAVBAR ────────────────────── */
+.navbar {
+  position:fixed; inset:0 0 auto; z-index:600;
+  padding:20px 0;
+  transition: padding .4s var(--ease-e), background .4s, backdrop-filter .4s, border-color .4s;
+  border-bottom:1px solid transparent;
+}
+.navbar.stuck {
+  padding:13px 0;
+  background: rgba(6,6,11,.85);
+  backdrop-filter: blur(28px) saturate(1.6);
+  border-color: var(--border);
+}
+.navbar .container { display:flex; align-items:center; justify-content:space-between; }
+.nav-logo {
+  font-family:var(--font-d); font-weight:800; font-size:1.05rem;
+  letter-spacing:-.02em; color:var(--white); text-decoration:none;
+  display:flex; align-items:center; gap:9px;
+}
+.nav-mark {
+  width:30px; height:30px; border-radius:8px;
+  background: linear-gradient(135deg, var(--blue) 0%, #818cf8 100%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:.65rem; font-weight:800; color:#fff;
+  box-shadow: 0 4px 18px rgba(37,99,235,.4);
+}
+.nav-links { display:flex; align-items:center; gap:30px; list-style:none; }
+.nav-links a {
+  font-size:.84rem; font-weight:500; color:var(--muted);
+  text-decoration:none; letter-spacing:.01em; position:relative;
+  transition: color .2s;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-3px; left:0;
+  width:0; height:1px; background:var(--blue-hi);
+  transition: width .3s var(--ease-e);
+}
+.nav-links a:hover { color:var(--white); }
+.nav-links a:hover::after { width:100%; }
+.nav-pill {
+  padding:9px 22px; border-radius:100px;
+  background:var(--blue); color:#fff !important;
+  font-weight:600; font-size:.82rem;
+  transition: background .25s, transform .25s var(--ease-s), box-shadow .25s;
+}
+.nav-pill:hover { background:var(--blue-hi); transform:translateY(-2px); box-shadow:0 10px 32px var(--blue-glo); }
+.nav-pill::after { display:none !important; }
 
-    /* Garante que o botão existente continue visível */
-    .hero .btn-primary {
-      position: relative;
-      z-index: 3;
-    }
-
-    /* ── Camada de fundo animado ── */
-    .hero-bg-layer {
-      position: absolute;
-      inset: -20%;
-      z-index: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 14px;
-      transform: rotate(-4deg) scale(1.1);
-      pointer-events: none;
-    }
-
-    .marquee-track {
-      overflow: hidden;
-      width: 100%;
-      flex-shrink: 0;
-    }
-
-    .marquee-row {
-      display: flex;
-      gap: 14px;
-      width: max-content;
-      animation: marqueeLeft 42s linear infinite;
-      will-change: transform;
-    }
-    .marquee-row.marquee-reverse {
-      animation: marqueeRight 54s linear infinite;
-    }
-    .marquee-row.marquee-slow {
-      animation: marqueeLeft 68s linear infinite;
-    }
-
-    .site-thumb {
-      flex-shrink: 0;
-      width: 320px;
-      height: 210px;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.55);
-      background: #111;
-    }
-
-    .site-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
-      display: block;
-      filter: brightness(0.55) saturate(0.7);
-    }
-
-    @keyframes marqueeLeft {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes marqueeRight {
-      0%   { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-
-    /* ── Overlay sobre as imagens ── */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        radial-gradient(ellipse 75% 65% at 50% 50%, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.75) 80%),
-        linear-gradient(180deg,
-          rgba(5,5,5,0.82) 0%,
-          rgba(5,5,5,0.05) 28%,
-          rgba(5,5,5,0.05) 68%,
-          rgba(5,5,5,0.90) 100%
-        );
-    }
-
-    /* ── Brilhos de fundo ── */
-    .hero-glow {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 2;
-    }
-    .hero-glow-blue {
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(0,113,227,0.18) 0%, transparent 70%);
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      filter: blur(70px);
-      animation: glowBreath 5s ease-in-out infinite;
-    }
-    .hero-glow-cyan {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(90,200,250,0.10) 0%, transparent 70%);
-      bottom: 10%; right: 12%;
-      filter: blur(50px);
-      animation: glowBreath 7s ease-in-out infinite reverse;
-    }
-    @keyframes glowBreath {
-      0%, 100% { opacity: 0.6; }
-      50%       { opacity: 1; }
-    }
-
-    /* ── Mobile ── */
-    @media (max-width: 768px) {
-      .hero-bg-layer {
-        inset: -25%;
-        transform: rotate(-5deg) scale(1.18);
-        gap: 10px;
-      }
-      .site-thumb {
-        width: 210px;
-        height: 145px;
-        border-radius: 8px;
-      }
-      .hero-glow-cyan { display: none; }
-    }
-
-    /* ── Acessibilidade ── */
-    @media (prefers-reduced-motion: reduce) {
-      .marquee-row,
-      .marquee-row.marquee-reverse,
-      .marquee-row.marquee-slow { animation: none; }
-    }
-      /* 1. Atualize a classe .hero existente */
+/* ────────────────────── HERO ────────────────────── */
 .hero {
-  position: relative !important;
-  overflow: hidden !important;
-  background: #050505 !important; /* Cor de fundo base (preto) */
+  position:relative; min-height:100svh;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--bg); overflow:hidden;
 }
 
-/* 2. Adicione este novo bloco logo abaixo do .hero */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0; /* Ocupa todo o espaço do hero */
-  background-image: url('backfundo.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-  /* CONTROLE DE TRANSPARÊNCIA: 
-     0.1 = muito transparente | 0.5 = meio termo | 0.9 = quase opaco */
-  opacity: 0.2; 
-  
-  z-index: -1; /* Garante que fique atrás de tudo, inclusive das faixas animadas */
-  pointer-events: none;
+/* marquee bg */
+.hero-bg {
+  position:absolute; inset:-25%;
+  display:flex; flex-direction:column; gap:16px;
+  transform:rotate(-4deg) scale(1.12);
+  pointer-events:none; z-index:0;
 }
-      /* 1. Ajuste na base do Hero */
-    .hero {
-      position: relative !important;
-      overflow: hidden !important;
-      background: #050505 !important; /* Cor de fundo caso a imagem falhe */
-    }
+.mtrack { overflow:hidden; width:100%; }
+.mrow { display:flex; gap:16px; width:max-content; will-change:transform; }
+.mrow        { animation: mL 46s linear infinite; }
+.mrow.rev    { animation: mR 60s linear infinite; }
+.mrow.slow   { animation: mL 76s linear infinite; }
+@keyframes mL { to { transform: translateX(-50%); } }
+@keyframes mR { from { transform:translateX(-50%); } to { transform:translateX(0); } }
 
-    /* 2. Camada da Imagem de Fundo (backfundo.png) */
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url('backfundo.png'); /* Verifique se o nome do arquivo está correto */
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.2; /* Ajuste aqui a transparência (0.1 a 0.9) */
-      z-index: 0;   /* Fica na base, atrás de tudo */
-      pointer-events: none;
-    }
+.sth {
+  flex-shrink:0; width:305px; height:198px;
+  border-radius:12px; overflow:hidden;
+  border:1px solid rgba(255,255,255,.05);
+  box-shadow:0 16px 50px rgba(0,0,0,.7); background:#111;
+}
+.sth img {
+  width:100%; height:100%;
+  object-fit:cover; object-position:top; display:block;
+  filter:brightness(.4) saturate(.5);
+}
 
-    /* 3. Garantir que as outras camadas fiquem acima da imagem */
-    .hero-bg-layer {
-      z-index: 1; /* Sites se movendo */
-    }
+/* fades */
+.hero-fade {
+  position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(ellipse 78% 72% at 50% 46%, rgba(0,0,0,.04) 0%, rgba(6,6,11,.82) 74%),
+    linear-gradient(180deg,
+      rgba(6,6,11,.9) 0%, transparent 22%,
+      transparent 66%, rgba(6,6,11,.97) 100%);
+}
+.hero-orb {
+  position:absolute; border-radius:50%; filter:blur(70px);
+  pointer-events:none; z-index:2;
+}
+.orb1 {
+  width:850px; height:850px;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(37,99,235,.13) 0%,transparent 62%);
+  animation:bth 7s ease-in-out infinite;
+}
+.orb2 {
+  width:380px; height:380px;
+  bottom:4%; right:7%;
+  background:radial-gradient(circle,rgba(99,102,241,.1) 0%,transparent 65%);
+  animation:bth 5s ease-in-out infinite 1.2s;
+}
+@keyframes bth { 0%,100%{opacity:.45;} 50%{opacity:1;} }
 
-    .hero-overlay {
-      z-index: 2; /* Sombra preta para dar leitura ao texto */
-    }
+/* content */
+.hero-content {
+  position:relative; z-index:3;
+  text-align:center; padding:130px 28px 80px;
+  max-width:875px; margin:0 auto;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.7rem; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--blue-hi);
+  background:rgba(37,99,235,.1); border:1px solid rgba(37,99,235,.22);
+  padding:6px 18px; border-radius:100px; margin-bottom:36px;
+  opacity:0; animation:fuD .9s var(--ease-e) .15s forwards;
+}
+.bdot {
+  width:6px; height:6px; border-radius:50%;
+  background:var(--blue-hi); box-shadow:0 0 8px var(--blue-hi);
+  animation:blk 1.8s ease-in-out infinite;
+}
+@keyframes blk { 0%,100%{opacity:1;} 50%{opacity:.25;} }
 
-    .hero-glow {
-      z-index: 3; /* Brilhos azul/ciano */
-    }
+.hero h1 {
+  font-family:var(--font-d);
+  font-size:clamp(2.2rem,5.8vw,4.8rem);
+  font-weight:800; line-height:1.06; letter-spacing:-.035em;
+  color:var(--white);
+  text-shadow:0 0 80px rgba(0,0,0,.95), 0 4px 24px rgba(0,0,0,.7);
+  opacity:0; animation:fuD 1.1s var(--ease-e) .35s forwards;
+}
+.hero-sub {
+  margin-top:26px; font-size:1.05rem; font-weight:300;
+  color:var(--white80); letter-spacing:.01em;
+  text-shadow:0 2px 12px rgba(0,0,0,.9);
+  opacity:0; animation:fuD 1.1s var(--ease-e) .55s forwards;
+}
+.hero-acts {
+  margin-top:50px; display:flex; gap:14px;
+  justify-content:center; flex-wrap:wrap;
+  opacity:0; animation:fuD 1.1s var(--ease-e) .75s forwards;
+}
+@keyframes fuD {
+  from { opacity:0; transform:translateY(26px); }
+  to   { opacity:1; transform:translateY(0); }
+}
 
-    .hero > .container {
-      position: relative;
-      z-index: 4; /* Texto e Botão no topo de tudo */
-    }
-      /* Configuração da seção de Depoimentos com imagem de fundo */
+.btn-s {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 34px; border-radius:100px;
+  background:var(--blue); color:#fff; font-weight:600; font-size:.9rem;
+  text-decoration:none; border:none; cursor:none;
+  box-shadow:0 4px 24px rgba(37,99,235,.28);
+  transition: background .25s, transform .3s var(--ease-s), box-shadow .3s;
+}
+.btn-s:hover { background:var(--blue-hi); transform:translateY(-4px); box-shadow:0 16px 48px rgba(37,99,235,.44); }
+.btn-s i { transition:transform .3s var(--ease-s); }
+.btn-s:hover i { transform:translateX(5px); }
+
+.btn-o {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:15px 34px; border-radius:100px;
+  background:transparent; color:var(--white80); font-weight:500; font-size:.9rem;
+  text-decoration:none; cursor:none;
+  border:1px solid var(--border2);
+  transition: color .2s, border-color .2s, transform .3s var(--ease-s);
+}
+.btn-o:hover { color:var(--white); border-color:rgba(255,255,255,.28); transform:translateY(-3px); }
+
+.scroll-hint {
+  position:absolute; bottom:38px; left:50%; transform:translateX(-50%);
+  z-index:3; display:flex; flex-direction:column; align-items:center; gap:10px;
+  opacity:0; animation:fuD 1s var(--ease-e) 1.1s forwards;
+}
+.scroll-label { font-size:.64rem; font-weight:500; letter-spacing:.13em; text-transform:uppercase; color:var(--muted); }
+.scroll-line {
+  width:1px; height:52px;
+  background:linear-gradient(to bottom,var(--blue-hi),transparent);
+  animation:sla 2.2s ease-in-out infinite;
+}
+@keyframes sla {
+  0%,100%{ opacity:.35; transform:scaleY(1); }
+  50%{ opacity:1; transform:scaleY(1.15) translateY(4px); }
+}
+
+/* ────────────────────── STATS BAR ────────────────────── */
+.stats-bar {
+  background:var(--surf);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative; overflow:hidden;
+}
+.stats-bar::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg, transparent, var(--blue), #818cf8, transparent);
+  animation:gsh 4s ease-in-out infinite;
+}
+@keyframes gsh { 0%,100%{opacity:.45;} 50%{opacity:1;} }
+
+.stats-grid { display:grid; grid-template-columns:repeat(5,1fr); }
+
+.stat-item {
+  padding:40px 20px; text-align:center;
+  border-right:1px solid var(--border);
+  position:relative; overflow:hidden;
+  transition: background .35s;
+}
+.stat-item:last-child { border-right:none; }
+.stat-item::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 100%,rgba(37,99,235,.09) 0%,transparent 70%);
+  opacity:0; transition:opacity .35s;
+}
+.stat-item:hover::after { opacity:1; }
+.stat-icon {
+  color:var(--blue-hi); margin-bottom:14px;
+  display:flex; justify-content:center;
+  transition:transform .35s var(--ease-s);
+}
+.stat-item:hover .stat-icon { transform:translateY(-5px) scale(1.1); }
+.stat-value {
+  font-family:var(--font-d);
+  font-size:2.4rem; font-weight:800; letter-spacing:-.04em;
+  line-height:1; color:var(--white);
+}
+.stat-desc { margin-top:8px; font-size:.7rem; color:var(--muted); letter-spacing:.01em; line-height:1.4; }
+
+/* ────────────────────── TESTIMONIALS ────────────────────── */
 #testimonials {
-    position: relative;
-    overflow: hidden;
-    /* Removendo a cor sólida cinza para a imagem aparecer melhor, 
-       ou mantendo uma base escura */
-    background-color: #0a0a0a !important; 
+  background:var(--bg2); position:relative; overflow:hidden;
 }
-
 #testimonials::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('backfundo.png'); /* Verifique se o nome está correto */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    /* TRANSPARÊNCIA: 0.1 é bem sutil, 0.3 aparece mais */
-    opacity: 0.15; 
-    
-    z-index: 0;
-    pointer-events: none;
+  content:''; position:absolute; inset:0;
+  background-image:url('backfundo.png');
+  background-size:cover; background-position:center;
+  opacity:.08; z-index:0; pointer-events:none;
+}
+#testimonials::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue),#818cf8,transparent); opacity:.35;
+}
+#testimonials > .container { position:relative; z-index:1; }
+
+.eyebrow {
+  font-size:.7rem; font-weight:600; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--blue-hi);
+  display:block; margin-bottom:16px;
+}
+.sec-title {
+  font-family:var(--font-d);
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:800; letter-spacing:-.03em; line-height:1.08;
+  color:var(--white);
+}
+.sec-title .dim { color:var(--muted); }
+
+.t-hdr { margin-bottom:72px; }
+
+.t-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
 }
 
-/* Garante que o conteúdo (texto e cards) fique ACIMA da imagem */
-#testimonials .container {
-    position: relative;
-    z-index: 2;
+.tc {
+  background:rgba(255,255,255,.022);
+  border:1px solid var(--border);
+  border-radius:20px; overflow:hidden;
+  display:flex; flex-direction:column;
+  opacity:0; transform:translateY(44px);
+  transition: border-color .3s, box-shadow .35s, background .3s;
+  perspective:1000px;
+}
+.tc.in {
+  opacity:1; transform:translateY(0);
+  transition:
+    opacity .75s var(--ease-e),
+    transform .75s var(--ease-e),
+    border-color .3s, box-shadow .35s, background .3s;
+}
+.tc:hover {
+  border-color:rgba(59,130,246,.28);
+  background:rgba(255,255,255,.035);
+  box-shadow:0 28px 64px rgba(0,0,0,.45), 0 0 0 1px rgba(59,130,246,.07);
+  transform:translateY(-8px) !important;
 }
 
-/* Ajuste opcional: deixar os cards um pouco mais vibrantes contra o novo fundo */
-.testimonial-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+.tc-preview { height:175px; position:relative; overflow:hidden; flex-shrink:0; }
+.bc {
+  position:absolute; top:0; left:0; right:0; z-index:2;
+  padding:7px 12px; display:flex; align-items:center; gap:6px;
+  background:rgba(9,9,15,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(255,255,255,.05);
 }
-      /* =====================================================
-   ESTILO DA SEÇÃO DEPOIMENTOS (FUNDO + CORES)
-===================================================== */
-
-/* 1. Aplicando o fundo escuro e a imagem */
-#testimonials {
-    position: relative !important;
-    background-color: #050505 !important; /* Fundo preto para as letras brancas brilharem */
-    overflow: hidden;
+.bd { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.bd.r{background:#ff5f56;} .bd.y{background:#ffbd2e;} .bd.g{background:#27c93f;}
+.tc-preview a { display:block; height:100%; }
+.tc-preview img {
+  width:100%; height:100%; object-fit:cover; object-position:top; display:block;
+  filter:brightness(.76) saturate(.78);
+  transition:transform .65s var(--ease-e), filter .45s;
 }
+.tc:hover .tc-preview img { transform:scale(1.07); filter:brightness(.95) saturate(1); }
 
-#testimonials::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('backfundo.png');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.25; /* Transparência da imagem */
-    z-index: 0;
+.tc-body { padding:24px; flex:1; display:flex; flex-direction:column; }
+.tc-qi { color:var(--blue-hi); margin-bottom:12px; }
+.tc-text {
+  font-size:.87rem; line-height:1.74;
+  color:rgba(244,244,255,.7); flex:1; margin-bottom:18px;
 }
+.tc-footer { border-top:1px solid var(--border); padding-top:16px; }
+.tc-name { font-weight:600; font-size:.9rem; color:var(--white); }
+.tc-role { font-size:.74rem; color:var(--muted); margin-top:2px; }
 
-/* 2. Deixando o Título e subtítulo Brancos */
-#testimonials h2 {
-    color: #ffffff !important;
-    position: relative;
-    z-index: 1;
+/* collapsible */
+.txt-col { max-height:90px; overflow:hidden; position:relative; }
+.txt-col::after {
+  content:''; position:absolute; bottom:0; left:0; right:0; height:36px;
+  background:linear-gradient(transparent, rgba(9,9,15,.96));
 }
-
-#testimonials h2 span {
-    color: rgba(255, 255, 255, 0.55) !important; /* Branco suave para o efeito Apple */
+.readmore {
+  background:none; border:none; cursor:none;
+  font-family:var(--font-b); font-size:.76rem; font-weight:500;
+  color:var(--blue-hi); display:flex; align-items:center; gap:5px;
+  padding:8px 0; transition:gap .2s;
 }
+.readmore:hover { gap:9px; }
 
-/* 3. Ajustando os Cards para ficarem visíveis no fundo escuro */
-.testimonial-card {
-    background: rgba(255, 255, 255, 0.05) !important; /* Fundo do card semi-transparente */
-    backdrop-filter: blur(10px); /* Efeito de vidro */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    position: relative;
-    z-index: 1;
+/* ────────────────────── CONTACT ────────────────────── */
+#contato {
+  background:var(--bg); position:relative; overflow:hidden;
 }
-
-/* 4. Cores dos textos dentro dos cards */
-.testimonial-text {
-    color: #f5f5f7 !important; /* Branco acinzentado (estilo Apple) */
+#contato::before {
+  content:''; position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:800px; height:800px;
+  background:radial-gradient(circle,rgba(37,99,235,.06) 0%,transparent 65%);
+  filter:blur(90px); pointer-events:none;
 }
-
-.client-name {
-    color: #ffffff !important; /* Nome do cliente branco puro */
-}
-
-.client-info {
-    color: rgba(255, 255, 255, 0.5) !important; /* Info do cliente cinza claro */
+.cg {
+  display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+  position:relative; z-index:1;
 }
 
-/* Ícone de aspas */
-.quote-icon i {
-    color: #0071e3 !important; /* Mantém o azul do destaque */
+.c-status {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:.7rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  color:#22c55e; background:rgba(34,197,94,.09); border:1px solid rgba(34,197,94,.2);
+  padding:5px 14px; border-radius:100px; margin-bottom:30px;
 }
-      /* =====================================================
-   ESTILO DA SEÇÃO DEPOIMENTOS (VERSÃO MAIS CLARA)
-===================================================== */
+.spulse { width:6px; height:6px; border-radius:50%; background:#22c55e; box-shadow:0 0 8px #22c55e; animation:blk 1.8s ease-in-out infinite; }
+.c-title {
+  font-family:var(--font-d);
+  font-size:clamp(1.9rem,3.8vw,3.1rem);
+  font-weight:800; letter-spacing:-.03em; line-height:1.1;
+  color:var(--white); margin-bottom:18px;
+}
+.c-title .accent { color:var(--blue-hi); }
+.c-desc { font-size:.95rem; font-weight:300; color:var(--muted); line-height:1.65; margin-bottom:34px; }
 
-#testimonials {
-    position: relative !important;
-    /* Alterado de #050505 para um cinza mais claro */
-    background-color: #1c1c1e !important; 
-    overflow: hidden;
+.spec-row {
+  display:flex; align-items:center; gap:14px;
+  padding:16px 20px;
+  background:var(--surf); border:1px solid var(--border);
+  border-radius:14px; margin-bottom:26px;
+  transition: border-color .3s, background .3s;
 }
+.spec-row:hover { border-color:var(--border2); background:var(--surf2); }
+.spec-av {
+  width:48px; height:48px; border-radius:50%; overflow:hidden; flex-shrink:0;
+  border:2px solid var(--blue-dim);
+}
+.spec-av img { width:100%; height:100%; object-fit:cover; }
+.spec-inf strong { display:block; font-size:.9rem; font-weight:600; color:var(--white); }
+.spec-inf span   { font-size:.76rem; color:var(--muted); }
 
-#testimonials::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url('backfundo.png');
-    background-size: cover;
-    background-position: center;
-    /* Aumentado de 0.25 para 0.6 para a imagem aparecer mais */
-    opacity: 0.6; 
-    z-index: 0;
+.c-btns { display:flex; gap:12px; flex-wrap:wrap; }
+.c-btn {
+  display:inline-flex; align-items:center; gap:9px;
+  padding:12px 22px; border-radius:12px; text-decoration:none;
+  font-size:.85rem; font-weight:500; cursor:none;
+  border:1px solid var(--border2); color:var(--white80);
+  background:var(--surf);
+  transition: background .25s, border-color .25s, transform .25s var(--ease-s), color .2s;
 }
+.c-btn:hover { background:var(--surf2); transform:translateY(-3px); color:var(--white); }
+.c-btn-icon {
+  width:30px; height:30px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+}
+.i-wa  { background:rgba(34,197,94,.14); color:#22c55e; }
+.i-mail{ background:rgba(37,99,235,.14); color:var(--blue-hi); }
 
-/* 2. Títulos */
-#testimonials h2 {
-    color: #ffffff !important;
-    position: relative;
-    z-index: 1;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Sombra para ler melhor no fundo claro */
+/* form card */
+.form-card {
+  background:var(--surf);
+  border:1px solid var(--border); border-radius:24px; overflow:hidden;
 }
+.form-top {
+  padding:15px 24px; background:var(--surf2);
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px;
+}
+.form-top-dots { display:flex; gap:7px; }
+.form-top-dots span { width:10px; height:10px; border-radius:50%; }
+.form-top-dots span:nth-child(1){background:#ff5f56;}
+.form-top-dots span:nth-child(2){background:#ffbd2e;}
+.form-top-dots span:nth-child(3){background:#27c93f;}
+.form-title { font-family:var(--font-d); font-size:.88rem; font-weight:700; color:var(--white); margin-left:4px; }
+.form-sub   { font-size:.72rem; color:var(--muted); margin-left:auto; }
+.form-body  { padding:28px; }
 
-#testimonials h2 span {
-    color: rgba(255, 255, 255, 0.7) !important; 
+.field { margin-bottom:14px; }
+.field input, .field textarea {
+  width:100%; padding:14px 16px;
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border); border-radius:12px;
+  color:var(--white); font-family:var(--font-b); font-size:.88rem; font-weight:300;
+  outline:none; resize:none;
+  transition: border-color .25s, background .25s, box-shadow .25s;
 }
+.field input::placeholder, .field textarea::placeholder { color:var(--muted); }
+.field input:focus, .field textarea:focus {
+  border-color:var(--blue-hi);
+  background:rgba(59,130,246,.05);
+  box-shadow:0 0 0 3px rgba(59,130,246,.1);
+}
+.field textarea { min-height:100px; }
 
-/* 3. Ajustando os Cards para ficarem mais nítidos */
-.testimonial-card {
-    /* Deixando o fundo do card um pouco mais sólido para contraste */
-    background: rgba(30, 30, 32, 0.8) !important; 
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+.btn-sub {
+  width:100%; padding:15px 24px; border:none; border-radius:12px;
+  background:var(--blue); color:#fff; cursor:none;
+  font-family:var(--font-d); font-size:.88rem; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  box-shadow:0 4px 24px rgba(37,99,235,.3);
+  transition: background .25s, transform .3s var(--ease-s), box-shadow .3s;
 }
+.btn-sub:hover { background:var(--blue-hi); transform:translateY(-3px); box-shadow:0 14px 40px rgba(37,99,235,.46); }
+.btn-sub i { transition:transform .3s var(--ease-s); }
+.btn-sub:hover i { transform:translateX(5px); }
 
-/* 4. Cores dos textos */
-.testimonial-text {
-    color: #ffffff !important;
-    font-weight: 400;
+#success-box {
+  display:none; text-align:center; padding:48px 24px;
 }
+#success-box h3 { font-family:var(--font-d); font-size:1.5rem; font-weight:800; color:var(--white); margin-bottom:10px; }
+#success-box p  { color:var(--muted); font-size:.9rem; }
+.success-icon { color:var(--blue-hi); margin-bottom:20px; }
 
-.client-name {
-    color: #ffffff !important;
-    font-weight: 600;
-}
+/* ── FOOTER placeholder ── */
+#main-footer { border-top:1px solid var(--border); }
 
-.client-info {
-    color: rgba(255, 255, 255, 0.6) !important;
+/* ── FLOATING ── */
+.floating-buttons {
+  position:fixed; bottom:28px; right:28px; z-index:700;
+  display:flex; flex-direction:column; gap:12px;
 }
-    </style>
+.float-btn {
+  width:46px; height:46px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; color:#fff; cursor:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.4);
+  opacity:0; animation:sliR .6s var(--ease-e) 1.5s forwards;
+  transition:transform .3s var(--ease-s), box-shadow .3s;
+}
+.float-btn:nth-child(2) { animation-delay:1.7s; }
+@keyframes sliR { from{opacity:0;transform:translateX(30px);} to{opacity:1;transform:translateX(0);} }
+.float-btn:hover { transform:scale(1.15) translateY(-2px); box-shadow:0 12px 32px rgba(0,0,0,.5); }
+.float-btn.instagram { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+.float-btn.facebook  { background:#1877f2; }
+.float-btn svg { width:20px; height:20px; }
+
+/* ── REVEAL UTIL ── */
+.reveal { opacity:0; transform:translateY(36px); transition:opacity .8s var(--ease-e), transform .8s var(--ease-e); }
+.reveal.in { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .t-grid { grid-template-columns:repeat(2,1fr); }
+  .cg { grid-template-columns:1fr; gap:56px; }
+  .stats-grid { grid-template-columns:repeat(3,1fr); }
+  .stat-item:nth-child(3n){ border-right:none; }
+  .stat-item:nth-child(n+4){ border-top:1px solid var(--border); }
+}
+@media(max-width:768px){
+  .nav-links { display:none; }
+  .t-grid { grid-template-columns:1fr; }
+  .stats-grid { grid-template-columns:repeat(2,1fr); }
+  .stat-item:nth-child(3n){ border-right:1px solid var(--border); }
+  .stat-item:nth-child(2n){ border-right:none; }
+  .sth { width:215px; height:145px; }
+  .hero h1 br { display:none; }
+}
+@media(prefers-reduced-motion:reduce){
+  .mrow,.mrow.rev,.mrow.slow { animation:none; }
+  *{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+</style>
 </head>
 <body>
-<div class="mouse-glow" id="mouseGlow"></div>
 
-<nav class="navbar" id="navbar"></nav>
+<div id="cur"></div>
+<div id="ring"></div>
 
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="/" class="nav-logo">
+      <div class="nav-mark">TW</div>
+      TryWebDesign
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Início</a></li>
+      <li><a href="/solucoes/">Soluções</a></li>
+      <li><a href="/portfolio/">Portfólio</a></li>
+      <li><a href="#contato" class="nav-pill">Solicitar Orçamento</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
 <header class="hero">
-
-    <!-- ══ BACKGROUND ANIMADO (novo) ══ -->
-    <div class="hero-bg-layer" aria-hidden="true">
-
-        <!-- Faixa 1 · esquerda -->
-        <div class="marquee-track">
-            <div class="marquee-row">
-                <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
-                <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
-                <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
-                <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
-                <div class="site-thumb"><img src="portfolio-massagem-braccioli.png"         alt=""></div>
-                <div class="site-thumb"><img src="portfolio-elisabeth.png"                  alt=""></div>
-                <!-- duplicado para loop contínuo -->
-                <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
-                <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
-                <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
-                <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
-                <div class="site-thumb"><img src="portfolio-massagem-braccioli.png"         alt=""></div>
-                <div class="site-thumb"><img src="portfolio-elisabeth.png"                  alt=""></div>
-            </div>
-        </div>
-
-        <!-- Faixa 2 · direita -->
-        <div class="marquee-track">
-            <div class="marquee-row marquee-reverse">
-                <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
-                <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
-                <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
-                <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
-                <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="portfolio-massagem-braccioli.png"         alt=""></div>
-                <div class="site-thumb"><img src="portfolio-elisabeth.png"                  alt=""></div>
-                <!-- duplicado -->
-                <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
-                <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
-                <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
-                <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
-                <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="portfolio-massagem-braccioli.png"         alt=""></div>
-                <div class="site-thumb"><img src="portfolio-elisabeth.png"                  alt=""></div>
-            </div>
-        </div>
-
-        <!-- Faixa 3 · esquerda lenta -->
-        <div class="marquee-track">
-            <div class="marquee-row marquee-slow">
-                <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
-                <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
-                <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
-                <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
-                <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="portfolio-massagem-braccioli.png"         alt=""></div>
-                <div class="site-thumb"><img src="portfolio-elisabeth.png"                  alt=""></div>
-                <!-- duplicado -->
-                <div class="site-thumb"><img src="karinaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="flaviaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="imaportifolio.webp"                       alt=""></div>
-                <div class="site-thumb"><img src="lovisettoportifolio.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
-                <div class="site-thumb"><img src="solarportifolio.webp"                     alt=""></div>
-                <div class="site-thumb"><img src="psipaulamarques-portifolio.webp"          alt=""></div>
-                <div class="site-thumb"><img src="contabilidadesarruf.webp"                 alt=""></div>
-                <div class="site-thumb"><img src="vrindaportifolio.webp"                    alt=""></div>
-                <div class="site-thumb"><img src="portfolio-massagem-braccioli.png"         alt=""></div>
-                <div class="site-thumb"><img src="portfolio-elisabeth.png"                  alt=""></div>
-            </div>
-        </div>
-
-        <!-- Overlay escuro + brilhos -->
-        <div class="hero-overlay"></div>
-        <div class="hero-glow hero-glow-blue"></div>
-        <div class="hero-glow hero-glow-cyan"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <!-- Row 1 -->
+    <div class="mtrack">
+      <div class="mrow">
+        <div class="sth"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="sth"><img src="psipaulamarques-portifolio.webp" alt=""></div>
+        <div class="sth"><img src="flaviaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="karinaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="lovisettoportifolio.webp" alt=""></div>
+        <div class="sth"><img src="vrindaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="solarportifolio.webp" alt=""></div>
+        <div class="sth"><img src="contabilidadesarruf.webp" alt=""></div>
+        <div class="sth"><img src="imaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="portfolio-massagem-braccioli.png" alt=""></div>
+        <div class="sth"><img src="portfolio-elisabeth.png" alt=""></div>
+        <div class="sth"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="sth"><img src="psipaulamarques-portifolio.webp" alt=""></div>
+        <div class="sth"><img src="flaviaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="karinaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="lovisettoportifolio.webp" alt=""></div>
+        <div class="sth"><img src="vrindaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="solarportifolio.webp" alt=""></div>
+        <div class="sth"><img src="contabilidadesarruf.webp" alt=""></div>
+        <div class="sth"><img src="imaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="portfolio-massagem-braccioli.png" alt=""></div>
+        <div class="sth"><img src="portfolio-elisabeth.png" alt=""></div>
+      </div>
     </div>
-    <!-- ══ FIM DO BACKGROUND ANIMADO ══ -->
-
-    <!-- Conteúdo original — intacto -->
-    <div class="container">
-        <h1>
-            Não   é   sobre   trazer   visitas.<br>
-            É   sobre   o   que   sua   página   faz   com   elas.
-        </h1>
-        <p>Detalhes fazem diferença — e nós levamos isso a sério.</p>
-        <div class="reveal">
-            <a href="/solucoes/" class="btn-primary">
-                Explorar Soluções <i data-lucide="arrow-right"></i>
-            </a>
-        </div>
+    <!-- Row 2 reverse -->
+    <div class="mtrack">
+      <div class="mrow rev">
+        <div class="sth"><img src="solarportifolio.webp" alt=""></div>
+        <div class="sth"><img src="imaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="karinaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="sth"><img src="lovisettoportifolio.webp" alt=""></div>
+        <div class="sth"><img src="psipaulamarques-portifolio.webp" alt=""></div>
+        <div class="sth"><img src="vrindaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="contabilidadesarruf.webp" alt=""></div>
+        <div class="sth"><img src="flaviaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="portfolio-massagem-braccioli.png" alt=""></div>
+        <div class="sth"><img src="portfolio-elisabeth.png" alt=""></div>
+        <div class="sth"><img src="solarportifolio.webp" alt=""></div>
+        <div class="sth"><img src="imaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="karinaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="sth"><img src="lovisettoportifolio.webp" alt=""></div>
+        <div class="sth"><img src="psipaulamarques-portifolio.webp" alt=""></div>
+        <div class="sth"><img src="vrindaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="contabilidadesarruf.webp" alt=""></div>
+        <div class="sth"><img src="flaviaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="portfolio-massagem-braccioli.png" alt=""></div>
+        <div class="sth"><img src="portfolio-elisabeth.png" alt=""></div>
+      </div>
     </div>
+    <!-- Row 3 slow -->
+    <div class="mtrack">
+      <div class="mrow slow">
+        <div class="sth"><img src="karinaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="flaviaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="imaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="lovisettoportifolio.webp" alt=""></div>
+        <div class="sth"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="sth"><img src="solarportifolio.webp" alt=""></div>
+        <div class="sth"><img src="psipaulamarques-portifolio.webp" alt=""></div>
+        <div class="sth"><img src="contabilidadesarruf.webp" alt=""></div>
+        <div class="sth"><img src="vrindaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="portfolio-massagem-braccioli.png" alt=""></div>
+        <div class="sth"><img src="portfolio-elisabeth.png" alt=""></div>
+        <div class="sth"><img src="karinaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="flaviaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="imaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="lovisettoportifolio.webp" alt=""></div>
+        <div class="sth"><img src="growthonportifolio-agencia-marketing.png" alt=""></div>
+        <div class="sth"><img src="solarportifolio.webp" alt=""></div>
+        <div class="sth"><img src="psipaulamarques-portifolio.webp" alt=""></div>
+        <div class="sth"><img src="contabilidadesarruf.webp" alt=""></div>
+        <div class="sth"><img src="vrindaportifolio.webp" alt=""></div>
+        <div class="sth"><img src="portfolio-massagem-braccioli.png" alt=""></div>
+        <div class="sth"><img src="portfolio-elisabeth.png" alt=""></div>
+      </div>
+    </div>
+    <div class="hero-fade"></div>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <div class="hero-badge"><span class="bdot"></span>Design que converte</div>
+    <h1>
+      Não é sobre trazer visitas.<br>
+      É sobre o que sua página<br>faz com elas.
+    </h1>
+    <p class="hero-sub">Detalhes fazem diferença — e nós levamos isso a sério.</p>
+    <div class="hero-acts">
+      <a href="/solucoes/" class="btn-s">
+        Explorar Soluções <i data-lucide="arrow-right" size="16"></i>
+      </a>
+      <a href="#testimonials" class="btn-o">
+        Ver trabalhos <i data-lucide="chevron-down" size="16"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span class="scroll-label">Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
 </header>
 
+<!-- ══ STATS ══ -->
 <section class="stats-bar">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-icon"><i data-lucide="zap"></i></div>
-                <div class="stat-value" data-target="99">0</div>
-                <div class="stat-desc">PageSpeed Insights</div>
-            </div>
-      <div class="stat-item">
-    <div class="stat-icon"><i data-lucide="headset"></i></div>
-    <!-- Adicionamos a classe suffix-h-plus aqui -->
-    <div class="stat-value suffix-h-plus" data-target="24">0</div>
-    <div class="stat-desc">Suporte 24h</div>
-</div>
-            <div class="stat-item">
-                <div class="stat-icon"><i data-lucide="code-2"></i></div>
-                <div class="stat-value" data-target="10">0</div>
-                <div class="stat-desc">Anos de Código</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i data-lucide="search"></i></div>
-                <div class="stat-value" data-target="100">0</div>
-                <div class="stat-desc">SEO Otimizado para Google</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-icon"><i data-lucide="shield-check"></i></div>
-                <div class="stat-value" data-target="100">0</div>
-                <div class="stat-desc">Design Responsivo Celular/Tablet</div>
-            </div>
-        </div>
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-icon"><i data-lucide="zap" size="22"></i></div>
+      <div class="stat-value" data-target="99" data-suf="">0</div>
+      <div class="stat-desc">PageSpeed Insights</div>
     </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i data-lucide="headset" size="22"></i></div>
+      <div class="stat-value" data-target="24" data-suf="h">0</div>
+      <div class="stat-desc">Suporte 24h</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i data-lucide="code-2" size="22"></i></div>
+      <div class="stat-value" data-target="10" data-suf="">0</div>
+      <div class="stat-desc">Anos de Código</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i data-lucide="search" size="22"></i></div>
+      <div class="stat-value" data-target="100" data-suf="">0</div>
+      <div class="stat-desc">SEO Otimizado para Google</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon"><i data-lucide="shield-check" size="22"></i></div>
+      <div class="stat-value" data-target="100" data-suf="%">0</div>
+      <div class="stat-desc">Design Responsivo Celular/Tablet</div>
+    </div>
+  </div>
 </section>
 
-    <!-- SEÇÃO DE DEPOIMENTOS - APPLE DESIGN SYSTEM -->
-    <section id="testimonials" class="section-padding bg-grey">
-        <div class="container">
-        <div class="section-header reveal">
-        <h2>O sucesso de quem <br><span style="color: #86868b">confiou em nosso trabalho.</span></h2>
+<!-- ══ TESTIMONIALS ══ -->
+<section id="testimonials" class="sp">
+  <div class="container">
+    <div class="t-hdr reveal">
+      <span class="eyebrow">Depoimentos</span>
+      <h2 class="sec-title">
+        O sucesso de quem<br>
+        <span class="dim">confiou em nosso trabalho.</span>
+      </h2>
     </div>
 
-        <div class="testimonials-grid">
-           
- <!-- 11: Massagem Braccioli -->
-<div class="testimonial-card reveal-card">
-    <div class="site-preview">
-        <div class="browser-dots"><span></span><span></span><span></span></div>
-        <a href="https://www.massagembraccioli.com.br" target="_blank" rel="noopener">
-            <img src="portfolio-massagem-braccioli.png" alt="Preview do site Massagem Braccioli">
-        </a>
-    </div>
-    <div class="testimonial-content">
-        <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-        <p class="testimonial-text">
-            "Depois que meu site ficou pronto, comecei a transmitir muito mais profissionalismo e confiança para meus pacientes. O visual ficou acolhedor, moderno e exatamente alinhado com a essência do meu trabalho como terapeuta."
-        </p>
-        <div class="testimonial-footer">
-            <span class="client-name">Espaço Braccioli</span>
-            <span style="color: #86868b" class="client-info">Saúde & Bem-estar</span>
+    <div class="t-grid">
+
+      <!-- Braccioli -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://www.massagembraccioli.com.br" target="_blank" rel="noopener">
+            <img src="portfolio-massagem-braccioli.png" alt="Massagem Braccioli">
+          </a>
         </div>
-    </div>
-</div>
-           
-            <!-- 01: Miguel - I.M.A -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://www.psipaulamarques.com.br" target="_blank">
-                    <img src="psipaulamarques-portifolio.webp" alt="Site da Psicóloga Paula Marques">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "Impressionada com a rapidez e a qualidade. O projeto foi entregue em tempo recorde e o visual superou todas as minhas expectativas. Excelente trabalho!"
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Dra Paula Marques</span>
-                        <span style="color: #86868b" class="client-info">Psicóloga Paula Marques</span>
-                    </div>
-                </div>
-            </div>
-           
-            <!-- 04: Flavia Cavalcante -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://www.flaviacavalcante.com.br" target="_blank">
-                    <img src="flaviaportifolio.webp" alt="Site Flavia Cavalcante">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "A TryWebDesign conseguiu traduzir minha visão em código. Hoje, minha vitrine digital condiz com o valor que entrego."
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Flavia Cavalcante</span>
-                        <span class="client-info">Artist & Tattooist</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 03: Karina Guimarães -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://psikarina.com.br" target="_blank">
-                    <img src="karinaportifolio.webp" alt="Site Karina Guimarães">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "A TryWebDesign traduziu perfeitamente minha essência em um site funcional e extremamente sofisticado. Estou muito satisfeita."
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Karina G. Medronho</span>
-                        <span class="client-info">Psicóloga & Des. Humano</span>
-                    </div>
-                </div>
-            </div>
-   
-            <!-- Depoimento: Lovisetto Contabilidade -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="#" target="_blank">
-                    <img src="lovisettoportifolio.webp" alt="Escritório de contabilidade Lovisetto">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    
-                    <div class="text-container collapsed" id="containerPatricia">
-                        <p class="testimonial-text">
-                            "O desenvolvimento do site da minha empresa de contabilidade foi essencial para fortalecer a imagem no mercado. O trabalho realizado pelo Mateus conseguiu transmitir com clareza, profissionalismo, organização e, principalmente, confiabilidade — fatores indispensáveis para quem atua na área contábil.
-                            <br><br>
-                            Após o lançamento do site, percebi uma melhora significativa na percepção dos clientes, que passaram a enxergar a empresa como mais sólida e bem posicionada. O site se tornou uma ferramenta estratégica para captação de clientes, apresentar os serviços oferecidos, reforçar a credibilidade e consolidar a presença no mercado.
-                            <br><br>
-                            Recomendo o trabalho do Mateus pela disponibilidade, competência, atenção aos detalhes e pela capacidade de traduzir a identidade da empresa em um ambiente digital claro e confiável"
-                        </p>
-                    </div>
-                    
-                    <button type="button" class="read-more-btn" onclick="togglePatricia(this)">
-                        <span>Mais Informações</span>
-                        <i data-lucide="chevron-down" size="14"></i>
-                    </button>
-
-                    <div class="testimonial-footer">
-                        <span class="client-name">Patricia</span>
-                        <span class="client-info">Gestão Contábil & Tributária</span>
-                    </div>
-                </div>
-            </div>
-           
-            <!-- 05: Kleber - Vrinda Bhumi -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://vrindabhumi.org" target="_blank">
-                    <img src="vrindaportifolio.webp" alt="Site Vrinda Bhumi">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "Conseguiram captar a paz do nosso retiro e transformar em uma experiência digital fluida. Excelente integração de sistema."
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Kleber</span>
-                        <span class="client-info">Vrinda Bhumi</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 06: Edmilson Roncari - Solar SP -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://www.solarsaopaulo.com" target="_blank">
-                    <img src="solarportifolio.webp" alt="Site Solar São Paulo">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "O impacto visual e a performance mudaram a forma como investidores nos enxergam. É a vitrine de alto nível que exigimos."
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Edmilson Roncari</span>
-                        <span class="client-info">Solar São Paulo</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 07: Contabilidade Sarruf -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://www.contabilidadesarruf.com.br" target="_blank">
-                    <img src="contabilidadesarruf.webp" alt="Site Contabilidade Sarruf">
-                    </a>    
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "O site ficou melhor que eu imaginava, gostei D+, superou as expectativas e o Mateus foi muito prestativo. Só tenho a agradecer, muito obrigada."
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Selma</span>
-                        <span class="client-info">Contabilidade Sarruf</span>
-                    </div>
-                </div>
-            </div>
-           
-            <!-- 09: Miguel - I.M.A -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://www.ima-marketing-digital.com.br/" target="_blank">
-                    <img src="imaportifolio.webp" alt="Site I.M.A Soluções">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "O site trouxe o nível de autoridade que a I.M.A precisava para escalar no digital. O design é impecável e muito rápido."
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Miguel</span>
-                        <span style="color: #86868b" class="client-info">I.M.A Soluções</span>
-                    </div>
-                </div>
-            </div>
-           
-            <!-- 08 Matheus GrowthOn -->
-            <div class="testimonial-card reveal-card">
-                <div class="site-preview">
-                    <div class="browser-dots"><span></span><span></span><span></span></div>
-                    <a href="https://www.growth-on.com/" target="_blank">
-                    <img src="growthonportifolio-agencia-marketing.png" alt="Site Growth On">
-                    </a>
-                </div>
-                <div class="testimonial-content">
-                    <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    <p class="testimonial-text">
-                        "Melhor site que já tive na vida. O Mateus é bom e comprometido."
-                    </p>
-                    <div class="testimonial-footer">
-                        <span class="client-name">Matheus</span>
-                        <span style="color: #86868b" class="client-info">Growth On Agência de Marketing</span>
-                    </div>
-                </div>
-            </div>
-            
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"Depois que meu site ficou pronto, comecei a transmitir muito mais profissionalismo e confiança para meus pacientes. O visual ficou acolhedor, moderno e exatamente alinhado com a essência do meu trabalho como terapeuta."</p>
+          <div class="tc-footer"><div class="tc-name">Espaço Braccioli</div><div class="tc-role">Saúde &amp; Bem-estar</div></div>
         </div>
+      </div>
+
+      <!-- Paula Marques -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://www.psipaulamarques.com.br" target="_blank" rel="noopener">
+            <img src="psipaulamarques-portifolio.webp" alt="Psicóloga Paula Marques">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"Impressionada com a rapidez e a qualidade. O projeto foi entregue em tempo recorde e o visual superou todas as minhas expectativas. Excelente trabalho!"</p>
+          <div class="tc-footer"><div class="tc-name">Dra. Paula Marques</div><div class="tc-role">Psicóloga Paula Marques</div></div>
+        </div>
+      </div>
+
+      <!-- Flavia -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://www.flaviacavalcante.com.br" target="_blank" rel="noopener">
+            <img src="flaviaportifolio.webp" alt="Flavia Cavalcante">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"A TryWebDesign conseguiu traduzir minha visão em código. Hoje, minha vitrine digital condiz com o valor que entrego."</p>
+          <div class="tc-footer"><div class="tc-name">Flavia Cavalcante</div><div class="tc-role">Artist &amp; Tattooist</div></div>
+        </div>
+      </div>
+
+      <!-- Karina -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://psikarina.com.br" target="_blank" rel="noopener">
+            <img src="karinaportifolio.webp" alt="Karina Guimarães">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"A TryWebDesign traduziu perfeitamente minha essência em um site funcional e extremamente sofisticado. Estou muito satisfeita."</p>
+          <div class="tc-footer"><div class="tc-name">Karina G. Medronho</div><div class="tc-role">Psicóloga &amp; Des. Humano</div></div>
+        </div>
+      </div>
+
+      <!-- Lovisetto -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="#" target="_blank">
+            <img src="lovisettoportifolio.webp" alt="Lovisetto Contabilidade">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p id="txt-pat" class="tc-text txt-col">
+            "O desenvolvimento do site da minha empresa de contabilidade foi essencial para fortalecer a imagem no mercado. O trabalho realizado pelo Mateus conseguiu transmitir com clareza, profissionalismo, organização e, principalmente, confiabilidade — fatores indispensáveis para quem atua na área contábil.<br><br>
+            Após o lançamento do site, percebi uma melhora significativa na percepção dos clientes, que passaram a enxergar a empresa como mais sólida e bem posicionada. O site se tornou uma ferramenta estratégica para captação de clientes, apresentar os serviços oferecidos, reforçar a credibilidade e consolidar a presença no mercado.<br><br>
+            Recomendo o trabalho do Mateus pela disponibilidade, competência, atenção aos detalhes e pela capacidade de traduzir a identidade da empresa em um ambiente digital claro e confiável."
+          </p>
+          <button class="readmore" onclick="toggleRead('txt-pat',this)">
+            Ler mais <i data-lucide="chevron-down" size="13"></i>
+          </button>
+          <div class="tc-footer"><div class="tc-name">Patricia</div><div class="tc-role">Gestão Contábil &amp; Tributária</div></div>
+        </div>
+      </div>
+
+      <!-- Vrinda -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://vrindabhumi.org" target="_blank" rel="noopener">
+            <img src="vrindaportifolio.webp" alt="Vrinda Bhumi">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"Conseguiram captar a paz do nosso retiro e transformar em uma experiência digital fluida. Excelente integração de sistema."</p>
+          <div class="tc-footer"><div class="tc-name">Kleber</div><div class="tc-role">Vrinda Bhumi</div></div>
+        </div>
+      </div>
+
+      <!-- Solar SP -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://www.solarsaopaulo.com" target="_blank" rel="noopener">
+            <img src="solarportifolio.webp" alt="Solar São Paulo">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"O impacto visual e a performance mudaram a forma como investidores nos enxergam. É a vitrine de alto nível que exigimos."</p>
+          <div class="tc-footer"><div class="tc-name">Edmilson Roncari</div><div class="tc-role">Solar São Paulo</div></div>
+        </div>
+      </div>
+
+      <!-- Sarruf -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://www.contabilidadesarruf.com.br" target="_blank" rel="noopener">
+            <img src="contabilidadesarruf.webp" alt="Contabilidade Sarruf">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"O site ficou melhor que eu imaginava, gostei D+, superou as expectativas e o Mateus foi muito prestativo. Só tenho a agradecer, muito obrigada."</p>
+          <div class="tc-footer"><div class="tc-name">Selma</div><div class="tc-role">Contabilidade Sarruf</div></div>
+        </div>
+      </div>
+
+      <!-- IMA -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://www.ima-marketing-digital.com.br/" target="_blank" rel="noopener">
+            <img src="imaportifolio.webp" alt="IMA Soluções">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"O site trouxe o nível de autoridade que a I.M.A precisava para escalar no digital. O design é impecável e muito rápido."</p>
+          <div class="tc-footer"><div class="tc-name">Miguel</div><div class="tc-role">I.M.A Soluções</div></div>
+        </div>
+      </div>
+
+      <!-- GrowthOn -->
+      <div class="tc">
+        <div class="tc-preview">
+          <div class="bc"><span class="bd r"></span><span class="bd y"></span><span class="bd g"></span></div>
+          <a href="https://www.growth-on.com/" target="_blank" rel="noopener">
+            <img src="growthonportifolio-agencia-marketing.png" alt="Growth On">
+          </a>
+        </div>
+        <div class="tc-body">
+          <div class="tc-qi"><i data-lucide="quote" size="18"></i></div>
+          <p class="tc-text">"Melhor site que já tive na vida. O Mateus é bom e comprometido."</p>
+          <div class="tc-footer"><div class="tc-name">Matheus</div><div class="tc-role">Growth On Agência de Marketing</div></div>
+        </div>
+      </div>
+
     </div>
+  </div>
 </section>
 
+<!-- ══ CONTACT ══ -->
+<section id="contato" class="sp">
+  <div class="container">
+    <div class="cg">
 
-<section id="contato" class="section-padding-refined bg-grey">
-    
-    <!-- Glow de Fundo Posicionado Estrategicamente para fechar o layout -->
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: rgba(0, 113, 227, 0.03); filter: blur(120px); border-radius: 50%; pointer-events: none;"></div>
+      <!-- LEFT -->
+      <div class="reveal">
+        <div class="c-status"><span class="spulse"></span>Aceitando novos projetos</div>
+        <h2 class="c-title">
+          Vamos tirar a sua ideia<br>do <span class="accent">papel?</span>
+        </h2>
+        <p class="c-desc">Desenvolvimento de sites de alto padrão para empresas que buscam qualidade.</p>
+        <div class="spec-row">
+          <div class="spec-av"><img src="foto_perfil_mateus.webp" alt="Mateus Mariano"></div>
+          <div class="spec-inf">
+            <strong>Mateus M. Mariano</strong>
+            <span>Especialista em Criação de Sites e SEO</span>
+          </div>
+        </div>
+        <div class="c-btns">
+          <a href="https://wa.me/5544999761842?text=Olá,%20necessito%20de%20um%20orçamento%20da%20TryWebDesign" class="c-btn">
+            <div class="c-btn-icon i-wa"><i data-lucide="message-circle" size="16"></i></div>
+            WhatsApp
+          </a>
+          <a href="mailto:atendimentotrywebdesign@gmail.com" class="c-btn">
+            <div class="c-btn-icon i-mail"><i data-lucide="mail" size="16"></i></div>
+            E-mail
+          </a>
+        </div>
+      </div>
 
-    <div class="container">
-        <div class="contact-flex-refined">
-            
-            <!-- LADO ESQUERDO: CONTEÚDO CONDENSADO -->
-            <div class="reveal">
-                <div class="status-pill-pro">
-                    <span class="pulse-dot"></span>
-                </div>
-                
-                <h2 class="title-contact-pro">Vamos tirar a sua ideia do <span class="blue-text">papel?</span></span></h2>
-
-                <p class="description-contact-pro">Desenvolvimento de sites de alto padrão para empresas que buscam qualidade.</p>
-                
-                <div class="specialist-box-refined">
-                    <img src="foto_perfil_mateus.webp" alt="Mateus Mariano">
-                    <div class="spec-text">
-                        <strong>Mateus M. Mariano</strong>
-                        <span>Especialista em Criação de Sites e Otimização SEO</span>
-                    </div>
-                </div>
-
-                <div class="contact-widgets-grid">
-                    <a href="https://wa.me/5544999761842?text=Olá,%20necessito%20de%20um%20orçamento%20da%20TryWebDesign" class="widget-mini">
-                        <div class="w-icon wa"><i data-lucide="message-circle" size="18"></i></div>
-                        <span>WhatsApp</span>
-                    </a>
-                    <a href="mailto:atendimentotrywebdesign@gmail.com" class="widget-mini">
-                        <div class="w-icon mail"><i data-lucide="mail" size="18"></i></div>
-                        <span>E-mail</span>
-                    </a>
-                </div>
+      <!-- RIGHT -->
+      <div class="reveal">
+        <div class="form-card">
+          <div class="form-top">
+            <div class="form-top-dots"><span></span><span></span><span></span></div>
+            <span class="form-title">Iniciar Projeto</span>
+            <span class="form-sub">Resposta em até 24h</span>
+          </div>
+          <div class="form-body">
+            <form id="pForm">
+              <input type="hidden" name="access_key" value="0b16ed46-9c5c-4f5b-b192-89c76fce3640">
+              <div class="field"><input type="text" name="name" placeholder="Nome ou Empresa"></div>
+              <div class="field"><input type="text" name="contact" placeholder="E-mail ou WhatsApp"></div>
+              <div class="field"><textarea name="message" rows="3" placeholder="Qual o seu objetivo?"></textarea></div>
+              <button type="submit" class="btn-sub">
+                <span>ENVIAR SOLICITAÇÃO</span>
+                <i data-lucide="arrow-right" size="16"></i>
+              </button>
+            </form>
+            <div id="success-box">
+              <div class="success-icon"><i data-lucide="party-popper" size="44"></i></div>
+              <h3>Recebemos seu contato!</h3>
+              <p>Mateus Mariano analisará sua ideia em breve.</p>
             </div>
-
-            <!-- LADO DIREITO: PORTAL DE CONSULTORIA (PROPORCIONAL) -->
-            <div class="reveal">
-              
-            <div class="consultancy-portal-refined">
-    <div class="portal-header">
-        <div class="window-controls"><span></span><span></span><span></span></div>
-        <h3>Iniciar Projeto</h3>
-        <p>Análise técnica em até 24h.</p>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <!-- 1. Dei um ID para o form e tirei o 'required' dos campos -->
-    <form id="meuFormulario" class="form-refined">
-        <input type="hidden" name="access_key" value="0b16ed46-9c5c-4f5b-b192-89c76fce3640">
-        
-        <div class="field-refined">
-            <input type="text" name="name" placeholder="Nome ou Empresa">
-        </div>
-        <div class="field-refined">
-            <input type="text" name="contact" placeholder="E-mail ou WhatsApp">
-        </div>
-        <div class="field-refined">
-            <textarea name="message" rows="3" placeholder="Qual o seu objetivo?"></textarea>
-        </div>
-
-        <button type="submit" class="btn-portal-refined">
-            <span>ENVIAR SOLICITAÇÃO</span>
-            <i data-lucide="arrow-right" size="16"></i>
-        </button>
-    </form>
-
-    <!-- 2. Mensagem de Sucesso que começa escondida (display: none) -->
-    <div id="agradecimento" style="display: none; text-align: center; padding: 40px 20px;">
-        <i data-lucide="party-popper" size="48" style="color: #0071e3; margin-bottom: 20px;"></i>
-        <h3 style="font-size: 24px;">Recebemos seu contato!</h3>
-        <p style="color: #86868b; margin-top: 10px;">Mateus Mariano analisará sua ideia em breve.</p>
-    </div>
-</div>
-
-
-            </div>
-
-        </div>
-    </div>
+  </div>
 </section>
 
-   <footer id="main-footer"></footer>
+<!-- ══ FOOTER ══ -->
+<footer id="main-footer"></footer>
 
-    <script>
-        lucide.createIcons();
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Seguir mouse com brilho
-        const glow = document.getElementById('mouseGlow');
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-
-        window.addEventListener('load', () => {
-            // Animação Entrada Navbar
-            gsap.to("#navbar", { y: 0, duration: 1.2, ease: "power4.out", delay: 0.2 });
-
-            // Animação Título Hero (Efeito de Escrita/Fade)
-            gsap.from("#heroTitle", { opacity: 0, y: 40, duration: 1.5, ease: "power4.out" });
-
-            // Revelação Geral ao Scroll
-            gsap.utils.toArray(".reveal").forEach(el => {
-                gsap.to(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 85%",
-                    },
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power3.out"
-                });
-            });
-
-            // Parallax Suave no Portifólio
-            gsap.utils.toArray(".portfolio-img").forEach(img => {
-                gsap.to(img, {
-                    scrollTrigger: {
-                        trigger: img,
-                        scrub: 1.5,
-                        start: "top bottom",
-                    },
-                    y: -40
-                });
-            });
-        });
-    </script>
- <script>
-    // 1. Inicialização de Ícones
-    lucide.createIcons();
-
-    // 2. Registro do GSAP
-    if (typeof gsap !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
-    }
-
-    // 3. Função de Contagem dos Números (Intersection Observer)
-    function iniciarContadores() {
-        const todosOsNumeros = document.querySelectorAll(".stat-value");
-        
-        const observador = new IntersectionObserver((entradas) => {
-            entradas.forEach(entrada => {
-                if (entrada.isIntersecting) {
-                    const elemento = entrada.target;
-                    const valorFinal = parseInt(elemento.getAttribute("data-target"));
-                    let valorAtual = 0;
-                    const duracao = 2000; 
-                    const incremento = valorFinal / (duracao / 16);
-
-                    function atualizar() {
-                        valorAtual += incremento;
-                        if (valorAtual < valorFinal) {
-                            elemento.innerText = Math.floor(valorAtual);
-                            requestAnimationFrame(atualizar);
-                        } else {
-                            elemento.innerText = valorFinal;
-                        }
-                    }
-                    atualizar();
-                    observador.unobserve(elemento);
-                }
-            });
-        }, { threshold: 0.5 });
-
-        todosOsNumeros.forEach(num => observador.observe(num));
-    }
-
-    // 4. Animações de Entrada (GSAP)
-    function iniciarAnimacoesGSAP() {
-        if (typeof gsap !== "undefined") {
-            const titulo = document.querySelector("#heroTitle");
-            if (titulo) {
-                gsap.from(titulo, { opacity: 0, y: 30, duration: 1, ease: "power3.out" });
-            }
-
-            gsap.utils.toArray(".reveal").forEach(el => {
-                gsap.to(el, {
-                    scrollTrigger: { trigger: el, start: "top 90%" },
-                    opacity: 1, y: 0, duration: 1
-                });
-            });
-        }
-    }
-
-    // 5. Brilho do Mouse (Renomeado para evitar o erro "vermelho")
-    function iniciarBrilhoMouse() {
-        const elementoGlow = document.getElementById('mouseGlow');
-        if (elementoGlow) {
-            document.addEventListener('mousemove', (evento) => {
-                elementoGlow.style.left = evento.clientX + 'px';
-                elementoGlow.style.top = evento.clientY + 'px';
-            });
-        }
-    }
-
-    // Execução após carregar a página
-    window.addEventListener('DOMContentLoaded', () => {
-        iniciarContadores();
-        iniciarAnimacoesGSAP();
-        iniciarBrilhoMouse();
-    });
-    // Espera o formulário ser enviado
-document.getElementById('meuFormulario').addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede de sair da página
-
-    const form = this;
-    const btn = form.querySelector('button');
-    btn.innerText = "ENVIANDO...";
-
-    // Envia os dados para o Web3Forms em segundo plano
-    const formData = new FormData(form);
-    fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-    }).then(response => {
-        
-        // ANIMAÇÃO: Some com o form e aparece o agradecimento
-        gsap.to(form, { opacity: 0, y: -20, duration: 0.5, onComplete: () => {
-            form.style.display = "none";
-            const msg = document.getElementById('agradecimento');
-            msg.style.display = "block";
-            
-            // Faz a mensagem aparecer "pulando" na tela
-            gsap.from(msg, { opacity: 0, scale: 0.5, duration: 0.8, ease: "back.out(1.7)" });
-
-            // SOLTA OS CONFETES (O toque interativo legal!)
-            confetti({
-                particleCount: 150,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#0071e3', '#ffffff']
-            });
-        }});
-    });
-});
-</script>
-<script src="script.js"></script>    
-<script defer src="/_vercel/insights/script.js"></script>
-<!-- Botões Flutuantes -->
+<!-- ══ FLOAT BTNS ══ -->
 <div class="floating-buttons">
-  
   <a href="https://www.instagram.com/try.web.design" target="_blank" class="float-btn instagram" title="Instagram">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.063 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.265.058-1.645.069-4.85.069s-3.584-.012-4.849-.069c-1.366-.063-2.633-.335-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.334-2.633 1.31-3.608C4.518 2.497 5.785 2.225 7.151 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.085-1.857-.601-3.699-1.942-5.04C20.698.673 18.856.157 17 .072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.063 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.265.058-1.645.069-4.85.069s-3.584-.012-4.849-.069c-1.366-.063-2.633-.335-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.334-2.633 1.31-3.608C4.518 2.497 5.785 2.225 7.151 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.085-1.857-.601-3.699-1.942-5.04C20.698.673 18.856.157 17 .072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
   </a>
   <a href="https://www.facebook.com/profile.php?id=61579022016363" target="_blank" class="float-btn facebook" title="Facebook">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
   </a>
 </div>
-    </body>
+
+<!-- ══════ SCRIPTS ══════ -->
+<script>
+/* ── CURSOR ── */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('ring');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animate(){
+  cur.style.left = mx+'px'; cur.style.top = my+'px';
+  rx += (mx-rx)*0.11; ry += (my-ry)*0.11;
+  ring.style.left = rx+'px'; ring.style.top = ry+'px';
+  requestAnimationFrame(animate);
+})();
+document.querySelectorAll('a,button,[role="button"]').forEach(el=>{
+  el.addEventListener('mouseenter', ()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave', ()=>document.body.classList.remove('hov'));
+});
+
+/* ── NAVBAR SCROLL ── */
+const nb = document.getElementById('navbar');
+window.addEventListener('scroll', ()=>{ nb.classList.toggle('stuck', window.scrollY>40); }, {passive:true});
+
+/* ── COUNTERS ── */
+const cObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target, t=+el.dataset.target, suf=el.dataset.suf||'';
+    const step=t/(2200/16);
+    let v=0;
+    const go=()=>{ v=Math.min(v+step,t); el.textContent=Math.floor(v)+suf; v<t&&requestAnimationFrame(go); };
+    go(); cObs.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-value').forEach(el=>cObs.observe(el));
+
+/* ── REVEAL ── */
+const rObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('in');rObs.unobserve(e.target);} });
+},{threshold:.1, rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>rObs.observe(el));
+
+/* ── CARD STAGGER ── */
+const kObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const delay = (+e.target.dataset.i % 3) * 80;
+      setTimeout(()=>e.target.classList.add('in'), delay);
+      kObs.unobserve(e.target);
+    }
+  });
+},{threshold:.1, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.tc').forEach((c,i)=>{ c.dataset.i=i; kObs.observe(c); });
+
+/* ── CARD TILT ── */
+document.querySelectorAll('.tc').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`translateY(-8px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
+    card.style.transition='transform 0.08s';
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+    card.style.transition='opacity .75s var(--ease-e),transform .75s var(--ease-e),border-color .3s,box-shadow .35s,background .3s';
+  });
+});
+
+/* ── READ MORE ── */
+function toggleRead(id, btn){
+  const el=document.getElementById(id);
+  const col=el.classList.toggle('txt-col');
+  btn.innerHTML = col
+    ? 'Ler mais <i data-lucide="chevron-down" size="13"></i>'
+    : 'Ler menos <i data-lucide="chevron-up" size="13"></i>';
+  lucide.createIcons({nodes:[btn]});
+}
+
+/* ── FORM ── */
+document.getElementById('pForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const btn=this.querySelector('.btn-sub');
+  btn.innerHTML='<span>ENVIANDO...</span>';
+  btn.disabled=true;
+  fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)})
+    .then(()=>{
+      this.style.cssText='opacity:0;transform:translateY(-14px);transition:all .4s;';
+      setTimeout(()=>{
+        this.style.display='none';
+        const box=document.getElementById('success-box');
+        box.style.cssText='display:block;opacity:0;transform:scale(.9);transition:all .55s var(--ease-s)';
+        requestAnimationFrame(()=>{ box.style.opacity='1'; box.style.transform='scale(1)'; });
+        confetti({particleCount:160,spread:72,origin:{y:.6},colors:['#2563eb','#ffffff','#818cf8']});
+      },440);
+    });
+});
+
+/* ── ICONS ── */
+window.addEventListener('DOMContentLoaded',()=>lucide.createIcons());
+</script>
+
+<script src="script.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
 </html>
