@@ -261,6 +261,43 @@
       position: relative;
       z-index: 4; /* Texto e Botão no topo de tudo */
     }
+      /* Configuração da seção de Depoimentos com imagem de fundo */
+#testimonials {
+    position: relative;
+    overflow: hidden;
+    /* Removendo a cor sólida cinza para a imagem aparecer melhor, 
+       ou mantendo uma base escura */
+    background-color: #0a0a0a !important; 
+}
+
+#testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('backfundo.png'); /* Verifique se o nome está correto */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* TRANSPARÊNCIA: 0.1 é bem sutil, 0.3 aparece mais */
+    opacity: 0.15; 
+    
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Garante que o conteúdo (texto e cards) fique ACIMA da imagem */
+#testimonials .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Ajuste opcional: deixar os cards um pouco mais vibrantes contra o novo fundo */
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
     </style>
 </head>
 <body>
