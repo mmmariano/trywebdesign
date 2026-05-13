@@ -417,6 +417,62 @@
 .client-info {
     color: rgba(255, 255, 255, 0.6) !important;
 }
+      /* =====================================================
+   SEÇÃO DEPOIMENTOS - VERSÃO CLARA (APPLE LIGHT)
+===================================================== */
+#testimonials {
+    position: relative !important;
+    /* Um cinza bem claro e limpo */
+    background-color: #f5f5f7 !important; 
+    overflow: hidden;
+    padding: 100px 0;
+}
+
+#testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('backfundo.png');
+    background-size: cover;
+    background-position: center;
+    /* Opacidade equilibrada para aparecer no fundo claro */
+    opacity: 0.4; 
+    z-index: 0;
+}
+
+/* Títulos em cor grafite escuro (melhor leitura no claro) */
+#testimonials h2 {
+    color: #1d1d1f !important;
+    position: relative;
+    z-index: 1;
+}
+
+#testimonials h2 span {
+    color: #86868b !important; 
+}
+
+/* Cards com efeito de vidro branco */
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.7) !important; 
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Textos dos depoimentos em cinza escuro */
+.testimonial-text {
+    color: #424245 !important;
+}
+
+.client-name {
+    color: #1d1d1f !important;
+}
+
+.client-info {
+    color: #86868b !important;
+}
     </style>
 </head>
 <body>
