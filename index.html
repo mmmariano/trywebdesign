@@ -298,6 +298,65 @@
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
+      /* =====================================================
+   ESTILO DA SEÇÃO DEPOIMENTOS (FUNDO + CORES)
+===================================================== */
+
+/* 1. Aplicando o fundo escuro e a imagem */
+#testimonials {
+    position: relative !important;
+    background-color: #050505 !important; /* Fundo preto para as letras brancas brilharem */
+    overflow: hidden;
+}
+
+#testimonials::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('backfundo.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.25; /* Transparência da imagem */
+    z-index: 0;
+}
+
+/* 2. Deixando o Título e subtítulo Brancos */
+#testimonials h2 {
+    color: #ffffff !important;
+    position: relative;
+    z-index: 1;
+}
+
+#testimonials h2 span {
+    color: rgba(255, 255, 255, 0.55) !important; /* Branco suave para o efeito Apple */
+}
+
+/* 3. Ajustando os Cards para ficarem visíveis no fundo escuro */
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.05) !important; /* Fundo do card semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    position: relative;
+    z-index: 1;
+}
+
+/* 4. Cores dos textos dentro dos cards */
+.testimonial-text {
+    color: #f5f5f7 !important; /* Branco acinzentado (estilo Apple) */
+}
+
+.client-name {
+    color: #ffffff !important; /* Nome do cliente branco puro */
+}
+
+.client-info {
+    color: rgba(255, 255, 255, 0.5) !important; /* Info do cliente cinza claro */
+}
+
+/* Ícone de aspas */
+.quote-icon i {
+    color: #0071e3 !important; /* Mantém o azul do destaque */
+}
     </style>
 </head>
 <body>
