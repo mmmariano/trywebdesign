@@ -223,6 +223,44 @@
   z-index: -1; /* Garante que fique atrás de tudo, inclusive das faixas animadas */
   pointer-events: none;
 }
+      /* 1. Ajuste na base do Hero */
+    .hero {
+      position: relative !important;
+      overflow: hidden !important;
+      background: #050505 !important; /* Cor de fundo caso a imagem falhe */
+    }
+
+    /* 2. Camada da Imagem de Fundo (backfundo.png) */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('backfundo.png'); /* Verifique se o nome do arquivo está correto */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.2; /* Ajuste aqui a transparência (0.1 a 0.9) */
+      z-index: 0;   /* Fica na base, atrás de tudo */
+      pointer-events: none;
+    }
+
+    /* 3. Garantir que as outras camadas fiquem acima da imagem */
+    .hero-bg-layer {
+      z-index: 1; /* Sites se movendo */
+    }
+
+    .hero-overlay {
+      z-index: 2; /* Sombra preta para dar leitura ao texto */
+    }
+
+    .hero-glow {
+      z-index: 3; /* Brilhos azul/ciano */
+    }
+
+    .hero > .container {
+      position: relative;
+      z-index: 4; /* Texto e Botão no topo de tudo */
+    }
     </style>
 </head>
 <body>
