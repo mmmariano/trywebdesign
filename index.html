@@ -473,7 +473,42 @@
 .client-info {
     color: #86868b !important;
 }
+      .hero-subtitle {
+  font-size: 1.35rem;
+  line-height: 1.7;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.96),
+    rgba(180,180,185,0.75)
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  max-width: 720px;
+  margin: 28px auto 0;
+
+  opacity: 0;
+  transform: translateY(30px);
+
+  text-shadow:
+    0 2px 12px rgba(0,0,0,0.5);
+
+  will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.05rem;
+    padding: 0 18px;
+    line-height: 1.6;
+  }
+}
     </style>
+  
 </head>
 <body>
 <div class="mouse-glow" id="mouseGlow"></div>
@@ -585,7 +620,9 @@
             Não   é   sobre   trazer   visitas.<br>
             É   sobre   o   que   sua   página   faz   com   elas.
         </h1>
-        <p>Detalhes fazem diferença — e nós levamos isso a sério.</p>
+        <p class="hero-subtitle">
+  Detalhes fazem diferença — e nós levamos isso a sério.
+</p>
         <div class="reveal">
             <a href="/solucoes/" class="btn-primary">
                 Explorar Soluções <i data-lucide="arrow-right"></i>
@@ -940,6 +977,27 @@
    <footer id="main-footer"></footer>
 
     <script>
+      window.addEventListener('load', () => {
+
+  // animação suave cinematográfica
+  gsap.to(".hero-subtitle", {
+    opacity: 1,
+    y: 0,
+    duration: 1.4,
+    ease: "power4.out",
+    delay: 0.6
+  });
+
+  // leve brilho respirando
+  gsap.to(".hero-subtitle", {
+    textShadow: "0 0 24px rgba(255,255,255,0.18)",
+    duration: 2.5,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+
+});
         lucide.createIcons();
         gsap.registerPlugin(ScrollTrigger);
 
