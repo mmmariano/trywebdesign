@@ -199,6 +199,30 @@
       .marquee-row.marquee-reverse,
       .marquee-row.marquee-slow { animation: none; }
     }
+      /* 1. Atualize a classe .hero existente */
+.hero {
+  position: relative !important;
+  overflow: hidden !important;
+  background: #050505 !important; /* Cor de fundo base (preto) */
+}
+
+/* 2. Adicione este novo bloco logo abaixo do .hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* Ocupa todo o espaço do hero */
+  background-image: url('backfundo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* CONTROLE DE TRANSPARÊNCIA: 
+     0.1 = muito transparente | 0.5 = meio termo | 0.9 = quase opaco */
+  opacity: 0.2; 
+  
+  z-index: -1; /* Garante que fique atrás de tudo, inclusive das faixas animadas */
+  pointer-events: none;
+}
     </style>
 </head>
 <body>
