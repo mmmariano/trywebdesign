@@ -507,6 +507,34 @@
     line-height: 1.6;
   }
 }
+      .hero-subtitle {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  max-width: 780px;
+  margin: 28px auto 0;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(25px);
+
+  text-shadow:
+    0 4px 18px rgba(0,0,0,0.65),
+    0 0 30px rgba(0,0,0,0.35);
+
+  will-change: transform, opacity;
+}
+      @media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.2rem;
+    padding: 0 20px;
+    line-height: 1.6;
+  }
+}
     </style>
   
 </head>
@@ -976,22 +1004,28 @@
 
    <footer id="main-footer"></footer>
 
-    <script>
-      window.addEventListener('load', () => {
+    <script>window.addEventListener('load', () => {
 
-  // animação suave cinematográfica
-  gsap.to(".hero-subtitle", {
-    opacity: 1,
-    y: 0,
-    duration: 1.4,
-    ease: "power4.out",
-    delay: 0.6
-  });
+  gsap.fromTo(".hero-subtitle",
+    {
+      opacity: 0,
+      y: 40,
+      scale: 0.98
+    },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.4
+    }
+  );
 
-  // leve brilho respirando
+  // leve “respiração” de destaque (bem sutil)
   gsap.to(".hero-subtitle", {
-    textShadow: "0 0 24px rgba(255,255,255,0.18)",
-    duration: 2.5,
+    textShadow: "0 6px 25px rgba(0,0,0,0.75)",
+    duration: 2.8,
     repeat: -1,
     yoyo: true,
     ease: "sine.inOut"
