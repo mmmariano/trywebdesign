@@ -535,6 +535,43 @@
     line-height: 1.6;
   }
 }
+      .hero-subtitle {
+  /* Mesma fonte do título principal */
+  font-family: 'Plus Jakarta Sans', sans-serif; 
+  
+  font-size: 1.8rem; /* Aumentado levemente para mais impacto */
+  line-height: 1.4;
+  font-weight: 600; /* Peso semi-bold para autoridade */
+  letter-spacing: -0.03em; /* Estilo Apple: letras levemente juntas */
+
+  /* Efeito de cor: Branco com uma leve transparência para elegância */
+  color: #ffffff;
+  
+  max-width: 800px;
+  margin: 24px auto 0;
+  text-align: center;
+
+  /* Mantendo as preparações para a animação GSAP */
+  opacity: 0;
+  transform: translateY(25px);
+
+  /* Sombra estratégica para destacar sobre o fundo dinâmico */
+  text-shadow: 
+    0 2px 10px rgba(0,0,0,0.8),
+    0 0 20px rgba(0,0,0,0.4) !important;
+
+  will-change: transform, opacity;
+}
+
+/* Ajuste específico para Mobile */
+@media (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    padding: 0 20px;
+    font-weight: 500;
+  }
+}
     </style>
   
 </head>
