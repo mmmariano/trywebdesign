@@ -560,6 +560,309 @@
     font-weight: 600 !important;
   }
 }
+
+    /* =====================================================
+       SEÇÃO: SITES QUE APARECEM EM PRIMEIRO LUGAR NO GOOGLE
+       Estilos exclusivos com prefixo #seo-results para não
+       conflitar com nenhum estilo existente na página.
+    ===================================================== */
+    #seo-results {
+      position: relative;
+      background: #050505;
+      overflow: hidden;
+      padding: 100px 0;
+    }
+    #seo-results::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, rgba(0,113,227,0.6), transparent);
+      pointer-events: none;
+    }
+    .seo-glow-el {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      width: 800px; height: 500px;
+      background: radial-gradient(ellipse, rgba(0,113,227,0.10) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      filter: blur(80px);
+    }
+    #seo-results .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .seo-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,113,227,0.12);
+      border: 1px solid rgba(0,113,227,0.30);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5eb0ff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 auto 28px;
+    }
+    .seo-badge-pill::before {
+      content: "";
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #5eb0ff;
+      box-shadow: 0 0 8px #5eb0ff;
+      animation: seoPulseDot 2s ease-in-out infinite;
+    }
+    @keyframes seoPulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.8); }
+    }
+    .seo-heading {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      color: #f5f5f7;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+    }
+    .seo-heading .seo-accent {
+      background: linear-gradient(135deg, #0071e3 0%, #5eb0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .seo-desc {
+      font-size: 1.1rem;
+      color: rgba(245,245,247,0.55);
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 56px;
+    }
+    .seo-main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    /* Card da screenshot do Google */
+    .seo-proof-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .seo-browser-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .seo-browser-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 40px 100px rgba(0,113,227,0.18);
+    }
+    .seo-browser-top {
+      background: rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .seo-dots {
+      display: flex;
+      gap: 5px;
+    }
+    .seo-dots span {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+    }
+    .seo-dots span:nth-child(1) { background: #ff5f56; }
+    .seo-dots span:nth-child(2) { background: #ffbd2e; }
+    .seo-dots span:nth-child(3) { background: #27c93f; }
+    .seo-url-bar {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 12px;
+      color: rgba(245,245,247,0.45);
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .seo-screenshot-wrap {
+      position: relative;
+    }
+    .seo-screenshot-wrap img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .seo-rank-badge {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(5,5,5,0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,215,0,0.35);
+      border-radius: 12px;
+      padding: 10px 16px;
+    }
+    .seo-rank-emoji {
+      font-size: 26px;
+      line-height: 1;
+    }
+    .seo-rank-label strong {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffd700;
+      letter-spacing: 0.06em;
+    }
+    .seo-rank-label span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+    }
+    .seo-caption {
+      font-size: 12px;
+      color: rgba(245,245,247,0.28);
+      text-align: center;
+      margin: 0;
+    }
+    /* Cards de diferenciais */
+    .seo-features-col {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .seo-feat-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .seo-feat-card:hover {
+      background: rgba(0,113,227,0.07);
+      border-color: rgba(0,113,227,0.22);
+    }
+    .seo-feat-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+    .seo-feat-icon.ic-gold  { background: rgba(255,215,0,0.12); }
+    .seo-feat-icon.ic-blue  { background: rgba(0,113,227,0.15); }
+    .seo-feat-icon.ic-green { background: rgba(52,199,89,0.12); }
+    .seo-feat-icon.ic-teal  { background: rgba(90,200,250,0.12); }
+    .seo-feat-text strong {
+      display: block;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f5f5f7;
+      margin-bottom: 4px;
+    }
+    .seo-feat-text span {
+      font-size: 0.88rem;
+      color: rgba(245,245,247,0.48);
+      line-height: 1.5;
+    }
+    /* CTA */
+    .seo-cta-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 6px;
+      flex-wrap: wrap;
+    }
+    .seo-cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0071e3;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .seo-cta-link:hover {
+      background: #005cbf;
+      transform: translateY(-2px);
+    }
+    .seo-cta-note {
+      font-size: 13px;
+      color: rgba(245,245,247,0.38);
+    }
+    /* Faixa de clientes */
+    .seo-clients-belt {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .seo-clients-label {
+      font-size: 12px;
+      color: rgba(245,245,247,0.30);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .seo-clients-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .seo-client-tag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      padding: 7px 18px;
+      font-size: 13px;
+      color: rgba(245,245,247,0.45);
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .seo-client-tag:hover {
+      color: #f5f5f7;
+      border-color: rgba(255,255,255,0.18);
+    }
+    @media (max-width: 768px) {
+      #seo-results { padding: 70px 0; }
+      .seo-main-grid { grid-template-columns: 1fr; }
+      .seo-features-col { order: -1; }
+      .seo-heading { font-size: 2rem; }
+    }
     </style>
   
 </head>
@@ -715,6 +1018,121 @@
         </div>
     </div>
 </section>
+
+<!-- =====================================================
+     NOVA SEÇÃO: SITES QUE APARECEM EM 1º LUGAR NO GOOGLE
+     Inserida após .stats-bar — nenhum código existente foi alterado
+===================================================== -->
+<section id="seo-results">
+  <div class="seo-glow-el" aria-hidden="true"></div>
+  <div class="container">
+
+    <!-- Cabeçalho centralizado -->
+    <div class="reveal" style="text-align:center;">
+      <div class="seo-badge-pill">Resultados Comprovados no Google</div>
+      <h2 class="seo-heading">
+        Criamos sites que chegam ao<br>
+        <span class="seo-accent">1º lugar no Google.</span>
+      </h2>
+      <p class="seo-desc">
+        Não é sorte — é estratégia. Cada site entregado é otimizado do código ao conteúdo para ranquear nas primeiras posições do Google, gerando visibilidade real para o seu negócio.
+      </p>
+    </div>
+
+    <!-- Grid: prova visual + diferenciais -->
+    <div class="seo-main-grid">
+
+      <!-- Coluna esquerda: screenshot do Google -->
+      <div class="seo-proof-wrap reveal">
+        <div class="seo-browser-card">
+          <div class="seo-browser-top">
+            <div class="seo-dots"><span></span><span></span><span></span></div>
+            <div class="seo-url-bar">google.com.br/search?q=contabilidade+em+mandaguaçu</div>
+          </div>
+          <div class="seo-screenshot-wrap">
+            <img src="sarruf.png" alt="Contabilidade Sarruf em 1º lugar no Google — resultado real">
+            <div class="seo-rank-badge">
+              <div class="seo-rank-emoji">🏆</div>
+              <div class="seo-rank-label">
+                <strong>1º LUGAR</strong>
+                <span>Resultado real · Google Brasil</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="seo-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
+      </div>
+
+      <!-- Coluna direita: diferenciais + CTA -->
+      <div class="seo-features-col reveal">
+
+        <div class="seo-feat-card">
+          <div class="seo-feat-icon ic-gold">🥇</div>
+          <div class="seo-feat-text">
+            <strong>Posição #1 no Google</strong>
+            <span>Seus concorrentes ficam para trás. Seu site aparece primeiro quando o cliente pesquisa.</span>
+          </div>
+        </div>
+
+        <div class="seo-feat-card">
+          <div class="seo-feat-icon ic-blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5eb0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div class="seo-feat-text">
+            <strong>SEO On-Page Completo</strong>
+            <span>Título, meta, headings, velocidade e estrutura — tudo configurado do zero para o Google.</span>
+          </div>
+        </div>
+
+        <div class="seo-feat-card">
+          <div class="seo-feat-icon ic-green">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#34c759" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          </div>
+          <div class="seo-feat-text">
+            <strong>Tráfego Orgânico Real</strong>
+            <span>Clientes encontram você sem precisar pagar por anúncios todo mês.</span>
+          </div>
+        </div>
+
+        <div class="seo-feat-card">
+          <div class="seo-feat-icon ic-teal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5ac8fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="seo-feat-text">
+            <strong>PageSpeed 99/100</strong>
+            <span>Sites rápidos ranqueiam melhor. Nosso código é leve, limpo e otimizado.</span>
+          </div>
+        </div>
+
+        <div class="seo-cta-wrap">
+          <a href="https://wa.me/5544999761842?text=Olá,%20quero%20um%20site%20que%20apareça%20em%20primeiro%20no%20Google!" class="seo-cta-link">
+            Quero meu site no #1
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <span class="seo-cta-note">Resposta em até 24h</span>
+        </div>
+
+      </div>
+    </div><!-- /seo-main-grid -->
+
+    <!-- Faixa de clientes -->
+    <div class="seo-clients-belt reveal">
+      <span class="seo-clients-label">Empresas que já ranqueiam com a TryWebDesign</span>
+      <div class="seo-clients-row">
+        <span class="seo-client-tag">Contabilidade Sarruf</span>
+        <span class="seo-client-tag">Contabilidade Lovisetto</span>
+        <span class="seo-client-tag">Psi Paula Marques</span>
+        <span class="seo-client-tag">Flavia Cavalcante</span>
+        <span class="seo-client-tag">Vrinda Bhumi</span>
+        <span class="seo-client-tag">Massagem Braccioli</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- =====================================================
+     FIM DA NOVA SEÇÃO
+===================================================== -->
     
         <!-- SEÇÃO DE DEPOIMENTOS - APPLE DESIGN SYSTEM -->
         <section id="testimonials" class="section-padding bg-grey">
@@ -991,7 +1409,7 @@
     }
   );
 
-  // leve “respiração” de destaque (bem sutil)
+  // leve "respiração" de destaque (bem sutil)
   gsap.to(".hero-subtitle", {
     textShadow: "0 6px 25px rgba(0,0,0,0.75)",
     duration: 2.8,
