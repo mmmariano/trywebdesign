@@ -85,6 +85,21 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
+      /* Garante que o container da imagem esteja acima dos efeitos de fundo e responda ao clique */
+.seo-proof-wrap {
+    position: relative;
+    z-index: 10 !important;
+}
+
+.zoom-image-container {
+    pointer-events: auto !important;
+    z-index: 11 !important;
+}
+
+/* Garante que o Modal de zoom fique ACIMA de tudo (inclusive da Navbar e Botões Flutuantes) */
+#zoomModal {
+    z-index: 999999 !important;
+}
     /* =====================================================
        HERO — BACKGROUND ANIMADO (MARQUEE)
        Injetado sobre o hero existente sem alterar mais nada
