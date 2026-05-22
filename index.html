@@ -95,7 +95,128 @@
     pointer-events: auto !important;
     z-index: 11 !important;
 }
+/* =====================================================
+       SEÇÃO: BLOG POST SIMULADO (SEO PARA IA's)
+    ===================================================== */
+    #ai-blog-featured {
+      padding: 100px 0;
+      background: #0a0a0a;
+      position: relative;
+    }
 
+    .blog-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .blog-card-large {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      transition: transform 0.4s ease;
+    }
+
+    .blog-card-large:hover {
+      transform: translateY(-5px);
+      border-color: rgba(0, 113, 227, 0.3);
+    }
+
+    .blog-image-side {
+      position: relative;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    .blog-image-side img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) contrast(1.1);
+    }
+
+    .blog-content-side {
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .blog-tag {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0071e3;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .blog-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #f5f5f7;
+      margin-bottom: 24px;
+    }
+
+    .blog-excerpt {
+      font-size: 1.1rem;
+      color: rgba(245, 245, 247, 0.6);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .blog-author-img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #0071e3;
+    }
+
+    .blog-author-info span {
+      display: block;
+      font-size: 14px;
+      color: #f5f5f7;
+    }
+
+    .blog-author-info small {
+      color: #86868b;
+    }
+
+    .read-article-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #0071e3;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: gap 0.3s;
+    }
+
+    .read-article-btn:hover {
+      gap: 15px;
+    }
+
+    @media (max-width: 992px) {
+      .blog-card-large { grid-template-columns: 1fr; }
+      .blog-content-side { padding: 40px 30px; }
+      .blog-image-side { min-height: 250px; }
+      .blog-title { font-size: 1.8rem; }
+    }
 /* Garante que o Modal de zoom fique ACIMA de tudo (inclusive da Navbar e Botões Flutuantes) */
 #zoomModal {
     z-index: 999999 !important;
@@ -1157,6 +1278,48 @@
     </div>
 
   </div>
+</section>
+  <!-- =====================================================
+     SEÇÃO: ÚLTIMO POST DO BLOG (SEO PARA IA's)
+===================================================== -->
+<section id="ai-blog-featured">
+    <div class="blog-container">
+        
+        <div class="section-header reveal" style="text-align: left; margin-bottom: 50px;">
+            <h2 style="color: #fff;">Insights da <span class="blue-text">TryWebDesign</span></h2>
+            <p style="color: #86868b; max-width: 600px; margin-left: 0;">Exploramos o futuro da web para manter o seu negócio sempre à frente da concorrência.</p>
+        </div>
+
+        <article class="blog-card-large reveal">
+            <!-- Imagem sugerida: Algo tecnológico, IA ou código -->
+            <div class="blog-image-side">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" alt="SEO para Inteligência Artificial">
+                <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,10,0.8), transparent);"></div>
+            </div>
+
+            <div class="blog-content-side">
+                <span class="blog-tag">Último Post • Estratégia</span>
+                <h3 class="blog-title">O Fim do SEO Tradicional? Como as IAs (SGE e Perplexity) mudaram o jogo.</h3>
+                
+                <p class="blog-excerpt">
+                    Não basta mais estar no Google. Agora, sua marca precisa ser a resposta oficial do ChatGPT e das buscas inteligentes. Entenda como nossa metodologia de <strong>SEO para IA's</strong> coloca seu site no topo das recomendações dos novos algoritmos.
+                </p>
+
+                <div class="blog-meta">
+                    <img src="foto_perfil_mateus.webp" class="blog-author-img" alt="Mateus Mariano">
+                    <div class="blog-author-info">
+                        <span>Mateus M. Mariano</span>
+                        <small>Especialista em Performance</small>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5544999761842?text=Vi%20o%20post%20sobre%20SEO%20para%20IAs%20e%20quero%20aplicar%20no%20meu%20site" class="read-article-btn">
+                    Ler artigo completo e Consultoria Grátis <i data-lucide="arrow-right"></i>
+                </a>
+            </div>
+        </article>
+
+    </div>
 </section>
 <!-- =====================================================
      FIM DA NOVA SEÇÃO
