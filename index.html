@@ -1419,35 +1419,39 @@
 
    <footer id="main-footer"></footer>
 <script>
-// Zoom na imagem do Google
-const seoImage = document.getElementById('seo-proof-image');
-const modal = document.getElementById('zoomModal');
-const modalImg = document.getElementById('modalImage');
+document.addEventListener('DOMContentLoaded', function() {
+    const seoImage = document.getElementById('seo-proof-image');
+    const modal = document.getElementById('zoomModal');
+    const modalImg = document.getElementById('modalImage');
 
-if (seoImage) {
-    seoImage.addEventListener('click', function() {
-        modal.style.display = 'flex';
-        modalImg.src = this.src;
-        document.body.style.overflow = 'hidden'; // Bloqueia scroll
-    });
-}
+    if (seoImage && modal) {
+        // Abrir o modal
+        seoImage.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            modalImg.src = this.src;
+            document.body.style.overflow = 'hidden'; // Trava o scroll do site
+        };
 
-function closeZoom() {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'visible';
-}
+        // Função para fechar
+        window.closeZoom = function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Libera o scroll
+        };
 
-// Fecha ao clicar fora da imagem
-modal.addEventListener('click', function(e) {
-    if (e.target === modal) {
-        closeZoom();
-    }
-});
+        // Fechar ao clicar fora da imagem (no fundo escuro)
+        modal.onclick = function(e) {
+            if (e.target === modal) {
+                closeZoom();
+            }
+        };
 
-// Fecha com tecla ESC
-document.addEventListener('keydown', function(e) {
-    if (e.key === "Escape" && modal.style.display === 'flex') {
-        closeZoom();
+        // Fechar com a tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape" && modal.style.display === 'flex') {
+                closeZoom();
+            }
+        });
     }
 });
 </script>
