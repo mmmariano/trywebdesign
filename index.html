@@ -1386,9 +1386,10 @@
                     </div>
                 </div>
 
-                <a href="https://wa.me/5544999761842?text=Vi%20o%20post%20sobre%20SEO%20para%20IAs%20e%20quero%20aplicar%20no%20meu%20site" class="read-article-btn">
-                    Ler artigo completo e Consultoria Grátis <i data-lucide="arrow-right"></i>
-                </a>
+<!-- SUBSTITUA O LINK ANTIGO POR ESTE -->
+<a href="javascript:void(0)" onclick="openBlogModal()" class="read-article-btn">
+    Ler artigo completo <i data-lucide="arrow-right"></i>
+</a>
             </div>
         </article>
 
@@ -1888,6 +1889,23 @@ document.getElementById('meuFormulario').addEventListener('submit', function(e) 
         }});
     });
 });
+   // Função para abrir o Modal do Blog
+function openBlogModal() {
+    const modal = document.getElementById('blogModal');
+    if(modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Bloqueia o scroll do fundo
+    }
+}
+
+// Função para fechar o Modal do Blog
+function closeBlogModal() {
+    const modal = document.getElementById('blogModal');
+    if(modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Libera o scroll novamente
+    }
+}
 </script>
 <script src="script.js"></script>    
 <script defer src="/_vercel/insights/script.js"></script>
