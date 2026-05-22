@@ -1075,32 +1075,17 @@
           </div>
           <div class="seo-screenshot-wrap">
             <!-- IMAGEM COM ZOOM AO CLICAR -->
-<div class="zoom-image-container" style="position: relative; cursor: zoom-in; display: inline-block; max-width: 100%;">
+<div class="zoom-image-container" style="position: relative; cursor: pointer; z-index: 50;">
     <img id="seo-proof-image" 
          src="primeiro-lugar-no-google.png" 
-         alt="Contabilidade Sarruf em 1º lugar no Google — resultado real"
-         style="width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease;">
+         alt="Resultado Google"
+         style="width: 100%; border-radius: 12px; display: block;">
     
-    <!-- Ícone de zoom flutuante -->
-    <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,0,0,0.7); color: white; padding: 6px 10px; border-radius: 50%; font-size: 14px; pointer-events: none;">
-        🔎
+    <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,113,227,0.9); color: white; padding: 8px; border-radius: 50%; pointer-events: none;">
+        <i data-lucide="zoom-in" style="width: 18px; height: 18px;"></i>
     </div>
 </div>
 
-<!-- MODAL DE ZOOM -->
-<div id="zoomModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 99999; align-items: center; justify-content: center; overflow: auto;">
-    <div style="position: relative; max-width: 95%; max-height: 95%;">
-        <img id="modalImage" 
-             src="primeiro-lugar-no-google.png" 
-             style="max-width: 100%; max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);">
-        
-        <!-- Botão fechar -->
-        <button onclick="closeZoom()" 
-                style="position: absolute; top: -15px; right: -15px; background: #fff; color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
-            ✕
-        </button>
-    </div>
-</div>
           </div>
         </div>
         <p class="seo-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
@@ -1435,38 +1420,35 @@
    <footer id="main-footer"></footer>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const seoImage = document.getElementById('seo-proof-image');
-    const modal = document.getElementById('zoomModal');
-    const modalImg = document.getElementById('modalImage');
+    const imgParaClicar = document.getElementById('seo-proof-image');
+    const oModal = document.getElementById('zoomModal');
+    const aImagemDoModal = document.getElementById('modalImage');
 
-    if (seoImage && modal) {
-        // Abrir o modal
-        seoImage.onclick = function(e) {
-            e.preventDefault();
-            modal.style.display = 'flex';
-            modalImg.src = this.src;
-            document.body.style.overflow = 'hidden'; // Trava o scroll do site
-        };
-
-        // Função para fechar
-        window.closeZoom = function() {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Libera o scroll
-        };
-
-        // Fechar ao clicar fora da imagem (no fundo escuro)
-        modal.onclick = function(e) {
-            if (e.target === modal) {
-                closeZoom();
-            }
-        };
-
-        // Fechar com a tecla ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape" && modal.style.display === 'flex') {
-                closeZoom();
-            }
+    if (imgParaClicar && oModal) {
+        // Função para abrir
+        imgParaClicar.addEventListener('click', function(e) {
+            console.log("Imagem clicada!"); // Se isso aparecer no console, o script funciona
+            e.stopPropagation();
+            aImagemDoModal.src = this.src;
+            oModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         });
+
+        // Função para fechar (no botão ou no fundo)
+        window.closeZoom = function() {
+            oModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        oModal.addEventListener('click', function(e) {
+            if (e.target === oModal) closeZoom();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") closeZoom();
+        });
+    } else {
+        console.error("Erro: Elementos do zoom não encontrados no HTML.");
     }
 });
 </script>
@@ -1669,6 +1651,20 @@ document.getElementById('meuFormulario').addEventListener('submit', function(e) 
       <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
     </svg>
   </a>
+</div>
+  <!-- MODAL DE ZOOM -->
+<div id="zoomModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 99999; align-items: center; justify-content: center; overflow: auto;">
+    <div style="position: relative; max-width: 95%; max-height: 95%;">
+        <img id="modalImage" 
+             src="primeiro-lugar-no-google.png" 
+             style="max-width: 100%; max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);">
+        
+        <!-- Botão fechar -->
+        <button onclick="closeZoom()" 
+                style="position: absolute; top: -15px; right: -15px; background: #fff; color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+            ✕
+        </button>
+    </div>
 </div>
     </body>
 </html>
