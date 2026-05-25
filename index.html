@@ -70,10 +70,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
-    
+   
     <!-- Tipografia Apple -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
-    
+   
     <!-- Bibliotecas -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -85,91 +85,6 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-      /* Container do Slider */
-.seo-slider-container {
-    position: relative;
-    width: 100%;
-}
-
-/* Esconde os slides que não estão ativos e permite o movimento */
-.seo-slider-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.seo-slide {
-    min-width: 100%;
-    position: relative;
-}
-
-/* Estilização das Setas */
-.slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.slider-arrow:hover {
-    background: #0071e3;
-    border-color: #0071e3;
-}
-
-.slider-arrow.prev { left: -22px; }
-.slider-arrow.next { right: -22px; }
-
-/* Indicadores (Bolinhas) */
-.slider-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 15px;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background: #0071e3;
-    width: 24px;
-    border-radius: 4px;
-}
-
-/* Ícone de Zoom fixo */
-.zoom-icon-overlay {
-    position: absolute; 
-    bottom: 12px; 
-    right: 12px; 
-    background: rgba(0,113,227,0.9); 
-    color: white; 
-    padding: 8px; 
-    border-radius: 50%; 
-    pointer-events: none;
-}
-
-@media (max-width: 768px) {
-    .slider-arrow { width: 35px; height: 35px; }
-    .slider-arrow.prev { left: 5px; }
-    .slider-arrow.next { right: 5px; }
-}
       .modal-blog-overlay {
     position: fixed;
     inset: 0;
@@ -557,15 +472,15 @@
   content: "";
   position: absolute;
   inset: 0; /* Ocupa todo o espaço do hero */
-  
+ 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
-  /* CONTROLE DE TRANSPARÊNCIA: 
+ 
+  /* CONTROLE DE TRANSPARÊNCIA:
      0.1 = muito transparente | 0.5 = meio termo | 0.9 = quase opaco */
-  opacity: 0.2; 
-  
+  opacity: 0.2;
+ 
   z-index: -1; /* Garante que fique atrás de tudo, inclusive das faixas animadas */
   pointer-events: none;
 }
@@ -611,9 +526,9 @@
 #testimonials {
     position: relative;
     overflow: hidden;
-    /* Removendo a cor sólida cinza para a imagem aparecer melhor, 
+    /* Removendo a cor sólida cinza para a imagem aparecer melhor,
        ou mantendo uma base escura */
-    background-color: #0a0a0a !important; 
+    background-color: #0a0a0a !important;
 }
 
 #testimonials::before {
@@ -624,10 +539,10 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+   
     /* TRANSPARÊNCIA: 0.1 é bem sutil, 0.3 aparece mais */
-    opacity: 0.15; 
-    
+    opacity: 0.15;
+   
     z-index: 0;
     pointer-events: none;
 }
@@ -710,7 +625,7 @@
 #testimonials {
     position: relative !important;
     /* Alterado de #050505 para um cinza mais claro */
-    background-color: #1c1c1e !important; 
+    background-color: #1c1c1e !important;
     overflow: hidden;
 }
 
@@ -718,11 +633,11 @@
     content: "";
     position: absolute;
     inset: 0;
-    
+   
     background-size: cover;
     background-position: center;
     /* Aumentado de 0.25 para 0.6 para a imagem aparecer mais */
-    opacity: 0.6; 
+    opacity: 0.6;
     z-index: 0;
 }
 
@@ -735,13 +650,13 @@
 }
 
 #testimonials h2 span {
-    color: rgba(255, 255, 255, 0.7) !important; 
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* 3. Ajustando os Cards para ficarem mais nítidos */
 .testimonial-card {
     /* Deixando o fundo do card um pouco mais sólido para contraste */
-    background: rgba(30, 30, 32, 0.8) !important; 
+    background: rgba(30, 30, 32, 0.8) !important;
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     position: relative;
@@ -769,7 +684,7 @@
 #testimonials {
     position: relative !important;
     /* Um cinza bem claro e limpo */
-    background-color: #f5f5f7 !important; 
+    background-color: #f5f5f7 !important;
     overflow: hidden;
     padding: 100px 0;
 }
@@ -782,7 +697,7 @@
     background-size: cover;
     background-position: center;
     /* Opacidade equilibrada para aparecer no fundo claro */
-    opacity: 0.4; 
+    opacity: 0.4;
     z-index: 0;
 }
 
@@ -794,12 +709,12 @@
 }
 
 #testimonials h2 span {
-    color: #86868b !important; 
+    color: #86868b !important;
 }
 
 /* Cards com efeito de vidro branco */
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.7) !important; 
+    background: rgba(255, 255, 255, 0.7) !important;
     backdrop-filter: blur(15px);
     border: 1px solid rgba(0, 0, 0, 0.05) !important;
     position: relative;
@@ -807,10 +722,10 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04) !important;
 }
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.7) !important; 
+    background: rgba(255, 255, 255, 0.7) !important;
     backdrop-filter: blur(15px);
     /* Alteração aqui: 2px de espessura e cor Azul Marinho */
-    border: 2px solid #000080 !important; 
+    border: 2px solid #000080 !important;
     position: relative;
     z-index: 1;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04) !important;
@@ -830,14 +745,14 @@
       .hero-subtitle {
   /* Força a mesma fonte do título principal */
   font-family: 'Plus Jakarta Sans', sans-serif !important;
-  
+ 
   /* Estilo visual idêntico ao h1 (ajustando apenas o tamanho) */
   font-size: 1.8rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.02em !important;
   color: #f5f5f7 !important;
   text-align: center;
-  
+ 
   /* Sombra pesada igual a que você usou no h1 para dar leitura */
   text-shadow:
     0 0 40px rgba(0, 0, 0, 0.9),
@@ -846,7 +761,7 @@
 
   max-width: 800px;
   margin: 30px auto 0 !important;
-  
+ 
   /* Preparação para a animação */
   display: block !important;
   opacity: 0;
@@ -1166,7 +1081,7 @@
       .seo-heading { font-size: 2rem; }
     }
     </style>
-  
+ 
 </head>
 <body>
 <div class="mouse-glow" id="mouseGlow"></div>
@@ -1279,7 +1194,7 @@
         </h1>
         <p class="hero-subtitle">
   Colocamos sua marca na primeira página do Google.
-          <br> 
+          <br> 
 </p>
         <div class="reveal">
             <a href="/solucoes/" class="btn-primary">
@@ -1345,52 +1260,30 @@
     <!-- Grid: prova visual + diferenciais -->
     <div class="seo-main-grid">
 
-<!-- Coluna esquerda: Slider de Resultados do Google -->
-<div class="seo-proof-wrap reveal">
-    <div class="seo-slider-container">
-        <!-- Navegação (Setas) -->
-        <button class="slider-arrow prev" onclick="changeSlide(-1)">
-            <i data-lucide="chevron-left"></i>
-        </button>
-        <button class="slider-arrow next" onclick="changeSlide(1)">
-            <i data-lucide="chevron-right"></i>
-        </button>
-
+      <!-- Coluna esquerda: screenshot do Google -->
+      <div class="seo-proof-wrap reveal">
         <div class="seo-browser-card">
-            <div class="seo-browser-top">
-                <div class="seo-dots"><span></span><span></span><span></span></div>
-                <!-- O ID 'browser-url' permite mudar o texto via JS -->
-                <div class="seo-url-bar" id="browser-url">google.com.br/search?q=contabilidade+em+mandaguaçu</div>
-            </div>
-            
-            <div class="seo-slider-track" id="slider-track">
-                <!-- Slide 1: 1º Lugar -->
-                <div class="seo-slide active">
-                    <div class="zoom-image-container" onclick="openZoom(this)">
-                        <img src="primeiro-lugar-no-google.png" alt="1º Lugar Google">
-                        <div class="zoom-icon-overlay"><i data-lucide="zoom-in"></i></div>
-                    </div>
-                </div>
-
-                <!-- Slide 2: 2º Lugar -->
-                <div class="seo-slide">
-                    <div class="zoom-image-container" onclick="openZoom(this)">
-                        <img src="segundo-lugar.png" alt="2º Lugar Google">
-                        <div class="zoom-icon-overlay"><i data-lucide="zoom-in"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Indicadores (Bolinhas) -->
-        <div class="slider-dots">
-            <span class="dot active" onclick="currentSlide(0)"></span>
-            <span class="dot" onclick="currentSlide(1)"></span>
-        </div>
+          <div class="seo-browser-top">
+            <div class="seo-dots"><span></span><span></span><span></span></div>
+            <div class="seo-url-bar">google.com.br/search?q=contabilidade+em+mandaguaçu</div>
+          </div>
+          <div class="seo-screenshot-wrap">
+            <!-- IMAGEM COM ZOOM AO CLICAR -->
+<div class="zoom-image-container" style="position: relative; cursor: pointer; z-index: 50;">
+    <img id="seo-proof-image"
+         src="primeiro-lugar-no-google.png"
+         alt="Resultado Google"
+         style="width: 100%; border-radius: 12px; display: block;">
+   
+    <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,113,227,0.9); color: white; padding: 8px; border-radius: 50%; pointer-events: none;">
+        <i data-lucide="zoom-in" style="width: 18px; height: 18px;"></i>
     </div>
-    <!-- Legenda dinâmica -->
-    <p class="seo-caption" id="slider-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
 </div>
+
+          </div>
+        </div>
+        <p class="seo-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
+      </div>
 
       <!-- Coluna direita: diferenciais + CTA -->
       <div class="seo-features-col reveal">
@@ -1464,7 +1357,7 @@
 ===================================================== -->
 <section id="ai-blog-featured">
     <div class="blog-container">
-        
+       
         <div class="section-header reveal" style="text-align: left; margin-bottom: 50px;">
             <h2 style="color: #fff;">Insights da TryWebDesign<span class="blue-text">Conheça nossas Técnicas de SEO</span></h2>
             <p style="color: #86868b; max-width: 600px; margin-left: 0;">Exploramos o futuro da web para manter o seu negócio sempre à frente da concorrência.</p>
@@ -1480,7 +1373,7 @@
             <div class="blog-content-side">
                 <span class="blog-tag">Último Post • Estratégia</span>
                 <h3 class="blog-title">Por que 99% dos sites falham no SEO (e o seu pode ser um deles).</h3>
-                
+               
 <p class="blog-excerpt">
     Ter um site bonito não basta. Erros técnicos invisíveis, lentidão e má estruturação de dados estão fazendo sua empresa perder clientes para a concorrência todos os dias. Descubra como diagnosticamos e corrigimos esses gargalos.
 </p>
@@ -1505,7 +1398,7 @@
 <!-- =====================================================
      FIM DA NOVA SEÇÃO
 ===================================================== -->
-    
+   
         <!-- SEÇÃO DE DEPOIMENTOS - APPLE DESIGN SYSTEM -->
         <section id="testimonials" class="section-padding bg-grey">
             <div class="container">
@@ -1515,7 +1408,7 @@
 
         <div class="testimonials-grid">
                        
-          
+         
             <!-- 01: Paula Marques -->
             <div class="testimonial-card reveal-card">
                 <div class="site-preview">
@@ -1555,7 +1448,7 @@
                     </div>
                 </div>
             </div>
-            
+           
             <!-- 03: Karina Guimarães -->
             <div class="testimonial-card reveal-card">
                 <div class="site-preview">
@@ -1586,7 +1479,7 @@
                 </div>
                 <div class="testimonial-content">
                     <div class="quote-icon"><i data-lucide="quote" size="20"></i></div>
-                    
+                   
                     <div class="text-container collapsed" id="containerPatricia">
                         <p class="testimonial-text">
                             "O desenvolvimento do site da minha empresa de contabilidade foi essencial para fortalecer a imagem no mercado. O trabalho realizado pelo Mateus conseguiu transmitir com clareza, profissionalismo, organização e, principalmente, confiabilidade — fatores indispensáveis para quem atua na área contábil.
@@ -1596,7 +1489,7 @@
                             Recomendo o trabalho do Mateus pela disponibilidade, competência, atenção aos detalhes e pela capacidade de traduzir a identidade da empresa em um ambiente digital claro e confiável"
                         </p>
                     </div>
-                    
+                   
                     <button type="button" class="read-more-btn" onclick="togglePatricia(this)">
                         <span>Mais Informações</span>
                         <i data-lucide="chevron-down" size="14"></i>
@@ -1629,7 +1522,7 @@
                 </div>
             </div>
 
-            
+           
             <!-- 07: Contabilidade Sarruf -->
             <div class="testimonial-card reveal-card">
                 <div class="site-preview">
@@ -1675,23 +1568,23 @@
 
 
 <section id="contato" class="section-padding-refined bg-grey">
-    
+   
     <!-- Glow de Fundo Posicionado Estrategicamente para fechar o layout -->
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: rgba(0, 113, 227, 0.03); filter: blur(120px); border-radius: 50%; pointer-events: none;"></div>
 
     <div class="container">
         <div class="contact-flex-refined">
-            
+           
             <!-- LADO ESQUERDO: CONTEÚDO CONDENSADO -->
             <div class="reveal">
                 <div class="status-pill-pro">
                     <span class="pulse-dot"></span>
                 </div>
-                
+               
                 <h2 class="title-contact-pro">Vamos tirar a sua ideia do <span class="blue-text">papel?</span></span></h2>
 
                 <p class="description-contact-pro">Desenvolvimento de sites de alto padrão para empresas que buscam qualidade.</p>
-                
+               
                 <div class="specialist-box-refined">
                     <img src="foto_perfil_mateus.webp" alt="Mateus Mariano">
                     <div class="spec-text">
@@ -1718,18 +1611,18 @@
 
             <!-- LADO DIREITO: PORTAL DE CONSULTORIA (PROPORCIONAL) -->
             <div class="reveal">
-              
+             
             <div class="consultancy-portal-refined">
     <div class="portal-header">
         <div class="window-controls"><span></span><span></span><span></span></div>
         <h3>Iniciar Projeto</h3>
         <p>Análise técnica em até 24h.</p>
     </div>
-    
+   
     <!-- 1. Dei um ID para o form e tirei o 'required' dos campos -->
     <form id="meuFormulario" class="form-refined">
         <input type="hidden" name="access_key" value="0b16ed46-9c5c-4f5b-b192-89c76fce3640">
-        
+       
         <div class="field-refined">
             <input type="text" name="name" placeholder="Nome ou Empresa">
         </div>
@@ -1762,61 +1655,7 @@
 </section>
 
    <footer id="main-footer"></footer>
-  
 <script>
-  let slideIndex = 0;
-const slides = [
-    {
-        url: "google.com.br/search?q=contabilidade+em+mandaguaçu",
-        caption: "Contabilidade Sarruf · Busca: \"contabilidade em mandaguaçu\""
-    },
-    {
-        url: "google.com.br/search?q=contabilidade+em+maringa",
-        caption: "Cliente X · Resultado: 2º Lugar Orgânico no Google"
-    }
-];
-
-function updateSlider() {
-    const track = document.getElementById('slider-track');
-    const urlBar = document.getElementById('browser-url');
-    const caption = document.getElementById('slider-caption');
-    const dots = document.querySelectorAll('.dot');
-
-    // Move o track
-    track.style.transform = `translateX(-${slideIndex * 100}%)`;
-
-    // Atualiza Textos
-    urlBar.innerText = slides[slideIndex].url;
-    caption.innerText = slides[slideIndex].caption;
-
-    // Atualiza Dots
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === slideIndex);
-    });
-}
-
-function changeSlide(n) {
-    slideIndex += n;
-    if (slideIndex >= slides.length) slideIndex = 0;
-    if (slideIndex < 0) slideIndex = slides.length - 1;
-    updateSlider();
-}
-
-function currentSlide(n) {
-    slideIndex = n;
-    updateSlider();
-}
-
-// Ajuste na função de Zoom para funcionar com os novos elementos
-function openZoom(container) {
-    const img = container.querySelector('img');
-    const modal = document.getElementById('zoomModal');
-    const modalImg = document.getElementById('modalImage');
-    
-    modalImg.src = img.src;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
 document.addEventListener('DOMContentLoaded', function() {
     const imgParaClicar = document.getElementById('seo-proof-image');
     const oModal = document.getElementById('zoomModal');
@@ -1851,8 +1690,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
     <script>
-      
-      
+     
+     
       window.addEventListener('load', () => {
 
   gsap.fromTo(".hero-subtitle",
@@ -1954,14 +1793,14 @@ window.onclick = function(event) {
     // 3. Função de Contagem dos Números (Intersection Observer)
     function iniciarContadores() {
         const todosOsNumeros = document.querySelectorAll(".stat-value");
-        
+       
         const observador = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
                 if (entrada.isIntersecting) {
                     const elemento = entrada.target;
                     const valorFinal = parseInt(elemento.getAttribute("data-target"));
                     let valorAtual = 0;
-                    const duracao = 2000; 
+                    const duracao = 2000;
                     const incremento = valorFinal / (duracao / 16);
 
                     function atualizar() {
@@ -2030,13 +1869,13 @@ document.getElementById('meuFormulario').addEventListener('submit', function(e) 
         method: 'POST',
         body: formData
     }).then(response => {
-        
+       
         // ANIMAÇÃO: Some com o form e aparece o agradecimento
         gsap.to(form, { opacity: 0, y: -20, duration: 0.5, onComplete: () => {
             form.style.display = "none";
             const msg = document.getElementById('agradecimento');
             msg.style.display = "block";
-            
+           
             // Faz a mensagem aparecer "pulando" na tela
             gsap.from(msg, { opacity: 0, scale: 0.5, duration: 0.8, ease: "back.out(1.7)" });
 
@@ -2072,7 +1911,7 @@ function closeBlogModal() {
 <script defer src="/_vercel/insights/script.js"></script>
 <!-- Botões Flutuantes -->
 <div class="floating-buttons">
-  
+ 
   <a href="https://www.instagram.com/try.web.design" target="_blank" class="float-btn instagram" title="Instagram">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.063 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.265.058-1.645.069-4.85.069s-3.584-.012-4.849-.069c-1.366-.063-2.633-.335-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.334-2.633 1.31-3.608C4.518 2.497 5.785 2.225 7.151 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.085-1.857-.601-3.699-1.942-5.04C20.698.673 18.856.157 17 .072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
@@ -2087,12 +1926,12 @@ function closeBlogModal() {
   <!-- MODAL DE ZOOM -->
 <div id="zoomModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 99999; align-items: center; justify-content: center; overflow: auto;">
     <div style="position: relative; max-width: 95%; max-height: 95%;">
-        <img id="modalImage" 
-             src="primeiro-lugar-no-google.png" 
+        <img id="modalImage"
+             src="primeiro-lugar-no-google.png"
              style="max-width: 100%; max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);">
-        
+       
         <!-- Botão fechar -->
-        <button onclick="closeZoom()" 
+        <button onclick="closeZoom()"
                 style="position: absolute; top: -15px; right: -15px; background: #fff; color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
             ✕
         </button>
@@ -2108,7 +1947,7 @@ function closeBlogModal() {
         </div>
 <div class="modal-blog-body">
     <p><strong>A verdade dói: a maioria dos sites na internet são "fantasmas".</strong> Eles existem, mas ninguém os encontra. Nossa análise técnica aponta que 99% dos sites de pequenas e médias empresas possuem erros críticos de SEO.</p>
-    
+   
     <p>Esses erros não aparecem no design. Eles estão escondidos no código, na compressão das imagens e na forma como os dados são entregues ao Google.</p>
 
     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Análise de SEO" style="width:100%; border-radius:12px; margin: 20px 0;">
