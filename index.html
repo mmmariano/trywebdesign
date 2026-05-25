@@ -1080,110 +1080,6 @@
       .seo-features-col { order: -1; }
       .seo-heading { font-size: 2rem; }
     }
-      /* Container Principal */
-.seo-slider-container {
-    position: relative;
-    width: 100%;
-    max-width: 700px; /* Ajuste conforme necessário */
-    margin: 0 auto;
-}
-
-/* Moldura do Navegador */
-.seo-browser-card {
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-}
-
-/* Janela de Visualização - ALTURA FIXA AQUI */
-.seo-viewport {
-    width: 100%;
-    height: 420px; /* Altura fixa para não desalinhar */
-    overflow: hidden;
-    background: #fff; /* Fundo branco caso a imagem seja menor */
-}
-
-.seo-slider-track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.seo-slide {
-    min-width: 100%;
-    height: 100%;
-}
-
-/* Ajuste da Imagem dentro da moldura */
-.img-wrapper {
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    position: relative;
-}
-
-.img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* MOSTRA A IMAGEM TODA SEM ESTICAR */
-    object-position: top; /* Alinha no topo como um site real */
-    background: #fff;
-}
-
-/* Estilo das Setas (Melhorado para não sumir) */
-.slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background: #0071e3;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    transition: scale 0.2s;
-}
-
-.slider-arrow:hover { scale: 1.1; }
-.slider-arrow.prev { left: -20px; }
-.slider-arrow.next { right: -20px; }
-
-/* Dots */
-.slider-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
-}
-.dot {
-    width: 8px; height: 8px;
-    background: rgba(255,255,255,0.3);
-    border-radius: 50%;
-    cursor: pointer;
-}
-.dot.active { background: #0071e3; width: 20px; border-radius: 10px; }
-
-/* Hint de Zoom */
-.zoom-hint {
-    position: absolute; bottom: 15px; right: 15px;
-    background: rgba(0,0,0,0.5); color: white;
-    padding: 8px; border-radius: 50%;
-}
-
-@media (max-width: 768px) {
-    .seo-viewport { height: 250px; } /* Menor no celular */
-    .slider-arrow.prev { left: 5px; }
-    .slider-arrow.next { right: 5px; }
-}
-      
     </style>
  
 </head>
@@ -1364,52 +1260,31 @@
     <!-- Grid: prova visual + diferenciais -->
     <div class="seo-main-grid">
 
-<div class="seo-proof-wrap reveal">
-    <div class="seo-slider-container">
-        <!-- Setas de Navegação -->
-        <button class="slider-arrow prev" onclick="changeSlide(-1)" aria-label="Anterior">
-            <i data-lucide="chevron-left"></i>
-        </button>
-        <button class="slider-arrow next" onclick="changeSlide(1)" aria-label="Próximo">
-            <i data-lucide="chevron-right"></i>
-        </button>
-
+      <!-- Coluna esquerda: screenshot do Google -->
+      <div class="seo-proof-wrap reveal">
         <div class="seo-browser-card">
-            <!-- Topo do Navegador (Fixo) -->
-            <div class="seo-browser-top">
-                <div class="seo-dots"><span></span><span></span><span></span></div>
-                <div class="seo-url-bar" id="browser-url">google.com.br/search?q=contabilidade+em+mandaguaçu</div>
-            </div>
-            
-            <!-- Janela de Visualização (Onde a mágica acontece) -->
-            <div class="seo-viewport">
-                <div class="seo-slider-track" id="slider-track">
-                    <!-- Slide 1 -->
-                    <div class="seo-slide">
-                        <div class="img-wrapper" onclick="openZoom(this)">
-                            <img src="primeiro-lugar-no-google.png" alt="1º Lugar Google">
-                            <div class="zoom-hint"><i data-lucide="zoom-in"></i></div>
-                        </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="seo-slide">
-                        <div class="img-wrapper" onclick="openZoom(this)">
-                            <img src="segundo-lugar.png" alt="2º Lugar Google">
-                            <div class="zoom-hint"><i data-lucide="zoom-in"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Indicadores -->
-        <div class="slider-dots">
-            <span class="dot active" onclick="currentSlide(0)"></span>
-            <span class="dot" onclick="currentSlide(1)"></span>
-        </div>
+          <div class="seo-browser-top">
+            <div class="seo-dots"><span></span><span></span><span></span></div>
+            <div class="seo-url-bar">google.com.br/search?q=contabilidade+em+mandaguaçu</div>
+          </div>
+          <div class="seo-screenshot-wrap">
+            <!-- IMAGEM COM ZOOM AO CLICAR -->
+<div class="zoom-image-container" style="position: relative; cursor: pointer; z-index: 50;">
+    <img id="seo-proof-image"
+         src="primeiro-lugar-no-google.png"
+         alt="Resultado Google"
+         style="width: 100%; border-radius: 12px; display: block;">
+   
+    <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,113,227,0.9); color: white; padding: 8px; border-radius: 50%; pointer-events: none;">
+        <i data-lucide="zoom-in" style="width: 18px; height: 18px;"></i>
     </div>
-    <p class="seo-caption" id="slider-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
 </div>
+
+          </div>
+        </div>
+        <p class="seo-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
+      </div>
+
       <!-- Coluna direita: diferenciais + CTA -->
       <div class="seo-features-col reveal">
 
@@ -1781,51 +1656,6 @@
 
    <footer id="main-footer"></footer>
 <script>
-  let currentIdx = 0;
-const data = [
-    {
-        url: "google.com.br/search?q=contabilidade+em+mandaguaçu",
-        caption: "Contabilidade Sarruf · Busca: \"contabilidade em mandaguaçu\""
-    },
-    {
-        url: "google.com.br/search?q=consultoria+contabil",
-        caption: "Cliente Exemplo · Resultado: 2º Lugar em Busca Direta"
-    }
-];
-
-function changeSlide(dir) {
-    currentIdx += dir;
-    if (currentIdx < 0) currentIdx = data.length - 1;
-    if (currentIdx >= data.length) currentIdx = 0;
-    updateDisplay();
-}
-
-function currentSlide(idx) {
-    currentIdx = idx;
-    updateDisplay();
-}
-
-function updateDisplay() {
-    // Move o trilho
-    document.getElementById('slider-track').style.transform = `translateX(-${currentIdx * 100}%)`;
-    
-    // Atualiza URL e Legenda
-    document.getElementById('browser-url').innerText = data[currentIdx].url;
-    document.getElementById('slider-caption').innerText = data[currentIdx].caption;
-    
-    // Atualiza Dots
-    const dots = document.querySelectorAll('.dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentIdx));
-}
-
-// Função de Zoom Corrigida
-function openZoom(el) {
-    const src = el.querySelector('img').src;
-    const modal = document.getElementById('zoomModal');
-    document.getElementById('modalImage').src = src;
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
 document.addEventListener('DOMContentLoaded', function() {
     const imgParaClicar = document.getElementById('seo-proof-image');
     const oModal = document.getElementById('zoomModal');
