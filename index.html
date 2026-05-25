@@ -85,6 +85,91 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
+      /* Container do Slider */
+.seo-slider-container {
+    position: relative;
+    width: 100%;
+}
+
+/* Esconde os slides que não estão ativos e permite o movimento */
+.seo-slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.seo-slide {
+    min-width: 100%;
+    position: relative;
+}
+
+/* Estilização das Setas */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background: #0071e3;
+    border-color: #0071e3;
+}
+
+.slider-arrow.prev { left: -22px; }
+.slider-arrow.next { right: -22px; }
+
+/* Indicadores (Bolinhas) */
+.slider-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #0071e3;
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Ícone de Zoom fixo */
+.zoom-icon-overlay {
+    position: absolute; 
+    bottom: 12px; 
+    right: 12px; 
+    background: rgba(0,113,227,0.9); 
+    color: white; 
+    padding: 8px; 
+    border-radius: 50%; 
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .slider-arrow { width: 35px; height: 35px; }
+    .slider-arrow.prev { left: 5px; }
+    .slider-arrow.next { right: 5px; }
+}
       .modal-blog-overlay {
     position: fixed;
     inset: 0;
@@ -1260,30 +1345,52 @@
     <!-- Grid: prova visual + diferenciais -->
     <div class="seo-main-grid">
 
-      <!-- Coluna esquerda: screenshot do Google -->
-      <div class="seo-proof-wrap reveal">
-        <div class="seo-browser-card">
-          <div class="seo-browser-top">
-            <div class="seo-dots"><span></span><span></span><span></span></div>
-            <div class="seo-url-bar">google.com.br/search?q=contabilidade+em+mandaguaçu</div>
-          </div>
-          <div class="seo-screenshot-wrap">
-            <!-- IMAGEM COM ZOOM AO CLICAR -->
-<div class="zoom-image-container" style="position: relative; cursor: pointer; z-index: 50;">
-    <img id="seo-proof-image" 
-         src="primeiro-lugar-no-google.png" 
-         alt="Resultado Google"
-         style="width: 100%; border-radius: 12px; display: block;">
-    
-    <div style="position: absolute; bottom: 12px; right: 12px; background: rgba(0,113,227,0.9); color: white; padding: 8px; border-radius: 50%; pointer-events: none;">
-        <i data-lucide="zoom-in" style="width: 18px; height: 18px;"></i>
-    </div>
-</div>
+<!-- Coluna esquerda: Slider de Resultados do Google -->
+<div class="seo-proof-wrap reveal">
+    <div class="seo-slider-container">
+        <!-- Navegação (Setas) -->
+        <button class="slider-arrow prev" onclick="changeSlide(-1)">
+            <i data-lucide="chevron-left"></i>
+        </button>
+        <button class="slider-arrow next" onclick="changeSlide(1)">
+            <i data-lucide="chevron-right"></i>
+        </button>
 
-          </div>
+        <div class="seo-browser-card">
+            <div class="seo-browser-top">
+                <div class="seo-dots"><span></span><span></span><span></span></div>
+                <!-- O ID 'browser-url' permite mudar o texto via JS -->
+                <div class="seo-url-bar" id="browser-url">google.com.br/search?q=contabilidade+em+mandaguaçu</div>
+            </div>
+            
+            <div class="seo-slider-track" id="slider-track">
+                <!-- Slide 1: 1º Lugar -->
+                <div class="seo-slide active">
+                    <div class="zoom-image-container" onclick="openZoom(this)">
+                        <img src="primeiro-lugar-no-google.png" alt="1º Lugar Google">
+                        <div class="zoom-icon-overlay"><i data-lucide="zoom-in"></i></div>
+                    </div>
+                </div>
+
+                <!-- Slide 2: 2º Lugar -->
+                <div class="seo-slide">
+                    <div class="zoom-image-container" onclick="openZoom(this)">
+                        <img src="segundo-lugar.png" alt="2º Lugar Google">
+                        <div class="zoom-icon-overlay"><i data-lucide="zoom-in"></i></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p class="seo-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
-      </div>
+        
+        <!-- Indicadores (Bolinhas) -->
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+        </div>
+    </div>
+    <!-- Legenda dinâmica -->
+    <p class="seo-caption" id="slider-caption">Contabilidade Sarruf · Busca: "contabilidade em mandaguaçu"</p>
+</div>
 
       <!-- Coluna direita: diferenciais + CTA -->
       <div class="seo-features-col reveal">
@@ -1655,7 +1762,61 @@
 </section>
 
    <footer id="main-footer"></footer>
+  
 <script>
+  let slideIndex = 0;
+const slides = [
+    {
+        url: "google.com.br/search?q=contabilidade+em+mandaguaçu",
+        caption: "Contabilidade Sarruf · Busca: \"contabilidade em mandaguaçu\""
+    },
+    {
+        url: "google.com.br/search?q=contabilidade+em+maringa",
+        caption: "Cliente X · Resultado: 2º Lugar Orgânico no Google"
+    }
+];
+
+function updateSlider() {
+    const track = document.getElementById('slider-track');
+    const urlBar = document.getElementById('browser-url');
+    const caption = document.getElementById('slider-caption');
+    const dots = document.querySelectorAll('.dot');
+
+    // Move o track
+    track.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+    // Atualiza Textos
+    urlBar.innerText = slides[slideIndex].url;
+    caption.innerText = slides[slideIndex].caption;
+
+    // Atualiza Dots
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === slideIndex);
+    });
+}
+
+function changeSlide(n) {
+    slideIndex += n;
+    if (slideIndex >= slides.length) slideIndex = 0;
+    if (slideIndex < 0) slideIndex = slides.length - 1;
+    updateSlider();
+}
+
+function currentSlide(n) {
+    slideIndex = n;
+    updateSlider();
+}
+
+// Ajuste na função de Zoom para funcionar com os novos elementos
+function openZoom(container) {
+    const img = container.querySelector('img');
+    const modal = document.getElementById('zoomModal');
+    const modalImg = document.getElementById('modalImage');
+    
+    modalImg.src = img.src;
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
 document.addEventListener('DOMContentLoaded', function() {
     const imgParaClicar = document.getElementById('seo-proof-image');
     const oModal = document.getElementById('zoomModal');
