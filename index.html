@@ -1918,6 +1918,31 @@ function closeBlogModal() {
         document.body.style.overflow = 'auto'; // Libera o scroll novamente
     }
 }
+   document.addEventListener('DOMContentLoaded', function() {
+    const imagens = document.querySelectorAll('.img-zoomable');
+    const oModal = document.getElementById('zoomModal');
+    const aImagemDoModal = document.getElementById('modalImage');
+
+    if (imagens.length > 0 && oModal) {
+        imagens.forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                aImagemDoModal.src = this.src;
+                oModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        window.closeZoom = function() {
+            oModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        oModal.addEventListener('click', function(e) {
+            if (e.target === oModal) closeZoom();
+        });
+    }
+});
 </script>
 <script src="script.js"></script>    
 <script defer src="/_vercel/insights/script.js"></script>
