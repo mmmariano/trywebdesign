@@ -1090,26 +1090,77 @@
 
 /* Container Principal da Barra */
 .stats-bar {
-    padding: 0; /* Removemos o padding exagerado */
-    margin-top: -40px; /* Faz a barra subir e "flutuar" sobre o hero */
+    padding: 0;
+    margin-top: -35px; /* Ajuste para flutuar levemente */
     position: relative;
     z-index: 20;
 }
 
-/* O "Widget" centralizado - Estilo Apple */
+/* O "Widget" Slim - Estilo Apple Dark */
 .stats-bar .container {
-    max-width: 1050px; /* Largura controlada, não ocupa a tela toda */
-    background: rgba(28, 28, 30, 0.5); /* Fundo escuro semi-transparente */
-    backdrop-filter: blur(20px) saturate(180%); /* Efeito de vidro luxuoso */
+    max-width: 1000px; /* Um pouco mais estreito para ficar centralizado */
+    background: rgba(15, 15, 15, 0.7); /* Preto profundo e translúcido */
+    backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px; /* Bordas bem arredondadas */
-    padding: 20px 30px; /* Reduzi muito o padding vertical aqui */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    overflow: hidden; /* Garante que o efeito de fundo não saia do widget */
+    
+    /* Borda muito fina e elegante */
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    border-radius: 20px; 
+    
+    /* Padding Reduzido: 12px em cima/baixo para ser curta */
+    padding: 12px 25px; 
+    
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
-/* Efeito de Brilho de Fundo (Aurora) */
+/* Grid de Itens mais apertado */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    align-items: center;
+}
+
+/* Item Individual */
+.stat-item {
+    text-align: center;
+    padding: 2px 5px;
+    /* Divisória quase invisível */
+    border-right: 1px solid rgba(255, 255, 255, 0.03); 
+}
+
+.stat-item:last-child { border-right: none; }
+
+/* Reduzindo o espaço do ícone para ganhar altura */
+.stat-icon {
+    margin-bottom: 2px; 
+    color: #0071e3;
+}
+.stat-icon i {
+    width: 16px !important; /* Ícones menores para economizar espaço */
+    height: 16px !important;
+}
+
+/* Valores (Números) mais compactos */
+.stat-value {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.3rem !important; /* Diminuído para não esticar a barra */
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+
+/* Descrição minúscula para layout profissional */
+.stat-desc {
+    font-size: 9px; /* Bem pequeno, estilo legenda de sistema */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 1px;
+}
+
+/* Manter o brilho de fundo, mas bem discreto */
 .stats-bar .container::before {
     content: "";
     position: absolute;
@@ -1117,81 +1168,10 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle at center, rgba(0, 113, 227, 0.15) 0%, transparent 25%);
-    animation: rotateAurora 10s linear infinite;
+    background: radial-gradient(circle at center, rgba(0, 113, 227, 0.08) 0%, transparent 20%);
+    animation: rotateAurora 15s linear infinite;
     pointer-events: none;
     z-index: -1;
-}
-
-@keyframes rotateAurora {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-/* Grid de Itens */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    align-items: center;
-}
-
-/* Cada Item Individual */
-.stat-item {
-    text-align: center;
-    padding: 5px 10px;
-    border-right: 1px solid rgba(255, 255, 255, 0.06); /* Divisória fina */
-}
-
-.stat-item:last-child {
-    border-right: none; /* Remove a linha do último item */
-}
-
-/* Ajuste nos ícones (menores e mais sutis) */
-.stat-icon {
-    margin-bottom: 8px;
-    color: #0071e3;
-    opacity: 0.9;
-}
-.stat-icon i {
-    width: 20px !important; /* Ícones menores */
-    height: 20px !important;
-}
-
-/* Valores (Números) */
-.stat-value {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.6rem !important; /* Tamanho elegante, não exagerado */
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-}
-
-/* Descrição (Texto pequeno) */
-.stat-desc {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: rgba(245, 245, 247, 0.5);
-    margin-top: 4px;
-}
-
-/* --- AJUSTE MOBILE --- */
-@media (max-width: 768px) {
-    .stats-bar {
-        margin-top: -20px;
-        padding: 0 15px;
-    }
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 por linha no celular */
-        gap: 20px;
-    }
-    .stat-item {
-        border-right: none;
-    }
-    .stat-item:nth-child(odd) {
-        border-right: 1px solid rgba(255, 255, 255, 0.06);
-    }
 }
          
     </style>
