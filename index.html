@@ -1088,92 +1088,38 @@
     gap: 15px; /* Menos espaço entre eles */
 }
 
-/* Container Principal da Barra */
+/* 1. Remove a cor de fundo da SEÇÃO inteira */
 .stats-bar {
+    background-color: #050505 !important; /* Cor exata do seu Hero */
     padding: 0;
-    margin-top: -35px; /* Ajuste para flutuar levemente */
+    margin: 0;
+    border: none;
     position: relative;
     z-index: 20;
 }
 
-/* O "Widget" Slim - Estilo Apple Dark */
+/* 2. Ajuste do container para garantir que ele flutue sem "vazar" branco */
 .stats-bar .container {
-    max-width: 1000px; /* Um pouco mais estreito para ficar centralizado */
-    background: rgba(15, 15, 15, 0.7); /* Preto profundo e translúcido */
+    max-width: 1000px;
+    background: rgba(20, 20, 20, 0.6); /* Fundo escuro translúcido */
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     
-    /* Borda muito fina e elegante */
     border: 1px solid rgba(255, 255, 255, 0.05); 
     border-radius: 20px; 
-    
-    /* Padding Reduzido: 12px em cima/baixo para ser curta */
     padding: 12px 25px; 
     
+    /* Faz a barra subir um pouco para "morder" o Hero */
+    transform: translateY(-30px); 
+    
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
+    margin-bottom: -30px; /* Compensa o espaço que sobra embaixo */
 }
 
-/* Grid de Itens mais apertado */
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
-    align-items: center;
-}
-
-/* Item Individual */
-.stat-item {
-    text-align: center;
-    padding: 2px 5px;
-    /* Divisória quase invisível */
-    border-right: 1px solid rgba(255, 255, 255, 0.03); 
-}
-
-.stat-item:last-child { border-right: none; }
-
-/* Reduzindo o espaço do ícone para ganhar altura */
-.stat-icon {
-    margin-bottom: 2px; 
-    color: #0071e3;
-}
-.stat-icon i {
-    width: 16px !important; /* Ícones menores para economizar espaço */
-    height: 16px !important;
-}
-
-/* Valores (Números) mais compactos */
-.stat-value {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 1.3rem !important; /* Diminuído para não esticar a barra */
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.02em;
-}
-
-/* Descrição minúscula para layout profissional */
-.stat-desc {
-    font-size: 9px; /* Bem pequeno, estilo legenda de sistema */
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.4);
-    margin-top: 1px;
-}
-
-/* Manter o brilho de fundo, mas bem discreto */
-.stats-bar .container::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(0, 113, 227, 0.08) 0%, transparent 20%);
-    animation: rotateAurora 15s linear infinite;
-    pointer-events: none;
-    z-index: -1;
-}
-         
+/* 3. Garante que o corpo do site seja preto por padrão, evitando faixas brancas em qualquer lugar */
+body {
+    background-color: #050505 !important;
+}    
     </style>
  
 </head>
