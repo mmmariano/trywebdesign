@@ -1131,6 +1131,35 @@ body {
     
     font-weight: 800; /* Deixa o número um pouco mais grosso para destacar a cor */
 } 
+         /* Estilo para o Box (Container) */
+.stats-bar .container {
+    position: relative; /* Necessário para o brilho funcionar */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Uma base bem sutil */
+    overflow: visible; /* Deixa o brilho "escapar" um pouco para cima */
+}
+
+/* A Semi-Borda Brilhosa (Efeito de Luz) */
+.stats-bar .container::after {
+    content: "";
+    position: absolute;
+    top: -1px; /* Cola exatamente no topo da borda */
+    left: 10%; /* Começa depois do canto */
+    width: 80%; /* Não vai até as pontas (fica "semi") */
+    height: 1px; /* Fininha como uma lâmina */
+    
+    /* Gradiente que brilha no meio e some nas pontas */
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.8), 
+        rgba(0, 113, 227, 0.8), /* Um toque de azul no brilho */
+        rgba(255, 255, 255, 0.8), 
+        transparent
+    );
+    
+    /* O "glow" (brilho) em volta da linha */
+    box-shadow: 0 -2px 10px rgba(0, 113, 227, 0.4); 
+    z-index: 2;
+}
     </style>
  
 </head>
