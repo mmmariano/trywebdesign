@@ -1120,7 +1120,17 @@
 body {
     background-color: #050505 !important;
 }    
-       
+      .stat-value {
+    /* Cria o degradê do azul escuro para o azul claro */
+    background: linear-gradient(135deg, #0071e3 0%, #5eb0ff 100%);
+    
+    /* Faz o gradiente aparecer apenas dentro do texto/número */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    font-weight: 800; /* Deixa o número um pouco mais grosso para destacar a cor */
+} 
     </style>
  
 </head>
