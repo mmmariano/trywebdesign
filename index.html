@@ -1179,6 +1179,20 @@ body {
     z-index: 1;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04) !important;
 }
+         /* Alterar o botão da Hero para Preto */
+.hero .btn-primary {
+    background-color: #000000 !important; /* Cor preta */
+    color: #ffffff !important;           /* Texto branco */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil para não sumir no fundo */
+    transition: all 0.3s ease;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.hero .btn-primary:hover {
+    background-color: #1c1c1e !important; /* Um cinza quase preto ao passar o mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
     </style>
  
 </head>
