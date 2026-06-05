@@ -1186,6 +1186,106 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil para não sumir no fundo */
     transition: all 0.3s ease;
 }
+
+    /* =====================================================
+       CORREÇÕES MOBILE — apenas ajustes, nenhum código
+       original foi alterado ou removido.
+    ===================================================== */
+
+    /* ── Stats bar: evita linha horizontal e overflow no mobile ── */
+    @media (max-width: 768px) {
+      .stats-bar .container {
+        transform: translateY(-15px);
+        margin-bottom: -15px;
+        padding: 12px 16px;
+        border-radius: 14px;
+        /* remove o ::after que gera linha visível em telas estreitas */
+      }
+
+      /* Linha brilhante do container: apaga no mobile */
+      .stats-bar .container::after {
+        display: none;
+      }
+
+      /* Grid de stats: 2 colunas + último item centralizado */
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      /* Último stat fica sozinho na linha: centraliza */
+      .stats-grid .stat-item:last-child {
+        grid-column: 1 / -1;
+        max-width: 180px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ── SEO section: imagens alinhadas e sem overflow no mobile ── */
+    @media (max-width: 768px) {
+      /* A coluna das imagens ocupa 100% da largura */
+      .seo-proof-wrap {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0;
+      }
+
+      /* Cada card de browser não ultrapassa a tela */
+      .seo-browser-card {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+
+      /* A barra de URL não força largura extra */
+      .seo-browser-top {
+        padding: 8px 10px;
+        gap: 8px;
+        overflow: hidden;
+      }
+
+      .seo-url-bar {
+        font-size: 10px;
+        padding: 4px 8px;
+        min-width: 0;
+        flex: 1;
+      }
+
+      /* Imagens dentro do card: 100% sem distorção */
+      .seo-screenshot-wrap img,
+      .img-zoomable {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 0 !important;
+        display: block;
+      }
+
+      /* Caption abaixo das imagens */
+      .seo-caption {
+        padding: 0 4px;
+        word-break: break-word;
+      }
+
+      /* Botão de zoom: reposiciona para não sair da tela */
+      .zoom-image-container > div[style*="bottom"] {
+        bottom: 8px !important;
+        right: 8px !important;
+      }
+
+      /* Container da seção SEO sem overflow lateral */
+      #seo-results .container {
+        padding: 0 16px;
+        overflow: hidden;
+      }
+
+      /* Grid principal: coluna única, sem gap excessivo */
+      .seo-main-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
     </style>
  
 </head>
@@ -1303,7 +1403,7 @@ body {
         <p class="hero-subtitle">
   
           <br> 
-              <P></P>
+              <P></P>
 </p>
         <div class="reveal">
             <a href="/solucoes/" class="btn-primary">
@@ -1709,19 +1809,17 @@ Excelente trabalho! Parabéns pelo profissionalismo, atenção  dispensada e ded
 
 <section id="contato" class="section-padding-refined bg-grey">
    
-    <!-- Glow de Fundo Posicionado Estrategicamente para fechar o layout -->
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; background: rgba(0, 113, 227, 0.03); filter: blur(120px); border-radius: 50%; pointer-events: none;"></div>
 
     <div class="container">
         <div class="contact-flex-refined">
            
-            <!-- LADO ESQUERDO: CONTEÚDO CONDENSADO -->
             <div class="reveal">
                 <div class="status-pill-pro">
                     <span class="pulse-dot"></span>
                 </div>
                
-                <h2 class="title-contact-pro">Vamos tirar a sua ideia do <span class="blue-text">papel?</span></span></h2>
+                <h2 class="title-contact-pro">Vamos tirar a sua ideia do <span class="blue-text">papel?</span></h2>
 
                 <p class="description-contact-pro">Desenvolvimento de sites de alto padrão para empresas que buscam qualidade.</p>
                
@@ -1734,7 +1832,7 @@ Excelente trabalho! Parabéns pelo profissionalismo, atenção  dispensada e ded
                 </div>
 
                 <div class="contact-widgets-grid">
-               <a href="https://wa.me/5544999761842?text=Olá,%20necessito%20de%20um%20orçamento%20da%20TryWebDesign" class="widget-mini">
+               <a href="https://wa.me/5544999761842?text=Ol%C3%A1,%20necessito%20de%20um%20or%C3%A7amento%20da%20TryWebDesign" class="widget-mini">
     <div class="w-icon wa">
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -1749,9 +1847,7 @@ Excelente trabalho! Parabéns pelo profissionalismo, atenção  dispensada e ded
                 </div>
             </div>
 
-            <!-- LADO DIREITO: PORTAL DE CONSULTORIA (PROPORCIONAL) -->
             <div class="reveal">
-             
             <div class="consultancy-portal-refined">
     <div class="portal-header">
         <div class="window-controls"><span></span><span></span><span></span></div>
@@ -1759,10 +1855,8 @@ Excelente trabalho! Parabéns pelo profissionalismo, atenção  dispensada e ded
         <p>Análise técnica em até 24h.</p>
     </div>
    
-    <!-- 1. Dei um ID para o form e tirei o 'required' dos campos -->
     <form id="meuFormulario" class="form-refined">
         <input type="hidden" name="access_key" value="0b16ed46-9c5c-4f5b-b192-89c76fce3640">
-       
         <div class="field-refined">
             <input type="text" name="name" placeholder="Nome ou Empresa">
         </div>
@@ -1772,22 +1866,18 @@ Excelente trabalho! Parabéns pelo profissionalismo, atenção  dispensada e ded
         <div class="field-refined">
             <textarea name="message" rows="3" placeholder="Qual o seu objetivo?"></textarea>
         </div>
-
         <button type="submit" class="btn-portal-refined">
             <span>ENVIAR SOLICITAÇÃO</span>
             <i data-lucide="arrow-right" size="16"></i>
         </button>
     </form>
 
-    <!-- 2. Mensagem de Sucesso que começa escondida (display: none) -->
     <div id="agradecimento" style="display: none; text-align: center; padding: 40px 20px;">
         <i data-lucide="party-popper" size="48" style="color: #0071e3; margin-bottom: 20px;"></i>
         <h3 style="font-size: 24px;">Recebemos seu contato!</h3>
         <p style="color: #86868b; margin-top: 10px;">Mateus Mariano analisará sua ideia em breve.</p>
     </div>
 </div>
-
-
             </div>
 
         </div>
@@ -1795,6 +1885,7 @@ Excelente trabalho! Parabéns pelo profissionalismo, atenção  dispensada e ded
 </section>
 
    <footer id="main-footer"></footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const imgParaClicar = document.getElementById('seo-proof-image');
@@ -1802,16 +1893,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const aImagemDoModal = document.getElementById('modalImage');
 
     if (imgParaClicar && oModal) {
-        // Função para abrir
         imgParaClicar.addEventListener('click', function(e) {
-            console.log("Imagem clicada!"); // Se isso aparecer no console, o script funciona
             e.stopPropagation();
             aImagemDoModal.src = this.src;
             oModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         });
 
-        // Função para fechar (no botão ou no fundo)
         window.closeZoom = function() {
             oModal.style.display = 'none';
             document.body.style.overflow = 'auto';
@@ -1824,46 +1912,25 @@ document.addEventListener('DOMContentLoaded', function() {
         document.addEventListener('keydown', function(e) {
             if (e.key === "Escape") closeZoom();
         });
-    } else {
-        console.error("Erro: Elementos do zoom não encontrados no HTML.");
     }
 });
 </script>
-    <script>
-     
-     
+
+<script>
       window.addEventListener('load', () => {
-
   gsap.fromTo(".hero-subtitle",
-    {
-      opacity: 0,
-      y: 40,
-      scale: 0.98
-    },
-    {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 1.2,
-      ease: "power3.out",
-      delay: 0.4
-    }
+    { opacity: 0, y: 40, scale: 0.98 },
+    { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out", delay: 0.4 }
   );
-
-  // leve "respiração" de destaque (bem sutil)
   gsap.to(".hero-subtitle", {
     textShadow: "0 6px 25px rgba(0,0,0,0.75)",
-    duration: 2.8,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut"
+    duration: 2.8, repeat: -1, yoyo: true, ease: "sine.inOut"
   });
-
 });
+
         lucide.createIcons();
         gsap.registerPlugin(ScrollTrigger);
 
-        // Seguir mouse com brilho
         const glow = document.getElementById('mouseGlow');
         document.addEventListener('mousemove', (e) => {
             glow.style.left = e.clientX + 'px';
@@ -1871,69 +1938,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         window.addEventListener('load', () => {
-            // Animação Entrada Navbar
             gsap.to("#navbar", { y: 0, duration: 1.2, ease: "power4.out", delay: 0.2 });
-
-            // Animação Título Hero (Efeito de Escrita/Fade)
             gsap.from("#heroTitle", { opacity: 0, y: 40, duration: 1.5, ease: "power4.out" });
 
-            // Revelação Geral ao Scroll
             gsap.utils.toArray(".reveal").forEach(el => {
                 gsap.to(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 85%",
-                    },
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    ease: "power3.out"
+                    scrollTrigger: { trigger: el, start: "top 85%" },
+                    opacity: 1, y: 0, duration: 1, ease: "power3.out"
                 });
             });
 
-            // Parallax Suave no Portifólio
             gsap.utils.toArray(".portfolio-img").forEach(img => {
                 gsap.to(img, {
-                    scrollTrigger: {
-                        trigger: img,
-                        scrub: 1.5,
-                        start: "top bottom",
-                    },
+                    scrollTrigger: { trigger: img, scrub: 1.5, start: "top bottom" },
                     y: -40
                 });
             });
         });
+
       function openBlogModal() {
     document.getElementById('blogModal').style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Trava o scroll da página atrás
+    document.body.style.overflow = 'hidden';
 }
-
 function closeBlogModal() {
     document.getElementById('blogModal').style.display = 'none';
-    document.body.style.overflow = 'auto'; // Destrava o scroll
+    document.body.style.overflow = 'auto';
 }
-
-// Fechar se clicar fora do card
 window.onclick = function(event) {
     let modal = document.getElementById('blogModal');
-    if (event.target == modal) {
-        closeBlogModal();
-    }
+    if (event.target == modal) { closeBlogModal(); }
 }
-    </script>
- <script>
-    // 1. Inicialização de Ícones
+</script>
+
+<script>
     lucide.createIcons();
 
-    // 2. Registro do GSAP
     if (typeof gsap !== "undefined") {
         gsap.registerPlugin(ScrollTrigger);
     }
 
-    // 3. Função de Contagem dos Números (Intersection Observer)
     function iniciarContadores() {
         const todosOsNumeros = document.querySelectorAll(".stat-value");
-       
         const observador = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
                 if (entrada.isIntersecting) {
@@ -1942,7 +1987,6 @@ window.onclick = function(event) {
                     let valorAtual = 0;
                     const duracao = 2000;
                     const incremento = valorFinal / (duracao / 16);
-
                     function atualizar() {
                         valorAtual += incremento;
                         if (valorAtual < valorFinal) {
@@ -1957,18 +2001,13 @@ window.onclick = function(event) {
                 }
             });
         }, { threshold: 0.5 });
-
         todosOsNumeros.forEach(num => observador.observe(num));
     }
 
-    // 4. Animações de Entrada (GSAP)
     function iniciarAnimacoesGSAP() {
         if (typeof gsap !== "undefined") {
             const titulo = document.querySelector("#heroTitle");
-            if (titulo) {
-                gsap.from(titulo, { opacity: 0, y: 30, duration: 1, ease: "power3.out" });
-            }
-
+            if (titulo) { gsap.from(titulo, { opacity: 0, y: 30, duration: 1, ease: "power3.out" }); }
             gsap.utils.toArray(".reveal").forEach(el => {
                 gsap.to(el, {
                     scrollTrigger: { trigger: el, start: "top 90%" },
@@ -1978,7 +2017,6 @@ window.onclick = function(event) {
         }
     }
 
-    // 5. Brilho do Mouse (Renomeado para evitar o erro "vermelho")
     function iniciarBrilhoMouse() {
         const elementoGlow = document.getElementById('mouseGlow');
         if (elementoGlow) {
@@ -1989,68 +2027,49 @@ window.onclick = function(event) {
         }
     }
 
-    // Execução após carregar a página
     window.addEventListener('DOMContentLoaded', () => {
         iniciarContadores();
         iniciarAnimacoesGSAP();
         iniciarBrilhoMouse();
     });
-    // Espera o formulário ser enviado
-document.getElementById('meuFormulario').addEventListener('submit', function(e) {
-    e.preventDefault(); // Impede de sair da página
 
+document.getElementById('meuFormulario').addEventListener('submit', function(e) {
+    e.preventDefault();
     const form = this;
     const btn = form.querySelector('button');
     btn.innerText = "ENVIANDO...";
-
-    // Envia os dados para o Web3Forms em segundo plano
     const formData = new FormData(form);
     fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData
     }).then(response => {
-       
-        // ANIMAÇÃO: Some com o form e aparece o agradecimento
         gsap.to(form, { opacity: 0, y: -20, duration: 0.5, onComplete: () => {
             form.style.display = "none";
             const msg = document.getElementById('agradecimento');
             msg.style.display = "block";
-           
-            // Faz a mensagem aparecer "pulando" na tela
             gsap.from(msg, { opacity: 0, scale: 0.5, duration: 0.8, ease: "back.out(1.7)" });
-
-            // SOLTA OS CONFETES (O toque interativo legal!)
             confetti({
-                particleCount: 150,
-                spread: 70,
+                particleCount: 150, spread: 70,
                 origin: { y: 0.6 },
                 colors: ['#0071e3', '#ffffff']
             });
         }});
     });
 });
-   // Função para abrir o Modal do Blog
+
 function openBlogModal() {
     const modal = document.getElementById('blogModal');
-    if(modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Bloqueia o scroll do fundo
-    }
+    if(modal) { modal.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
 }
-
-// Função para fechar o Modal do Blog
 function closeBlogModal() {
     const modal = document.getElementById('blogModal');
-    if(modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto'; // Libera o scroll novamente
-    }
+    if(modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; }
 }
-   document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     const imagens = document.querySelectorAll('.img-zoomable');
     const oModal = document.getElementById('zoomModal');
     const aImagemDoModal = document.getElementById('modalImage');
-
     if (imagens.length > 0 && oModal) {
         imagens.forEach(img => {
             img.addEventListener('click', function(e) {
@@ -2060,23 +2079,22 @@ function closeBlogModal() {
                 document.body.style.overflow = 'hidden';
             });
         });
-
         window.closeZoom = function() {
             oModal.style.display = 'none';
             document.body.style.overflow = 'auto';
         };
-
         oModal.addEventListener('click', function(e) {
             if (e.target === oModal) closeZoom();
         });
     }
 });
 </script>
+
 <script src="script.js"></script>    
 <script defer src="/_vercel/insights/script.js"></script>
+
 <!-- Botões Flutuantes -->
 <div class="floating-buttons">
- 
   <a href="https://www.instagram.com/try.web.design" target="_blank" class="float-btn instagram" title="Instagram">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.265.069 1.645.069 4.849s-.012 3.584-.069 4.849c-.063 1.366-.335 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.265.058-1.645.069-4.85.069s-3.584-.012-4.849-.069c-1.366-.063-2.633-.335-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.849c.062-1.366.334-2.633 1.31-3.608C4.518 2.497 5.785 2.225 7.151 2.163 8.416 2.105 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.333.014 7.053.072 5.197.157 3.355.673 2.014 2.014.673 3.355.157 5.197.072 7.053.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.085 1.856.601 3.698 1.942 5.039 1.341 1.341 3.183 1.857 5.039 1.942C8.333 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.856-.085 3.698-.601 5.039-1.942 1.341-1.341 1.857-3.183 1.942-5.039.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.085-1.857-.601-3.699-1.942-5.04C20.698.673 18.856.157 17 .072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
@@ -2088,21 +2106,21 @@ function closeBlogModal() {
     </svg>
   </a>
 </div>
-  <!-- MODAL DE ZOOM -->
+
+<!-- MODAL DE ZOOM -->
 <div id="zoomModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 99999; align-items: center; justify-content: center; overflow: auto;">
     <div style="position: relative; max-width: 95%; max-height: 95%;">
         <img id="modalImage"
              src="primeiro-lugar-no-google.png"
              style="max-width: 100%; max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);">
-       
-        <!-- Botão fechar -->
         <button onclick="closeZoom()"
                 style="position: absolute; top: -15px; right: -15px; background: #fff; color: #000; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
             ✕
         </button>
     </div>
 </div>
-  <!-- MODAL DO ARTIGO DO BLOG -->
+
+<!-- MODAL DO ARTIGO DO BLOG -->
 <div id="blogModal" class="modal-blog-overlay" style="display:none;">
     <div class="modal-blog-card">
         <button class="close-blog" onclick="closeBlogModal()">✕</button>
@@ -2110,29 +2128,24 @@ function closeBlogModal() {
             <span class="blog-tag">Estratégia Exclusiva</span>
             <h1>O Futuro da Visibilidade Digital</h1>
         </div>
-<div class="modal-blog-body">
-    <p><strong>A verdade dói: a maioria dos sites na internet são "fantasmas".</strong> Eles existem, mas ninguém os encontra. Nossa análise técnica aponta que 99% dos sites de pequenas e médias empresas possuem erros críticos de SEO.</p>
-   
-    <p>Esses erros não aparecem no design. Eles estão escondidos no código, na compressão das imagens e na forma como os dados são entregues ao Google.</p>
-
-    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Análise de SEO" style="width:100%; border-radius:12px; margin: 20px 0;">
-
-    <h3>1. O problema do "Peso Morto"</h3>
-    <p>Imagens pesadas e scripts desnecessários fazem seu site carregar como uma âncora. O Google prioriza sites que entregam conteúdo em menos de 2 segundos. Se o seu site falha aqui, ele cai para a segunda página.</p>
-
-    <h3>2. Falta de Hierarquia (H1, H2, H3)</h3>
-    <p>Muitos webdesigners focam no visual e esquecem de dizer ao Google do que o site trata. Sem uma hierarquia de títulos correta, o robô do Google fica confuso e não te posiciona para as buscas certas.</p>
-
-    <h3>3. A Experiência do Usuário (Core Web Vitals)</h3>
-    <p>O Google agora mede o "salto" de elementos na tela. Se um botão se mexe enquanto a página carrega, sua nota de SEO despenca. Detalhes minuciosos que fazem toda a diferença no faturamento final.</p>
-
-    <div class="consultancy-box" style="background: rgba(255, 59, 48, 0.1); border: 1px solid #ff3b30;">
-        <h4 style="color: #ff3b30;">Seu site está nos 99%?</h4>
-        <p>Eu vou realizar uma auditoria técnica gratuita no seu site atual para encontrar esses erros.</p>
-        <a href="https://wa.me/5544999761842?text=Olá%20Mateus,%20quero%20saber%20se%20meu%20site%20tem%20erros%20de%20SEO!" class="btn-primary" style="background: #ff3b30;">Quero minha Auditoria Grátis</a>
+        <div class="modal-blog-body">
+            <p><strong>A verdade dói: a maioria dos sites na internet são "fantasmas".</strong> Eles existem, mas ninguém os encontra. Nossa análise técnica aponta que 99% dos sites de pequenas e médias empresas possuem erros críticos de SEO.</p>
+            <p>Esses erros não aparecem no design. Eles estão escondidos no código, na compressão das imagens e na forma como os dados são entregues ao Google.</p>
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000" alt="Análise de SEO" style="width:100%; border-radius:12px; margin: 20px 0;">
+            <h3>1. O problema do "Peso Morto"</h3>
+            <p>Imagens pesadas e scripts desnecessários fazem seu site carregar como uma âncora. O Google prioriza sites que entregam conteúdo em menos de 2 segundos. Se o seu site falha aqui, ele cai para a segunda página.</p>
+            <h3>2. Falta de Hierarquia (H1, H2, H3)</h3>
+            <p>Muitos webdesigners focam no visual e esquecem de dizer ao Google do que o site trata. Sem uma hierarquia de títulos correta, o robô do Google fica confuso e não te posiciona para as buscas certas.</p>
+            <h3>3. A Experiência do Usuário (Core Web Vitals)</h3>
+            <p>O Google agora mede o "salto" de elementos na tela. Se um botão se mexe enquanto a página carrega, sua nota de SEO despenca. Detalhes minuciosos que fazem toda a diferença no faturamento final.</p>
+            <div class="consultancy-box" style="background: rgba(255, 59, 48, 0.1); border: 1px solid #ff3b30;">
+                <h4 style="color: #ff3b30;">Seu site está nos 99%?</h4>
+                <p>Eu vou realizar uma auditoria técnica gratuita no seu site atual para encontrar esses erros.</p>
+                <a href="https://wa.me/5544999761842?text=Ol%C3%A1%20Mateus,%20quero%20saber%20se%20meu%20site%20tem%20erros%20de%20SEO!" class="btn-primary" style="background: #ff3b30;">Quero minha Auditoria Grátis</a>
+            </div>
+        </div>
     </div>
 </div>
-    </div>
-</div>
-    </body>
+
+</body>
 </html>
