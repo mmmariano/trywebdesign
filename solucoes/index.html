@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TryWebDesign | Autoridade Digital, SEO de Elite e Sites Premium</title>
+    <title>TryWebDesign | Autoridade em Performance Web e SEO de Elite</title>
    
-    <!-- Tipografia e Bibliotecas -->
+    <!-- Tipografia Pro -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -13,122 +13,98 @@
 
     <style>
         :root {
-            --white: #ffffff; 
-            --bg-apple: #f5f5f7; 
-            --text-dark: #1d1d1f;
-            --text-muted: #86868b; 
-            --apple-blue: #0071e3; 
-            --apple-blue-hover: #0077ed;
-            --border: rgba(0,0,0,0.08);
-            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --white: #ffffff; --bg-apple: #fbfbfd; --text-dark: #1d1d1f;
+            --text-muted: #6e6e73; --apple-blue: #0071e3; --apple-blue-hover: #0077ed;
+            --border: rgba(0,0,0,0.06); --transition: all 0.7s cubic-bezier(0.15, 0, 0.15, 1);
         }
 
-        /* Reset e Base */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--white); 
-            color: var(--text-dark); 
-            overflow-x: hidden; 
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         .reveal { opacity: 0; transform: translateY(40px); }
 
-        /* NAVBAR (Glassmorphism) */
+        /* NAVBAR - GLASSMORPHISM 2.0 */
         .navbar {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border); padding: 16px 0;
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px); border-bottom: 1px solid var(--border); padding: 14px 0;
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 22px; color: var(--text-dark); text-decoration: none; letter-spacing: -0.5px; }
-        .nav-links { display: flex; gap: 35px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 14px; font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: var(--apple-blue); }
+        .logo { font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 22px; color: var(--text-dark); text-decoration: none; letter-spacing: -1px; }
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 14px; font-weight: 500; transition: 0.3s; opacity: 0.8; }
+        .nav-links a:hover { opacity: 1; color: var(--apple-blue); }
 
-        /* HERO SECTION */
+        /* HERO - LUXURY IMPACT */
         .hero { 
-            padding: 200px 0 120px; text-align: center; position: relative; min-height: 95vh;
-            background: radial-gradient(circle at top, rgba(0,113,227,0.08) 0%, transparent 60%); 
+            padding: 220px 0 140px; text-align: center; position: relative; min-height: 100vh;
+            background: radial-gradient(circle at 50% 0%, rgba(0,113,227,0.12) 0%, transparent 50%); 
             display: flex; flex-direction: column; justify-content: center;
         }
-        .pill { 
-            display: inline-block; padding: 8px 18px; background: rgba(0,113,227,0.08); 
-            color: var(--apple-blue); border-radius: 99px; font-size: 12px; font-weight: 700; 
-            margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; 
-        }
         .hero h1 { 
-            font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(40px, 8vw, 82px); 
-            font-weight: 800; letter-spacing: -0.06em; line-height: 1.05; margin-bottom: 30px; 
+            font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(48px, 9vw, 92px); 
+            font-weight: 800; letter-spacing: -0.07em; line-height: 0.95; margin-bottom: 30px; 
         }
-        .blue-gradient { background: linear-gradient(135deg, #0071e3 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-desc { font-size: clamp(18px, 3vw, 24px); color: var(--text-muted); max-width: 900px; margin: 0 auto 50px; line-height: 1.5; font-weight: 400; }
+        .blue-gradient { background: linear-gradient(180deg, #0071e3 30%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-desc { font-size: clamp(18px, 3vw, 24px); color: var(--text-muted); max-width: 850px; margin: 0 auto 50px; line-height: 1.4; letter-spacing: -0.02em; }
 
-        /* BUTTONS */
-        .btn-primary {
-            display: inline-flex; align-items: center; justify-content: center; padding: 20px 50px;
-            background: var(--text-dark); color: var(--white); text-decoration: none; font-size: 17px; font-weight: 600;
-            border-radius: 12px; transition: var(--transition); border: 1px solid var(--text-dark);
+        /* CTA BUTTON */
+        .btn-main {
+            display: inline-flex; align-items: center; justify-content: center; padding: 22px 55px;
+            background: var(--text-dark); color: var(--white); text-decoration: none; font-size: 18px; font-weight: 600;
+            border-radius: 99px; transition: var(--transition); border: 1px solid var(--text-dark);
         }
-        .btn-primary:hover { background: transparent; color: var(--text-dark); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .btn-main:hover { background: transparent; color: var(--text-dark); transform: scale(1.05); }
 
-        /* SERVIÇOS GRID */
-        .services-section { padding: 120px 0; background: var(--bg-apple); }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .service-card { background: #fff; padding: 50px; border-radius: 28px; border: 1px solid var(--border); transition: var(--transition); }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 40px 80px rgba(0,0,0,0.05); border-color: var(--apple-blue); }
-        .service-card i { color: var(--apple-blue); margin-bottom: 30px; display: block; }
-        .service-card h3 { font-size: 26px; margin-bottom: 18px; font-weight: 700; letter-spacing: -0.5px; }
-        .service-card p { color: var(--text-muted); line-height: 1.7; font-size: 16px; }
+        /* PERFORMANCE SECTION */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; margin-top: 80px; }
+        .stat-card { text-align: center; padding: 40px; border-radius: 30px; background: var(--bg-apple); border: 1px solid var(--border); }
+        .stat-number { font-size: 56px; font-weight: 800; color: var(--apple-blue); font-family: 'Plus Jakarta Sans'; margin-bottom: 10px; }
+        .stat-label { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); }
 
-        /* CONTEÚDO E SEO */
-        .content-block { padding: 140px 0; display: flex; align-items: center; gap: 100px; }
-        .content-block.reverse { flex-direction: row-reverse; }
+        /* CONTENT BLOCKS */
+        .block-section { padding: 140px 0; display: flex; align-items: center; gap: 80px; }
+        .block-section.reverse { flex-direction: row-reverse; }
         .text-side { flex: 1; }
-        .visual-side { flex: 1; }
+        .visual-side { flex: 1.2; position: relative; }
+        .section-tag { font-size: 12px; font-weight: 800; color: var(--apple-blue); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; display: block; }
+        .section-title { font-size: clamp(32px, 5vw, 52px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 30px; }
 
-        .feature-list { list-style: none; margin-top: 35px; }
-        .feature-list li { display: flex; align-items: center; gap: 15px; font-size: 17px; font-weight: 500; margin-bottom: 20px; }
-        .feature-list i { color: #34c759; flex-shrink: 0; }
-
-        /* MOCKUPS */
-        .browser-container {
-            width: 100%; position: relative; background: #fff; border-radius: 16px; 
-            border: 1px solid var(--border); box-shadow: 0 50px 100px rgba(0,0,0,0.1); overflow: hidden;
+        /* GOOGLE SEARCH MOCKUP */
+        .google-mock {
+            background: white; border-radius: 20px; box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+            border: 1px solid var(--border); overflow: hidden; width: 100%;
         }
-        .browser-top { background: #f5f5f7; padding: 14px 20px; display: flex; gap: 8px; border-bottom: 1px solid var(--border); }
-        .dot { width: 10px; height: 10px; border-radius: 50%; background: #d2d2d7; }
+        .google-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 15px; }
+        .search-bar { height: 35px; flex: 1; border-radius: 20px; border: 1px solid #dfe1e5; background: #fff; }
+        .google-result { padding: 30px; }
+        .result-url { font-size: 14px; color: #202124; margin-bottom: 4px; }
+        .result-title { font-size: 20px; color: #1a0dab; margin-bottom: 8px; font-weight: 500; cursor: pointer; }
+        .result-title:hover { text-decoration: underline; }
+        .result-desc { font-size: 14px; color: #4d5156; line-height: 1.5; }
 
-        /* SEO RANKING CARD */
-        .ranking-box {
-            background: #fff; padding: 30px; border-radius: 20px; border: 1px solid var(--border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05); margin-top: -40px; margin-left: 40px; position: relative; z-index: 2;
-        }
-        .ranking-line { height: 8px; background: #eee; border-radius: 4px; margin: 15px 0; overflow: hidden; }
-        .ranking-fill { height: 100%; background: #34c759; width: 0; transition: 2s ease-out; }
+        /* FEATURE LIST */
+        .feat-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 25px; }
+        .feat-icon { width: 24px; height: 24px; color: #34c759; margin-top: 4px; }
+        .feat-text strong { display: block; font-size: 18px; margin-bottom: 5px; }
+        .feat-text p { color: var(--text-muted); font-size: 15px; }
 
-        /* PROCESSO */
-        .process-step { border-left: 2px solid var(--border); padding-left: 40px; margin-bottom: 50px; position: relative; }
-        .process-step::after { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--apple-blue); }
-        .process-step h4 { font-size: 22px; margin-bottom: 12px; font-weight: 700; }
-
-        /* FOOTER */
-        footer { background: #000; color: #fff; padding: 100px 0 50px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 80px; }
-        .footer-logo { font-size: 24px; font-weight: 800; color: #fff; text-decoration: none; display: block; margin-bottom: 25px; }
-        .footer-links h4 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #86868b; margin-bottom: 25px; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 15px; }
-        .footer-links a { color: #fff; text-decoration: none; font-size: 15px; opacity: 0.6; transition: 0.3s; }
-        .footer-links a:hover { opacity: 1; color: var(--apple-blue); }
+        /* FOOTER PRO */
+        footer { background: #000; color: #fff; padding: 120px 0 60px; }
+        .footer-main { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 100px; padding-bottom: 80px; border-bottom: 1px solid #333; }
+        .footer-logo { font-size: 26px; font-weight: 800; letter-spacing: -1px; margin-bottom: 30px; display: block; }
+        .footer-desc { opacity: 0.5; font-size: 16px; line-height: 1.8; }
+        .footer-col h4 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: #86868b; margin-bottom: 30px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 15px; }
+        .footer-col a { color: #fff; text-decoration: none; font-size: 15px; opacity: 0.6; transition: 0.3s; }
+        .footer-col a:hover { opacity: 1; color: var(--apple-blue); }
+        .footer-bottom { padding-top: 40px; text-align: center; font-size: 13px; opacity: 0.4; }
 
         @media (max-width: 968px) {
-            .content-block, .content-block.reverse { flex-direction: column; text-align: center; gap: 60px; }
+            .block-section, .block-section.reverse { flex-direction: column; text-align: center; }
             .nav-links { display: none; }
-            .hero h1 { font-size: 48px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 50px; }
         }
     </style>
 </head>
@@ -139,12 +115,11 @@
         <div class="container nav-content">
             <a href="#" class="logo">TRYWEBDESIGN</a>
             <ul class="nav-links">
-                <li><a href="#sites">Criação de Sites</a></li>
-                <li><a href="#seo">SEO & Artigos</a></li>
-                <li><a href="#processo">Metodologia</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#sites">Performance</a></li>
+                <li><a href="#seo">SEO de Elite</a></li>
+                <li><a href="#contato">Consultoria</a></li>
             </ul>
-            <a href="https://wa.me/SEUNUMERO" class="btn-primary" style="padding: 10px 25px; font-size: 14px; border-radius: 8px;">Falar com Especialista</a>
+            <a href="https://wa.me/SEUNUMERO" class="btn-main" style="padding: 12px 30px; font-size: 14px;">Iniciar Projeto</a>
         </div>
     </nav>
 
@@ -152,141 +127,110 @@
         <!-- HERO -->
         <section class="hero">
             <div class="container">
-                <span class="pill reveal">Sites & SEO de Alta Performance</span>
-                <h1 class="reveal">Sua marca no <span class="blue-gradient">Topo do Google</span><br>com Design Pro.</h1>
-                <p class="hero-desc reveal">Transformamos sua presença digital em uma máquina de vendas orgânicas através de sites ultrarrápidos e estratégias de SEO que dominam o mercado.</p>
+                <span class="pill reveal">Design, Performance & SEO</span>
+                <h1 class="reveal">Transformamos Sites em <br><span class="blue-gradient">Patrimônios Digitais.</span></h1>
+                <p class="hero-desc reveal">Desenvolvemos experiências de alta fidelidade e estratégias de conteúdo que dominam a primeira página do Google de forma orgânica.</p>
                 <div class="reveal">
-                    <a href="#contato" class="btn-primary">Iniciar Diagnóstico Gratuito <i data-lucide="arrow-right" style="margin-left: 10px;"></i></a>
+                    <a href="#sites" class="btn-main">Descubra nossas soluções</a>
                 </div>
-            </div>
-        </section>
 
-        <!-- SERVIÇOS -->
-        <section id="sites" class="services-section">
-            <div class="container">
-                <div class="grid-3">
-                    <div class="service-card reveal">
-                        <i data-lucide="layout" size="40"></i>
-                        <h3>Sites Institucionais</h3>
-                        <p>Design minimalista focado em autoridade. Sites otimizados para converter visitantes em leads qualificados desde o primeiro clique.</p>
+                <!-- PERFORMANCE STATS -->
+                <div class="stats-grid">
+                    <div class="stat-card reveal">
+                        <div class="stat-number">99/100</div>
+                        <div class="stat-label">Mobile PageSpeed</div>
                     </div>
-                    <div class="service-card reveal">
-                        <i data-lucide="search" size="40"></i>
-                        <h3>SEO Estratégico</h3>
-                        <p>Não basta estar online, é preciso ser encontrado. Implementamos SEO técnico de elite para você dominar as pesquisas locais e nacionais.</p>
+                    <div class="stat-card reveal">
+                        <div class="stat-number">+150%</div>
+                        <div class="stat-label">Tráfego Orgânico</div>
                     </div>
-                    <div class="service-card reveal">
-                        <i data-lucide="pen-tool" size="40"></i>
-                        <h3>Blogs & Artigos</h3>
-                        <p>Produção de artigos otimizados que resolvem as dores do seu cliente e geram tráfego qualificado 24 horas por dia, 7 dias por semana.</p>
+                    <div class="stat-card reveal">
+                        <div class="stat-number">< 1s</div>
+                        <div class="stat-label">Tempo de Resposta</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO: CRIAÇÃO DE SITES -->
-        <section class="container content-block">
+        <!-- SITES: A CIÊNCIA DA VELOCIDADE -->
+        <section id="sites" class="container block-section">
             <div class="text-side reveal">
-                <span class="pill">Criação de Sites</span>
-                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 25px;">Tecnologia de ponta para resultados reais.</h2>
-                <p style="font-size: 18px; color: var(--text-muted);">Desenvolvemos sites seguindo os rígidos padrões de performance do Google (Core Web Vitals).</p>
-                <ul class="feature-list">
-                    <li><i data-lucide="zap"></i> Carregamento Instantâneo (LCP < 1s)</li>
-                    <li><i data-lucide="smartphone"></i> Mobile-First: Perfeito em qualquer tela</li>
-                    <li><i data-lucide="lock"></i> Segurança Avançada com Certificação SSL</li>
-                    <li><i data-lucide="code-2"></i> Código Limpo e Otimizado para Indexação</li>
-                </ul>
+                <span class="section-tag">Engenharia Web</span>
+                <h2 class="section-title">Sites que não carregam, <br>eles simplesmente surgem.</h2>
+                <p class="hero-desc" style="text-align: left; font-size: 18px;">Velocidade é dinheiro. Usamos código limpo e infraestrutura de ponta para garantir que sua empresa nunca perca um cliente por lentidão.</p>
+                
+                <div class="feat-item">
+                    <i data-lucide="zap" class="feat-icon"></i>
+                    <div class="feat-text">
+                        <strong>Core Web Vitals Impecáveis</strong>
+                        <p>Nossos sites são aprovados com nota máxima em todos os critérios do Google.</p>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <i data-lucide="layout" class="feat-icon"></i>
+                    <div class="feat-text">
+                        <strong>Design de Alta Fidelidade</strong>
+                        <p>Interface minimalista estilo Apple Pro, focada em autoridade e luxo visual.</p>
+                    </div>
+                </div>
             </div>
             <div class="visual-side reveal">
-                <div class="browser-container">
-                    <div class="browser-top">
-                        <div class="dot" style="background:#ff5f56"></div>
-                        <div class="dot" style="background:#ffbd2e"></div>
-                        <div class="dot" style="background:#27c93f"></div>
+                <div class="google-mock">
+                    <div class="google-header">
+                        <i data-lucide="monitor" size="20" color="#86868b"></i>
+                        <div class="search-bar"></div>
                     </div>
-                    <div style="padding: 40px; background: #fff;">
-                        <div style="height: 20px; width: 40%; background: #1d1d1f; margin-bottom: 20px;"></div>
-                        <div style="height: 10px; width: 100%; background: #f5f5f7; margin-bottom: 10px;"></div>
-                        <div style="height: 10px; width: 90%; background: #f5f5f7; margin-bottom: 10px;"></div>
-                        <div style="height: 150px; width: 100%; background: #fbfbfd; border: 1px solid #eee; margin-top: 20px; display: flex; align-items: center; justify-content: center;">
-                            <i data-lucide="monitor" size="40" color="#d2d2d7"></i>
-                        </div>
+                    <div style="padding: 60px; text-align: center; background: #fbfbfd;">
+                        <i data-lucide="rocket" size="60" color="#0071e3" style="margin-bottom: 20px;"></i>
+                        <h3 style="font-size: 24px;">Performance Ultra</h3>
+                        <p style="color: #6e6e73;">Otimização nível agência de elite.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO: SEO E ARTIGOS (MÁQUINA ORGÂNICA) -->
-        <section id="seo" class="container content-block reverse">
+        <!-- SEO: DOMINÂNCIA ORGÂNICA -->
+        <section id="seo" class="container block-section reverse">
             <div class="text-side reveal">
-                <span class="pill">SEO & Blog</span>
-                <h2 style="font-size: 42px; font-weight: 800; margin-bottom: 25px;">Domine o tráfego orgânico com Artigos de Elite.</h2>
-                <p style="font-size: 18px; color: var(--text-muted);">Cada artigo que criamos é uma isca estratégica para atrair seu cliente ideal no momento exato da busca.</p>
-                <ul class="feature-list">
-                    <li><i data-lucide="bar-chart-big"></i> Pesquisa Profunda de Palavras-Chave</li>
-                    <li><i data-lucide="check-check"></i> Conteúdo de Alta Relevância (E-E-A-T)</li>
-                    <li><i data-lucide="link"></i> Estratégia Interna de Link Building</li>
-                    <li><i data-lucide="mouse-pointer-2"></i> Artigos com foco em Conversão (CTA)</li>
-                </ul>
+                <span class="section-tag">SEO & Autoridade</span>
+                <h2 class="section-title">Domine o Google com <br>Artigos Estratégicos.</h2>
+                <p class="hero-desc" style="text-align: left; font-size: 18px;">Cada artigo é um ativo financeiro. Criamos conteúdo que o Google prioriza e que seu cliente lê com atenção.</p>
+                
+                <div class="feat-item">
+                    <i data-lucide="search" class="feat-icon"></i>
+                    <div class="feat-text">
+                        <strong>Pesquisa Semântica Avançada</strong>
+                        <p>Mapeamos a intenção de busca para atrair clientes prontos para comprar.</p>
+                    </div>
+                </div>
+                <div class="feat-item">
+                    <i data-lucide="bar-chart" class="feat-icon"></i>
+                    <div class="feat-text">
+                        <strong>Crescimento Composto</strong>
+                        <p>Diferente de anúncios, seu tráfego orgânico cresce e se valoriza mês após mês.</p>
+                    </div>
+                </div>
             </div>
             <div class="visual-side reveal">
-                <div class="browser-container" style="background: #fbfbfd;">
-                    <div class="browser-top"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-                    <div style="padding: 40px;">
-                        <div style="display:flex; gap: 10px; margin-bottom: 20px;">
-                            <div style="height: 12px; width: 30%; background: #0071e3;"></div>
-                            <div style="height: 12px; width: 20%; background: #d2d2d7;"></div>
-                        </div>
-                        <div style="height: 8px; width: 100%; background: #eee; margin-bottom: 8px;"></div>
-                        <div style="height: 8px; width: 85%; background: #eee;"></div>
+                <div class="google-mock">
+                    <div class="google-header">
+                        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" height="20" alt="Google">
                     </div>
-                </div>
-                <div class="ranking-box">
-                    <div style="display:flex; justify-content: space-between; font-weight: 700; font-size: 14px;">
-                        <span>Posicionamento no Google</span>
-                        <span style="color: #34c759;">Top 1</span>
-                    </div>
-                    <div class="ranking-line">
-                        <div class="ranking-fill" id="fill-bar"></div>
-                    </div>
-                    <p style="font-size: 12px; color: var(--text-muted);">Volume orgânico: +3.400 cliques/mês</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- PROCESSO -->
-        <section id="processo" style="padding: 120px 0; background: #fff;">
-            <div class="container">
-                <div style="text-align: center; margin-bottom: 80px;" class="reveal">
-                    <h2 style="font-size: 36px; font-weight: 800;">Nossa Metodologia Pro</h2>
-                </div>
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div class="process-step reveal">
-                        <h4>1. Imersão & Estratégia</h4>
-                        <p>Analisamos seu mercado, concorrentes e oportunidades de SEO para traçar o plano de ataque.</p>
-                    </div>
-                    <div class="process-step reveal">
-                        <h4>2. UI/UX Design & Copywriting</h4>
-                        <p>Criamos o visual premium e os textos persuasivos focados na psicologia do seu cliente.</p>
-                    </div>
-                    <div class="process-step reveal">
-                        <h4>3. Desenvolvimento & SEO On-Page</h4>
-                        <p>Codificamos o site com foco em velocidade máxima e configuramos toda a base técnica de SEO.</p>
-                    </div>
-                    <div class="process-step reveal">
-                        <h4>4. Monitoramento & Escala</h4>
-                        <p>Acompanhamos os dados, otimizamos o rankeamento e escalamos sua autoridade digital.</p>
+                    <div class="google-result">
+                        <div class="result-url">www.suaempresa.com.br › blog › artigo-seo</div>
+                        <div class="result-title">Por que você é a autoridade máxima no seu setor</div>
+                        <div class="result-desc">Descubra como nossa estratégia de SEO colocou este site no primeiro lugar, gerando tráfego qualificado e conversões diárias...</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- CTA FINAL -->
-        <section id="contato" style="padding: 140px 0; text-align: center; background: var(--bg-apple);">
+        <section id="contato" style="padding: 160px 0; text-align: center; background: var(--bg-apple);">
             <div class="container reveal">
-                <h2 style="font-size: clamp(32px, 5vw, 56px); font-weight: 800; margin-bottom: 30px; letter-spacing: -2px;">Sua empresa pronta para o próximo nível?</h2>
-                <p class="hero-desc" style="margin-bottom: 50px;">Vamos construir a presença digital que coloca você na frente da concorrência.</p>
-                <a href="https://wa.me/SEUNUMERO" class="btn-primary">Agendar Consultoria Gratuita</a>
+                <h2 class="section-title">Pronto para ser a maior referência <br>digital do seu mercado?</h2>
+                <p class="hero-desc" style="margin-bottom: 60px;">Vamos construir algo extraordinário.</p>
+                <a href="https://wa.me/SEUNUMERO" class="btn-main">Agendar Consultoria Gratuita</a>
             </div>
         </section>
     </main>
@@ -294,67 +238,14 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div>
+            <div class="footer-main">
+                <div class="footer-col">
                     <a href="#" class="footer-logo">TRYWEBDESIGN</a>
-                    <p style="opacity: 0.6; line-height: 1.8; font-size: 15px;">Especialistas em transformar sites institucionais em ativos de alto faturamento através de design premium e SEO de elite.</p>
+                    <p class="footer-desc">Agência boutique focada em sites de alta performance, design disruptivo e SEO de autoridade. Criamos o amanhã, hoje.</p>
                 </div>
-                <div class="footer-links">
+                <div class="footer-col">
                     <h4>Serviços</h4>
                     <ul>
-                        <li><a href="#">Criação de Sites</a></li>
-                        <li><a href="#">SEO de Performance</a></li>
-                        <li><a href="#">Artigos Otimizados</a></li>
-                        <li><a href="#">Landing Pages</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li><a href="#">WhatsApp</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">E-mail</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div style="padding-top: 40px; border-top: 1px solid #333; text-align: center; font-size: 13px; opacity: 0.5;">
-                &copy; 2024 TryWebDesign. Tecnologia, Design e SEO. Todos os direitos reservados.
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            lucide.createIcons();
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Revelação Suave (Animações GSAP)
-            gsap.utils.toArray(".reveal").forEach(el => {
-                gsap.to(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 88%",
-                        toggleActions: "play none none none"
-                    },
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.4,
-                    ease: "power4.out"
-                });
-            });
-
-            // Animação da Barra de Ranking SEO
-            gsap.to("#fill-bar", {
-                scrollTrigger: {
-                    trigger: ".ranking-box",
-                    start: "top 80%",
-                },
-                width: "100%",
-                duration: 2.5,
-                ease: "expo.out"
-            });
-        });
-    </script>
-</body>
-</html>
+                        <li><a href="#">Criação Premium</a></li>
+                        <li><a href="#">SEO de Elite</a></li>
+                        <li><a href="#">
