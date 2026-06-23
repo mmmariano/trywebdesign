@@ -248,4 +248,58 @@
                     <ul>
                         <li><a href="#">Criação Premium</a></li>
                         <li><a href="#">SEO de Elite</a></li>
-                        <li><a href="#">
+                        <li><a href="#">Artigos Otimizados</a></li>
+                        <li><a href="#">Landing Pages Pro</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="#">WhatsApp</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">E-mail</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 TryWebDesign. Tecnologia, Design e SEO. <br>
+                Handcrafted with passion for high-performance businesses.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Animação de revelação suave
+            gsap.utils.toArray(".reveal").forEach(el => {
+                gsap.to(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.2,
+                    ease: "power4.out"
+                });
+            });
+
+            // Efeito parallax leve no Hero
+            gsap.to(".hero", {
+                scrollTrigger: {
+                    trigger: ".hero",
+                    start: "top top",
+                    scrub: true
+                },
+                y: 100,
+                opacity: 0.8
+            });
+        });
+    </script>
+</body>
+</html>
