@@ -3,13 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TryWebDesign | Sites Institucionais e SEO de Alta Performance</title>
-   
+    <meta name="description" content="Criação de sites institucionais profissionais, landing pages otimizadas para SEO e blogs corporativos. Design moderno, rápido e conversor. Leve sua empresa para o próximo nível com a TryWebDesign.">
+    <meta name="keywords" content="criação de sites, sites institucionais, landing page profissional, design de sites, site otimizado SEO, blog corporativo, desenvolvimento web, TryWebDesign">
+    <meta name="robots" content="index, follow">
+    <title>Criação de Sites Institucionais Profissionais | Landing Pages &amp; SEO | TryWebDesign</title>
+    
+    <!-- Open Graph / Social SEO -->
+    <meta property="og:title" content="Criação de Sites Institucionais Profissionais | TryWebDesign">
+    <meta property="og:description" content="Sites modernos, rápidos e otimizados para SEO que convertem visitantes em clientes. Design premium estilo Apple.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.trywebdesign.com.br/sites-institucionais">
+    <meta property="og:image" content="https://www.trywebdesign.com.br/assets/og-image-sites.jpg">
+
     <!-- Tipografia e Bibliotecas -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Componentes -->
+    <script src="../components.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
 
     <style>
         :root {
@@ -20,390 +35,338 @@
             --apple-blue: #0071e3; 
             --apple-blue-hover: #0077ed;
             --border: rgba(0,0,0,0.08);
-            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Reset e Base */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--white); 
-            color: var(--text-dark); 
-            overflow-x: hidden; 
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        .reveal { opacity: 0; transform: translateY(30px); }
 
-        /* NAVBAR REFEITA (Efeito de Vidro) */
-        .navbar {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border); padding: 18px 0;
-        }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Plus Jakarta Sans'; font-weight: 800; font-size: 20px; color: var(--text-dark); text-decoration: none; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-size: 14px; font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: var(--apple-blue); }
-
-        /* HERO SECTION */
+        /* HERO */
         .hero-inst { 
-            padding: 180px 0 100px; text-align: center; position: relative; min-height: 90vh;
-            background: radial-gradient(circle at top, rgba(0,113,227,0.05) 0%, transparent 70%); 
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .pill { 
-            display: inline-block; padding: 6px 14px; background: rgba(0,113,227,0.1); 
-            color: var(--apple-blue); border-radius: 4px; font-size: 11px; font-weight: 800; 
-            margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; 
+            padding: 200px 0 120px; 
+            text-align: center; 
+            background: radial-gradient(circle at top, rgba(0,113,227,0.06) 0%, transparent 70%); 
         }
         .hero-inst h1 { 
-            font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(35px, 7vw, 68px); 
-            font-weight: 800; letter-spacing: -0.05em; line-height: 1.05; margin-bottom: 30px; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            font-size: clamp(38px, 7.5vw, 72px); 
+            font-weight: 800; 
+            letter-spacing: -0.04em; 
+            line-height: 1.05; 
+            margin-bottom: 28px; 
         }
-        .blue-gradient { background: linear-gradient(135deg, #0071e3 0%, #00c6ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-desc { font-size: 20px; color: var(--text-muted); max-width: 800px; margin: 0 auto 40px; line-height: 1.6; font-weight: 500; }
-
-        /* BOTÃO APPLE (Refatorado sem !important) */
-        .btn-large {
-            display: inline-flex; align-items: center; justify-content: center; padding: 18px 45px;
-            background: rgba(230, 230, 235, 0.8); backdrop-filter: blur(15px);
-            border: 1px solid #c0c0c8; color: #1d1d1f; text-decoration: none; font-size: 16px; font-weight: 700;
-            transition: var(--transition); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); cursor: pointer;
+        .blue-gradient { 
+            background: linear-gradient(135deg, #0071e3 0%, #00c6ff 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
         }
-        .btn-large:hover { background: #1d1d1f; color: #fff; transform: translateY(-3px); }
+        .hero-desc { 
+            font-size: 20px; 
+            color: var(--text-muted); 
+            max-width: 820px; 
+            margin: 0 auto 40px; 
+            line-height: 1.65; 
+            font-weight: 500; 
+        }
 
-        /* INDICADOR DE SCROLL */
-        .scroll-indicator { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--apple-blue), transparent); position: relative; overflow: hidden; }
-        .scroll-line::after { content: ""; position: absolute; top: -100%; left: 0; width: 100%; height: 100%; background: var(--apple-blue); animation: scrollMove 2s infinite cubic-bezier(0.4, 0, 0.2, 1); }
-        @keyframes scrollMove { 0% { top: -100%; } 50% { top: 0%; } 100% { top: 100%; } }
+        /* Seções */
+        .diff-section { padding: 110px 0; background: var(--bg-apple); }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-top: 60px; }
+        .diff-card { 
+            background: #fff; 
+            padding: 48px 40px; 
+            border-radius: 0; 
+            border: 1px solid var(--border); 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .diff-card:hover { 
+            transform: translateY(-12px); 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.07); 
+        }
+        .diff-card i { color: var(--apple-blue); margin-bottom: 28px; }
 
-        /* GRID DE DIFERENCIAIS */
-        .diff-section { padding: 100px 0; background: var(--bg-apple); }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
-        .diff-card { background: #fff; padding: 45px; border-radius: 12px; border: 1px solid var(--border); transition: var(--transition); }
-        .diff-card:hover { transform: translateY(-10px); border-color: var(--apple-blue); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
-        .diff-card i { color: var(--apple-blue); margin-bottom: 25px; }
-        .diff-card h3 { font-size: 24px; margin-bottom: 15px; font-weight: 700; }
-        .diff-card p { color: var(--text-muted); line-height: 1.7; font-size: 15px; }
-
-        /* BLOCOS DE CONTEÚDO */
-        .content-block { padding: 120px 0; display: flex; align-items: center; gap: 80px; }
+        .content-block { 
+            padding: 130px 0; 
+            display: flex; 
+            align-items: center; 
+            gap: 90px; 
+            border-bottom: 1px solid var(--border); 
+        }
         .content-block.reverse { flex-direction: row-reverse; }
-        .text-side { flex: 1.2; }
+        .text-side { flex: 1.1; }
         .visual-side { flex: 1; position: relative; }
-        .feature-grid { list-style: none; margin-top: 25px; }
-        .feature-grid li { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 600; margin-bottom: 12px; }
-        .feature-grid i { color: #34c759; }
 
-        /* MOCKUP ENGINE */
-        .corporate-mockup-engine { position: relative; width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; }
-        .premium-browser { width: 100%; max-width: 480px; background: #fff; border: 1px solid var(--border); box-shadow: 0 50px 100px rgba(0,0,0,0.08); overflow: hidden; z-index: 1; }
-        .browser-top-bar { background: #f1f1f2; padding: 12px 20px; display: flex; align-items: center; gap: 15px; }
-        .window-buttons { display: flex; gap: 6px; }
-        .window-buttons span { width: 8px; height: 8px; border-radius: 50%; background: #d2d2d7; }
-        .url-field { background: #fff; flex-grow: 1; height: 22px; border-radius: 4px; font-size: 10px; color: #86868b; display: flex; align-items: center; justify-content: center; }
-        
-        /* SIMULAÇÃO WEB PAGE */
-        .mock-navbar-top { padding: 15px 25px; border-bottom: 1px solid #f5f5f7; display: flex; justify-content: space-between; }
-        .mock-logo-small { width: 60px; height: 10px; background: #1d1d1f; }
-        .mock-hero-corporate { padding: 30px 25px; background: #fbfbfd; display: flex; gap: 20px; }
-        .mock-line-bold { height: 10px; background: #1d1d1f; margin-bottom: 8px; }
-        .mock-line-thin { height: 6px; background: #d2d2d7; margin-bottom: 6px; }
-        .mock-btn-blue { width: 80px; height: 28px; background: var(--apple-blue); margin-top: 15px; }
-        
-        /* BADGES FLUTUANTES */
-        .floating-authority { position: absolute; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 15px 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px; z-index: 10; border: 1px solid var(--border); }
-        .success-notif { top: 40px; right: 0; border-left: 4px solid #34c759; }
-        .shield-notif { bottom: 60px; left: -20px; border-left: 4px solid var(--apple-blue); }
-        .status-content strong { display: block; font-size: 13px; color: #1d1d1f; }
-        .status-content span { font-size: 11px; color: #86868b; }
+        .pill { 
+            display: inline-block; 
+            padding: 7px 16px; 
+            background: rgba(0,113,227,0.1); 
+            color: var(--apple-blue); 
+            border-radius: 9999px; 
+            font-size: 12px; 
+            font-weight: 700; 
+            letter-spacing: 1.2px; 
+            margin-bottom: 24px; 
+        }
 
-        /* SEÇÃO ARTIGOS SEO (NOVA) */
-        .seo-articles { padding: 120px 0; background: #fff; }
-        .article-tag { background: #34c759; color: white; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-bottom: 15px; display: inline-block; }
+        .content-block h2 { 
+            font-size: 42px; 
+            font-weight: 800; 
+            line-height: 1.1; 
+            letter-spacing: -0.03em; 
+            margin-bottom: 28px; 
+        }
 
-        /* PROCESSO */
-        .method-step { border-left: 2px solid #eee; padding-left: 30px; position: relative; margin-bottom: 40px; transition: 0.3s; }
-        .method-step::before { content: ''; position: absolute; left: -2px; top: 0; height: 30px; width: 2px; background: var(--apple-blue); }
-        .method-step:hover { border-left-color: var(--apple-blue); }
+        /* Mockup aprimorado */
+        .premium-browser {
+            width: 100%;
+            max-width: 520px;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.07);
+            box-shadow: 0 60px 120px rgba(0,0,0,0.1);
+            border-radius: 0;
+            overflow: hidden;
+        }
 
-        /* FOOTER */
-        footer { background: var(--bg-apple); padding: 80px 0 40px; border-top: 1px solid var(--border); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-logo { font-weight: 800; color: var(--text-dark); margin-bottom: 20px; display: block; text-decoration: none; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; transition: 0.3s; }
-        .footer-links a:hover { color: var(--apple-blue); }
+        .floating-authority {
+            position: absolute;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 18px 24px;
+            border-radius: 0;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.06);
+            z-index: 10;
+        }
+
+        .btn-large {
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 18px 52px; 
+            border-radius: 0; 
+            background: rgba(230, 230, 235, 0.9); 
+            backdrop-filter: blur(20px);
+            border: 1px solid #c0c0c8; 
+            color: #1d1d1f; 
+            font-size: 17px; 
+            font-weight: 700;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .btn-large:hover { 
+            background: #1d1d1f; 
+            color: white; 
+            transform: translateY(-4px); 
+        }
+
+        .method-step { 
+            border-left: 3px solid #eee; 
+            padding-left: 32px; 
+            position: relative; 
+            margin-bottom: 48px; 
+        }
+        .method-step::before { 
+            content: ''; 
+            position: absolute; 
+            left: -3px; 
+            top: 0; 
+            height: 36px; 
+            width: 3px; 
+            background: var(--apple-blue); 
+        }
+
+        .reveal { opacity: 0; transform: translateY(40px); }
 
         @media (max-width: 900px) {
-            .content-block, .content-block.reverse { flex-direction: column; text-align: center; gap: 40px; }
-            .nav-links { display: none; }
-            .floating-authority { display: none; }
+            .content-block, .content-block.reverse { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 50px; 
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-content">
-            <a href="#" class="logo">TRYWEBDESIGN</a>
-            <ul class="nav-links">
-                <li><a href="#solucoes">Soluções</a></li>
-                <li><a href="#seo">SEO & Blog</a></li>
-                <li><a href="#processo">Processo</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Navbar será injetado pelo components.js -->
+    <nav class="navbar" id="navbar"></nav>
 
     <main>
-        <!-- HERO -->
+        <!-- HERO - Otimizado para SEO -->
         <section class="hero-inst">
             <div class="container">
-                <span class="pill reveal">Sua Empresa Online</span>
-                <h1 class="reveal">Landing Page Profissional, <br><span class="blue-gradient">Site e Blog</span></h1>
-                <p class="hero-desc reveal">Não entregamos apenas um link. Entregamos a ferramenta que faz seu cliente confiar em você antes mesmo da primeira conversa. Design premium para quem busca liderança.</p>
-                <div class="reveal">
-                    <a href="/iniciarprojeto/" class="btn-large">Quero meu site profissional</a>
-                </div>
+                <span class="pill reveal">Criação de Sites Profissionais</span>
+                <h1 class="reveal">Sites Institucionais e Landing Pages<br><span class="blue-gradient">que Convertem e Ranqueiam</span></h1>
+                <p class="hero-desc reveal">
+                    Desenvolvemos sites institucionais modernos, blogs corporativos e landing pages otimizadas para SEO. 
+                    Design premium, performance excelente e foco em resultados reais para sua empresa.
+                </p>
+                <a href="/iniciarprojeto/" class="btn-large reveal">Quero meu site profissional agora</a>
             </div>
+
             <div class="scroll-indicator reveal">
                 <span>Explorar Soluções</span>
                 <div class="scroll-line"></div>
             </div>
         </section>
 
-        <!-- PROBLEMA E SOLUÇÃO -->
-        <section id="solucoes" class="diff-section">
+        <!-- Por que ter um site profissional (SEO keywords) -->
+        <section class="diff-section">
             <div class="container">
                 <div class="section-header reveal" style="text-align: center;">
-                    <h2 style="font-size: 32px; font-weight: 800;">Por que sua empresa precisa de um site profissional?</h2>
-                    <p style="color: var(--text-muted); margin-top: 15px; max-width: 700px; margin: 15px auto 0;">Ter um site amador é como atender um cliente importante usando roupas desleixadas. O visual do seu site dita o quanto você pode cobrar.</p>
+                    <h2>Por que investir em um site institucional profissional?</h2>
+                    <p style="color: var(--text-muted); max-width: 720px; margin: 20px auto 0; font-size: 18px;">
+                        Um site amador faz sua empresa perder credibilidade. Um site bem feito aumenta confiança, melhora o posicionamento no Google e converte visitantes em clientes.
+                    </p>
                 </div>
-               
+                
                 <div class="grid-3">
                     <div class="diff-card reveal">
-                        <i data-lucide="award" size="32"></i>
-                        <h3>Passa Confiança</h3>
-                        <p>Sites bem feitos mostram que sua empresa é sólida. Isso elimina o medo do cliente e facilita o fechamento de novos negócios.</p>
+                        <i data-lucide="award" size="36"></i>
+                        <h3>Credibilidade e Confiança</h3>
+                        <p>Design profissional transmite seriedade e competência. Clientes decidem em segundos se confiam na sua empresa pelo visual do site.</p>
                     </div>
                     <div class="diff-card reveal">
-                        <i data-lucide="zap" size="32"></i>
-                        <h3>Rapidez Total</h3>
-                        <p>Nossos sites abrem instantaneamente no celular, garantindo que você não perca nenhum cliente por lentidão.</p>
+                        <i data-lucide="trending-up" size="36"></i>
+                        <h3>Maior Visibilidade no Google</h3>
+                        <p>Sites otimizados para SEO ranqueiam melhor, atraem tráfego orgânico e reduzem o custo com anúncios pagos.</p>
                     </div>
                     <div class="diff-card reveal">
-                        <i data-lucide="smartphone" size="32"></i>
-                        <h3>Funciona em Tudo</h3>
-                        <p>Sua empresa apresentada de forma impecável e moderna em qualquer tela: computador, tablet ou celular.</p>
+                        <i data-lucide="users" size="36"></i>
+                        <h3>Conversão de Clientes</h3>
+                        <p>Landing pages e sites institucionais projetados para conversão transformam visitantes em leads e vendas.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- DESIGN & MOCKUP -->
+        <!-- Design + SEO -->
         <section class="container content-block reveal">
             <div class="text-side">
-                <span class="pill">Visual Profissional</span>
-                <h2 style="font-size: 38px; font-weight: 800; margin-bottom: 25px;">Sua marca com o design <br>que ela merece.</h2>
-                <p>Nós usamos o que há de mais moderno em design (estilo Apple) para criar uma imagem de luxo e tecnologia para o seu negócio.</p>
-                <ul class="feature-grid">
-                    <li><i data-lucide="check"></i> Tipografia elegante e legível</li>
-                    <li><i data-lucide="check"></i> Paleta de cores corporativa</li>
-                    <li><i data-lucide="check"></i> Hierarquia de informações clara</li>
-                    <li><i data-lucide="check"></i> Carregamento otimizado de imagens</li>
+                <span class="pill">Design + SEO Integrados</span>
+                <h2>Design moderno que ranqueia e vende</h2>
+                <p>Combinamos estética premium (estilo Apple) com as melhores práticas de SEO técnico e conteúdo otimizado. Seu site será bonito, rápido e amigável para o Google.</p>
+                <ul class="feature-grid" style="margin-top: 30px; list-style: none;">
+                    <li><i data-lucide="check" style="color:#34c759"></i> Otimização completa para SEO</li>
+                    <li><i data-lucide="check" style="color:#34c759"></i> Design responsivo e mobile-first</li>
+                    <li><i data-lucide="check" style="color:#34c759"></i> Velocidade de carregamento excelente</li>
+                    <li><i data-lucide="check" style="color:#34c759"></i> Blog integrado para conteúdo contínuo</li>
+                    <li><i data-lucide="check" style="color:#34c759"></i> Integração com Google Analytics e Search Console</li>
                 </ul>
+                <a href="/iniciarprojeto/" class="btn-large" style="margin-top: 40px;">Solicitar Orçamento</a>
             </div>
             
             <div class="visual-side">
-                <div class="corporate-mockup-engine reveal">
+                <div class="corporate-mockup-engine">
                     <div class="premium-browser">
                         <div class="browser-top-bar">
                             <div class="window-buttons"><span></span><span></span><span></span></div>
                             <div class="url-field">www.suaempresa.com.br</div>
                         </div>
                         <div class="browser-web-page">
-                            <div class="mock-navbar-top">
-                                <div class="mock-logo-small"></div>
-                                <div style="display: flex; gap: 8px;"><span style="width:20px; height:3px; background:#e5e5e7;"></span><span style="width:20px; height:3px; background:#e5e5e7;"></span></div>
+                            <div class="mock-navbar-top" style="padding: 18px 28px; border-bottom: 1px solid #f0f0f0;">
+                                <div class="mock-logo-small" style="width: 68px; height: 12px;"></div>
+                                <div class="mock-links-group">
+                                    <span></span><span></span><span></span>
+                                </div>
                             </div>
-                            <div class="mock-hero-corporate">
-                                <div style="flex:1;">
-                                    <div class="mock-line-bold"></div>
-                                    <div class="mock-line-bold" style="width:60%;"></div>
+                            <div class="mock-hero-corporate" style="padding: 40px 28px; gap: 24px;">
+                                <div class="mock-hero-text">
+                                    <div class="mock-line-bold" style="height: 14px;"></div>
+                                    <div class="mock-line-bold short"></div>
                                     <div class="mock-line-thin"></div>
-                                    <div class="mock-btn-blue"></div>
+                                    <div class="mock-btn-blue" style="width: 140px; height: 38px; margin-top: 24px;"></div>
                                 </div>
-                                <div style="flex:0.8; background:#fff; height:100px; border: 1px solid #f2f2f7; display:flex; align-items:center; justify-content:center;">
-                                    <i data-lucide="image" size="30" color="#e5e5e7"></i>
+                                <div class="mock-hero-image">
+                                    <i data-lucide="image" size="48" color="#e5e5e7"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Badges -->
-                    <div class="floating-authority success-notif reveal">
-                        <div style="background:rgba(52, 199, 89, 0.1); padding:8px; border-radius:50%; color:#34c759;">
-                            <i data-lucide="check" size="14"></i>
+                    <div class="floating-authority success-notif" style="top: 30px; right: -10px;">
+                        <div class="icon-circle-green">
+                            <i data-lucide="check" size="18"></i>
                         </div>
-                        <div class="status-content">
-                            <strong>Empresa Verificada</strong>
-                            <span>Presença Ativa</span>
+                        <div>
+                            <strong>Site Otimizado SEO</strong>
+                            <span>Posicionamento no Google</span>
                         </div>
                     </div>
-                    <div class="floating-authority shield-notif reveal">
-                        <i data-lucide="shield-check" color="#0071e3" size="24"></i>
-                        <div class="status-content">
-                            <strong>Site Seguro SSL</strong>
-                            <span>Dados Protegidos</span>
+
+                    <div class="floating-authority shield-notif" style="bottom: 50px; left: -30px;">
+                        <i data-lucide="shield-check" color="#0071e3" size="28"></i>
+                        <div>
+                            <strong>100% Responsivo</strong>
+                            <span>Funciona em todos dispositivos</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO ARTIGOS SEO (O QUE O GOOGLE ENCONTRA) -->
-        <section id="seo" class="seo-articles">
+        <!-- Processo -->
+        <section style="background: #fff; padding: 130px 0; border-top: 1px solid var(--border);">
             <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-                    <div class="reveal">
-                        <span class="article-tag">TRÁFEGO ORGÂNICO</span>
-                        <h2 style="font-size: 42px; font-weight: 800; line-height: 1.1; margin-bottom: 25px;">
-                            Artigos que o Google ama e que seus clientes encontram.
-                        </h2>
-                        <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 30px;">
-                            Não postamos apenas conteúdo. Construímos <strong>autoridade digital</strong> através de artigos otimizados:
-                        </p>
-                        
-                        <div style="display: grid; gap: 20px;">
-                            <div style="display: flex; gap: 15px;">
-                                <i data-lucide="search-check" color="#0071e3"></i>
-                                <div>
-                                    <strong style="display: block;">Pesquisa de Palavras-Chave</strong>
-                                    <span style="font-size: 14px; color: var(--text-muted);">Mapeamos o que seu cliente pesquisa antes de fechar um serviço.</span>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: 15px;">
-                                <i data-lucide="bar-chart-big" color="#0071e3"></i>
-                                <div>
-                                    <strong style="display: block;">SEO Semântico</strong>
-                                    <span style="font-size: 14px; color: var(--text-muted);">Estrutura de dados que garante a leitura perfeita pelos motores de busca.</span>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: 15px;">
-                                <i data-lucide="mouse-pointer-2" color="#0071e3"></i>
-                                <div>
-                                    <strong style="display: block;">Conversão no Blog</strong>
-                                    <span style="font-size: 14px; color: var(--text-muted);">Transformamos leitores em leads qualificados com CTAs estratégicos.</span>
-                                </div>
-                            </div>
-                        </div>
+                <div class="section-header reveal" style="text-align: center; margin-bottom: 90px;">
+                    <h2>Como é o processo de criação do seu site?</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Transparente, ágil e focado em resultados.</p>
+                </div>
+                
+                <div style="max-width: 820px; margin: 0 auto;">
+                    <div class="method-step reveal">
+                        <h4>1. Briefing &amp; Estratégia</h4>
+                        <p>Entendemos seu negócio, público-alvo e objetivos. Definimos palavras-chave principais para SEO.</p>
                     </div>
-                    <div class="visual-side reveal" style="background: var(--bg-apple); padding: 50px; border-radius: 24px; text-align: center;">
-                        <i data-lucide="trending-up" size="48" color="#0071e3"></i>
-                        <h3 style="margin: 20px 0 10px;">Dominância no Google</h3>
-                        <p style="font-size: 14px; color: var(--text-muted);">Sua empresa no topo das buscas, gerando cliques e vendas sem depender apenas de anúncios pagos.</p>
-                        <div style="margin-top: 30px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left;">
-                            <div style="display: flex; justify-content: space-between; font-size: 12px; font-weight: bold; margin-bottom: 8px;">
-                                <span>Ranking: "Melhores Soluções..."</span>
-                                <span style="color: #34c759;">1º Lugar</span>
-                            </div>
-                            <div style="height: 6px; background: #34c759; border-radius: 3px;"></div>
-                        </div>
+                    <div class="method-step reveal">
+                        <h4>2. Design Personalizado</h4>
+                        <p>Criamos o layout completo com foco em conversão e experiência do usuário.</p>
+                    </div>
+                    <div class="method-step reveal">
+                        <h4>3. Desenvolvimento + SEO</h4>
+                        <p>Montamos o site com código limpo, performance otimizada e todas as boas práticas de SEO on-page.</p>
+                    </div>
+                    <div class="method-step reveal">
+                        <h4>4. Revisão, Lançamento e Suporte</h4>
+                        <p>Aprovamos juntos, colocamos no ar e oferecemos treinamento + suporte contínuo.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROCESSO -->
-        <section id="processo" style="padding: 100px 0; border-top: 1px solid var(--border);">
+        <!-- CTA Final -->
+        <section class="lp-cta reveal" style="padding: 160px 0; text-align: center; background: linear-gradient(180deg, #f8f9fa, #fff);">
             <div class="container">
-                <div class="section-header reveal" style="text-align: center; margin-bottom: 80px;">
-                    <h2 style="font-size: 32px; font-weight: 800;">Como funciona o projeto?</h2>
-                    <p style="color: var(--text-muted);">Um processo transparente focado no seu resultado.</p>
-                </div>
-               
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div class="method-step reveal">
-                        <h4>1. Planejamento</h4>
-                        <p>Entendemos seu negócio e seu público para criar o plano ideal para o seu site e blog.</p>
-                    </div>
-                    <div class="method-step reveal">
-                        <h4>2. Criação Visual</h4>
-                        <p>Desenhamos a interface focando na identidade da sua marca e na facilidade de uso.</p>
-                    </div>
-                    <div class="method-step reveal">
-                        <h4>3. Montagem & SEO</h4>
-                        <p>Transformamos o design em um site rápido, seguro e totalmente otimizado para o Google.</p>
-                    </div>
-                    <div class="method-step reveal">
-                        <h4>4. Entrega e Suporte</h4>
-                        <p>Colocamos seu site no ar e damos o suporte necessário para sua empresa crescer online.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA FINAL -->
-        <section id="contato" class="reveal" style="padding: 120px 0; text-align: center;">
-            <div class="container">
-                <h2 style="font-size: clamp(32px, 5vw, 48px); font-weight: 800; margin-bottom: 25px;">Pare de perder clientes para sites melhores.</h2>
-                <p class="hero-desc" style="margin-bottom: 45px;">Vamos construir a presença digital que sua empresa merece?</p>
-                <a href="/iniciarprojeto/" class="btn-large">Agendar Conversa</a>
+                <h2 style="font-size: clamp(34px, 6vw, 52px); font-weight: 800; line-height: 1.1; max-width: 800px; margin: 0 auto 28px;">
+                    Pare de perder oportunidades por causa de um site fraco
+                </h2>
+                <p class="hero-desc" style="max-width: 680px; margin: 0 auto 50px;">
+                    Tenha um site institucional profissional, otimizado para SEO e pronto para atrair mais clientes.
+                </p>
+                <a href="/iniciarprojeto/" class="btn-large">Iniciar meu Projeto de Site</a>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <a href="#" class="footer-logo">TRYWEBDESIGN</a>
-                    <p style="font-size: 14px; line-height: 1.6;">Criando experiências digitais de alto padrão para empresas que não aceitam o comum.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navegação</h4>
-                    <ul>
-                        <li><a href="#solucoes">Soluções</a></li>
-                        <li><a href="#seo">SEO & Blog</a></li>
-                        <li><a href="#processo">Processo</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li><a href="#">WhatsApp</a></li>
-                        <li><a href="#">Email Corporativo</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2024 TryWebDesign. Todos os direitos reservados. 
-            </div>
-        </div>
-    </footer>
+    <!-- Footer será injetado pelo components.js -->
+    <footer id="main-footer"></footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             lucide.createIcons();
             gsap.registerPlugin(ScrollTrigger);
-           
+            
             gsap.utils.toArray(".reveal").forEach(el => {
                 gsap.to(el, {
                     scrollTrigger: {
                         trigger: el,
-                        start: "top 90%",
+                        start: "top 85%",
                         toggleActions: "play none none none"
                     },
                     opacity: 1,
                     y: 0,
-                    duration: 1.2,
+                    duration: 1.1,
                     ease: "power3.out"
                 });
             });
