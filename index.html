@@ -1294,7 +1294,40 @@ body {
         gap: 24px;
       }
     }
+/* ── SEO section: Ajuste para não cortar imagens no mobile ── */
+@media (max-width: 768px) {
+  
+  /* Garante que o container da imagem se ajuste à altura real da imagem */
+  .seo-screenshot-wrap {
+    height: auto !important;
+    overflow: visible !important;
+  }
 
+  /* O segredo está aqui: mudar de 'cover' para 'contain' ou 'fill' 
+     e garantir que a altura seja automática */
+  .seo-screenshot-wrap img,
+  .img-zoomable {
+    width: 100% !important;
+    height: auto !important; 
+    object-fit: contain !important; /* Impede o corte da imagem */
+    border-radius: 0 !important;
+    display: block;
+  }
+
+  /* Ajusta o card para não ter altura fixa */
+  .seo-browser-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Garante que o badge de rank (se houver) não suma */
+  .seo-rank-badge {
+    padding: 6px 10px !important;
+    bottom: 5px !important;
+    left: 5px !important;
+  }
+}
     </style>
  
 </head>
