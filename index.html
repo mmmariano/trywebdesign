@@ -1595,6 +1595,97 @@ body {
   .ecom-heading { font-size: 1.9rem; }
   .ecom-card-body { padding: 20px; }
 }
+         /* Grid dos posts dinâmicos */
+.blog-grid-dynamic {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+}
+
+.blog-card-dynamic {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.35s ease, border-color 0.35s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card-dynamic:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 113, 227, 0.35);
+}
+
+.blog-card-dynamic .card-cover {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: #111;
+}
+
+.blog-card-dynamic .card-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.blog-card-dynamic:hover .card-cover img {
+    transform: scale(1.05);
+}
+
+.blog-card-dynamic .card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-card-dynamic .card-date {
+    font-size: 12px;
+    color: #86868b;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.blog-card-dynamic .card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f5f5f7;
+    line-height: 1.35;
+    margin-bottom: 12px;
+}
+
+.blog-card-dynamic .card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.blog-card-dynamic .card-excerpt {
+    font-size: 0.92rem;
+    color: rgba(245, 245, 247, 0.55);
+    line-height: 1.55;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.blog-card-dynamic .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #0071e3;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+@media (max-width: 640px) {
+    .blog-grid-dynamic {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
  
 </head>
@@ -2279,47 +2370,32 @@ Excelente trabalho! Parabéns pelo profissionalismo, atenção  dispensada e ded
         </div>
     </div>
 </section>
-  <!-- =====================================================
-     SEÇÃO: ÚLTIMO POST DO BLOG (SEO)
+ <!-- =====================================================
+     SEÇÃO: ÚLTIMOS 4 POSTS DO BLOG (dinâmico)
 ===================================================== -->
 <section id="ai-blog-featured">
     <div class="blog-container">
        
         <div class="section-header reveal" style="text-align: left; margin-bottom: 50px;">
-            <h2 style="color: #fff;">Insights da TryWebDesign<span class="blue-text">Conheça nossas Técnicas de SEO</span></h2>
-            <p style="color: #86868b; max-width: 600px; margin-left: 0;">Exploramos o futuro da web para manter o seu negócio sempre à frente da concorrência.</p>
+            <h2 style="color: #fff;">Insights da TryWebDesign <span class="blue-text">Últimas Postagens</span></h2>
+            <p style="color: #86868b; max-width: 600px; margin-left: 0;">
+                Conteúdo atualizado automaticamente do nosso blog de SEO e estratégia digital.
+            </p>
         </div>
 
-        <article class="blog-card-large reveal">
-            <!-- Imagem sugerida: Algo tecnológico, IA ou código -->
-            <div class="blog-image-side">
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000" alt="SEO para Inteligência Artificial">
-                <div style="position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,10,0.8), transparent);"></div>
+        <!-- Container que o JavaScript vai preencher -->
+        <div id="blog-posts-container" class="blog-grid-dynamic">
+            <!-- Loading enquanto carrega -->
+            <div class="blog-loading" style="grid-column: 1/-1; text-align: center; color: #86868b; padding: 60px 0;">
+                Carregando posts...
             </div>
+        </div>
 
-            <div class="blog-content-side">
-                <span class="blog-tag">Último Post • Estratégia</span>
-                <h3 class="blog-title">Por que 99% dos sites falham no SEO (e o seu pode ser um deles).</h3>
-               
-<p class="blog-excerpt">
-    Ter um site bonito não basta. Erros técnicos invisíveis, lentidão e má estruturação de dados estão fazendo sua empresa perder clientes para a concorrência todos os dias. Descubra como diagnosticamos e corrigimos esses gargalos.
-</p>
-
-                <div class="blog-meta">
-                    <img src="foto_perfil_mateus.webp" class="blog-author-img" alt="Mateus Mariano">
-                    <div class="blog-author-info">
-                        <span>Mateus M. Mariano</span>
-                        <small>Analista e Webdesigner</small>
-                    </div>
-                </div>
-
-<!-- SUBSTITUA O LINK ANTIGO POR ESTE -->
-<a href="javascript:void(0)" onclick="openBlogModal()" class="read-article-btn">
-    Ler artigo completo <i data-lucide="arrow-right"></i>
-</a>
-            </div>
-        </article>
-
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="https://especialistaseo.online/blog/" target="_blank" class="read-article-btn" style="display: inline-flex;">
+                Ver todos os artigos <i data-lucide="arrow-right"></i>
+            </a>
+        </div>
     </div>
 </section>
    <footer id="main-footer"></footer>
@@ -2584,6 +2660,51 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('blog-posts-container');
+    if (!container) return;
 
+    fetch('https://especialistaseo.online/blog/retornatudo.php')
+        .then(res => res.json())
+        .then(data => {
+            if (!data.success || !data.posts || data.posts.length === 0) {
+                container.innerHTML = '<p style="color:#86868b;text-align:center;grid-column:1/-1;">Nenhum post encontrado no momento.</p>';
+                return;
+            }
+
+            let html = '';
+            data.posts.forEach(post => {
+                const capa = post.imagem_capa 
+                    ? `<div class="card-cover"><img src="${post.imagem_capa}" alt="${post.titulo}" loading="lazy"></div>` 
+                    : '';
+
+                html += `
+                <article class="blog-card-dynamic reveal">
+                    ${capa}
+                    <div class="card-body">
+                        <time class="card-date">${post.data_formatada}</time>
+                        <h3 class="card-title">
+                            <a href="${post.url}" target="_blank" rel="noopener">${post.titulo}</a>
+                        </h3>
+                        <p class="card-excerpt">${post.resumo || ''}</p>
+                        <a href="${post.url}" target="_blank" rel="noopener" class="card-link">
+                            Ler artigo <i data-lucide="arrow-right" size="14"></i>
+                        </a>
+                    </div>
+                </article>`;
+            });
+
+            container.innerHTML = html;
+            
+            // Recarrega ícones do Lucide
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        })
+        .catch(err => {
+            console.error('Erro ao carregar posts:', err);
+            container.innerHTML = '<p style="color:#86868b;text-align:center;grid-column:1/-1;">Não foi possível carregar os posts agora.</p>';
+        });
+});
+</script>
 </body>
 </html>
