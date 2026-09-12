@@ -2706,5 +2706,54 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 });
 </script>
+     <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('blog-posts-container');
+    if (!container) return;
+
+    fetch('https://especialistaseo.online/blog/retornatudo.php')
+        .then(res => res.json())
+        .then(data => {
+            if (!data.success || !data.posts || data.posts.length === 0) {
+                container.innerHTML = '<p style="color:#86868b;text-align:center;grid-column:1/-1;">Nenhum post encontrado no momento.</p>';
+                return;
+            }
+
+            let html = '';
+            data.posts.forEach(post => {
+                const capa = post.imagem_capa 
+                    ? `<div class="card-cover">
+                           <a href="${post.url}" target="_blank" rel="noopener">
+                               <img src="${post.imagem_capa}" alt="${post.titulo}" loading="lazy">
+                           </a>
+                       </div>` 
+                    : '';
+
+                html += `
+                <article class="blog-card-dynamic reveal">
+                    ${capa}
+                    <div class="card-body">
+                        <time class="card-date">${post.data_formatada}</time>
+                        <h3 class="card-title">
+                            <a href="${post.url}" target="_blank" rel="noopener">${post.titulo}</a>
+                        </h3>
+                        <p class="card-excerpt">${post.resumo || ''}</p>
+                        <a href="${post.url}" target="_blank" rel="noopener" class="card-link">
+                            Ler artigo <i data-lucide="arrow-right" size="14"></i>
+                        </a>
+                    </div>
+                </article>`;
+            });
+
+            container.innerHTML = html;
+            
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        })
+        .catch(err => {
+            console.error('Erro ao carregar posts:', err);
+            container.innerHTML = '<p style="color:#86868b;text-align:center;grid-column:1/-1;">Não foi possível carregar os posts agora.</p>';
+        });
+});
+</script>
 </body>
 </html>
